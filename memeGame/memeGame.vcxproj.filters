@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Stage\StageActor.cpp" />
+    <ClCompile Include="Stage\StageComponent.cpp" />
+    <ClCompile Include="Stage\StageScene.cpp" />
+    <ClCompile Include="Stage\CollisionDetection\Manager.cpp" />
+    <ClCompile Include="Stage\CollisionDetection\CollisionDetection.cpp" />
+    <ClCompile Include="Stage\CollisionDetection\Body.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Stage\StageActor.hpp" />
+    <ClInclude Include="Stage\StageComponent.hpp" />
+    <ClInclude Include="Stage\StageScene.hpp" />
+    <ClInclude Include="Stage\CollisionDetection\Manager.hpp" />
+    <ClInclude Include="Stage\CollisionDetection\Body.hpp" />
+    <ClInclude Include="Stage\CollisionDetection\CollisionDetection.hpp" />
+  </ItemGroup>
+</Project>
