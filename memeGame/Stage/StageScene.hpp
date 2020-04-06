@@ -18,7 +18,7 @@ namespace Game
 			constexpr float Left = WINDOW_WIDTH / 2.f - WINDOW_WIDTH * 3.f / 2.f;
 			constexpr float Right = WINDOW_WIDTH / 2.f + WINDOW_WIDTH * 3.f / 2.f;
 			constexpr float Top = WINDOW_HEIGHT / 2.f - WINDOW_HEIGHT * 3.f / 2.f;
-			constexpr float Bottom = WINDOW_HEIGHT / 2.f - WINDOW_HEIGHT * 3.f / 2.f;
+			constexpr float Bottom = WINDOW_HEIGHT / 2.f + WINDOW_HEIGHT * 3.f / 2.f;
 		}
 
 		namespace ActorUpdateScope

@@ -21,6 +21,8 @@ namespace Game
 			, mAdjust()
 			, mStageOwner(actor)
 			, mColor(GameLib::Color::Black)
+			,mPrevPos()
+			,mVelocity()
 		{
 			mLinerObject = new LinerObject(this);
 		}
@@ -50,6 +52,9 @@ namespace Game
 			mLinerObject->RemoveFromList();
 
 			GetStageOwner()->GetStageScene()->GetTree()->Regist(mLinerObject);
+			Vec2 pos = GetOwner()->GetPosition();
+			mVelocity = pos - mPrevPos;
+			mPrevPos = pos;
 		}
 
 

@@ -48,6 +48,8 @@ namespace Game
 
 			const std::string& GetName() const { return mName; }
 
+			const Vec2& GetVelocity() const { return mVelocity; }
+
 		private:
 			float mWidth;
 			float mHeight;
@@ -65,6 +67,9 @@ namespace Game
 
 			//‚S•ª–Ø“o˜^—p
 			LinerObject* mLinerObject;
+
+			Vec2 mPrevPos;
+			Vec2 mVelocity;
 		};
 
 

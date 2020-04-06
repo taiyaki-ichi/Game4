@@ -34,9 +34,6 @@ namespace GameLib
 
 		//‘å‚«‚¢•û‚ªŽè‘O
 		int mDrawOrder;
-	
 	};
 
-
-	
 }

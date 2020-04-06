@@ -1,6 +1,8 @@
 #include"include/Draw/AnimComponent.hpp"
 #include"include/Data.hpp"
 
+#include<iostream>
+
 namespace GameLib
 {
 	using Animation = std::vector<Texture*>;
@@ -37,11 +39,12 @@ namespace GameLib
 	{
 		if (mAnimations[mChannel].size() > 0)
 		{
+	
 			if (mLoopMax == -1 || mLoopMax > mLoopCnt)
 			{
 				//現在のフレームを更新
 				mCurrFrame += mAnimFPS / static_cast<double>(Data::GetFPS());
-
+				
 				//巻き戻し
 				while (mCurrFrame >= mAnimations[mChannel].size())
 				{
@@ -58,6 +61,7 @@ namespace GameLib
 
 	void AnimComponent::SetAnimation(std::vector<Animation>& animations)
 	{
+		
 		if (animations.size() > 0)
 		{
 			for (auto iter = animations.begin(); iter != animations.end(); iter++)
@@ -66,6 +70,7 @@ namespace GameLib
 			}
 			SetTexture(mAnimations[mChannel][0]);
 		}
+
 	}
 
 	void AnimComponent::SetAnimation(Animation& animation)
@@ -76,6 +81,7 @@ namespace GameLib
 
 	void AnimComponent::SetChannel(unsigned int c)
 	{
+	
 		if (0 <= c && c <= mAnimations.size()) {
 			if (mChannel != c) {
 				mChannel = c;

@@ -203,6 +203,7 @@ namespace GameLib
 		};
 
 		g_D3DDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+		g_D3DDevice->SetTexture(0, nullptr);
 		g_D3DDevice->DrawPrimitiveUP(D3DPT_LINELIST, 1, p, sizeof(CUSTOM_VERTEX2));
 
 	}
@@ -218,6 +219,7 @@ namespace GameLib
 		};
 
 		g_D3DDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+		g_D3DDevice->SetTexture(0, nullptr);
 		g_D3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST, 1, p, sizeof(CUSTOM_VERTEX2));
 	}
 

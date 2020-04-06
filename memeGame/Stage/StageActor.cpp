@@ -1,7 +1,6 @@
 #include"StageActor.hpp"
 #include"StageScene.hpp"
 
-#include<iostream>
 
 namespace Game
 {
@@ -19,7 +18,6 @@ namespace Game
 			:StageActor(scene, updateOrder)
 		{
 			SetPosition(vec);
-
 		}
 
 		StageActor::~StageActor()
@@ -30,11 +28,11 @@ namespace Game
 		void StageActor::Update()
 		{
 			auto pos = GetPosition();
-			//pos‚É‚æ‚Á‚ÄUpdateStageActor‚·‚é‚©‚Ç‚¤‚©
-
-			//
-			UpdateStageActor();
-
+			if (ActorUpdateScope::Left < pos.x && pos.x < ActorUpdateScope::Right &&
+				ActorUpdateScope::Top < pos.y && pos.y < ActorUpdateScope::Bottom)
+			{
+				UpdateStageActor();
+			}
 		}
 
 		void StageActor::UpdateStageActor()

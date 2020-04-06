@@ -148,16 +148,20 @@
     <ClCompile Include="Stage\CollisionDetection\Body.cpp" />
     <ClCompile Include="Stage\CollisionDetection\CollisionDetection.cpp" />
     <ClCompile Include="Stage\CollisionDetection\Manager.cpp" />
+    <ClCompile Include="Stage\Draw\RectangleComponent.cpp" />
+    <ClCompile Include="Stage\Object\Ground.cpp" />
+    <ClCompile Include="Stage\Player.cpp" />
     <ClCompile Include="Stage\StageActor.cpp" />
-    <ClCompile Include="Stage\StageComponent.cpp" />
     <ClCompile Include="Stage\StageScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stage\CollisionDetection\Body.hpp" />
     <ClInclude Include="Stage\CollisionDetection\CollisionDetection.hpp" />
     <ClInclude Include="Stage\CollisionDetection\Manager.hpp" />
+    <ClInclude Include="Stage\Draw\RectangleComponent.hpp" />
+    <ClInclude Include="Stage\Object\Ground.hpp" />
+    <ClInclude Include="Stage\Player.hpp" />
     <ClInclude Include="Stage\StageActor.hpp" />
-    <ClInclude Include="Stage\StageComponent.hpp" />
     <ClInclude Include="Stage\StageScene.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
