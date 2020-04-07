@@ -33,6 +33,11 @@ namespace GameLib
 				delete i.second;
 			}
 			Data::mTextures.clear();
+
+			for (auto i : Data::mFonts) {
+				delete i.second;
+			}
+			Data::mFonts.clear();
 		}
 	};
 }

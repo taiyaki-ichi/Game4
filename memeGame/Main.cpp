@@ -12,7 +12,9 @@
 #include"Stage/CollisionDetection/Body.hpp"
 #include"include/Draw/AnimComponent.hpp"
 #include"include/Data.hpp"
+#include"include/Draw/TextComponent.hpp"
 #include<iostream>
+#include<string>
 
 namespace Game
 {
@@ -22,18 +24,40 @@ namespace Game
 		MyScene()
 			:Stage::StageScene()
 		{
-			/*
-			auto actor = new Stage::StageActor(this);
-			new Stage::Body(actor, "",300,300);
-			std::vector<GameLib::Texture*> anim = {
-				GameLib::Data::GetTexture("Assets/tama/run001.png"),
-				GameLib::Data::GetTexture("Assets/tama/run002.png"),
-			};
-			new GameLib::AnimComponent(actor, anim);
-			*/
 			using Vec2 = GameLib::Vector2;
 			new Stage::Ground(this, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 50.f), WINDOW_WIDTH, 100.f);
-			new Stage::Player(this, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
+			auto player = new Stage::Player(this, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
+
+			GameLib::TextComponent* text;
+			text = new GameLib::TextComponent(player, "Assets/Font/mplus.ttf");
+			text->SetText("コロナ");
+			text->SetSize(GameLib::FontSize::Size_32);
+			text->SetAlpha(128.f);
+			text->SetAdjust(Vec2(0.f, -100.f));
+
+			
+			text = new GameLib::TextComponent(player, "Assets/Font/mplus.ttf");
+			text->SetText("コロナ");
+			text->SetSize(GameLib::FontSize::Size_64);
+			text->SetColor(GameLib::Color::Red);
+			text->SetAlpha(128.f);
+			text->SetAdjust(Vec2(0.f, -150.f));
+
+			text = new GameLib::TextComponent(player, "Assets/Font/mplus.ttf");
+			text->SetText("コロナ");
+			text->SetSize(GameLib::FontSize::Size_96);
+			text->SetColor(GameLib::Color::Green);
+			text->SetAlpha(128.f);
+			text->SetAdjust(Vec2(0.f, -200.f));
+
+			text = new GameLib::TextComponent(player, "Assets/Font/mplus.ttf");
+			text->SetText("コロナ");
+			text->SetSize(GameLib::FontSize::Size_128);
+			text->SetColor(GameLib::Color::Blue);
+			text->SetAlpha(128.f);
+			text->SetAdjust(Vec2(0.f, -250.f));
+			
+
 		}
 
 		virtual ~MyScene() {};

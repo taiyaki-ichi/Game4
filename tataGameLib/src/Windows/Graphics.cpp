@@ -5,6 +5,7 @@
 #include"include/Draw/SpriteComponent.hpp"
 #include"include/Math.hpp"
 #include"Window.hpp"
+#include"include/Draw/TextComponent.hpp"
 
 #include<Windows.h>
 #include<d3d9.h>
@@ -93,7 +94,7 @@ namespace GameLib
 			std::cout << "SetViewport is failed\n";
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -221,6 +222,7 @@ namespace GameLib
 		g_D3DDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
 		g_D3DDevice->SetTexture(0, nullptr);
 		g_D3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST, 1, p, sizeof(CUSTOM_VERTEX2));
+
 	}
 
 
@@ -239,6 +241,74 @@ namespace GameLib
 	{
 		g_D3DDevice->EndScene();
 		g_D3DDevice->Present(NULL, NULL, NULL, NULL);
+
+	}
+
+	Font::Font(LPD3DXFONT font[Font::SizeNum])
+		:mPtr()
+	{
+		for (int i = 0; i < Font::SizeNum; i++)
+			mPtr[i] = font[i];
+	}
+
+	Font::~Font()
+	{
+		for (int i = 0; i < Font::SizeNum; i++)
+			if (mPtr[i])
+				mPtr[i]->Release();
+	}
+
+
+	Font* LoadFont(const std::string& fileName)
+	{
+
+		LPD3DXFONT font[Font::SizeNum];
+		int size=32;
+		for (int i = 0; i < Font::SizeNum; i++)
+		{
+			size += 32;
+
+			if (FAILED(D3DXCreateFont(
+				g_D3DDevice,                /* デバイス */
+				size,                            /* 文字の高さ */
+				0,                            /* 文字幅 */
+				FW_NORMAL,                    /* フォントの太さ */
+				1,                            /* MIPMAPのレベル */
+				FALSE,                        /* イタリックか？ */
+				DEFAULT_CHARSET,            /* 文字セット */
+				OUT_DEFAULT_PRECIS,            /* 出力精度 */
+				DEFAULT_QUALITY,            /* 出力品質 */
+				DEFAULT_PITCH | FF_SWISS,    /* フォントピッチとファミリ */
+				fileName.c_str(),                    /* フォント名 */
+				&font[i]))) {        /* Direct3Dフォントへのポインタへのアドレス */
+
+				std::cout << "CreateFont " << i << " is failed\n";
+			}
+		}
+
+		return new Font(font);
+	}
+
+
+	void Graphics::DrawMyText(Font* font, const std::string& text, const Vector2& center, const FontSize& size , const Vector3& color, float alpha)
+	{
+		int i = static_cast<int>(size);
+		if (font->GetPtr(i))
+		{
+			float width = text.size() * i;
+			float wi = width / 2.f;
+			float hei = i / 2.f;
+
+			RECT rect = {
+				static_cast<LONG>(center.x - wi),
+				static_cast<LONG>(center.y - hei),
+				static_cast<LONG>(center.x + wi),
+				static_cast<LONG>(center.y + hei)
+			};
+			D3DCOLOR c = D3DCOLOR_ARGB(static_cast<int>(alpha), static_cast<int>(color.x), static_cast<int>(color.y), static_cast<int>(color.z));
+			font->GetPtr(i)->DrawTextA(NULL, text.c_str(), -1, &rect, DT_CENTER | DT_NOCLIP, c);
+
+		}
 
 	}
 

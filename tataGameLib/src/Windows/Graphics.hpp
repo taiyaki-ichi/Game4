@@ -1,7 +1,9 @@
 #pragma once
 #include<string>
 #include<d3d9.h>
-
+#include"DirectX/d3dx9.h"
+#include"include/Math.hpp"
+#include"include/Draw/TextComponent.hpp"
 
 namespace GameLib
 {
@@ -69,5 +71,27 @@ namespace GameLib
 
 	};
 	
+	enum class FontSize;
+
+	class Font
+	{
+	public:
+		static const int SizeNum = 4;
+
+		Font(LPD3DXFONT font[SizeNum]);
+		virtual ~Font();
+
+		LPD3DXFONT GetPtr(int i) const { return mPtr[i]; }
+
+	private:
+		LPD3DXFONT mPtr[SizeNum];
+	};
+
+	Font* LoadFont(const std::string& fileName);
+
+	namespace Graphics
+	{
+		void DrawMyText(Font* font, const std::string& text, const Vector2& center, const FontSize& size = FontSize::Size_64, const Vector3& color = Color::Black, float alpha = 255);
+	}
 
 }

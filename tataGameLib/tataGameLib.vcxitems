@@ -22,6 +22,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Data.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Draw\AnimComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Draw\SpriteComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\Draw\TextComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Draw\TextureComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Scene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SpritesManager.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)include\Data.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\Draw\AnimComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\Draw\SpriteComponent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\Draw\TextComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\Draw\TextureComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\InputState.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\Math.hpp" />

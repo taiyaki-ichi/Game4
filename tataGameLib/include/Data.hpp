@@ -8,7 +8,7 @@ namespace GameLib
 {
 	class Texture;
 	using Animation = std::vector<Texture*>;
-
+	class Font;
 
 	class Data
 	{
@@ -18,8 +18,8 @@ namespace GameLib
 		virtual ~Data();
 
 		static Texture* GetTexture(const std::string& fileName);
+		static Font* GetFont(const std::string& fileName);
 		
-
 		static float GetFPS() { return mFPS; }
 		static float GetWindowWidth() { return mWindowWidth; }
 		static float GetWindowHeight() { return mWindowHeight; }
@@ -30,5 +30,6 @@ namespace GameLib
 		static float mWindowHeight;
 
 		static std::unordered_map<std::string, Texture*> mTextures;
+		static std::unordered_map<std::string, Font*> mFonts;
 	};
 }

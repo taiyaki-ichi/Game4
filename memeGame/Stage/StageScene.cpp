@@ -16,6 +16,7 @@ namespace Game
 	
 			if (!mTree)
 				std::cout << "nullptr\n";
+
 		}
 
 		StageScene::~StageScene()
