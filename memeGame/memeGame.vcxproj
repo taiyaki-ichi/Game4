@@ -163,6 +163,7 @@
     <ClInclude Include="Stage\Player.hpp" />
     <ClInclude Include="Stage\StageActor.hpp" />
     <ClInclude Include="Stage\StageScene.hpp" />
+    <ClInclude Include="Stage\StageState.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

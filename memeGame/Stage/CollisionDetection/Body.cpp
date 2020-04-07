@@ -4,6 +4,7 @@
 #include"Stage/StageScene.hpp"
 #include"CollisionDetection.hpp"
 #include"include/Draw/SpriteComponent.hpp"
+#include"include/Math.hpp"
 
 #include<iostream>
 
@@ -65,7 +66,8 @@ namespace Game
 				using Vec2 = GameLib::Vector2;
 
 				Vec2 point[4];
-				GetPoints(point, this);
+				Vec2 center = mOwner->GetPosition() + GetAdjust();
+				GameLib::GetRotatedRect(point, center, GetWidth(), GetHeight(), mOwner->GetRotation());
 
 				for (int i = 0; i < 4; i++)
 				{

@@ -3,6 +3,8 @@
 #include"include/Math.hpp"
 #include"include/Actor.hpp"
 
+#include<iostream>
+
 namespace Game
 {
 	namespace Stage
@@ -40,37 +42,19 @@ namespace Game
 			using Vec2 = GameLib::Vector2;
 
 			auto pos = body->GetOwner()->GetPosition();
-			float sca = body->GetOwner()->GetScale();
 			float rot = body->GetOwner()->GetRotation();
 
 			Vec2 ad = Vec2::Rotation(body->GetAdjust(), rot);
-
-			float w = body->GetWidth();
-			float h = body->GetHeight();
-			auto vec = Vec2(w / 2.f, h / 2.f);
-			float l = GameLib::Math::Sqrt(w * w + h * h) / 2.f;
-			float rot1 = GameLib::Math::Pi * h / (h + w);
-			float rot2 = GameLib::Math::Pi - rot1;
-
-			float pii = GameLib::Math::Pi;
-			if (rot == 0.f)
-			{
-				//rotation‚ÍŒë·‚ª‘å‚«‚¢‚½‚ß
-				point[0] = vec + ad + pos;
-				vec.y *= -1.f;
-				point[1] = vec + ad + pos;
-				vec.x *= -1.f;
-				point[2] = vec + ad + pos;
-				vec.y *= -1.f;
-				point[3] = vec + ad + pos;
-			}
-			else
-			{
-				point[0] = Vec2::Rotation(vec, rot) + ad + pos;
-				point[1] = Vec2::Rotation(vec, rot + rot1) + ad + pos;
-				point[2] = Vec2::Rotation(vec, rot + pii) + ad + pos;
-				point[3] = Vec2::Rotation(vec, rot - rot2) + ad + pos;
-			}
+			
+			float wi = body->GetWidth()/2.f;
+			float hei = body->GetHeight()/2.f;
+			point[0] = Vec2(wi, hei);
+			point[1] = Vec2(wi, -hei);
+			point[2] = Vec2(-wi, -hei);
+			point[3] = Vec2(-wi, hei);
+			GameLib::GetRotatedRect(point, Vec2(0.f, 0.f), rot);
+			for (int i = 0; i < 4; i++)
+				point[i] += ad + pos;
 
 		}
 

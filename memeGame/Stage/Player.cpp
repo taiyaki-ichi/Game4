@@ -113,7 +113,7 @@ namespace Game
 		void Player::UpdateStageActor()
 		{
 			
-			PlayerState::State* next = mState->Update();
+			StageState* next = mState->Update();
 			if (next != mState)
 			{
 				delete mState;
@@ -132,18 +132,10 @@ namespace Game
 			mState->Input(state);
 		}
 
-	
 
-		PlayerState::State::State(Player* player)
-			:mPlayer(player)
-		{
-		}
-		PlayerState::State::~State()
-		{
-		}
-	
 		PlayerState::Active::Active(Player* player)
-			:State(player)
+			:StageState()
+			,mPlayer(player)
 			,mVelocity()
 			,mMode(Mode::Nomal)
 			,mMotion(Motion::Stay)
@@ -158,7 +150,7 @@ namespace Game
 		{
 		}
 
-		PlayerState::State* PlayerState::Active::Update()
+		StageState* PlayerState::Active::Update()
 		{
 
 			Vec2 pos = mPlayer->GetPosition();

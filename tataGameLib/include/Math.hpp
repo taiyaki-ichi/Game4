@@ -257,6 +257,16 @@ namespace GameLib
 				point[i] = Vector2::Rotation(point[i] - center, rot) + center;
 		}
 	}
+	static void GetRotatedRect(Vector2 point[], const Vector2& center, float width, float height, float rot)
+	{
+		float wi = width / 2.f;
+		float hei = height / 2.f;
+		point[0] = Vector2(wi, hei) + center;
+		point[1] = Vector2(wi, -hei) + center;
+		point[2] = Vector2(-wi, -hei) + center;
+		point[3] = Vector2(-wi, hei) + center;
+		GetRotatedRect(point, center, rot);
+	}
 
 	// 3D Vector
 	class Vector3

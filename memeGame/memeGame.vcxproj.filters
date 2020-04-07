@@ -20,5 +20,6 @@
     <ClInclude Include="Stage\Object\Ground.hpp" />
     <ClInclude Include="Stage\Draw\RectangleComponent.hpp" />
     <ClInclude Include="Stage\Player.hpp" />
+    <ClInclude Include="Stage\StageState.hpp" />
   </ItemGroup>
 </Project>
