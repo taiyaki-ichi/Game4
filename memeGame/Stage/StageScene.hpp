@@ -3,6 +3,11 @@
 #include"WindowData.hpp"
 #include<vector>
 
+namespace GameLib
+{
+	class Vector2;
+}
+
 namespace Game
 {
 	namespace Stage
@@ -46,12 +51,22 @@ namespace Game
 			void RemoveStageActor(StageActor* actor);
 
 			Liner4Tree* GetTree() const { return mTree; }
+			void SetPlayer(Player* p) { mPlayer = p; }
 
 		private:
 			class Player* mPlayer;
 			std::vector<StageActor*> mStageActors;
 
 			Liner4Tree* mTree;
+
+			float mStageLeft;
+			float mStageRight;
+
+		protected:
+			//Stageの幅やPlayerの位置によってスクリーンを動かす
+			void AdjustScreen();
+			//vだけ動かす
+			void MoveScreen(const GameLib::Vector2& vec);
 		};
 	}
 }

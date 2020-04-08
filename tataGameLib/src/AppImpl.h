@@ -8,6 +8,7 @@ namespace GameLib
 	class SpritesManager;
 	class GraphicsManager;
 	class InputStateImpl;
+	class SoundManager;
 
 	class AppImpl : public App
 	{
@@ -41,6 +42,8 @@ namespace GameLib
 		GraphicsManager* mGraphicsManagerPtr;
 
 		InputStateImpl* mInputState;
+
+		SoundManager* mSoundManagerPtr;
 	};
 
 

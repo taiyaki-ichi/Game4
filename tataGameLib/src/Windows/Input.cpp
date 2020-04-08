@@ -2,7 +2,6 @@
 #include"Window.hpp"
 #include<Windows.h>
 
-
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
 

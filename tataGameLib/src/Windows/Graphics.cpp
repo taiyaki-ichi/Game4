@@ -11,6 +11,8 @@
 #include<d3d9.h>
 #include"DirectX/d3dx9.h"
 
+#include<dsound.h>
+
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
 
@@ -263,10 +265,15 @@ namespace GameLib
 	{
 
 		LPD3DXFONT font[Font::SizeNum];
-		int size=32;
+		int size;
 		for (int i = 0; i < Font::SizeNum; i++)
 		{
-			size += 32;
+			if (i == 0)
+				size = 16;
+			else if (i == 1)
+				size = 32;
+			else
+				size += 32;
 
 			if (FAILED(D3DXCreateFont(
 				g_D3DDevice,                /* デバイス */

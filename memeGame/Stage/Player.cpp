@@ -4,6 +4,7 @@
 #include"include/Data.hpp"
 #include"include/InputState.hpp"
 #include"WindowData.hpp"
+#include"StageScene.hpp"
 
 #include<iostream>
 
@@ -17,6 +18,7 @@ namespace Game
 		Player::Player(StageScene* scene, const GameLib::Vector2& pos)
 			:StageActor(scene)
 		{
+			scene->SetPlayer(this);
 			
 			SetScale(0.1f);
 			SetPosition(pos);

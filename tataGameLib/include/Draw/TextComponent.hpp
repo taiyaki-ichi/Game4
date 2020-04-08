@@ -10,6 +10,7 @@ namespace GameLib
 	
 	enum class FontSize
 	{
+		Size_16,
 		Size_32,
 		Size_64,
 		Size_96,
@@ -30,6 +31,8 @@ namespace GameLib
 		void SetSize(const FontSize& size) { mSize = size; }
 		void SetAlpha(float a) { mAlpha = a; }
 		void SetAdjust(const Vector2& ad) { mAdjust = ad; }
+
+		const std::string& GetText() const { return mText; }
 
 	private:
 		Font* mFont;

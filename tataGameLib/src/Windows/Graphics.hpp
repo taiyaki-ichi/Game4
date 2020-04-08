@@ -76,7 +76,7 @@ namespace GameLib
 	class Font
 	{
 	public:
-		static const int SizeNum = 4;
+		static const int SizeNum = 5;
 
 		Font(LPD3DXFONT font[SizeNum]);
 		virtual ~Font();
@@ -91,7 +91,7 @@ namespace GameLib
 
 	namespace Graphics
 	{
-		void DrawMyText(Font* font, const std::string& text, const Vector2& center, const FontSize& size = FontSize::Size_64, const Vector3& color = Color::Black, float alpha = 255);
+		void DrawMyText(Font* font, const std::string& text, const Vector2& center, const FontSize& size = FontSize::Size_32, const Vector3& color = Color::Black, float alpha = 255);
 	}
 
 }

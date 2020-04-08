@@ -25,10 +25,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Draw\TextComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Draw\TextureComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Scene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SoundComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SpritesManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Windows\Event.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Windows\Graphics.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Windows\Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\Windows\Sound.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Windows\Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\Windows\Window.cpp" />
   </ItemGroup>
@@ -56,12 +58,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)include\InputState.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\Math.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\Scene.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\SoundComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\AppImpl.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DataImpl.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SpritesManager.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Windows\Event.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Windows\Graphics.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Windows\Input.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Windows\Sound.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Windows\Time.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\Windows\Window.hpp" />
   </ItemGroup>

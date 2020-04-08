@@ -12,6 +12,7 @@
 #include"include/Actor.hpp"
 #include"include/Component.hpp"
 #include"include/ComponentsManager.hpp"
+#include"src/Windows/Sound.hpp"
 
 #include<iostream>
 
@@ -40,6 +41,7 @@ namespace GameLib
 
 		mGraphicsManagerPtr = new GraphicsManager();
 		mInputState = new InputStateImpl();
+		mSoundManagerPtr = new SoundManager();
 	}
 
 	AppImpl::~AppImpl()
@@ -69,6 +71,9 @@ namespace GameLib
 		if (!mGraphicsManagerPtr->Init())
 			return false;
 
+		if (!mSoundManagerPtr->Init())
+			return false;
+
 		if (!mInputState->Init())
 			return false;
 
@@ -92,6 +97,8 @@ namespace GameLib
 			delete mCurrScene;
 		if (mGraphicsManagerPtr)
 			delete mGraphicsManagerPtr;
+		if (mSoundManagerPtr)
+			delete mSoundManagerPtr;
 		if (mInputState)
 			delete mInputState;
 		DataImpl::Unload();

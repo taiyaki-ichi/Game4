@@ -13,6 +13,8 @@
 #include"include/Draw/AnimComponent.hpp"
 #include"include/Data.hpp"
 #include"include/Draw/TextComponent.hpp"
+#include"include/InputState.hpp"
+#include"include/SoundComponent.hpp"
 #include<iostream>
 #include<string>
 
@@ -28,45 +30,12 @@ namespace Game
 			new Stage::Ground(this, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 50.f), WINDOW_WIDTH, 100.f);
 			auto player = new Stage::Player(this, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 
-			GameLib::TextComponent* text;
-			text = new GameLib::TextComponent(player, "Assets/Font/mplus.ttf");
-			text->SetText("コロナ");
-			text->SetSize(GameLib::FontSize::Size_32);
-			text->SetAlpha(128.f);
-			text->SetAdjust(Vec2(0.f, -100.f));
-
+			auto s = new GameLib::SoundComponent(player, "Assets/Sound/sound001.wav");
+			s->Play(true);
 			
-			text = new GameLib::TextComponent(player, "Assets/Font/mplus.ttf");
-			text->SetText("コロナ");
-			text->SetSize(GameLib::FontSize::Size_64);
-			text->SetColor(GameLib::Color::Red);
-			text->SetAlpha(128.f);
-			text->SetAdjust(Vec2(0.f, -150.f));
-
-			text = new GameLib::TextComponent(player, "Assets/Font/mplus.ttf");
-			text->SetText("コロナ");
-			text->SetSize(GameLib::FontSize::Size_96);
-			text->SetColor(GameLib::Color::Green);
-			text->SetAlpha(128.f);
-			text->SetAdjust(Vec2(0.f, -200.f));
-
-			text = new GameLib::TextComponent(player, "Assets/Font/mplus.ttf");
-			text->SetText("コロナ");
-			text->SetSize(GameLib::FontSize::Size_128);
-			text->SetColor(GameLib::Color::Blue);
-			text->SetAlpha(128.f);
-			text->SetAdjust(Vec2(0.f, -250.f));
-			
-
 		}
-
 		virtual ~MyScene() {};
 
-		virtual GameLib::Scene* UpdateStageScene() override
-		{
-			
-			return this;
-		}
 	};
 
 }
