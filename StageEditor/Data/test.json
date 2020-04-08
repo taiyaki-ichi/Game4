@@ -1,0 +1,24 @@
+{
+  "Actors": [
+    {
+      "Data1": 72,
+      "Data2": 344,
+      "Data3": 497,
+      "Data4": 554,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 505,
+      "Data2": 251,
+      "Data3": 752,
+      "Data4": 463,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 166,
+      "Data2": 266,
+      "Name": "Player"
+    }
+  ]
+}
+

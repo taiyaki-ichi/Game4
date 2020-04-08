@@ -5,16 +5,18 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "memeGame", "memeGame\memeGame.vcxproj", "{CAF9F840-51BC-49DC-8995-781D3EFCFDF9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tataGameLib", "tataGameLib\tataGameLib.vcxitems", "{0BECF45C-8F54-45C9-804B-EC3E5D2B5E13}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StageEditor", "StageEditor\StageEditor.vcxproj", "{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CAF9F840-51BC-49DC-8995-781D3EFCFDF9} = {CAF9F840-51BC-49DC-8995-781D3EFCFDF9}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowData.hpp", "WindowData.hpp\WindowData.hpp.vcxitems", "{7308C7EF-E6D3-42EB-98B5-7D036CE8560D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kikiGameLib", "kikiGameLib\kikiGameLib.vcxitems", "{9138CF97-77CF-4E8C-B253-4496CFB3272B}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		tataGameLib\tataGameLib.vcxitems*{0becf45c-8f54-45c9-804b-ec3e5d2b5e13}*SharedItemsImports = 9
-		WindowData.hpp\WindowData.hpp.vcxitems*{7308c7ef-e6d3-42eb-98b5-7d036ce8560d}*SharedItemsImports = 9
-		tataGameLib\tataGameLib.vcxitems*{caf9f840-51bc-49dc-8995-781d3efcfdf9}*SharedItemsImports = 4
-		WindowData.hpp\WindowData.hpp.vcxitems*{caf9f840-51bc-49dc-8995-781d3efcfdf9}*SharedItemsImports = 4
+		kikiGameLib\kikiGameLib.vcxitems*{9138cf97-77cf-4e8c-b253-4496cfb3272b}*SharedItemsImports = 9
+		kikiGameLib\kikiGameLib.vcxitems*{caf9f840-51bc-49dc-8995-781d3efcfdf9}*SharedItemsImports = 4
+		kikiGameLib\kikiGameLib.vcxitems*{feb1d2b4-2f28-4f52-acf4-f6d40a3ea42c}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{CAF9F840-51BC-49DC-8995-781D3EFCFDF9}.Release|x64.Build.0 = Release|x64
 		{CAF9F840-51BC-49DC-8995-781D3EFCFDF9}.Release|x86.ActiveCfg = Release|Win32
 		{CAF9F840-51BC-49DC-8995-781D3EFCFDF9}.Release|x86.Build.0 = Release|Win32
+		{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}.Debug|x64.ActiveCfg = Debug|x64
+		{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}.Debug|x64.Build.0 = Debug|x64
+		{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}.Debug|x86.ActiveCfg = Debug|Win32
+		{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}.Debug|x86.Build.0 = Debug|Win32
+		{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}.Release|x64.ActiveCfg = Release|x64
+		{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}.Release|x64.Build.0 = Release|x64
+		{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}.Release|x86.ActiveCfg = Release|Win32
+		{FEB1D2B4-2F28-4F52-ACF4-F6D40A3EA42C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

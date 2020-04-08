@@ -2,24 +2,5 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Stage\StageActor.cpp" />
-    <ClCompile Include="Stage\StageScene.cpp" />
-    <ClCompile Include="Stage\CollisionDetection\Manager.cpp" />
-    <ClCompile Include="Stage\CollisionDetection\CollisionDetection.cpp" />
-    <ClCompile Include="Stage\CollisionDetection\Body.cpp" />
-    <ClCompile Include="Stage\Object\Ground.cpp" />
-    <ClCompile Include="Stage\Draw\RectangleComponent.cpp" />
-    <ClCompile Include="Stage\Player.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Stage\StageActor.hpp" />
-    <ClInclude Include="Stage\StageScene.hpp" />
-    <ClInclude Include="Stage\CollisionDetection\Manager.hpp" />
-    <ClInclude Include="Stage\CollisionDetection\Body.hpp" />
-    <ClInclude Include="Stage\CollisionDetection\CollisionDetection.hpp" />
-    <ClInclude Include="Stage\Object\Ground.hpp" />
-    <ClInclude Include="Stage\Draw\RectangleComponent.hpp" />
-    <ClInclude Include="Stage\Player.hpp" />
-    <ClInclude Include="Stage\StageState.hpp" />
   </ItemGroup>
 </Project>

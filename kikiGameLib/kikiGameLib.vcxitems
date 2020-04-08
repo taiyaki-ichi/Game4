@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{9138cf97-77cf-4e8c-b253-4496cfb3272b}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WindowData.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9anim.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9core.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9effect.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9math.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9mesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9shader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9shape.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9tex.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9xof.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Actor.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\ActorsManager.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\App.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Component.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\ComponentsManager.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Data.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\AnimComponent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\SpriteComponent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\TextComponent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\TextureComponent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\InputState.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Math.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Scene.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\SoundComponent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\AppImpl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\DataImpl.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\SpritesManager.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\Windows\Event.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\Windows\Graphics.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\Windows\Input.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\Windows\Sound.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\Windows\Time.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\src\Windows\Window.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)picojson\picojson.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Body.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\CollisionDetection.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Manager.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Draw\RectangleComponent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\StageActor.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\StageScene.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\StageState.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9math.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Actor.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\ActorsManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\AppImpl.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Component.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\ComponentsManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Data.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\AnimComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\SpriteComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\TextComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\TextureComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Scene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\SoundComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\SpritesManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Event.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Graphics.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Sound.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Time.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Window.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Body.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\CollisionDetection.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Manager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Draw\RectangleComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\StageActor.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\StageScene.cpp" />
+  </ItemGroup>
+</Project>

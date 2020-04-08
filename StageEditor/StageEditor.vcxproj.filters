@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="StageEditor\EditingActor.cpp" />
+    <ClCompile Include="StageEditor\Cursor.cpp" />
+    <ClCompile Include="StageEditor\EditingScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StageEditor\Cursor.hpp" />
+    <ClInclude Include="StageEditor\EditingScene.hpp" />
+    <ClInclude Include="StageEditor\EditingActor.hpp" />
+  </ItemGroup>
+</Project>

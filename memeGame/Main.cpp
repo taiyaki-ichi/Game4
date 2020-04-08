@@ -1,20 +1,8 @@
+#include"Stage/StageScene.hpp"
+#include"lib/include/InputState.hpp"
+#include"lib/include/App.hpp"
 #include"WindowData.hpp"
-#include"include/App.hpp"
-#include"Stage/StageScene.hpp"
-#include"include/Math.hpp"
-#include"Stage/StageActor.hpp"
-#include"Stage/StageScene.hpp"
-#include"Stage/CollisionDetection/Body.hpp"
-#include"include/InputState.hpp"
-#include"Stage/StageScene.hpp"
-#include"Stage/Object/Ground.hpp"
-#include"Stage/Player.hpp"
-#include"Stage/CollisionDetection/Body.hpp"
-#include"include/Draw/AnimComponent.hpp"
-#include"include/Data.hpp"
-#include"include/Draw/TextComponent.hpp"
-#include"include/InputState.hpp"
-#include"include/SoundComponent.hpp"
+
 #include<iostream>
 #include<string>
 
@@ -26,15 +14,22 @@ namespace Game
 		MyScene()
 			:Stage::StageScene()
 		{
-			using Vec2 = GameLib::Vector2;
-			new Stage::Ground(this, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 50.f), WINDOW_WIDTH, 100.f);
-			auto player = new Stage::Player(this, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 
-			auto s = new GameLib::SoundComponent(player, "Assets/Sound/sound001.wav");
-			s->Play(true);
+
+			//Game::Stage::LoadStageData(this, "Stage/Data/aaa.json");
 			
 		}
 		virtual ~MyScene() {};
+
+		virtual void Input(const GameLib::InputState& state) override
+		{
+			if (state.GetState(GameLib::MouseButton::Left) == GameLib::ButtonState::Pressed)
+				std::cout << "L";
+			if (state.GetState(GameLib::MouseButton::Middle) == GameLib::ButtonState::Pressed)
+				std::cout << "M";
+			if (state.GetState(GameLib::MouseButton::Right) == GameLib::ButtonState::Pressed)
+				std::cout << "R";
+		}
 
 	};
 
