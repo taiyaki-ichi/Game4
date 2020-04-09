@@ -76,6 +76,9 @@ namespace Game
 		//回転していないBody同士のめり込みを補正するベクトルの取得
 		GameLib::Vector2 GetAdjustUnrotatedRectVec(Body* myBody, Body* theBody);
 
+		//theBodyが地面などの時の処理
+		GameLib::Vector2 GetAdjustUnrotatedRectVecEx(Body* myBody, Body* theBody, float myGravity, float myMaxSpeed);
+
 	}
 }
 

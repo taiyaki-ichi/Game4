@@ -1,5 +1,10 @@
 #pragma once
 
+namespace GameLib
+{
+	class InputState;
+}
+
 namespace Game
 {
 	namespace Stage

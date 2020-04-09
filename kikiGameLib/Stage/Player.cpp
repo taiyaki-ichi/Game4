@@ -136,6 +136,11 @@ namespace Game
 			mState->Input(state);
 		}
 
+		void Player::BreakBody()
+		{
+			mBody->SetWidthAndHeight(0.f, 0.f);
+		}
+
 
 		PlayerState::Active::Active(Player* player)
 			:StageState()
@@ -148,6 +153,9 @@ namespace Game
 			,mIsJumping(false)
 			,mJumpAcceleFlag(false)
 			,mTransformCnt(-1)
+			,mGroundVelocity(0.f,0.f)
+			,mDeathFlag(false)
+			,mJumpFlag2(0)
 		{
 		}
 		PlayerState::Active::~Active()
@@ -156,6 +164,9 @@ namespace Game
 
 		StageState* PlayerState::Active::Update()
 		{
+
+			if (mDeathFlag)
+				return new Death(mPlayer);
 
 			Vec2 pos = mPlayer->GetPosition();
 
@@ -241,7 +252,8 @@ namespace Game
 			}
 
 			//位置の更新
-			pos += mVelocity;
+			pos += mVelocity;// +mGroundVelocity;
+			mGroundVelocity = GameLib::Vector2(0.f, 0.f);
 
 			//落下中のアニメーション
 			if (mIsOnGround == false) {
@@ -268,6 +280,11 @@ namespace Game
 			mJumpFlag = false;
 			mIsOnGround = false;
 
+			//敵を踏んでいる最中の処理
+			if (mJumpFlag2 > 0)
+			{
+				mJumpFlag2 -= 1;
+			}
 
 			return this;
 		}
@@ -316,14 +333,14 @@ namespace Game
 				mMotion = Motion::Stay;
 			}
 
-			if (mJumpFlag == true )
+			if (mJumpFlag == true ||mJumpFlag2 > 0)
 			{
 				if (state.GetState(Key::Space) == ButtonState::Pressed) {
 					mIsJumping = true;
 					mJumpFlag = false;
 					mJumpAcceleFlag = true;
 					mVelocity.y = 0.f;
-
+					mJumpFlag2 = 0;
 				}
 			}
 			if (state.GetState(Key::Space) == ButtonState::Released && mVelocity.y < 0.f)
@@ -355,28 +372,78 @@ namespace Game
 			{
 				using Vec2 = GameLib::Vector2;
 				Vec2 pos = myBody->GetOwner()->GetPosition();
+				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);	
+				myBody->GetOwner()->SetPosition(pos + adjust);
 
-				Vec2 ad = GetAdjustUnrotatedRectVec(myBody, theBody);
-				
-				
-				if (GameLib::Math::Abs(ad.x) < GameLib::Math::Abs(ad.y))
-					ad.y = 0.f;
-				else
-					ad.x = 0.f;
-				
-				myBody->GetOwner()->SetPosition(pos + ad);
+				if (adjust.x < 0.f && mVelocity.x>0.f)
+				{
+					mVelocity.x = 0.f;
+				}
+				if (adjust.x > 0.f && mVelocity.x < 0.f)
+				{
+					mVelocity.x = 0.f;
+				}
+				if (adjust.y < 0.f && mVelocity.y>0.f) {
+					mVelocity.y = 0.f;
+					mJumpFlag = true;
+					mIsOnGround = true;
+					mIsJumping = false;
+					mGroundVelocity += theBody->GetVelocity();
 
-				mVelocity.y = 0.f;
-				mJumpFlag = true;
-				mIsOnGround = true;
-				mIsJumping = false;
+				}
+				if (adjust.y > 0.f && mVelocity.y < 0.f)
+				{
+					mVelocity.y = 0.f;
+					mIsJumping = false;
+				}
 			}
+			else if (name == "EnemyTriple" || name == "EnemyToge")
+			{
+				mDeathFlag = true;
+			}
+			else if (name == "EnemyTripleWeakness")
+			{
+				mVelocity.y = -5.f;
+				//４フレームの間は飛べる
+				mJumpFlag2 = 4;
 
-
+			}
 		}
 
+		PlayerState::Death::Death(Player* player)
+			:StageState()
+			,mPlayer(player)
+		{
+			player->GetAnim()->SetChannel(4);
+			player->GetSubAnim()->SetChannel(1);
 
+			player->BreakBody();
+		}
+
+		PlayerState::Death::~Death()
+		{
+		}
+
+		StageState* Game::Stage::PlayerState::Death::Update()
+		{
+			float rot = mPlayer->GetRotation();
+			rot += 0.2f;
+			mPlayer->SetRotation(rot);
+
+			GameLib::Vector2 pos = mPlayer->GetPosition();
+			pos.y -= 4.f;
+			mPlayer->SetPosition(pos);
+
+			float scale = mPlayer->GetScale();
+			scale *= 0.99f;
+			mPlayer->SetScale(scale);
+
+			return this;
+		}
 
 	}
-}
 
+
+
+
+}

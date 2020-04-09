@@ -14,6 +14,10 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WindowData.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9anim.h" />
@@ -86,6 +90,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\CollisionDetection.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Manager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Draw\RectangleComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\StageActor.cpp" />

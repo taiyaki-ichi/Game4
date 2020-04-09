@@ -80,4 +80,28 @@ namespace StageEditor
 		Game::Stage::Body* mBody;
 
 	};
+
+	class EditingTriple : public EditingActor
+	{
+	public:
+		EditingTriple(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingTriple();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+
+	};
+
+	class EditingToge : public EditingActor
+	{
+	public:
+		EditingToge(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingToge();
+
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
 }

@@ -5,6 +5,8 @@
 #include"Object/Ground.hpp"
 #include <fstream>
 #include"picojson/picojson.hpp"
+#include"Enemy/Triple.hpp"
+#include"Enemy/Toge.hpp"
 
 #include<iostream>
 
@@ -146,6 +148,11 @@ namespace Game
 			{
 				picojson::object o = e.get<picojson::object>();
 	
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////
+				//‚±‚±‚É’Ç‰Á
+				//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 				if (o["Name"].get<std::string>() == "Player")
 				{
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
@@ -168,6 +175,16 @@ namespace Game
 					Vec2 pos = Vec2(xx + w / 2.f, yy + h / 2.f);
 
 					new Ground(scene, pos, w, h);
+				}
+				else if (o["Name"].get<std::string>() == "Triple")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Enemy::Triple(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "Toge")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Enemy::Toge(scene, pos);
 				}
 
 

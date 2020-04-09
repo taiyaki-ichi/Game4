@@ -20,7 +20,7 @@ namespace StageEditor
 	{
 		SetPosition(Vec2(WINDOW_WIDTH / 2.f, 16.f));
 
-		mTextComponent = new GameLib::TextComponent(this, "Assets/Font/mplus.ttf");
+		mTextComponent = new GameLib::TextComponent(this, "Assets/Font/mplus.ttf",100);
 		mTextComponent->SetColor(GameLib::Color::Black);
 		mTextComponent->SetAlpha(200);
 		mTextComponent->SetSize(GameLib::FontSize::Size_32);
@@ -111,6 +111,19 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingGround(mEditingScene, cursorPos);
 
+		}
+		else if (text == "triple")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingTriple(mEditingScene, cursorPos);
+
+		}
+		else if (text == "toge")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingToge(mEditingScene, cursorPos);
 		}
 
 		mTextComponent->SetColor(color);

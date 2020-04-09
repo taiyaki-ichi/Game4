@@ -13,6 +13,9 @@ namespace Game
 		{
 			if (myBody == nullptr || theBody == nullptr)
 				return false;
+			if (myBody->GetWidth() <= 0.f || myBody->GetHeight() <= 0.f ||
+				theBody->GetWidth() <= 0.f || theBody->GetHeight() <= 0.f)
+				return false;
 
 			using Vec2 = GameLib::Vector2;
 

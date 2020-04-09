@@ -83,7 +83,7 @@ namespace StageEditor
 		:EditingActor(scene,pos,"Ground",4)
 	{
 		mRect = new Game::Stage::RectangleComponent(this, 0.f, 0.f, Vec3(50.f, 50.f, 50.f));
-		mBody = new Game::Stage::Body(this, "Player");
+		mBody = new Game::Stage::Body(this, "Ground");
 		mBody->SetWidthAndHeight(0.f, 0.f);
 		mBody->SetAdjust(Vec2(0.f, 0.f));
 		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
@@ -134,6 +134,41 @@ namespace StageEditor
 			mBody->SetWidthAndHeight(w, h);
 		}
 		
+	}
+
+	EditingTriple::EditingTriple(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Triple",2)
+	{
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Enemy/Triple-left-001.png");
+
+		SetScale(0.1f);
+
+		mBody = new Game::Stage::Body(this, "Trip");
+		mBody->SetWidthAndHeight(350.f, 600.f);
+		mBody->SetAdjust(Vec2(0.f, 60.f));
+		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
+	
+		
+	}
+
+	EditingTriple::~EditingTriple()
+	{
+	}
+
+	EditingToge::EditingToge(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Toge",2)
+	{
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Enemy/toge.png");
+		SetScale(0.1f);
+
+		mBody = new Game::Stage::Body(this, "Toge");
+		mBody->SetWidthAndHeight(550.f, 550.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+		
+	}
+
+	EditingToge::~EditingToge()
+	{
 	}
 
 }

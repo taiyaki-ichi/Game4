@@ -155,11 +155,37 @@ namespace Game
 			//theÇ…ëŒÇ∑ÇÈmyÇÃëäëŒìIÇ»Vec
 			Vec2 relativeVec = thePos - myPos;
 
-			float adX = (relativeVec.x > 0.f) ? relativeVec.x - idealX : idealX - relativeVec.x;
-			float adY = (relativeVec.y > 0.f) ? relativeVec.y - idealY : idealY - relativeVec.y;
+			float adX = (relativeVec.x > 0.f) ? relativeVec.x - idealX : idealX + relativeVec.x;
+			float adY = (relativeVec.y > 0.f) ? relativeVec.y - idealY : idealY + relativeVec.y;
 
 			return Vec2(adX, adY);
 
+		}
+
+		GameLib::Vector2 GetAdjustUnrotatedRectVecEx(Body* myBody, Body* theBody, float myGravity, float myMaxSpeed)
+		{
+			using Vec2 = GameLib::Vector2;
+			Vec2 adjust = GetAdjustUnrotatedRectVec(myBody, theBody);
+
+			//1.fÇÕåÎç∑Ç≈à¯Ç¡Ç©Ç©ÇÁÇ»Ç¢ÇÊÇ…
+			if (adjust.y <= 0.f && GameLib::Math::Abs(adjust.y) <= myGravity + 1.f)
+			{
+				adjust.x = 0.f;
+			}
+			else if (adjust.y > 0.f && GameLib::Math::Abs(adjust.x) <= GameLib::Math::Abs(myMaxSpeed))
+			{
+				adjust.y = 0.f;
+			}
+			else if (GameLib::Math::Abs(adjust.x) < GameLib::Math::Abs(adjust.y))
+			{
+				adjust.y = 0.f;
+			}
+			else
+			{
+				adjust.x = 0.f;
+			}
+
+			return adjust;
 		}
 
 }

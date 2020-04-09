@@ -2,6 +2,7 @@
 #include"lib/include/Data.hpp"
 
 #include<iostream>
+#include "..\..\include\Draw\AnimComponent.hpp"
 
 namespace GameLib
 {
@@ -89,5 +90,9 @@ namespace GameLib
 				mLoopCnt = 0;
 			}
 		}
+	}
+	unsigned int AnimComponent::GetCannel() const
+	{
+		return mChannel;
 	}
 }

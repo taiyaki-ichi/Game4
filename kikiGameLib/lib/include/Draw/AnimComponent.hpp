@@ -20,6 +20,7 @@ namespace GameLib
 		void SetAnimation(Animation& animation);
 
 		void SetChannel(unsigned int c);
+		unsigned int GetCannel() const;
 
 		void SetAnimFPS(double fps) { mAnimFPS = fps; }
 

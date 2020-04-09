@@ -139,7 +139,7 @@ namespace StageEditor
 		,mBackFlag(false)
 	{
 		Game::Stage::LoadStageData(this, "Data/test.json");
-		Game::Stage::Body::SetDrawFlag(false);
+		Game::Stage::Body::SetDrawFlag(true);
 	}
 
 	CheckScene::~CheckScene()
@@ -192,6 +192,12 @@ namespace StageEditor
 
 			x = o["Data1"].get<double>();
 			y = o["Data2"].get<double>();
+
+			/////////////////////////////////////////////////////////////////////////////////////////////////////
+			//‚±‚±‚É’Ç‰Á
+			/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 			if (o["Name"].get<std::string>() == "Player")
 			{
 				actor = new EditingPlayer(scene, Vec2(x, y));
@@ -200,7 +206,14 @@ namespace StageEditor
 			{
 				actor = new EditingGround(scene, Vec2(x, y));
 			}
-
+			else if (o["Name"].get<std::string>() == "Triple")
+			{
+				actor = new EditingTriple(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "Toge")
+			{
+				actor = new EditingToge(scene, Vec2(x, y));
+			}
 
 
 			if (actor)

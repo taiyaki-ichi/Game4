@@ -31,6 +31,8 @@ namespace Game
 			GameLib::AnimComponent* GetAnim() const { return mAnim; }
 			GameLib::AnimComponent* GetSubAnim() const { return mSubAnim; }
 
+			void BreakBody();
+
 		private:
 			StageState* mState;
 			Body* mBody;
@@ -99,8 +101,28 @@ namespace Game
 
 				//変身モーションの時間
 				int mTransformCnt;
+
+				GameLib::Vector2 mGroundVelocity;
+
+				//死亡Stateに行くかどうか
+				bool mDeathFlag;
+
+				//敵を踏んだ時のジャンプ
+				unsigned int mJumpFlag2;
 			};
 			
+			class Death : public StageState
+			{
+			public:
+				Death(Player* player);
+				virtual ~Death();
+
+				virtual StageState* Update() override;
+
+			private:
+				Player* mPlayer;
+
+			};
 
 		}
 
