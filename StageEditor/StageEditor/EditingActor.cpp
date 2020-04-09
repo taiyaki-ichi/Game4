@@ -37,12 +37,6 @@ namespace StageEditor
 		{
 			mDates.emplace_back(static_cast<double>(pos.x));
 			mDates.emplace_back(static_cast<double>(pos.y));
-
-			if (IsOk())
-			{
-				if (mEditingScene->AddEditingActor(this))
-					mEditingScene->SetCurrEditingActor(nullptr);
-			}
 		}
 		
 	}
@@ -88,7 +82,7 @@ namespace StageEditor
 	void EditingGround::UpdateStageActor()
 	{
 		int size = GetDatas().size();
-		if (size == 2 && !IsOk())
+		if (size == 2&&!IsOk())
 		{
 			Vec2 pos = GetPosition();
 			Vec2 p = Vec2(GetDatas().at(0), GetDatas().at(1));
@@ -104,9 +98,26 @@ namespace StageEditor
 			mBody->SetAdjust(ad);
 			mBody->SetWidthAndHeight(w, h);
 		}
-		else if (size < 2 && !IsOk())
+		else if (size < 2&&!IsOk())
 		{
 			mRect->SetWidthAndHeight(0.f, 0.f);
+		}
+		else if (IsOk())
+		{
+			Vec2 p1 = Vec2(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2 = Vec2(GetDatas().at(2), GetDatas().at(3));
+
+			SetPosition(p2);
+			Vec2 ad = (p1 - p2) / 2.f;
+
+			float w = GameLib::Math::Abs(p2.x - p1.x);
+			float h = GameLib::Math::Abs(p2.y - p1.y);
+
+			mRect->SetAdjust(ad);
+			mRect->SetWidthAndHeight(w, h);
+
+			mBody->SetAdjust(ad);
+			mBody->SetWidthAndHeight(w, h);
 		}
 		
 	}

@@ -39,6 +39,7 @@ namespace StageEditor
 		void AddData(double d) { mDates.emplace_back(d); }
 		std::vector<double>& GetDatas() { return mDates; }
 
+		int GetDataNum() const { return mDataNum; }
 		bool IsOk() { return mDataNum <= mDates.size(); }
 
 		EditingScene* GetEditingScene() const { return mEditingScene; }

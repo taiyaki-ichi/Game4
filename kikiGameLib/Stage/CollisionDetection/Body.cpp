@@ -139,5 +139,28 @@ namespace Game
 		}
 
 
-	}
+		GameLib::Vector2 GetAdjustUnrotatedRectVec(Body* myBody, Body* theBody)
+		{
+			using Vec2 = GameLib::Vector2;
+
+			Vec2 myPos = myBody->GetOwner()->GetPosition() + myBody->GetAdjust();
+			Vec2 thePos = theBody->GetOwner()->GetPosition() + theBody->GetAdjust();
+
+			float myWidth = myBody->GetWidth();
+			float myHeight = myBody->GetHeight();
+
+			float idealX = myWidth / 2.f + theBody->GetWidth() / 2.f;
+			float idealY = myHeight / 2.f + theBody->GetHeight() / 2.f;
+
+			//the‚É‘Î‚·‚émy‚Ì‘Š‘Î“I‚ÈVec
+			Vec2 relativeVec = thePos - myPos;
+
+			float adX = (relativeVec.x > 0.f) ? relativeVec.x - idealX : idealX - relativeVec.x;
+			float adY = (relativeVec.y > 0.f) ? relativeVec.y - idealY : idealY - relativeVec.y;
+
+			return Vec2(adX, adY);
+
+		}
+
+}
 }

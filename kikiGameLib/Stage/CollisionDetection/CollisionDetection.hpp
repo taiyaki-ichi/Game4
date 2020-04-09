@@ -17,5 +17,6 @@ namespace Game
 		bool LineCollisionDetection(GameLib::Vector2 myPoint[], GameLib::Vector2 thePoint[]);
 		bool CheckLineCross(const GameLib::Vector2& a1, const GameLib::Vector2& a2, const GameLib::Vector2& b1, const GameLib::Vector2& b2);
 		bool CheckInclusion(const GameLib::Vector2& p, const GameLib::Vector2 point[]);
+
 	}
 }

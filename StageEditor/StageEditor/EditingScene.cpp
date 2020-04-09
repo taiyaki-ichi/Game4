@@ -9,6 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include"picojson/picojson.hpp"
+#include"CommandActor.hpp"
 
 namespace StageEditor
 {
@@ -17,77 +18,35 @@ namespace StageEditor
 
 	EditingScene::EditingScene()
 		:Game::Stage::StageScene()
-		,mCurrEditingActor(nullptr)
-		,mGoFlag(false)
 	{
-		auto actor = new GameLib::Actor(this);
-		actor->SetPosition(Vec2(Game::WINDOW_WIDTH / 2.f, -5.f));
-		mText = new GameLib::TextComponent(actor,"Assets/Font/mplus.ttf");
-		mText->SetColor(GameLib::Color::Black);
-		mText->SetAlpha(200);
-		mText->SetSize(GameLib::FontSize::Size_32);
-		mText->SetText("aaa");
-
+		
 		mCursor = new Cursor(this);
+		mCommandActor = new CommandActor(this);
+
+		LoadEditingData(this);
+
+		Game::Stage::Body::SetDrawFlag(true);
 	}
 	EditingScene::~EditingScene()
 	{
 	}
 
-	void EditingScene::Input(const GameLib::InputState& state)
-	{
-		std::string text = mText->GetText();
-		if (state.GetState(GameLib::Key::BackSpace) == GameLib::ButtonState::Pressed && text.size() > 0)
-			text.pop_back();
-		else
-			text += GetKey(state);
-		mText->SetText(text);
-
-		bool enter = state.GetState(GameLib::Key::Enter) == GameLib::ButtonState::Pressed;
-		if (text == "player")
-		{
-			mText->SetColor(GameLib::Color::Red);
-			if (enter&&!mCurrEditingActor)
-				new EditingPlayer(this,mCursor->GetPosition());
-			
-		}
-		else if (text == "ground")
-		{
-			mText->SetColor(GameLib::Color::Red);
-			if (enter&&!mCurrEditingActor)
-				new EditingGround(this, mCursor->GetPosition());
-		}
-		else if (text == "go")
-		{
-			mText->SetColor(GameLib::Color::Blue);
-			if (enter)
-			{
-				CreateJsonData(mEditingActors, "test");
-				mGoFlag = true;
-			}
-		}
-		else
-			mText->SetColor(GameLib::Color::Black);
-			
-	}
-
 	GameLib::Scene* EditingScene::UpdateStageScene()
 	{
-		if (mGoFlag)
+		if (mCommandActor->GetChecFlag())
+		{
+			CreateJsonData(mEditingActors, "test");
 			return new CheckScene();
+		}
 		
 		return this;
 	}
 
-	bool EditingScene::AddEditingActor(EditingActor* actor)
+	void EditingScene::AddEditingActor(EditingActor* actor)
 	{
 		auto iter = std::find(mEditingActors.begin(), mEditingActors.end(), actor);
 		if (iter == mEditingActors.end())
-		{
 			mEditingActors.emplace_back(actor);
-		}
-		else
-			return false;
 	}
 
 	void EditingScene::RemoveEditingActor(EditingActor* actor)
@@ -97,67 +56,13 @@ namespace StageEditor
 			mEditingActors.erase(iter);
 	}
 
-	std::string GetKey(const GameLib::InputState& state)
+	void EditingScene::ResetEditingActors()
 	{
-		using k = GameLib::Key;
-		using s = GameLib::ButtonState;
-		if (state.GetState(k::A) == s::Pressed)
-			return "a";
-		else if (state.GetState(k::B) == s::Pressed)
-			return "b";
-		else if (state.GetState(k::C) == s::Pressed)
-			return "c";
-		else if (state.GetState(k::D) == s::Pressed)
-			return "d";
-		else if (state.GetState(k::E) == s::Pressed)
-			return "e";
-		else if (state.GetState(k::F) == s::Pressed)
-			return "f";
-		else if (state.GetState(k::G) == s::Pressed)
-			return "g";
-		else if (state.GetState(k::H) == s::Pressed)
-			return "h";
-		else if (state.GetState(k::I) == s::Pressed)
-			return "i";
-		else if (state.GetState(k::J) == s::Pressed)
-			return "j";
-		else if (state.GetState(k::K) == s::Pressed)
-			return "k";
-		else if (state.GetState(k::L) == s::Pressed)
-			return "l";
-		else if (state.GetState(k::M) == s::Pressed)
-			return "m";
-		else if (state.GetState(k::N) == s::Pressed)
-			return "n";
-		else if (state.GetState(k::O) == s::Pressed)
-			return "o";
-		else if (state.GetState(k::P) == s::Pressed)
-			return "p";
-		else if (state.GetState(k::Q) == s::Pressed)
-			return "q";
-		else if (state.GetState(k::R) == s::Pressed)
-			return "r";
-		else if (state.GetState(k::S) == s::Pressed)
-			return "s";
-		else if (state.GetState(k::T) == s::Pressed)
-			return "t";
-		else if (state.GetState(k::U) == s::Pressed)
-			return "u";
-		else if (state.GetState(k::V) == s::Pressed)
-			return "v";
-		else if (state.GetState(k::W) == s::Pressed)
-			return "w";
-		else if (state.GetState(k::X) == s::Pressed)
-			return "x";
-		else if (state.GetState(k::Y) == s::Pressed)
-			return "y";
-		else if (state.GetState(k::Z) == s::Pressed)
-			return "z";
-		else
-			return "";
-
-
+		while (!mEditingActors.empty())
+			delete mEditingActors.back();
+		mEditingActors.clear();
 	}
+	
 
 	bool CreateJsonData(std::vector<EditingActor*>& actors, const std::string& fileName)
 	{
@@ -187,10 +92,14 @@ namespace StageEditor
 
 		std::ofstream ofs("Data/" + fileName + ".json");
 		ofs << picojson::value(all).serialize(true) << std::endl;
+
+		return true;
 	}
+
 
 	CheckScene::CheckScene()
 		:Game::Stage::StageScene()
+		,mBackFlag(false)
 	{
 		Game::Stage::LoadStageData(this, "Data/test.json");
 		Game::Stage::Body::SetDrawFlag(false);
@@ -199,5 +108,80 @@ namespace StageEditor
 	CheckScene::~CheckScene()
 	{
 	}
+
+	void CheckScene::Input(const GameLib::InputState& state)
+	{
+		mBackFlag = state.GetState(GameLib::Key::BackSpace) == GameLib::ButtonState::Pressed;
+	}
+
+	GameLib::Scene* CheckScene::UpdateStageScene()
+	{
+		if (mBackFlag)
+			return new EditingScene();
+		else
+			return this;
+	}
+
+
+
+	bool LoadEditingData(EditingScene* scene)
+	{
+		using Vec2 = GameLib::Vector2;
+
+		// JSONデータの読み込み。
+		std::ifstream ifs("Data/test.json", std::ios::in);
+		if (ifs.fail()) {
+			std::cerr << "failed to read Data/test.json" << std::endl;
+			return false;
+		}
+		const std::string json((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
+		ifs.close();
+
+		picojson::value v;
+		const std::string err = picojson::parse(v, json);
+		if (err.empty() == false) {
+			std::cerr << err << std::endl;
+			return false;
+		}
+
+		picojson::object& obj = v.get<picojson::object>();
+		picojson::array& ary = obj["Actors"].get<picojson::array>();
+
+		EditingActor* actor=nullptr;
+		double x, y;
+		for (const auto& e : ary)
+		{
+			picojson::object o = e.get<picojson::object>();
+
+			x = o["Data1"].get<double>();
+			y = o["Data2"].get<double>();
+			if (o["Name"].get<std::string>() == "Player")
+			{
+				actor = new EditingPlayer(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "Ground")
+			{
+				actor = new EditingGround(scene, Vec2(x, y));
+			}
+
+
+
+			if (actor)
+			{
+				for (int i = 0; i < actor->GetDataNum(); i++)
+				{
+					actor->AddData(o["Data" + std::to_string(i + 1)].get<double>());
+				}
+				scene->AddEditingActor(actor);
+			}
+			actor = nullptr;
+
+		}
+
+		return true;
+
+	}
+
+
 
 }

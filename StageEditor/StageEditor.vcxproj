@@ -146,11 +146,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="StageEditor\CommandActor.cpp" />
     <ClCompile Include="StageEditor\Cursor.cpp" />
     <ClCompile Include="StageEditor\EditingActor.cpp" />
     <ClCompile Include="StageEditor\EditingScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="StageEditor\CommandActor.hpp" />
     <ClInclude Include="StageEditor\Cursor.hpp" />
     <ClInclude Include="StageEditor\EditingActor.hpp" />
     <ClInclude Include="StageEditor\EditingScene.hpp" />

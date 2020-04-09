@@ -354,15 +354,17 @@ namespace Game
 			if (name == "Ground")
 			{
 				using Vec2 = GameLib::Vector2;
-				Vec2 myPos = myBody->GetOwner()->GetPosition() + myBody->GetAdjust();
-				Vec2 groundPos = theBody->GetOwner()->GetPosition();
-				float mH = myBody->GetHeight();
-				float gH = theBody->GetHeight();
-				float l = groundPos.y - myPos.y;
-				float d = gH / 2.f + mH / 2.f - l;
+				Vec2 pos = myBody->GetOwner()->GetPosition();
+
+				Vec2 ad = GetAdjustUnrotatedRectVec(myBody, theBody);
 				
-				myPos.y -= d + myBody->GetAdjust().y;
-				myBody->GetOwner()->SetPosition(myPos);
+				
+				if (GameLib::Math::Abs(ad.x) < GameLib::Math::Abs(ad.y))
+					ad.y = 0.f;
+				else
+					ad.x = 0.f;
+				
+				myBody->GetOwner()->SetPosition(pos + ad);
 
 				mVelocity.y = 0.f;
 				mJumpFlag = true;

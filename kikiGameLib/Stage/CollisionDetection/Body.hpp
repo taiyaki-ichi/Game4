@@ -73,6 +73,8 @@ namespace Game
 			Vec2 mVelocity;
 		};
 
+		//‰ñ“]‚µ‚Ä‚¢‚È‚¢Body“¯m‚Ì‚ß‚è‚İ‚ğ•â³‚·‚éƒxƒNƒgƒ‹‚Ìæ“¾
+		GameLib::Vector2 GetAdjustUnrotatedRectVec(Body* myBody, Body* theBody);
 
 	}
 }

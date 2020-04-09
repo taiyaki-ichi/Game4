@@ -13,6 +13,7 @@ namespace StageEditor
 {
 	class Cursor;
 	class EditingActor;
+	class CommandActor;
 
 	class EditingScene : public Game::Stage::StageScene
 	{
@@ -20,26 +21,18 @@ namespace StageEditor
 		EditingScene();
 		virtual ~EditingScene();
 
-		virtual void Input(const GameLib::InputState& state) override;
 		virtual GameLib::Scene* UpdateStageScene() override;
 
-		bool AddEditingActor(EditingActor* actor);
+		void AddEditingActor(EditingActor* actor);
 		void RemoveEditingActor(EditingActor* actor);
-
-		void SetCurrEditingActor(EditingActor* actor) { mCurrEditingActor = actor; }
+		void ResetEditingActors();
 
 	private:
-		GameLib::TextComponent* mText;
-		Cursor* mCursor;
-
-		EditingActor* mCurrEditingActor;
-
 		std::vector<EditingActor*> mEditingActors;
 
-		bool mGoFlag;
+		Cursor* mCursor;
+		CommandActor* mCommandActor;
 	};
-
-	std::string GetKey(const GameLib::InputState& state);
 
 	bool CreateJsonData(std::vector<EditingActor*>& actors,const std::string& fileName);
 
@@ -49,6 +42,13 @@ namespace StageEditor
 		CheckScene();
 		virtual ~CheckScene();
 
+		virtual void Input(const GameLib::InputState& state) override;
+		virtual GameLib::Scene* UpdateStageScene() override;
+
+	private:
+		bool mBackFlag;
 
 	};
+
+	bool LoadEditingData(EditingScene* scene);
 }
