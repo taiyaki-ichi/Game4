@@ -16,6 +16,7 @@ namespace StageEditor
 		,mNowEditingActor(nullptr)
 		,mEditingScene(scene)
 		,mCheckFlag(false)
+		,mSaveFlag(false)
 	{
 		SetPosition(Vec2(WINDOW_WIDTH / 2.f, 16.f));
 
@@ -64,10 +65,17 @@ namespace StageEditor
 
 	}
 
+	const std::string& CommandActor::GetText() const
+	{
+		return mTextComponent->GetText();
+	}
+
 	void CommandActor::EvaluateTextAndEnter(bool enter,  const GameLib::Vector2& cursorPos)
 	{
 		GameLib::Vector3 color = GameLib::Color::Black;
 		std::string text = mTextComponent->GetText();
+
+		std::string s = "saveas";
 
 		if (text == "check")
 		{
@@ -75,9 +83,13 @@ namespace StageEditor
 			if (enter)
 				mCheckFlag = true;
 		}
-		else if (text == "save as ")
+		else if (std::equal(s.begin(), s.end(), text.begin()))
 		{
 			color = GameLib::Color::Blue;
+			if (enter)
+			{
+				mSaveFlag = true;
+			}
 		}
 		else if (text == "reset")
 		{

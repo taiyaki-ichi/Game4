@@ -16,7 +16,7 @@ namespace Game
 		StageScene::StageScene()
 			:GameLib::Scene()
 			,mStageLeft(0.f)
-			,mStageRight(2400.f)
+			,mStageRight(FLT_MAX)
 			,mPlayer(nullptr)
 		{
 			mTree = new Liner4Tree(TREELEVEL,

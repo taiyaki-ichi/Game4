@@ -30,8 +30,6 @@ namespace StageEditor
 		void RemoveEditingActor(EditingActor* actor);
 		void ResetEditingActors();
 
-
-
 	private:
 		std::vector<EditingActor*> mEditingActors;
 

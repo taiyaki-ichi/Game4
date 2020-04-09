@@ -60,12 +60,19 @@ namespace StageEditor
 
 	GameLib::Scene* EditingScene::UpdateStageScene()
 	{
-		if (mCommandActor->GetChecFlag())
+		if (mCommandActor->GetCheckFlag())
 		{
-			CreateJsonData(mEditingActors, "test", mScreemMoveSum);
+			CreateJsonData(mEditingActors, "Data/test.json", mScreemMoveSum);
 			return new CheckScene();
 		}
 		
+		if (mCommandActor->GetSaveFlag())
+		{
+			std::string name = mCommandActor->GetText().substr(6);
+			CreateJsonData(mEditingActors, "../StageData/" + name + ".json", mScreemMoveSum);
+			mCommandActor->SaveCompolete();
+		}
+
 		return this;
 	}
 
@@ -120,7 +127,7 @@ namespace StageEditor
 		picojson::object all;
 		all.insert(std::make_pair("Actors", picojson::value(jsonArry)));
 
-		std::ofstream ofs("Data/" + fileName + ".json");
+		std::ofstream ofs(fileName);
 		ofs << picojson::value(all).serialize(true) << std::endl;
 
 		return true;

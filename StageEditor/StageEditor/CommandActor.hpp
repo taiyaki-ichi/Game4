@@ -24,7 +24,10 @@ namespace StageEditor
 		virtual void Input(const GameLib::InputState& state) override;
 		virtual void Update() override;
 
-		bool GetChecFlag() const { return mCheckFlag; }
+		bool GetCheckFlag() const { return mCheckFlag; }
+		bool GetSaveFlag() const { return mSaveFlag; }
+		void SaveCompolete() { mSaveFlag = false; }
+		const std::string& GetText() const;
 
 	private:
 		GameLib::TextComponent* mTextComponent;
@@ -32,6 +35,7 @@ namespace StageEditor
 		EditingScene* mEditingScene;
 
 		bool mCheckFlag;
+		bool mSaveFlag;
 
 		//Enter‚Æ•¶Žš—ñ‚ð•]‰¿
 		void EvaluateTextAndEnter(bool enter,const GameLib::Vector2& cursorPos);
