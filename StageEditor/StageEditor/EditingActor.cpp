@@ -5,6 +5,8 @@
 #include"Stage/CollisionDetection/Body.hpp"
 #include"Stage/Draw/RectangleComponent.hpp"
 
+#include<iostream>
+
 namespace StageEditor
 {
 	using Vec2 = GameLib::Vector2;
@@ -44,6 +46,18 @@ namespace StageEditor
 	void EditingActor::UpdateStageActor()
 	{
 
+	}
+
+	void EditingActor::AdjustPosSub(const Vec2& vec)
+	{
+		for (int i = 0; i < mDates.size(); i++)
+		{
+			if (i % 2 == 0) 
+				mDates[i] += vec.x;
+			else
+				mDates[i] += vec.y;
+			
+		}
 	}
 
 

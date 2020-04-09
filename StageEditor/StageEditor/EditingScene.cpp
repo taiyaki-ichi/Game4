@@ -1,7 +1,6 @@
 #include"EditingScene.hpp"
 #include"lib/include/Actor.hpp"
 #include"lib/include/Draw/TextComponent.hpp"
-#include"lib/include/Math.hpp"
 #include"lib/include/InputState.hpp"
 #include"Cursor.hpp"
 #include"EditingActor.hpp"
@@ -18,6 +17,7 @@ namespace StageEditor
 
 	EditingScene::EditingScene()
 		:Game::Stage::StageScene()
+		,mScreemMoveSum(0.f,0.f)
 	{
 		
 		mCursor = new Cursor(this);
@@ -31,11 +31,38 @@ namespace StageEditor
 	{
 	}
 
+	void EditingScene::Input(const GameLib::InputState& state)
+	{
+
+		Vec2 ad(0.f, 0.f);
+		if (state.GetState(GameLib::Key::Right) == GameLib::ButtonState::Pressed)
+			ad = Vec2(50.f, 0.f);
+		else if (state.GetState(GameLib::Key::Left) == GameLib::ButtonState::Pressed)
+			ad = Vec2(-50.f, 0.f);
+		else if (state.GetState(GameLib::Key::Up) == GameLib::ButtonState::Pressed)
+			ad = Vec2(0.f, -50.f);
+		else if (state.GetState(GameLib::Key::Down) == GameLib::ButtonState::Pressed)
+			ad = Vec2(0.f, 50.f);
+		else if (state.GetState(GameLib::Key::Right) == GameLib::ButtonState::Held)
+			ad = Vec2(5.f, 0.f);
+		else if (state.GetState(GameLib::Key::Left) == GameLib::ButtonState::Held)
+			ad = Vec2(-5.f, 0.f);
+		else if (state.GetState(GameLib::Key::Up) == GameLib::ButtonState::Held)
+			ad = Vec2(0.f, -5.f);
+		else if (state.GetState(GameLib::Key::Down) == GameLib::ButtonState::Held)
+			ad = Vec2(0.f, 5.f);
+
+
+
+		mScreemMoveSum += ad;
+		MoveScreen(ad);
+	}
+
 	GameLib::Scene* EditingScene::UpdateStageScene()
 	{
 		if (mCommandActor->GetChecFlag())
 		{
-			CreateJsonData(mEditingActors, "test");
+			CreateJsonData(mEditingActors, "test", mScreemMoveSum);
 			return new CheckScene();
 		}
 		
@@ -64,7 +91,7 @@ namespace StageEditor
 	}
 	
 
-	bool CreateJsonData(std::vector<EditingActor*>& actors, const std::string& fileName)
+	bool CreateJsonData(std::vector<EditingActor*>& actors, const std::string& fileName, const GameLib::Vector2& adjust)
 	{
 		picojson::array jsonArry;
 		picojson::object jsonData;
@@ -80,7 +107,10 @@ namespace StageEditor
 			std::string dataStr = "Data";
 			for (int i = 0; i < data.size(); i++)
 			{
-				jsonData.insert(std::make_pair(dataStr + std::to_string(i + 1), picojson::value(data.at(i))));
+				if (i % 2 == 0)
+					jsonData.insert(std::make_pair(dataStr + std::to_string(i + 1), picojson::value(data.at(i) + adjust.x)));
+				else
+					jsonData.insert(std::make_pair(dataStr + std::to_string(i + 1), picojson::value(data.at(i) + adjust.y)));
 			}
 
 			jsonArry.push_back(picojson::value(jsonData));

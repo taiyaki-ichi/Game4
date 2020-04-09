@@ -42,6 +42,8 @@ namespace StageEditor
 		int GetDataNum() const { return mDataNum; }
 		bool IsOk() { return mDataNum <= mDates.size(); }
 
+		virtual void AdjustPosSub(const Vec2& vec) override;
+
 		EditingScene* GetEditingScene() const { return mEditingScene; }
 
 	private:

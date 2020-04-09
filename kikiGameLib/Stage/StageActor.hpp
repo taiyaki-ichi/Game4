@@ -21,7 +21,7 @@ namespace Game
 
 			//vec•ªActor‚Ìƒ|ƒWƒVƒ‡ƒ“‚ðˆÚ“®
 			void AdjustPos(const GameLib::Vector2& vec);
-			void AdjustPosSub(const GameLib::Vector2& vec);
+			virtual void AdjustPosSub(const GameLib::Vector2& vec);
 
 			virtual void Hit(Body* myBody, Body* theBody);
 
