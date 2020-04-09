@@ -165,6 +165,30 @@ namespace StageEditor
 			return "z";
 		else if (state.GetState(k::Space) == s::Pressed)
 			return " ";
+		else if (state.GetState(k::no1) == s::Pressed)
+			return "1";
+		else if (state.GetState(k::no2) == s::Pressed)
+			return "2";
+		else if (state.GetState(k::no3) == s::Pressed)
+			return "3";
+		else if (state.GetState(k::no4) == s::Pressed)
+			return "4";
+		else if (state.GetState(k::no5) == s::Pressed)
+			return "5";
+		else if (state.GetState(k::no6) == s::Pressed)
+			return "6";
+		else if (state.GetState(k::no7) == s::Pressed)
+			return "7";
+		else if (state.GetState(k::no8) == s::Pressed)
+			return "8";
+		else if (state.GetState(k::no9) == s::Pressed)
+			return "9";
+		else if (state.GetState(k::no0) == s::Pressed)
+			return "0";
+		else if (state.GetState(k::Period) == s::Pressed)
+			return ".";
+		else if (state.GetState(k::Comma) == s::Pressed)
+			return ",";
 		else
 			return "";
 

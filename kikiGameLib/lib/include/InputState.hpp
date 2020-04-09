@@ -69,6 +69,9 @@ namespace GameLib
 		Right=0xCD,
 		Down=0xD0,
 
+		Comma= 0x33,
+		Period= 0x34,
+
 	};
 
 	enum class MouseButton
