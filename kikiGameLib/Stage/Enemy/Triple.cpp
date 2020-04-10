@@ -15,12 +15,11 @@ namespace Game
 
 
 			Triple::Triple(StageScene* scene, const GameLib::Vector2& pos)
-				:StageActor(scene)
+				:StageStateActor(scene,pos)
 			{
-				mState = new TripleActive(this);
+				SetStageState(new TripleActive(this));
 
 				SetScale(0.10f);
-				SetPosition(pos);
 
 				std::vector<GameLib::Texture*> left = {
 					GameLib::Data::GetTexture("../Assets/Enemy/Triple-left-001.png"),
@@ -60,27 +59,6 @@ namespace Game
 
 			Triple::~Triple()
 			{
-				if (mState)
-					delete mState;
-			}
-
-			void Triple::UpdateStageActor()
-			{
-				if (mState)
-				{
-					StageState* next = mState->Update();
-					if (next != mState)
-					{
-						delete mState;
-						mState = next;
-					}
-				}
-			}
-
-			void Triple::Hit(Body* myBody, Body* theBody)
-			{
-				if (mState)
-					mState->Hit(myBody, theBody);
 			}
 
 			void Triple::SetAnimChannel(int i)

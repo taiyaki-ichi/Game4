@@ -1,6 +1,5 @@
 #pragma once
-#include"StageActor.hpp"
-#include"StageState.hpp"
+#include"StageStateActor.hpp"
 namespace GameLib
 {
 	class AnimComponent;
@@ -18,15 +17,11 @@ namespace Game
 			class State;
 		}
 
-		class Player : public StageActor
+		class Player : public StageStateActor
 		{
 		public:
 			Player(StageScene* scene,const GameLib::Vector2& pos);
 			virtual ~Player();
-
-			void UpdateStageActor() override;
-			void Hit(Body* myBody, Body* theBody) override;
-			void Input(const GameLib::InputState& state) override;
 
 			GameLib::AnimComponent* GetAnim() const { return mAnim; }
 			GameLib::AnimComponent* GetSubAnim() const { return mSubAnim; }
@@ -34,7 +29,7 @@ namespace Game
 			void BreakBody();
 
 		private:
-			StageState* mState;
+
 			Body* mBody;
 			GameLib::AnimComponent* mAnim;
 			GameLib::AnimComponent* mSubAnim;

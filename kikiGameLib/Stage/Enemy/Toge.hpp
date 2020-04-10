@@ -1,6 +1,5 @@
 #pragma once
-#include"Stage/StageActor.hpp"
-#include"Stage/StageState.hpp"
+#include"Stage/StageStateActor.hpp"
 
 namespace GameLib
 {
@@ -17,19 +16,16 @@ namespace Game
 		namespace Enemy
 		{
 
-			class Toge : public StageActor
+			class Toge : public StageStateActor
 			{
 			public:
 				Toge(StageScene* scene,const GameLib::Vector2& pos);
 				virtual ~Toge();
 
-				virtual void UpdateStageActor() override;
-				virtual void Hit(Body* myBody, Body* theBody) override;
-
 				void BreakBody();
 
 			private:
-				StageState* mState;
+			
 				GameLib::AnimComponent* mAnim;
 				Body* mBody;
 

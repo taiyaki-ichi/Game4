@@ -95,7 +95,7 @@ namespace StageEditor
 		{
 			color = GameLib::Color::Blue;
 			if (enter)
-				mEditingScene->ResetEditingActors();
+				mEditingScene->Reset();
 		}
 
 

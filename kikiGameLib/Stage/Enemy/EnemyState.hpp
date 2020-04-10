@@ -1,5 +1,5 @@
 #pragma once
-#include"Stage/StageState.hpp"
+#include"Stage/StageStateActor.hpp"
 
 namespace Game
 {

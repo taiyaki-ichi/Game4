@@ -16,6 +16,8 @@ namespace Game
 	namespace Stage
 	{
 
+		void CreateGround(StageScene* scene,const GameLib::Vector2& p1, const GameLib::Vector2& p2);
+
 		StageScene::StageScene()
 			:GameLib::Scene()
 			,mStageLeft(0.f)
@@ -164,6 +166,7 @@ namespace Game
 					Vec2 point1 = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					Vec2 point2 = Vec2(o["Data3"].get<double>(), o["Data4"].get<double>());
 					
+					/*
 					float x = point1.x - point2.x;
 					float y = point1.y - point2.y;
 
@@ -176,6 +179,9 @@ namespace Game
 					Vec2 pos = Vec2(xx + w / 2.f, yy + h / 2.f);
 
 					new Ground(scene, pos, w, h);
+					*/
+
+					CreateGround(scene, point1, point2);
 				}
 				else if (o["Name"].get<std::string>() == "Triple")
 				{
@@ -200,6 +206,45 @@ namespace Game
 
 			return true;
 
+		}
+
+		void CreateGround(StageScene* scene, const GameLib::Vector2& point1, const GameLib::Vector2& point2)
+		{
+			using Vec2 = GameLib::Vector2;
+			float x = point1.x - point2.x;
+			float y = point1.y - point2.y;
+
+			float xMin = (x > 0) ? point2.x : point1.x;
+			float yMin = (y > 0) ? point2.y : point1.y;
+
+			float w = GameLib::Math::Abs(x);
+			float h = GameLib::Math::Abs(y);
+
+			if (w > 300.f && h > 300.f)
+			{
+				Vec2 center(xMin + w / 2.f, yMin + h / 2.f);
+				CreateGround(scene, Vec2(xMin, yMin), center);
+				CreateGround(scene, Vec2(xMin + w, yMin), center);
+				CreateGround(scene, Vec2(xMin, yMin + h), center);
+				CreateGround(scene, Vec2(xMin + w, yMin + h), center);
+			}
+			else if (w > 300.f)
+			{
+				Vec2 center(xMin + w / 2.f, yMin + h);
+				CreateGround(scene, Vec2(xMin, yMin), center);
+				CreateGround(scene, Vec2(xMin + w, yMin), center);
+			}
+			else if (h > 300.f)
+			{
+				Vec2 center(xMin + w, yMin + h / 2.f);
+				CreateGround(scene, Vec2(xMin, yMin), center);
+				CreateGround(scene, Vec2(xMin, yMin + h), center);
+			}
+			else
+			{
+				Vec2 center(xMin + w / 2.f, yMin + h / 2.f);
+				new Ground(scene, center, w, h);
+			}
 		}
 
 }

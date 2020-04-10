@@ -13,7 +13,7 @@ namespace Game
 		{
 
 			Toge::Toge(StageScene* scene, const GameLib::Vector2& pos)
-				:StageActor(scene,pos)
+				:StageStateActor(scene,pos)
 			{
 				SetScale(0.1f);
 
@@ -26,33 +26,13 @@ namespace Game
 				mBody->SetWidthAndHeight(550.f, 550.f);
 				mBody->SetColor(GameLib::Vector3(0.f, 0.f, 255.f));
 
-				mState = new TogeActive(this);
+				SetStageState(new TogeActive(this));
 			}
 
 			Toge::~Toge()
 			{
-				if (mState)
-					delete mState;
 			}
 
-			void Toge::UpdateStageActor()
-			{
-				if (mState)
-				{
-					StageState* next = mState->Update();
-					if (next != mState)
-					{
-						delete mState;
-						mState = next;
-					}
-				}
-			}
-
-			void Toge::Hit(Body* myBody, Body* theBody)
-			{
-				if (mState)
-					mState->Hit(myBody, theBody);
-			}
 
 			void Toge::BreakBody()
 			{

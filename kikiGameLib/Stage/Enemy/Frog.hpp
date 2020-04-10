@@ -1,6 +1,5 @@
 #pragma once
-#include"Stage/StageActor.hpp"
-#include"Stage/StageState.hpp"
+#include"Stage/StageStateActor.hpp"
 
 namespace GameLib
 {
@@ -15,15 +14,12 @@ namespace Game
 
 		namespace Enemy
 		{
-			class Frog : public StageActor
+			class Frog : public StageStateActor
 			{
 			public:
 				Frog(StageScene* scene,const GameLib::Vector2& pos,float h);
 				virtual ~Frog();
-
-				virtual void UpdateStageActor() override;
-				virtual void Hit(Body* myBody, Body* theBody) override;
-
+			
 				void BreakBody();
 				GameLib::AnimComponent* GetAnim() const { return mAnim; }
 
@@ -31,7 +27,7 @@ namespace Game
 				GameLib::AnimComponent* mAnim;
 				Body* mBody;
 				Body* mWeakness;
-				StageState* mState;
+
 			};
 
 			class FrogActive : public StageState

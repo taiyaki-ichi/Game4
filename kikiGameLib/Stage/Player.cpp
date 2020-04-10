@@ -16,14 +16,12 @@ namespace Game
 
 
 		Player::Player(StageScene* scene, const GameLib::Vector2& pos)
-			:StageActor(scene)
+			:StageStateActor(scene,pos)
 		{
 			scene->SetPlayer(this);
 			
 			SetScale(0.1f);
-			SetPosition(pos);
 			
-
 			mBody = new Body(this, "Player");
 			mBody->SetWidthAndHeight(250.f, 500.f);
 			mBody->SetAdjust(Vec2(0.f, 120.f));
@@ -104,7 +102,7 @@ namespace Game
 			mSubAnim = new GameLib::AnimComponent(this, sub);
 			mSubAnim->SetChannel(0);
 			
-			mState = new PlayerState::Active(this);
+			SetStageState(new PlayerState::Active(this));
 
 			std::cout << "Player\nPos :" << pos.x << "," << pos.y << "\n";
 			
@@ -112,28 +110,6 @@ namespace Game
 
 		Player::~Player()
 		{
-		}
-
-		void Player::UpdateStageActor()
-		{
-			
-			StageState* next = mState->Update();
-			if (next != mState)
-			{
-				delete mState;
-				mState = next;
-			}
-			
-		}
-
-		void Player::Hit(Body* myBody, Body* theBody)
-		{
-			mState->Hit(myBody, theBody);
-		}
-
-		void Player::Input(const GameLib::InputState& state)
-		{
-			mState->Input(state);
 		}
 
 		void Player::BreakBody()
@@ -397,7 +373,7 @@ namespace Game
 					mIsJumping = false;
 				}
 			}
-			else if (name == "EnemyTriple" || name == "EnemyToge")
+			else if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog")
 			{
 				mDeathFlag = true;
 			}

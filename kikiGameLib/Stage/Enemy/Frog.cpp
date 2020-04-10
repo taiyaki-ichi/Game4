@@ -16,7 +16,7 @@ namespace Game
 
 
 			Frog::Frog(StageScene* scene, const GameLib::Vector2& pos, float h)
-				:StageActor(scene,pos)
+				:StageStateActor(scene,pos)
 			{
 				SetScale(0.08f);
 
@@ -55,35 +55,15 @@ namespace Game
 				float d = -0.1f;
 				float a = h / n - (n - 1) / 2.f * d;
 
-				mState = new FrogActive(this, -a);
+				SetStageState(new FrogActive(this, -a));
 
 				
 			}
 
 			Frog::~Frog()
 			{
-				if (mState)
-					delete mState;
 			}
 
-			void Frog::UpdateStageActor()
-			{
-				if (mState)
-				{
-					StageState* next = mState->Update();
-					if (next != mState)
-					{
-						delete mState;
-						mState = next;
-					}
-				}
-			}
-
-			void Frog::Hit(Body* myBody, Body* theBody)
-			{
-				if (mState)
-					mState->Hit(myBody, theBody);
-			}
 
 			void Frog::BreakBody()
 			{

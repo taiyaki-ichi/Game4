@@ -90,11 +90,22 @@ namespace StageEditor
 			mEditingActors.erase(iter);
 	}
 
+	void EditingScene::Reset()
+	{
+		ResetEditingActors();
+		ResetScreemMoveSum();
+	}
+
 	void EditingScene::ResetEditingActors()
 	{
 		while (!mEditingActors.empty())
 			delete mEditingActors.back();
 		mEditingActors.clear();
+	}
+
+	void EditingScene::ResetScreemMoveSum()
+	{
+		mScreemMoveSum = Vec2(0.f, 0.f);
 	}
 
 	const GameLib::Vector2& EditingScene::GetCursorPos() const
