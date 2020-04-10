@@ -55,7 +55,7 @@ namespace Game
 				mWeakness->SetWidthAndHeight(350.f, 200.f);
 				mWeakness->SetAdjust(GameLib::Vector2(0.f, -140.f));
 				mWeakness->SetColor(GameLib::Vector3(255, 0, 0));
-				
+
 			}
 
 			Triple::~Triple()
@@ -102,8 +102,8 @@ namespace Game
 
 			TripleActive::TripleActive(Triple* triple)
 				:mTriple(triple)
-				,mVelocity(-1.f)
-				,mFlatFlag(false)
+				, mVelocity(-1.f)
+				, mFlatFlag(false)
 			{
 			}
 
@@ -117,14 +117,23 @@ namespace Game
 				pos.x += mVelocity;
 				pos.y += GRAVITY;
 				mTriple->SetPosition(pos);
-				
+
 				if (mVelocity > 0.f)
 					mTriple->SetAnimChannel(1);
 				else
 					mTriple->SetAnimChannel(0);
 
 				if (mFlatFlag)
-					return new TripleFlat(mTriple);
+				{
+					mTriple->SetAnimChannel(mTriple->GetAnimCannel() + 2);
+					Vec2 pos = mTriple->GetPosition();
+					pos.y += 10.f;
+					mTriple->SetPosition(pos);
+
+					mTriple->BreakBody();
+
+					return new DeathTimerState(mTriple, 30);
+				}
 
 				return this;
 			}
@@ -135,7 +144,7 @@ namespace Game
 				std::string myName = myBody->GetName();
 				GameLib::Actor* myActor = myBody->GetOwner();
 
-				if (name == "EnemyTriple"&&myName=="EnemyTriple")
+				if (name == "EnemyTriple" && myName == "EnemyTriple")
 				{
 					float x = theBody->GetOwner()->GetPosition().x - myActor->GetPosition().x;
 					if (x > 0.f && mVelocity > 0.f)
@@ -155,7 +164,7 @@ namespace Game
 						mVelocity *= -1.f;
 					else if (adjust.x < 0.f && mVelocity>0.f)
 						mVelocity *= -1.f;
-					
+
 					myActor->SetPosition(myActor->GetPosition() + adjust);
 				}
 				else if (name == "Player" && myName == "EnemyTripleWeakness")
@@ -166,33 +175,7 @@ namespace Game
 			}
 
 
-			TripleFlat::TripleFlat(Triple* triple)
-				:StageState()
-				,mTriple(triple)
-				,mCnt(0)
-			{
-				triple->SetAnimChannel(triple->GetAnimCannel() + 2);
-				Vec2 pos = triple->GetPosition();
-				pos.y += 10.f;
-				triple->SetPosition(pos);
-
-				triple->BreakBody();
-			}
-
-			TripleFlat::~TripleFlat()
-			{
-			}
-
-			StageState* TripleFlat::Update()
-			{
-				mCnt++;
-				if (mCnt > 90)
-					mTriple->SetState(GameLib::Actor::State::Dead);
-
-				return this;
-			}
-
-}
+		}
 
 	}
 }

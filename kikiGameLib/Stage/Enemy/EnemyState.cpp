@@ -35,6 +35,26 @@ namespace Game
 				return this;
 			}
 
+			DeathTimerState::DeathTimerState(StageActor* actor, int limit)
+				:StageState()
+				,mStageActor(actor)
+				,mLimit(limit)
+				,mCnt(0)
+			{
+			}
+
+			DeathTimerState::~DeathTimerState()
+			{
+			}
+
+			StageState* DeathTimerState::Update()
+			{
+				mCnt++;
+				if (mCnt > mLimit)
+					mStageActor->SetState(GameLib::Actor::State::Dead);
+				return this;
+			}
+
 		}
 	}
 }

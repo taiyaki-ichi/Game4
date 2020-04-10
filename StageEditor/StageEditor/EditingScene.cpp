@@ -96,6 +96,11 @@ namespace StageEditor
 			delete mEditingActors.back();
 		mEditingActors.clear();
 	}
+
+	const GameLib::Vector2& EditingScene::GetCursorPos() const
+	{
+		return mCursor->GetPosition();
+	}
 	
 
 	bool CreateJsonData(std::vector<EditingActor*>& actors, const std::string& fileName, const GameLib::Vector2& adjust)
@@ -214,6 +219,11 @@ namespace StageEditor
 			{
 				actor = new EditingToge(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "Frog")
+			{
+				actor = new EditingFrog(scene, Vec2(x, y));
+			}
+			
 
 
 			if (actor)

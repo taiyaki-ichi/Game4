@@ -4,6 +4,7 @@
 #include"lib/include/Draw/TextureComponent.hpp"
 #include"Stage/CollisionDetection/Body.hpp"
 #include"Stage/Draw/RectangleComponent.hpp"
+#include"lib/include/Draw/LineComponent.hpp"
 
 #include<iostream>
 
@@ -169,6 +170,51 @@ namespace StageEditor
 
 	EditingToge::~EditingToge()
 	{
+	}
+
+	EditingFrog::EditingFrog(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Frog",4)
+	{
+		SetScale(0.08f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Enemy/frog001.png");
+
+		mBody = new Game::Stage::Body(this, "Frog");
+		mBody->SetWidthAndHeight(600.f, 650.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+
+		mLine = new GameLib::LineComponent(this, -1);
+	}
+
+	EditingFrog::~EditingFrog()
+	{
+	}
+
+	void EditingFrog::UpdateStageActor()
+	{
+		int num = GetDatas().size();
+
+		if (num == 0)
+		{
+			Vec2 p(0.f, 0.f);
+			mLine->SetPoints(p, p);
+		}
+		else if (num == 2)
+		{
+			Vec2 p1(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2(GetDatas().at(0), GetEditingScene()->GetCursorPos().y);
+			mLine->SetPoints(p1, p2);
+
+			SetPosition(Vec2(GetDatas().at(0), GetDatas().at(1)));
+		}
+		else if (GetDatas().size() == 4)
+		{
+			Vec2 p1(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2(GetDatas().at(0), GetDatas().at(3));
+			mLine->SetPoints(p1, p2);
+
+			SetPosition(Vec2(GetDatas().at(0), GetDatas().at(1)));
+		}
 	}
 
 }

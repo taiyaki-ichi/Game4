@@ -14,6 +14,7 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\LineComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.hpp" />
@@ -74,6 +75,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\ComponentsManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Data.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\AnimComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\LineComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\SpriteComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\TextComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\TextureComponent.cpp" />
@@ -91,6 +93,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Manager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Draw\RectangleComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.cpp" />

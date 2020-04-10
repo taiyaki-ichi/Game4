@@ -30,6 +30,8 @@ namespace StageEditor
 		void RemoveEditingActor(EditingActor* actor);
 		void ResetEditingActors();
 
+		const GameLib::Vector2& GetCursorPos() const;
+
 	private:
 		std::vector<EditingActor*> mEditingActors;
 

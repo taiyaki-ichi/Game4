@@ -125,6 +125,12 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingToge(mEditingScene, cursorPos);
 		}
+		else if (text == "frog")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingFrog(mEditingScene, cursorPos);
+		}
 
 		mTextComponent->SetColor(color);
 

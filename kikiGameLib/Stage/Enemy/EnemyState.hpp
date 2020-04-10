@@ -22,6 +22,20 @@ namespace Game
 			private:
 				StageActor* mStageActor;
 			};
+
+			class DeathTimerState : public StageState
+			{
+			public:
+				DeathTimerState(StageActor* actor,int limit);
+				virtual ~DeathTimerState();
+
+				virtual StageState* Update() override;
+
+			private:
+				StageActor* mStageActor;
+				int mCnt;
+				int mLimit;
+			};
 		}
 	}
 

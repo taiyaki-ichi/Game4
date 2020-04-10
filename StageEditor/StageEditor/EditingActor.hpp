@@ -8,6 +8,7 @@ namespace GameLib
 	class InputState;
 	class TextureComponent;
 	class Vector2;
+	class LineComponent;
 	
 }
 namespace Game
@@ -104,4 +105,20 @@ namespace StageEditor
 		GameLib::TextureComponent* mTexture;
 		Game::Stage::Body* mBody;
 	};
+
+	class EditingFrog : public EditingActor
+	{
+	public:
+		EditingFrog(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingFrog();
+
+		virtual void UpdateStageActor() override ;
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+
+		GameLib::LineComponent* mLine;
+	};
+
 }

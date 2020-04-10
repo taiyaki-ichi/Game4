@@ -31,6 +31,8 @@ namespace Game
 
 			Toge::~Toge()
 			{
+				if (mState)
+					delete mState;
 			}
 
 			void Toge::UpdateStageActor()

@@ -61,18 +61,7 @@ namespace Game
 				bool mFlatFlag;
 			};
 
-			class TripleFlat : public StageState
-			{
-			public:
-				TripleFlat(Triple* triple);
-				virtual ~TripleFlat();
 
-				virtual StageState* Update() override;
-
-			private:
-				Triple* mTriple;
-				int mCnt;
-			};
 
 		}
 	}

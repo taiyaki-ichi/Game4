@@ -7,6 +7,7 @@
 #include"picojson/picojson.hpp"
 #include"Enemy/Triple.hpp"
 #include"Enemy/Toge.hpp"
+#include"Enemy/Frog.hpp"
 
 #include<iostream>
 
@@ -185,6 +186,13 @@ namespace Game
 				{
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Enemy::Toge(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "Frog")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					float h = o["Data2"].get<double>() - o["Data4"].get<double>();
+					new Enemy::Frog(scene, pos, h);
+
 				}
 
 

@@ -104,23 +104,8 @@
       "Name": "Ground"
     },
     {
-      "Data1": 2563,
-      "Data2": -67,
-      "Name": "Triple"
-    },
-    {
       "Data1": 1977,
       "Data2": 180,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 935,
-      "Data2": 303,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 1015,
-      "Data2": 290,
       "Name": "Triple"
     },
     {
@@ -136,6 +121,37 @@
       "Data3": 1172,
       "Data4": 363,
       "Name": "Ground"
+    },
+    {
+      "Data1": 977,
+      "Data2": 311,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 1056,
+      "Data2": 301,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 2342,
+      "Data2": 153,
+      "Data3": 2350,
+      "Data4": -120,
+      "Name": "Frog"
+    },
+    {
+      "Data1": 2432,
+      "Data2": 95,
+      "Data3": 2417,
+      "Data4": -117,
+      "Name": "Frog"
+    },
+    {
+      "Data1": 2497,
+      "Data2": 28,
+      "Data3": 2491,
+      "Data4": -121,
+      "Name": "Frog"
     }
   ]
 }
