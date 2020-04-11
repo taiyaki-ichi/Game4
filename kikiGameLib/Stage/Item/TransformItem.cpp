@@ -55,6 +55,8 @@ namespace Game
 			{
 			}
 
+
+
 			Wizard::Wizard(StageScene* scene, const GameLib::Vector2& pos, int updateOrder)
 				:TransformItem(scene,pos,updateOrder)
 			{
@@ -66,6 +68,7 @@ namespace Game
 				body->SetWidthAndHeight(700.f, 700.f);
 				body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
 			}
+
 
 			Wizard::~Wizard()
 			{

@@ -48,6 +48,7 @@ namespace Game
 			StageActor* GetStageOwner() const { return mStageOwner; }
 
 			const std::string& GetName() const { return mName; }
+			void SetName(const std::string& name) { mName = name; }
 
 			const Vec2& GetVelocity() const { return mVelocity; }
 

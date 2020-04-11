@@ -123,20 +123,22 @@ namespace Game
 			:StageState()
 			,mPlayer(player)
 			,mVelocity()
-			,mMode(Mode::Nomal)
 			,mMotion(Motion::Stay)
 			,mDir(Dir::Right)
 			,mJumpFlag(false)
 			,mIsJumping(false)
 			,mJumpAcceleFlag(false)
-			,mTransformCnt(-1)
 			,mGroundVelocity(0.f,0.f)
 			,mDeathFlag(false)
 			,mJumpFlag2(0)
 		{
+			mMode = new PlayerMode::Nomal(mPlayer);
 		}
+
 		PlayerState::Active::~Active()
 		{
+			if (mMode)
+				delete mMode;
 		}
 
 		StageState* PlayerState::Active::Update()
@@ -166,18 +168,6 @@ namespace Game
 				mPlayer->GetAnim()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
 				mPlayer->GetSubAnim()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
 			}
-			
-			//サブのアニメの変化
-			if (mTransformCnt >= 0)
-			{
-				mPlayer->GetSubAnim()->SetChannel(static_cast<int>(mMode) + 1);
-				mTransformCnt++;
-				if (mTransformCnt >= 40)
-					mTransformCnt = -1;
-			}
-			else
-				mPlayer->GetSubAnim()->SetChannel(static_cast<int>(mMode));
-
 
 			//ジャンプの加速度の計算
 			if (mJumpAcceleFlag == true)
@@ -263,6 +253,9 @@ namespace Game
 				mJumpFlag2 -= 1;
 			}
 
+			if (mMode)
+				mMode->Update();
+
 			return this;
 		}
 
@@ -327,16 +320,8 @@ namespace Game
 
 			if (state.GetState(Key::J) == ButtonState::Pressed )
 			{
-				/*
-				if (mMode == Mode::Cock)
-					Fork* fork = new Fork(GetStageScene(), this);
-
-				if (mMode == Mode::Witch)
-					Meteor* meteor = new Meteor(GetStageScene(), this);
-
-				if (mMode == Mode::Alien)
-					Beam* b = new Beam(GetStageScene(), this);
-					*/
+				if (mMode)
+					mMode->Action();
 			}
 
 		}
@@ -386,18 +371,25 @@ namespace Game
 			}
 			else if (name == "ItemCock")
 			{
-				mMode = Mode::Cock;
-				mTransformCnt = 0;
+				SetMode(new PlayerMode::Cock(mPlayer));
 			}
 			else if (name == "ItemWizard")
 			{
-				mMode = Mode::Wizard;
-				mTransformCnt = 0;
+				SetMode(new PlayerMode::Wizard(mPlayer));
 			}
 			else if (name == "ItemAlien")
 			{
-				mMode = Mode::Alien;
-				mTransformCnt = 0;
+				SetMode(new PlayerMode::Alien(mPlayer));
+			}
+		}
+
+		void PlayerState::Active::SetMode(PlayerMode::Mode* mode)
+		{
+			if (mMode != mode)
+			{
+				if (mMode)
+					delete mMode;
+				mMode = mode;
 			}
 		}
 
@@ -432,9 +424,129 @@ namespace Game
 			return this;
 		}
 
+
+
+
+
+		namespace PlayerState
+		{
+			namespace PlayerMode
+			{
+
+
+
+				Mode::Mode(Player* player)
+					:mPlayer(player)
+					,mTranceformCnt(0)
+				{
+				}
+
+				Mode::~Mode()
+				{
+				}
+
+				void Mode::Update()
+				{
+					UpdateMode();
+					mTranceformCnt++;
+				}
+
+				bool Mode::IsTranceformed()
+				{
+					return mTranceformCnt > 40;
+				}
+
+				Nomal::Nomal(Player* player)
+					:Mode(player)
+				{
+					mPlayer->GetSubAnim()->SetChannel(0);
+				}
+
+				Nomal::~Nomal()
+				{
+				}
+
+				void Nomal::UpdateMode()
+				{
+				}
+
+				void Nomal::Action()
+				{
+				}
+
+				Cock::Cock(Player* player)
+					:Mode(player)
+				{
+					mPlayer->GetSubAnim()->SetChannel(5);
+				}
+
+				Cock::~Cock()
+				{
+				}
+
+				void Cock::UpdateMode()
+				{
+					if (IsTranceformed())
+						mPlayer->GetSubAnim()->SetChannel(4);
+				}
+
+				void Cock::Action()
+				{
+				}
+
+
+				Wizard::Wizard(Player* player)
+					:Mode(player)
+				{
+					mPlayer->GetSubAnim()->SetChannel(3);
+				}
+
+				Wizard::~Wizard()
+				{
+
+				}
+
+				void Wizard::UpdateMode()
+				{
+					if (IsTranceformed())
+						mPlayer->GetSubAnim()->SetChannel(2);
+				}
+
+				void Wizard::Action()
+				{
+
+				}
+
+				Alien::Alien(Player* player)
+					:Mode(player)
+				{
+					mPlayer->GetSubAnim()->SetChannel(7);
+				}
+
+				Alien::~Alien()
+				{
+
+				}
+
+				void Alien::UpdateMode()
+				{
+					if (IsTranceformed())
+						mPlayer->GetSubAnim()->SetChannel(6);
+				}
+
+				void Alien::Action()
+				{
+
+				}
+			}
+		}
+
+
+
 	}
 
 
 
 
 }
+

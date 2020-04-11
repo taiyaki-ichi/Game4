@@ -29,7 +29,9 @@ namespace Game
 				rot += 0.1f;
 				mStageActor->SetRotation(rot);
 
-				if (pos.y > ActorUpdateScope::Bottom - 100.f)
+				if (pos.y > ActorUpdateScope::Bottom - 100.f ||
+					pos.x > ActorUpdateScope::Right - 100.f ||
+					pos.x < ActorUpdateScope::Left + 100.f)
 					mStageActor->SetState(GameLib::Actor::State::Dead);
 
 				return this;

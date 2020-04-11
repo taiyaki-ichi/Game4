@@ -41,6 +41,11 @@ namespace Game
 		namespace PlayerState
 		{
 
+			namespace PlayerMode
+			{
+				class Mode;
+			}
+
 			class Active : public StageState
 			{
 			public:
@@ -50,12 +55,7 @@ namespace Game
 					Down,
 					Up
 				};
-				enum class Mode {
-					Nomal = 0,
-					Wizard = 2,
-					Cock = 4,
-					Alien = 6,
-				};
+
 				enum class Dir {
 					Right,
 					Left
@@ -81,8 +81,10 @@ namespace Game
 				GameLib::Vector2 mVelocity;
 
 				Motion mMotion;
-				Mode mMode;
 				Dir mDir;
+
+				PlayerMode::Mode* mMode;
+				void SetMode(PlayerMode::Mode* mode);
 
 				//ジャンプできるかどうか
 				bool mJumpFlag;
@@ -93,9 +95,6 @@ namespace Game
 
 				//地面についているかどうか
 				bool mIsOnGround;
-
-				//変身モーションの時間
-				int mTransformCnt;
 
 				GameLib::Vector2 mGroundVelocity;
 
@@ -118,6 +117,71 @@ namespace Game
 				Player* mPlayer;
 
 			};
+
+
+			namespace PlayerMode
+			{
+				class Mode
+				{
+				public:
+					Mode(Player* player);
+					virtual ~Mode();
+
+					virtual void Update() final;
+
+					bool IsTranceformed();
+
+					virtual void UpdateMode() = 0;
+					virtual void Action() = 0;
+
+				protected:
+					Player* mPlayer;
+					int mTranceformCnt;
+				};
+
+				class Nomal : public Mode
+				{
+				public:
+					Nomal(Player* player);
+					virtual ~Nomal();
+
+					virtual void UpdateMode() override;
+					virtual void Action() override;
+				};
+
+				class Cock : public Mode
+				{
+				public:
+					Cock(Player* player);
+					virtual ~Cock();
+
+					virtual void UpdateMode() override;
+					virtual void Action() override;
+	
+				};
+
+				class Wizard : public Mode
+				{
+				public:
+					Wizard(Player* player);
+					virtual ~Wizard();
+
+					virtual void UpdateMode() override;
+					virtual void Action() override;
+				};
+
+				class Alien : public Mode
+				{
+				public:
+					Alien(Player* plaeyer);
+					virtual ~Alien();
+
+					virtual void UpdateMode() override;
+					virtual void Action() override;
+				};
+
+			}
+
 
 		}
 
