@@ -52,7 +52,7 @@ namespace Game
 				};
 				enum class Mode {
 					Nomal = 0,
-					Witch = 2,
+					Wizard = 2,
 					Cock = 4,
 					Alien = 6,
 				};
@@ -61,12 +61,12 @@ namespace Game
 					Left
 				};
 
-				const float MAX_SPEED = 5.f;
-				const float GRAVITY = 0.6f;
+				const float MAX_SPEED = 6.5f;
+				const float GRAVITY = 0.7f;
 				const float JUMPING_GRAVITY = 0.4f;
 				const float JUMP_POWER_MAX = 11.5f;
-				const float JUMP_POWER_MIN = 10.5f;
-				const float RUN_POWER = 0.25;
+				const float JUMP_POWER_MIN = 9.5f;
+				const float RUN_POWER = 0.2;
 
 				Active(Player* player);
 				virtual ~Active();

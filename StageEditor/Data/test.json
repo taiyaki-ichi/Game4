@@ -1,192 +1,38 @@
 {
   "Actors": [
     {
-      "Data1": 1322,
-      "Data2": 308,
-      "Data3": 1529,
-      "Data4": 414,
+      "Data1": 50,
+      "Data2": 431,
+      "Data3": 772,
+      "Data4": 502,
       "Name": "Ground"
     },
     {
-      "Data1": 1489,
-      "Data2": 217,
-      "Data3": 1576,
-      "Data4": 307,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1396,
-      "Data2": 126,
-      "Data3": 1143,
-      "Data4": 180,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 663,
-      "Data2": 356,
-      "Data3": 1219,
-      "Data4": 518,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 874,
-      "Data2": 65,
-      "Data3": 1124,
-      "Data4": 126,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1651,
-      "Data2": 313,
-      "Data3": 1929,
-      "Data4": 373,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1941,
-      "Data2": 231,
-      "Data3": 2012,
-      "Data4": 280,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2126,
-      "Data2": 390,
-      "Data3": 2205,
-      "Data4": 455,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2229,
-      "Data2": 303,
-      "Data3": 2626,
-      "Data4": 354,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2538,
-      "Data2": -1,
-      "Data3": 2625,
-      "Data4": 311,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2462,
-      "Data2": 64,
-      "Data3": 2546,
-      "Data4": 304,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2400,
-      "Data2": 137,
-      "Data3": 2466,
-      "Data4": 314,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2283,
-      "Data2": 198,
-      "Data3": 2421,
-      "Data4": 314,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1977,
-      "Data2": 180,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 725,
-      "Data2": 327,
-      "Data3": 821,
-      "Data4": 360,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1102,
-      "Data2": 319,
-      "Data3": 1172,
-      "Data4": 363,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 977,
-      "Data2": 311,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 1056,
-      "Data2": 301,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 2342,
-      "Data2": 153,
-      "Data3": 2350,
-      "Data4": -120,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 2432,
-      "Data2": 95,
-      "Data3": 2417,
-      "Data4": -117,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 2497,
-      "Data2": 28,
-      "Data3": 2491,
-      "Data4": -121,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 94,
-      "Data2": 371,
-      "Data3": 577,
-      "Data4": 463,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 152,
-      "Data2": 325,
+      "Data1": 386,
+      "Data2": 360,
       "Name": "Player"
     },
     {
-      "Data1": 265,
-      "Data2": 345,
-      "Data3": 268,
-      "Data4": 242,
-      "Name": "Frog"
+      "Data1": 510,
+      "Data2": 276,
+      "Data3": 678,
+      "Data4": 431,
+      "Name": "Ground"
     },
     {
-      "Data1": 395,
-      "Data2": 340,
-      "Data3": 393,
-      "Data4": 141,
-      "Name": "Frog"
+      "Data1": 237,
+      "Data2": 301,
+      "Name": "ItemCock"
     },
     {
-      "Data1": 519,
-      "Data2": 343,
-      "Data3": 521,
-      "Data4": 246,
-      "Name": "Frog"
+      "Data1": 148,
+      "Data2": 305,
+      "Name": "ItemWizard"
     },
     {
-      "Data1": 459,
-      "Data2": 341,
-      "Data3": 449,
-      "Data4": 89,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 331,
-      "Data2": 342,
-      "Data3": 341,
-      "Data4": 86,
-      "Name": "Frog"
+      "Data1": 447,
+      "Data2": 338,
+      "Name": "ItemAlien"
     }
   ]
 }

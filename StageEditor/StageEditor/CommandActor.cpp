@@ -17,6 +17,7 @@ namespace StageEditor
 		,mEditingScene(scene)
 		,mCheckFlag(false)
 		,mSaveFlag(false)
+		,mLoadFlag(false)
 	{
 		SetPosition(Vec2(WINDOW_WIDTH / 2.f, 16.f));
 
@@ -76,6 +77,7 @@ namespace StageEditor
 		std::string text = mTextComponent->GetText();
 
 		std::string s = "saveas";
+		std::string l = "load";
 
 		if (text == "check")
 		{
@@ -96,6 +98,14 @@ namespace StageEditor
 			color = GameLib::Color::Blue;
 			if (enter)
 				mEditingScene->Reset();
+		}
+		else if (std::equal(l.begin(), l.end(), text.begin()))
+		{
+			color = GameLib::Color::Blue;
+			if (enter)
+			{
+				mLoadFlag = true;
+			}
 		}
 
 
@@ -130,6 +140,36 @@ namespace StageEditor
 			color = GameLib::Color::Red;
 			if (enter)
 				mNowEditingActor = new EditingFrog(mEditingScene, cursorPos);
+		}
+		else if (text == "straightbee")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingStraightBee(mEditingScene, cursorPos);
+		}
+		else if (text == "circlebee")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingCircleBee(mEditingScene, cursorPos);
+		}
+		else if (text == "itemcock")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingItemCock(mEditingScene, cursorPos);
+		}
+		else if (text == "itemwizard")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingItemWizard(mEditingScene, cursorPos);
+		}
+		else if (text == "itemalien")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingItemAlien(mEditingScene, cursorPos);
 		}
 
 		mTextComponent->SetColor(color);

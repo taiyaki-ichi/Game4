@@ -5,6 +5,7 @@
 #include"Stage/CollisionDetection/Body.hpp"
 #include"Stage/Draw/RectangleComponent.hpp"
 #include"lib/include/Draw/LineComponent.hpp"
+#include"lib/include/Draw/CircleLineComponent.hpp"
 
 #include<iostream>
 
@@ -215,6 +216,189 @@ namespace StageEditor
 
 			SetPosition(Vec2(GetDatas().at(0), GetDatas().at(1)));
 		}
+	}
+
+	EditingStraightBee::EditingStraightBee(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"StraightBee",4)
+	{
+		SetScale(0.08f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Enemy/bee001.png");
+
+		mBody = new Game::Stage::Body(this, "StraightBee");
+		mBody->SetWidthAndHeight(500.f, 400.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+
+		mLine = new GameLib::LineComponent(this, -1);
+	}
+
+	EditingStraightBee::~EditingStraightBee()
+	{
+	}
+
+	void EditingStraightBee::UpdateStageActor()
+	{
+		int num = GetDatas().size();
+
+		if (num == 0)
+		{
+			Vec2 p(0.f, 0.f);
+			mLine->SetPoints(p, p);
+		}
+		else if (num == 2)
+		{
+			Vec2 p1(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2(GetEditingScene()->GetCursorPos().x, GetEditingScene()->GetCursorPos().y);
+			mLine->SetPoints(p1, p2);
+
+			Vec2 dirVec = p2 - p1;
+			float rot = GameLib::Math::Atan2(dirVec.x, dirVec.y);
+			SetRotation(rot + GameLib::Math::Pi / 2.f);
+
+			SetPosition(Vec2(GetDatas().at(0), GetDatas().at(1)));
+		}
+		else if (GetDatas().size() == 4)
+		{
+			Vec2 p1(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2(GetDatas().at(2), GetDatas().at(3));
+			mLine->SetPoints(p1, p2);
+
+			Vec2 dirVec = p2 - p1;
+			float rot = GameLib::Math::Atan2(dirVec.x, dirVec.y);
+			SetRotation(rot + GameLib::Math::Pi / 2.f);
+
+			SetPosition(Vec2(GetDatas().at(0), GetDatas().at(1)));
+		}
+	}
+
+	EditingCircleBee::EditingCircleBee(EditingScene* scene, const Vec2& pos)
+		: EditingActor(scene, pos, "CircleBee", 6)
+	{
+		SetScale(0.08f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Enemy/bee001.png");
+
+		mBody = new Game::Stage::Body(this, "CircleBee");
+		mBody->SetWidthAndHeight(500.f, 400.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+
+		mLine1 = new GameLib::LineComponent(this, -1);
+		mCircle = new GameLib::CircleLineComponent(this, -1);
+	}
+
+	EditingCircleBee::~EditingCircleBee()
+	{
+	}
+
+	void EditingCircleBee::UpdateStageActor()
+	{
+		int num = GetDatas().size();
+
+		if (num == 0)
+		{
+			Vec2 p(0.f, 0.f);
+			mLine1->SetPoints(p, p);
+			mCircle->SetRadius(0.f);
+		}
+		else if (num == 2)
+		{
+			Vec2 p1(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2(GetEditingScene()->GetCursorPos().x, GetEditingScene()->GetCursorPos().y);
+			mLine1->SetPoints(p1, p2);
+
+			Vec2 vec = p2 - p1;
+			mCircle->SetAdjust(-1.f*vec);
+			mCircle->SetRadius(vec.Length());
+
+			float rot = GameLib::Math::Atan2(vec.x, vec.y);
+			SetRotation(rot + GameLib::Math::Pi / 2.f);
+		}
+		else if (num >= 4)
+		{
+			Vec2 p1(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2(GetDatas().at(2), GetDatas().at(3));
+			mLine1->SetPoints(p1, p2);
+
+			Vec2 vec = p2 - p1;
+			float rot;
+			Vec2 pos;
+			Vec2 ad;
+			Vec2 point;
+
+			if (num == 4)
+				point = Vec2(GetEditingScene()->GetCursorPos().x, GetEditingScene()->GetCursorPos().y);
+			else if (num == 6)
+				point = Vec2(GetDatas().at(4), GetDatas().at(5));
+
+			if (GameLib::Vector2::Cross(point - p1, p2 - p1) < 0.f)
+			{
+				rot = GameLib::Math::Atan2(vec.x, vec.y);
+				ad = GameLib::Vector2::Rotation(GameLib::Vector2::Normalize(vec) * 20.f, -GameLib::Math::Pi / 2.f);
+			}
+			else
+			{
+				rot = GameLib::Math::Atan2(vec.x, vec.y) + GameLib::Math::Pi;
+				ad = GameLib::Vector2::Rotation(GameLib::Vector2::Normalize(vec) * 20.f, GameLib::Math::Pi/2.f);
+			}
+
+			mCircle->SetAdjust(-1.f * ad - vec);
+			float l = vec.Length();
+			mCircle->SetRadius(GameLib::Math::Sqrt(20 * 20 + l * l));
+
+			pos = p2 + ad;
+			SetPosition(pos);
+			SetRotation(rot);
+		}
+		
+		
+	}
+
+	EditingItemCock::EditingItemCock(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"ItemCock",2)
+	{
+		SetScale(0.07f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Item/cock.png");
+
+		mBody = new Game::Stage::Body(this, "ItemCock");
+		mBody->SetWidthAndHeight(700.f, 700.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+	EditingItemCock::~EditingItemCock()
+	{
+	}
+
+	EditingItemWizard::EditingItemWizard(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"ItemWizard",2)
+	{
+		SetScale(0.07f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Item/witch.png");
+
+		mBody = new Game::Stage::Body(this, "ItemWizard");
+		mBody->SetWidthAndHeight(700.f, 700.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+	EditingItemWizard::~EditingItemWizard()
+	{
+	}
+
+	EditingItemAlien::EditingItemAlien(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"ItemAlien",2)
+	{
+		SetScale(0.07f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Item/alien.png");
+
+		mBody = new Game::Stage::Body(this, "ItemAlien");
+		mBody->SetWidthAndHeight(700.f, 700.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+	EditingItemAlien::~EditingItemAlien()
+	{
 	}
 
 }

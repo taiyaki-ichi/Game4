@@ -8,6 +8,8 @@
 #include"Enemy/Triple.hpp"
 #include"Enemy/Toge.hpp"
 #include"Enemy/Frog.hpp"
+#include"Stage/Enemy/Bee.hpp"
+#include"Stage/Item/TransformItem.hpp"
 
 #include<iostream>
 
@@ -165,21 +167,6 @@ namespace Game
 				{
 					Vec2 point1 = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					Vec2 point2 = Vec2(o["Data3"].get<double>(), o["Data4"].get<double>());
-					
-					/*
-					float x = point1.x - point2.x;
-					float y = point1.y - point2.y;
-
-					float xx = (x > 0) ? point2.x : point1.x;
-					float yy = (y > 0) ? point2.y : point1.y;
-
-					float w = GameLib::Math::Abs(x);
-					float h = GameLib::Math::Abs(y);
-
-					Vec2 pos = Vec2(xx + w / 2.f, yy + h / 2.f);
-
-					new Ground(scene, pos, w, h);
-					*/
 
 					CreateGround(scene, point1, point2);
 				}
@@ -200,6 +187,38 @@ namespace Game
 					new Enemy::Frog(scene, pos, h);
 
 				}
+				else if (o["Name"].get<std::string>() == "StraightBee")
+				{
+					Vec2 p1 = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					Vec2 p2 = Vec2(o["Data3"].get<double>(), o["Data4"].get<double>());
+					new Enemy::Bee(scene, 0, p1, p2);
+				}
+				else if (o["Name"].get<std::string>() == "CircleBee")
+				{
+					Vec2 p1 = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					Vec2 p2 = Vec2(o["Data3"].get<double>(), o["Data4"].get<double>());
+					Vec2 p3 = Vec2(o["Data5"].get<double>(), o["Data6"].get<double>());
+					int pattern = 1;
+					if (Vec2::Cross(p3 - p1, p2 - p1) < 0.f)
+						pattern = 2;
+					new Enemy::Bee(scene, pattern, p1, p2);
+				}
+				else if (o["Name"].get<std::string>() == "ItemCock")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Item::Cock(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "ItemWizard")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Item::Wizard(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "ItemAlien")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Item::Alien(scene, pos);
+				}
+
 
 
 			}

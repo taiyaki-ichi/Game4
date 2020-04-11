@@ -60,6 +60,13 @@
       "Data3": 1070,
       "Data4": 93,
       "Name": "Ground"
+    },
+    {
+      "Data1": 851,
+      "Data2": 324,
+      "Data3": 850,
+      "Data4": 132,
+      "Name": "Frog"
     }
   ]
 }

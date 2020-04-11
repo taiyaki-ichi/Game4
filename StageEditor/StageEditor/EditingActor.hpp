@@ -9,6 +9,7 @@ namespace GameLib
 	class TextureComponent;
 	class Vector2;
 	class LineComponent;
+	class CircleLineComponent;
 	
 }
 namespace Game
@@ -120,5 +121,71 @@ namespace StageEditor
 
 		GameLib::LineComponent* mLine;
 	};
+
+	class EditingStraightBee : public EditingActor
+	{
+	public:
+		EditingStraightBee(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingStraightBee();
+
+		virtual void UpdateStageActor() override;
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+
+		GameLib::LineComponent* mLine;
+
+	};
+
+	class EditingCircleBee : public EditingActor
+	{
+	public:
+		EditingCircleBee(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingCircleBee();
+
+		virtual void UpdateStageActor() override;
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+
+		GameLib::LineComponent* mLine1;
+		GameLib::CircleLineComponent* mCircle;
+	};
+
+	class EditingItemCock : public EditingActor
+	{
+	public:
+		EditingItemCock(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingItemCock();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
+
+	class EditingItemWizard : public EditingActor
+	{
+	public:
+		EditingItemWizard(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingItemWizard();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
+
+	class EditingItemAlien : public EditingActor
+	{
+	public:
+		EditingItemAlien(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingItemAlien();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
+
 
 }

@@ -26,8 +26,10 @@ namespace StageEditor
 
 		bool GetCheckFlag() const { return mCheckFlag; }
 		bool GetSaveFlag() const { return mSaveFlag; }
-		void SaveCompolete() { mSaveFlag = false; }
+		void SaveComplete() { mSaveFlag = false; }
 		const std::string& GetText() const;
+		bool GetLoadFlag() const { return mLoadFlag; }
+		void LoadComplete() { mLoadFlag = false; }
 
 	private:
 		GameLib::TextComponent* mTextComponent;
@@ -36,6 +38,7 @@ namespace StageEditor
 
 		bool mCheckFlag;
 		bool mSaveFlag;
+		bool mLoadFlag;
 
 		//Enter‚Æ•¶Žš—ñ‚ð•]‰¿
 		void EvaluateTextAndEnter(bool enter,const GameLib::Vector2& cursorPos);

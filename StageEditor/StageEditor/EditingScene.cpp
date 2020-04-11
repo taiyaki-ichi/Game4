@@ -23,7 +23,7 @@ namespace StageEditor
 		mCursor = new Cursor(this);
 		mCommandActor = new CommandActor(this);
 
-		LoadEditingData(this);
+		LoadEditingData(this,"Data/test");
 
 		Game::Stage::Body::SetDrawFlag(true);
 	}
@@ -70,7 +70,14 @@ namespace StageEditor
 		{
 			std::string name = mCommandActor->GetText().substr(6);
 			CreateJsonData(mEditingActors, "../StageData/" + name + ".json", mScreemMoveSum);
-			mCommandActor->SaveCompolete();
+			mCommandActor->SaveComplete();
+		}
+
+		if (mCommandActor->GetLoadFlag())
+		{
+			std::string name = mCommandActor->GetText().substr(4);
+			LoadStageData(name);
+			mCommandActor->LoadComplete();
 		}
 
 		return this;
@@ -94,6 +101,14 @@ namespace StageEditor
 	{
 		ResetEditingActors();
 		ResetScreemMoveSum();
+	}
+
+	void EditingScene::LoadStageData(const std::string& fileName)
+	{
+		Reset();
+
+		LoadEditingData(this, "../StageData/" + fileName);
+
 	}
 
 	void EditingScene::ResetEditingActors()
@@ -177,16 +192,24 @@ namespace StageEditor
 
 
 
-	bool LoadEditingData(EditingScene* scene)
+	bool LoadEditingData(EditingScene* scene, const std::string& fileName)
 	{
 		using Vec2 = GameLib::Vector2;
 
 		// JSONデータの読み込み。
+		/*
 		std::ifstream ifs("Data/test.json", std::ios::in);
 		if (ifs.fail()) {
 			std::cerr << "failed to read Data/test.json" << std::endl;
 			return false;
 		}
+		*/
+		std::ifstream ifs(fileName + ".json", std::ios::in);
+		if (ifs.fail()) {
+			std::cerr << "failed to read " << fileName << ".json" << std::endl;
+			return false;
+		}
+
 		const std::string json((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
 		ifs.close();
 
@@ -233,6 +256,26 @@ namespace StageEditor
 			else if (o["Name"].get<std::string>() == "Frog")
 			{
 				actor = new EditingFrog(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "StraightBee")
+			{
+				actor = new EditingStraightBee(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "CircleBee")
+			{
+				actor = new EditingCircleBee(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "ItemCock")
+			{
+				actor = new EditingItemCock(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "ItemWizard")
+			{
+				actor = new EditingItemWizard(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "ItemAlien")
+			{
+				actor = new EditingItemAlien(scene, Vec2(x, y));
 			}
 			
 

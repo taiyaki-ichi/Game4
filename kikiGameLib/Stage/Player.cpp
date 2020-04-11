@@ -101,6 +101,7 @@ namespace Game
 			};
 			mSubAnim = new GameLib::AnimComponent(this, sub);
 			mSubAnim->SetChannel(0);
+			mSubAnim->SetAnimFPS(10);
 			
 			SetStageState(new PlayerState::Active(this));
 
@@ -373,16 +374,30 @@ namespace Game
 					mIsJumping = false;
 				}
 			}
-			else if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog")
+			else if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee")
 			{
 				mDeathFlag = true;
 			}
-			else if (name == "EnemyTripleWeakness" || "EnemyFrogWeakness")
+			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness")
 			{
 				mVelocity.y = -5.f;
 				//ÇSÉtÉåÅ[ÉÄÇÃä‘ÇÕîÚÇ◊ÇÈ
 				mJumpFlag2 = 4;
-
+			}
+			else if (name == "ItemCock")
+			{
+				mMode = Mode::Cock;
+				mTransformCnt = 0;
+			}
+			else if (name == "ItemWizard")
+			{
+				mMode = Mode::Wizard;
+				mTransformCnt = 0;
+			}
+			else if (name == "ItemAlien")
+			{
+				mMode = Mode::Alien;
+				mTransformCnt = 0;
 			}
 		}
 

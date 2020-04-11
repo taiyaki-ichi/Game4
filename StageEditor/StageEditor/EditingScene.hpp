@@ -31,6 +31,8 @@ namespace StageEditor
 
 		void Reset();
 
+		void LoadStageData(const std::string& fileName);
+
 		const GameLib::Vector2& GetCursorPos() const;
 
 	private:
@@ -62,5 +64,5 @@ namespace StageEditor
 
 	};
 
-	bool LoadEditingData(EditingScene* scene);
+	bool LoadEditingData(EditingScene* scene, const std::string& fileName);
 }

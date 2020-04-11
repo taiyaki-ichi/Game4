@@ -36,7 +36,7 @@ namespace Game
 				mBody->SetColor(GameLib::Vector3(0.f, 0.f, 255.f));
 
 				if (pattern == 0)
-					SetStageState(new StraitBeeActive(this, p1, p2));
+					SetStageState(new StraightBeeActive(this, p1, p2));
 				else
 					SetStageState(new CircleBeeActive(this, p1, p2, pattern));
 
@@ -47,47 +47,51 @@ namespace Game
 			}
 
 
-			StraitBeeActive::StraitBeeActive(Bee* bee, const GameLib::Vector2& p1, const GameLib::Vector2& p2)
+			StraightBeeActive::StraightBeeActive(Bee* bee, const GameLib::Vector2& p1, const GameLib::Vector2& p2)
 				:StageState()
 				, mBee(bee)
-				, mPoint1(p1)
-				, mMoveVec(p2 - p1)
-				,mCnt(0)
+				, mPoint1((p2 - p1) / 2.f + p1)
+				, mMoveVec((p1 - p2) / 2.f)
+				, mCnt(0)
 			{
+
 			}
 		
 
-			StraitBeeActive::~StraitBeeActive()
+			StraightBeeActive::~StraightBeeActive()
 			{
 			}
 
-			StageState* StraitBeeActive::Update()
+			StageState* StraightBeeActive::Update()
 			{
 				GameLib::Vector2 prePos = mBee->GetPosition();
 
-				float rate = 1.f;
+				float rate = 4.f;
 				float l = mMoveVec.Length();
-				mBee->SetPosition(mPoint1 + mMoveVec * GameLib::Math::Sin(mCnt / l * rate));
+				mBee->SetPosition(mPoint1 + mMoveVec * GameLib::Math::Cos(mCnt / l * rate));
 
 				GameLib::Vector2 dirVec = mBee->GetPosition() - prePos;
 				float rot = GameLib::Math::Atan2(dirVec.x, dirVec.y);
 				mBee->SetRotation(rot + GameLib::Math::Pi / 2.f);
 
+				mCnt++;
+
 				return this;
 			}
 
-			void StraitBeeActive::Hit(Body* myBody, Body* theBody)
+			void StraightBeeActive::Hit(Body* myBody, Body* theBody)
 			{
 				ActiveBeeHit(myBody, theBody);
 			}
 
-			void StraitBeeActive::AdjustPosSub(const GameLib::Vector2& vec)
+			void StraightBeeActive::AdjustPosSub(const GameLib::Vector2& vec)
 			{
 				mPoint1 += vec;
 			}
 
 			CircleBeeActive::CircleBeeActive(Bee* bee,const GameLib::Vector2& p1, const GameLib::Vector2& p2,int pattern)
 				:StageState()
+				,mBee(bee)
 				,mCenter(p1)
 				,mRediusVec(p2-p1)
 				,mRot(0.f)
@@ -102,15 +106,22 @@ namespace Game
 
 			StageState* CircleBeeActive::Update()
 			{
-				float d = 0.01f;
+				float d = 0.02f;
 
-				mBee->SetPosition(mCenter + GameLib::Vector2::Rotation(mRediusVec, mRot));
-				mBee->SetRotation(mRot + GameLib::Math::Pi / 2.f);
-
+				GameLib::Vector2 pos = mCenter + GameLib::Vector2::Rotation(mRediusVec, mRot);
+				mBee->SetPosition(pos);
+				GameLib::Vector2 vec = pos - mCenter;
+				float rot= GameLib::Math::Atan2(vec.x, vec.y);
 				if (mIsClockwise)
+				{
 					mRot += d;
+					mBee->SetRotation(rot + GameLib::Math::Pi);
+				}
 				else
+				{
 					mRot -= d;
+					mBee->SetRotation(rot);
+				}
 
 				return this;
 			}

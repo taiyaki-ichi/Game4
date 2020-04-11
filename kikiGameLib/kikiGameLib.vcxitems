@@ -14,12 +14,14 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\CircleLineComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\LineComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Bee.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WindowData.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9anim.h" />
@@ -76,6 +78,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\ComponentsManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Data.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\AnimComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\CircleLineComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\LineComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\SpriteComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Draw\TextComponent.cpp" />
@@ -98,6 +101,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\StageActor.cpp" />

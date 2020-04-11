@@ -29,11 +29,11 @@ namespace Game
 				Body* mBody;
 			};
 
-			class StraitBeeActive : public StageState
+			class StraightBeeActive : public StageState
 			{
 			public:
-				StraitBeeActive(Bee* bee, const GameLib::Vector2& p1, const GameLib::Vector2& p2);
-				virtual ~StraitBeeActive();
+				StraightBeeActive(Bee* bee, const GameLib::Vector2& p1, const GameLib::Vector2& p2);
+				virtual ~StraightBeeActive();
 
 				virtual StageState* Update() override;
 				virtual void Hit(Body* myBody, Body* theBody) override;
