@@ -26,8 +26,8 @@ namespace Game
 		{
 		}
 
-		void Ground::UpdateStageActor()
-		{
-		}
+
+
+
 	}
 }

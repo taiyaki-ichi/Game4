@@ -352,6 +352,8 @@ namespace Game
 					mIsJumping = false;
 					mGroundVelocity += theBody->GetVelocity();
 
+					myBody->GetOwner()->SetPosition(myBody->GetOwner()->GetPosition() + theBody->GetVelocity());
+
 				}
 				if (adjust.y > 0.f && mVelocity.y < 0.f)
 				{

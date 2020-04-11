@@ -52,6 +52,8 @@ namespace Game
 
 			const Vec2& GetVelocity() const { return mVelocity; }
 
+			static void SetScreenMoveAdjust(const Vec2& vec) { mScreenMoveAdjust = vec; }
+
 		private:
 			float mWidth;
 			float mHeight;
@@ -72,6 +74,7 @@ namespace Game
 
 			Vec2 mPrevPos;
 			Vec2 mVelocity;
+			static Vec2 mScreenMoveAdjust;
 		};
 
 		//‰ñ“]‚µ‚Ä‚¢‚È‚¢Body“¯m‚Ì‚ß‚è‚İ‚ğ•â³‚·‚éƒxƒNƒgƒ‹‚Ìæ“¾

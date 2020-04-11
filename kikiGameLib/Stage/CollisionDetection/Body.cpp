@@ -13,6 +13,7 @@ namespace Game
 	namespace Stage
 	{
 		bool Body::DrawFlag = true;
+		GameLib::Vector2 Body::mScreenMoveAdjust(0.f, 0.f);
 
 		Body::Body(StageActor* actor, const std::string& bodyName, int updateOrder)
 			:SpriteComponent(actor, 10000, updateOrder)
@@ -22,8 +23,8 @@ namespace Game
 			, mAdjust()
 			, mStageOwner(actor)
 			, mColor(GameLib::Color::Black)
-			,mPrevPos()
-			,mVelocity()
+			,mPrevPos(0.f,0.f)
+			,mVelocity(0.f,0.f)
 		{
 			mLinerObject = new LinerObject(this);
 		}
@@ -53,7 +54,9 @@ namespace Game
 			mLinerObject->RemoveFromList();
 
 			GetStageOwner()->GetStageScene()->GetTree()->Regist(mLinerObject);
+
 			Vec2 pos = GetOwner()->GetPosition();
+			mPrevPos += Body::mScreenMoveAdjust;
 			mVelocity = pos - mPrevPos;
 			mPrevPos = pos;
 		}

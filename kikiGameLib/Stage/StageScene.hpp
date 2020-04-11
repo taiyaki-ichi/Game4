@@ -54,8 +54,6 @@ namespace Game
 			Liner4Tree* GetTree() const { return mTree; }
 			void SetPlayer(Player* p) { mPlayer = p; }
 
-
-
 		private:
 			class Player* mPlayer;
 			std::vector<StageActor*> mStageActors;
@@ -64,6 +62,7 @@ namespace Game
 
 			float mStageLeft;
 			float mStageRight;
+
 
 		protected:
 			//Stageの幅やPlayerの位置によってスクリーンを動かす

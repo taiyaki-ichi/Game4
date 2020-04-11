@@ -10,6 +10,7 @@
 #include"Enemy/Frog.hpp"
 #include"Stage/Enemy/Bee.hpp"
 #include"Stage/Item/TransformItem.hpp"
+#include"Stage/CollisionDetection/Body.hpp"
 
 #include<iostream>
 
@@ -124,6 +125,8 @@ namespace Game
 
 			mStageLeft -= vec.x;
 			mStageRight -= vec.x;
+
+			Body::SetScreenMoveAdjust(-1.f * vec);
 
 		}
 
