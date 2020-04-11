@@ -13,7 +13,7 @@ namespace Game
 			Fork::Fork(StageScene* scene, const GameLib::Vector2& pos, bool IsRight, int updateOrder)
 				:StageStateActor(scene,pos,updateOrder)
 			{
-				SetScale(0.01f);
+				SetScale(0.1f);
 
 				mBody = new Body(this, "");
 				mBody->SetWidthAndHeight(700.f, 150.f);
@@ -40,11 +40,11 @@ namespace Game
 
 			StageState* ForkActive::Update()
 			{
-
+				GameLib::Vector2 pos = mFork->GetPosition();
 
 				if (mCnt == 2)
 				{
-					auto texture = new GameLib::TextureComponent(mFork, "..Assets/Attack/fork.png");
+					auto texture = new GameLib::TextureComponent(mFork, "../Assets/Attack/fork.png", -1);
 					if (!mIsRight)
 						texture->SetTextureFlip(GameLib::TextureFlip::Horizontal);
 
@@ -52,8 +52,6 @@ namespace Game
 				}
 				else if (mCnt > 2)
 				{
-
-					GameLib::Vector2 pos = mFork->GetPosition();
 					if (mIsRight)
 						pos.x += 7.f;
 					else
@@ -62,7 +60,9 @@ namespace Game
 
 				}
 
-
+				if (pos.x < ActorUpdateScope::Left + 100.f ||
+					ActorUpdateScope::Right - 100.f < pos.x)
+					mFork->SetState(GameLib::Actor::State::Dead);
 
 				mCnt++;
 				return this;
@@ -89,11 +89,11 @@ namespace Game
 						if (GameLib::Math::Abs(adjust.x) < GameLib::Math::Abs(adjust.y) &&
 							((adjust.x < 0.f && mIsRight) || (adjust.x > 0.f && !mIsRight)))
 						{
-							//ForkGround
+							mFork->SetStageState(new ForkGround(mFork, mIsRight, theBody));
 						}
 						else
 						{
-							//Fall
+							mFork->SetStageState(new ForkFall(mFork, mIsRight));
 						}
 
 					}
@@ -108,12 +108,15 @@ namespace Game
 				
 			}
 
-			ForkFall::ForkFall(Fork* fork, bool isRight)
+			ForkFall::ForkFall(Fork* fork,bool isRight)
 				:StageState()
 				,mFork(fork)
-				,mIsRight(isRight)
+				,mAdRot(0.05f)
 			{
 				mFork->GetBody()->SetWidthAndHeight(0.f, 0.f);
+				if (!isRight)
+					mAdRot *= -1.f;
+				
 			}
 
 			ForkFall::~ForkFall()
@@ -127,10 +130,7 @@ namespace Game
 				mFork->SetPosition(pos);
 
 				float rot = mFork->GetRotation();
-				if (mIsRight)
-					rot += 0.05f;
-				else
-					rot -= 0.05f;
+				rot += mAdRot;
 				mFork->SetRotation(rot);
 
 				if (pos.y > ActorUpdateScope::Bottom - 100.f ||
@@ -138,6 +138,36 @@ namespace Game
 					pos.x < ActorUpdateScope::Left + 100.f)
 					mFork->SetState(GameLib::Actor::State::Dead);
 
+				return this;
+			}
+
+			ForkGround::ForkGround(Fork* fork, bool isRight,Body* grooundBody)
+				:StageState()
+				,mFork(fork)
+				,mIsRight(isRight)
+				,mGroundBody(grooundBody)
+				,mCnt(0)
+			{
+				mFork->GetBody()->SetName("ForkGround");
+			}
+
+			ForkGround::~ForkGround()
+			{
+			}
+
+			StageState* ForkGround::Update()
+			{
+				if (mGroundBody)
+				{
+					auto pos = mFork->GetPosition();
+					pos += mGroundBody->GetVelocity();
+					mFork->SetPosition(pos);
+				}
+
+				if (mCnt >= 240 || !mGroundBody)
+					return new ForkFall(mFork, mIsRight);
+
+				mCnt++;
 				return this;
 			}
 

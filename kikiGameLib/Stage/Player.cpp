@@ -5,6 +5,7 @@
 #include"lib/include/InputState.hpp"
 #include"WindowData.hpp"
 #include"StageScene.hpp"
+#include"PlayerAction/Fork.hpp"
 
 #include<iostream>
 
@@ -128,7 +129,6 @@ namespace Game
 			,mJumpFlag(false)
 			,mIsJumping(false)
 			,mJumpAcceleFlag(false)
-			,mGroundVelocity(0.f,0.f)
 			,mDeathFlag(false)
 			,mJumpFlag2(0)
 		{
@@ -220,7 +220,6 @@ namespace Game
 
 			//位置の更新
 			pos += mVelocity;// +mGroundVelocity;
-			mGroundVelocity = GameLib::Vector2(0.f, 0.f);
 
 			//落下中のアニメーション
 			if (mIsOnGround == false) {
@@ -335,7 +334,6 @@ namespace Game
 				using Vec2 = GameLib::Vector2;
 				Vec2 pos = myBody->GetOwner()->GetPosition();
 				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);	
-				myBody->GetOwner()->SetPosition(pos + adjust);
 
 				if (adjust.x < 0.f && mVelocity.x>0.f)
 				{
@@ -350,16 +348,16 @@ namespace Game
 					mJumpFlag = true;
 					mIsOnGround = true;
 					mIsJumping = false;
-					mGroundVelocity += theBody->GetVelocity();
 
-					myBody->GetOwner()->SetPosition(myBody->GetOwner()->GetPosition() + theBody->GetVelocity());
-
+					adjust += theBody->GetVelocity();
 				}
 				if (adjust.y > 0.f && mVelocity.y < 0.f)
 				{
 					mVelocity.y = 0.f;
 					mIsJumping = false;
 				}
+
+				myBody->GetOwner()->SetPosition(pos + adjust);
 			}
 			else if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee")
 			{
@@ -494,6 +492,16 @@ namespace Game
 
 				void Cock::Action()
 				{
+					auto pos = mPlayer->GetPosition();
+					bool isRight = true;
+					float ad = 30.f;
+					if (mPlayer->GetAnim()->GetTextureFlip() == GameLib::TextureFlip::Horizontal)
+					{
+						ad *= -1.f;
+						isRight = false;
+					}
+					pos.x += ad;
+					new PlayerAction::Fork(mPlayer->GetStageScene(), pos, isRight);
 				}
 
 

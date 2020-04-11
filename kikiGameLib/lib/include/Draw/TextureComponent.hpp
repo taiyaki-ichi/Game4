@@ -18,6 +18,8 @@ namespace GameLib
 		void SetTexture(Texture* tex) { mTexture = tex; }
 		void SetTextureFlip(const TextureFlip& flip) { mTextureFilp = flip; }
 
+		const TextureFlip& GetTextureFlip() const{ return mTextureFilp; }
+
 	private:
 		Texture* mTexture;
 		TextureFlip mTextureFilp;

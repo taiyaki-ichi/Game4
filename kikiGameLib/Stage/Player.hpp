@@ -96,8 +96,6 @@ namespace Game
 				//’n–Ê‚É‚Â‚¢‚Ä‚¢‚é‚©‚Ç‚¤‚©
 				bool mIsOnGround;
 
-				GameLib::Vector2 mGroundVelocity;
-
 				//€–SState‚És‚­‚©‚Ç‚¤‚©
 				bool mDeathFlag;
 

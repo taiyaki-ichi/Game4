@@ -50,17 +50,30 @@ namespace Game
 			class ForkFall : public StageState
 			{
 			public:
-				ForkFall(Fork* fork,bool isRight);
+				ForkFall(Fork* fork, bool isRigjht);
 				virtual ~ForkFall();
 
 				virtual StageState* Update() override;
 
 			private:
 				Fork* mFork;
-				bool mIsRight;
+				float mAdRot;
 			};
 
-			//class ForkGround : public 
+			class ForkGround : public StageState
+			{
+			public:
+				ForkGround(Fork* fork, bool isRight,Body* groundBody);
+				virtual ~ForkGround();
+
+				virtual StageState* Update() override;
+
+			private:
+				Fork* mFork;
+				bool mIsRight;
+				Body* mGroundBody;
+				int mCnt;
+			};
 
 		}
 	}
