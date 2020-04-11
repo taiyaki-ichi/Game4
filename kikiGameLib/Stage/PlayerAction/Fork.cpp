@@ -2,6 +2,7 @@
 #include"Stage/CollisionDetection/Body.hpp"
 #include"lib/include/Draw/TextureComponent.hpp"
 #include"Stage/StageScene.hpp"
+#include"lib/include/Data.hpp"
 
 namespace Game
 {
@@ -16,10 +17,12 @@ namespace Game
 				SetScale(0.1f);
 
 				mBody = new Body(this, "");
-				mBody->SetWidthAndHeight(700.f, 150.f);
+				mBody->SetWidthAndHeight(700.f, 100.f);
 				mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
 
 				SetStageState(new ForkActive(this,IsRight));
+
+				mTexture = new GameLib::TextureComponent(this,-1);
 			}
 
 			Fork::~Fork()
@@ -44,10 +47,9 @@ namespace Game
 
 				if (mCnt == 2)
 				{
-					auto texture = new GameLib::TextureComponent(mFork, "../Assets/Attack/fork.png", -1);
+					mFork->GetTextureComponent()->SetTexture(GameLib::Data::GetTexture("../Assets/Attack/fork.png"));
 					if (!mIsRight)
-						texture->SetTextureFlip(GameLib::TextureFlip::Horizontal);
-
+						mFork->GetTextureComponent()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
 					mFork->GetBody()->SetName("Fork");
 				}
 				else if (mCnt > 2)
@@ -89,17 +91,24 @@ namespace Game
 						if (GameLib::Math::Abs(adjust.x) < GameLib::Math::Abs(adjust.y) &&
 							((adjust.x < 0.f && mIsRight) || (adjust.x > 0.f && !mIsRight)))
 						{
-							mFork->SetStageState(new ForkGround(mFork, mIsRight, theBody));
+							mFork->SetStageState(new ForkGround(mFork, theBody));
 						}
 						else
 						{
-							mFork->SetStageState(new ForkFall(mFork, mIsRight));
+							mFork->SetStageState(new ForkFall(mFork));
 						}
 
 					}
-
-					//if name==teki
-					//togettherfall
+					else if (theName == "EnemyTriple" || theName == "EnemyTripleWeakness" ||
+						theName == "EnemyFrog" || theName == "EnemyFrogWeakness"||
+						theName=="EnemyBee")
+					{
+						mFork->SetStageState(new ForkFallTogether(mFork, theBody->GetStageOwner()));
+					}
+					else if (theName == "EnemyToge")
+					{
+						mFork->SetStageState(new ForkFall(mFork));
+					}
 
 
 
@@ -108,13 +117,13 @@ namespace Game
 				
 			}
 
-			ForkFall::ForkFall(Fork* fork,bool isRight)
+			ForkFall::ForkFall(Fork* fork)
 				:StageState()
 				,mFork(fork)
 				,mAdRot(0.05f)
 			{
 				mFork->GetBody()->SetWidthAndHeight(0.f, 0.f);
-				if (!isRight)
+				if (mFork->GetTextureComponent()->GetTextureFlip() == GameLib::TextureFlip::Horizontal)
 					mAdRot *= -1.f;
 				
 			}
@@ -141,10 +150,9 @@ namespace Game
 				return this;
 			}
 
-			ForkGround::ForkGround(Fork* fork, bool isRight,Body* grooundBody)
+			ForkGround::ForkGround(Fork* fork,Body* grooundBody)
 				:StageState()
 				,mFork(fork)
-				,mIsRight(isRight)
 				,mGroundBody(grooundBody)
 				,mCnt(0)
 			{
@@ -165,9 +173,54 @@ namespace Game
 				}
 
 				if (mCnt >= 240 || !mGroundBody)
-					return new ForkFall(mFork, mIsRight);
+					return new ForkFall(mFork);
 
 				mCnt++;
+				return this;
+			}
+
+			void ForkGround::Hit(Body* myBody, Body* theBody)
+			{
+				if (theBody->GetName() == "Player")
+				{
+					mCnt += 3;
+				}
+			}
+
+			ForkFallTogether::ForkFallTogether(Fork* fork, StageActor* together)
+				:StageState()
+				,mFork(fork)
+				,mTogetherActor(together)
+			{
+				mAdjust = mFork->GetPosition() - mTogetherActor->GetPosition();
+				mFork->GetBody()->SetWidthAndHeight(0.f, 0.f);
+				
+			}
+
+			ForkFallTogether::~ForkFallTogether()
+			{
+			}
+
+			StageState* ForkFallTogether::Update()
+			{
+				if (mTogetherActor)
+				{
+
+					float rot = mTogetherActor->GetRotation();
+					mFork->SetRotation(rot);
+
+					auto pos = mTogetherActor->GetPosition() + GameLib::Vector2::Rotation(mAdjust, rot);
+					mFork->SetPosition(pos);
+
+					if (pos.y > ActorUpdateScope::Bottom - 100.f ||
+						pos.x > ActorUpdateScope::Right - 100.f ||
+						pos.x < ActorUpdateScope::Left + 100.f)
+						mFork->SetState(GameLib::Actor::State::Dead);
+				}
+				else
+					mFork->SetState(GameLib::Actor::State::Dead);
+					
+
 				return this;
 			}
 

@@ -22,9 +22,10 @@ namespace Game
 				virtual ~Fork();
 
 				Body* GetBody() const { return mBody; }
-
+				GameLib::TextureComponent* GetTextureComponent() const { return mTexture; }
 			private:
 				Body* mBody;
+				GameLib::TextureComponent* mTexture;
 			};
 
 
@@ -50,7 +51,7 @@ namespace Game
 			class ForkFall : public StageState
 			{
 			public:
-				ForkFall(Fork* fork, bool isRigjht);
+				ForkFall(Fork* fork);
 				virtual ~ForkFall();
 
 				virtual StageState* Update() override;
@@ -63,16 +64,30 @@ namespace Game
 			class ForkGround : public StageState
 			{
 			public:
-				ForkGround(Fork* fork, bool isRight,Body* groundBody);
+				ForkGround(Fork* fork,Body* groundBody);
 				virtual ~ForkGround();
+
+				virtual StageState* Update() override;
+				virtual void Hit(Body* myBody, Body* theBody) override;
+
+			private:
+				Fork* mFork;
+				Body* mGroundBody;
+				int mCnt;
+			};
+
+			class ForkFallTogether : public StageState
+			{
+			public:
+				ForkFallTogether(Fork* fork, StageActor* together);
+				virtual ~ForkFallTogether();
 
 				virtual StageState* Update() override;
 
 			private:
+				StageActor* mTogetherActor;
 				Fork* mFork;
-				bool mIsRight;
-				Body* mGroundBody;
-				int mCnt;
+				GameLib::Vector2 mAdjust;
 			};
 
 		}

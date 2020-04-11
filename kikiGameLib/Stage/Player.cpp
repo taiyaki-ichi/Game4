@@ -381,6 +381,22 @@ namespace Game
 			{
 				SetMode(new PlayerMode::Alien(mPlayer));
 			}
+			else if (name == "ForkGround")
+			{
+				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);
+				if (mVelocity.y > 0.f && adjust.y < 0.f)
+				{
+					Vec2 pos = myBody->GetOwner()->GetPosition();
+
+					mVelocity.y = 0.f;
+					mJumpFlag = true;
+					mIsOnGround = true;
+					mIsJumping = false;
+					adjust += theBody->GetVelocity();
+
+					myBody->GetOwner()->SetPosition(pos + adjust);
+				}
+			}
 		}
 
 		void PlayerState::Active::SetMode(PlayerMode::Mode* mode)

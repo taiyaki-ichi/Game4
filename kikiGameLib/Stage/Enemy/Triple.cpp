@@ -150,6 +150,11 @@ namespace Game
 					mFlatFlag = true;
 					mTriple->BreakBody();
 				}
+				else if (name == "Fork")
+				{
+					mTriple->BreakBody();
+					mTriple->SetStageState(new Fall(mTriple));
+				}
 			}
 
 

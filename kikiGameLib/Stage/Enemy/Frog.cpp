@@ -156,6 +156,11 @@ namespace Game
 					mFlatFlag = true;
 					mFrog->BreakBody();
 				}
+				else if (name == "Fork")
+				{
+					mFrog->BreakBody();
+					mFrog->SetStageState(new Fall(mFrog));
+				}
 			}
 
 		}
