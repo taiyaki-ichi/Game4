@@ -142,7 +142,8 @@ namespace Game
 						mVelocity *= -1.f;
 					else if (adjust.x < 0.f && mVelocity>0.f)
 						mVelocity *= -1.f;
-
+					else if (adjust.y < 0.f)
+						adjust += theBody->GetVelocity();
 					myActor->SetPosition(myActor->GetPosition() + adjust);
 				}
 				else if (name == "Player" && myName == "EnemyTripleWeakness")

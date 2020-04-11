@@ -143,6 +143,7 @@ namespace Game
 						mOnGround = true;
 						mVelocityY = 0.f;
 						mFrog->GetAnim()->SetChannel(0);
+						adjust += theBody->GetVelocity();
 					}
 					else if(adjust.y)
 					{

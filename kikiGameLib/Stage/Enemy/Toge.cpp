@@ -75,6 +75,8 @@ namespace Game
 					using Vec2 = GameLib::Vector2;
 					Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, 0.f);
 
+					if (adjust.y < 0.f)
+						adjust += theBody->GetVelocity();
 					mToge->SetPosition(mToge->GetPosition() + adjust);
 				}
 			}
