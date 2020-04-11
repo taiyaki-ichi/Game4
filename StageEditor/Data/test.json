@@ -13,11 +13,6 @@
       "Name": "Ground"
     },
     {
-      "Data1": 487,
-      "Data2": 300,
-      "Name": "ItemCock"
-    },
-    {
       "Data1": 123,
       "Data2": 431,
       "Data3": 1625,
@@ -25,21 +20,9 @@
       "Name": "Ground"
     },
     {
-      "Data1": 1019,
-      "Data2": 377,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 875,
-      "Data2": 386,
-      "Data3": 874,
-      "Data4": 202,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 1117,
-      "Data2": 390,
-      "Name": "Triple"
+      "Data1": 477,
+      "Data2": 326,
+      "Name": "ItemWizard"
     }
   ]
 }

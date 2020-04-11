@@ -6,6 +6,7 @@
 #include"WindowData.hpp"
 #include"StageScene.hpp"
 #include"PlayerAction/Fork.hpp"
+#include"Stage/PlayerAction/Meteor.hpp"
 
 #include<iostream>
 
@@ -540,7 +541,7 @@ namespace Game
 
 				void Wizard::Action()
 				{
-
+					new PlayerAction::Meteor(mPlayer->GetStageScene(), mPlayer->GetPosition().x);
 				}
 
 				Alien::Alien(Player* player)

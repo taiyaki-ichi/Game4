@@ -23,6 +23,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\PlayerAction\Fork.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\PlayerAction\Meteor.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WindowData.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9anim.h" />
@@ -106,6 +107,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\PlayerAction\Fork.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\PlayerAction\Meteor.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\StageActor.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\StageScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\StageStateActor.cpp" />

@@ -47,7 +47,7 @@ namespace Game
 
 				if (mCnt == 2)
 				{
-					mFork->GetTextureComponent()->SetTexture(GameLib::Data::GetTexture("../Assets/Attack/fork.png"));
+					mFork->GetTextureComponent()->SetTexture(GameLib::Data::GetTexture("../Assets/Action/fork.png"));
 					if (!mIsRight)
 						mFork->GetTextureComponent()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
 					mFork->GetBody()->SetName("Fork");

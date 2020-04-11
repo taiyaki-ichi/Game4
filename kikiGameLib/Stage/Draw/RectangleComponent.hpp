@@ -21,6 +21,10 @@ namespace Game
 			void SetWidth(float w) { mWidth = w; }
 			void SetHeight(float h) { mHeight = h; }
 			void SetWidthAndHeight(float w, float h) { mWidth = w; mHeight = h; }
+			float GetWidth() const { return mWidth; }
+			float GetHeight() const { return mHeight; }
+			float GetAlpha() const { return mAlpha; }
+			void SetAlpha(float a) { mAlpha = a; }
 
 		private:
 			float mWidth;
