@@ -13,16 +13,27 @@
       "Name": "Ground"
     },
     {
-      "Data1": 518,
-      "Data2": 367,
-      "Name": "ItemAlien"
-    },
-    {
       "Data1": 198,
       "Data2": 356,
       "Data3": 334,
       "Data4": 431,
       "Name": "Ground"
+    },
+    {
+      "Data1": 760,
+      "Data2": 311,
+      "Data3": 528,
+      "Data4": 279,
+      "Name": "StraightBee"
+    },
+    {
+      "Data1": 778,
+      "Data2": 372,
+      "Data3": 534,
+      "Data4": 322,
+      "Data5": 562,
+      "Data6": 226,
+      "Name": "CircleBee"
     }
   ]
 }

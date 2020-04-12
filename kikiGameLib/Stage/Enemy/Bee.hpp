@@ -23,13 +23,27 @@ namespace Game
 				Bee(StageScene* scene, int pattern, const GameLib::Vector2& p1, const GameLib::Vector2& p2);
 				virtual ~Bee();
 
-				void BreakBody();
 				GameLib::AnimComponent* GetAnim() const { return mAnim; }
 
 			private:
 
 				GameLib::AnimComponent* mAnim;
+			};
+
+			class BeeBody : public StageActor
+			{
+			public:
+				BeeBody(StageScene* scene, Bee* bee, int updateOrder = -1);
+				virtual ~BeeBody();
+
+				virtual void UpdateStageActor() override;
+				virtual void Hit(Body* myBody, Body* theBody) override;
+
+			private:
 				Body* mBody;
+				Body* mWeakness;
+
+				Bee* mBee;
 			};
 
 			class StraightBeeActive : public StageState
@@ -39,7 +53,6 @@ namespace Game
 				virtual ~StraightBeeActive();
 
 				virtual StageState* Update() override;
-				virtual void Hit(Body* myBody, Body* theBody) override;
 				virtual void AdjustPosSub(const GameLib::Vector2& vec) override;
 
 			private:
@@ -58,8 +71,7 @@ namespace Game
 				virtual ~CircleBeeActive();
 
 				virtual StageState* Update() override;
-				virtual void Hit(Body* myBody, Body* theBody) override;
-
+			
 				virtual void AdjustPosSub(const GameLib::Vector2& vec) override;
 
 			private:

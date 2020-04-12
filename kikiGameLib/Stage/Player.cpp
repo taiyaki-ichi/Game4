@@ -368,7 +368,7 @@ namespace Game
 			{
 				mDeathFlag = true;
 			}
-			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness")
+			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness")
 			{
 				mVelocity.y = -5.f;
 				//‚SƒtƒŒ[ƒ€‚ÌŠÔ‚Í”ò‚×‚é
