@@ -11,6 +11,7 @@
 #include"Stage/Enemy/Bee.hpp"
 #include"Stage/Item/TransformItem.hpp"
 #include"Stage/CollisionDetection/Body.hpp"
+#include"Stage/Object/Container.hpp"
 
 #include<iostream>
 
@@ -220,6 +221,11 @@ namespace Game
 				{
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Item::Alien(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "Container")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Container(scene, pos);
 				}
 
 

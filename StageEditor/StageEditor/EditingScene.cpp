@@ -271,6 +271,10 @@ namespace StageEditor
 			{
 				actor = new EditingItemAlien(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "Container")
+			{
+				actor = new EditingContainer(scene, Vec2(x, y));
+			}
 			
 
 

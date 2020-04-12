@@ -51,6 +51,7 @@ namespace Game
 			Anim death = {
 				Data::GetTexture("Assets/tama/death.png"),
 			};
+			
 
 			std::vector<Anim> anims = {
 				stay,
@@ -189,11 +190,17 @@ namespace Game
 			{
 				if (mDir == Dir::Right)
 				{
-					mVelocity.x += RUN_POWER;
+					if (mVelocity.x < 0.f)
+						mVelocity.x += RUN_POWER * 2.f;
+					else
+						mVelocity.x += RUN_POWER;
 				}
 				else
 				{
-					mVelocity.x -= RUN_POWER;
+					if (mVelocity.x > 0.f)
+						mVelocity.x -= RUN_POWER * 2.f;
+					else
+						mVelocity.x -= RUN_POWER;
 				}
 			}
 
@@ -237,6 +244,7 @@ namespace Game
 
 
 			mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion));
+			
 
 			//—Ž‰ºŽ€
 			if (pos.y > WINDOW_HEIGHT + 100.f)
@@ -269,6 +277,9 @@ namespace Game
 
 			using Key = GameLib::Key;
 			using ButtonState = GameLib::ButtonState;
+
+			
+		
 			if (state.GetState(Key::A) == ButtonState::Pressed &&
 				state.GetState(Key::D) == ButtonState::Pressed)
 			{
@@ -337,7 +348,7 @@ namespace Game
 			{
 				using Vec2 = GameLib::Vector2;
 				Vec2 pos = myBody->GetOwner()->GetPosition();
-				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);	
+				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);
 
 
 				if (adjust.x < 0.f && mVelocity.x>0.f)
@@ -406,6 +417,34 @@ namespace Game
 			{
 				mPlayer->SetStageState(new PlayerState::Death(mPlayer));
 			}
+			else if (name == "Container")
+			{
+				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);
+				if (GameLib::Math::Abs(adjust.x) > 0.f)
+				{
+					mVelocity.x *= 0.8f;
+
+				}
+				else
+				{
+					if (adjust.y < 0.f && mVelocity.y>0.f) {
+						mVelocity.y = 0.f;
+						mJumpFlag = true;
+						mIsOnGround = true;
+						mIsJumping = false;
+
+						adjust.x += theBody->GetVelocity().x;
+					}
+					else if (adjust.y > 0.f && mVelocity.y < 0.f)
+					{
+						mVelocity.y = 0.f;
+						mIsJumping = false;
+					}
+					myBody->GetOwner()->SetPosition(myBody->GetOwner()->GetPosition() + adjust);
+				}
+				
+			}
+			
 		}
 
 		void PlayerState::Active::SetMode(PlayerMode::Mode* mode)

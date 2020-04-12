@@ -401,5 +401,21 @@ namespace StageEditor
 	{
 	}
 
+	EditingContainer::EditingContainer(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Container",2)
+	{
+		SetScale(0.2f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Other/container.png");
+
+		mBody = new Game::Stage::Body(this, "Container");
+		mBody->SetWidthAndHeight(500.f, 500.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+	EditingContainer::~EditingContainer()
+	{
+	}
+
 }
 

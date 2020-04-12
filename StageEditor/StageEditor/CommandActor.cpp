@@ -171,6 +171,12 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingItemAlien(mEditingScene, cursorPos);
 		}
+		else if (text == "container")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingContainer(mEditingScene, cursorPos);
+		}
 
 		mTextComponent->SetColor(color);
 

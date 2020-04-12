@@ -22,6 +22,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Container.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\PlayerAction\Beam.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\PlayerAction\Fork.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\PlayerAction\Meteor.hpp" />
@@ -105,6 +106,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Container.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\PlayerAction\Beam.cpp" />

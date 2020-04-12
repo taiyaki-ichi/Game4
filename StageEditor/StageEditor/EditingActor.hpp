@@ -187,5 +187,16 @@ namespace StageEditor
 		Game::Stage::Body* mBody;
 	};
 
+	class EditingContainer : public EditingActor
+	{
+	public:
+		EditingContainer(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingContainer();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
+
 
 }
