@@ -23,6 +23,9 @@ namespace Game
 				Bee(StageScene* scene, int pattern, const GameLib::Vector2& p1, const GameLib::Vector2& p2);
 				virtual ~Bee();
 
+				void BreakBody();
+				GameLib::AnimComponent* GetAnim() const { return mAnim; }
+
 			private:
 
 				GameLib::AnimComponent* mAnim;
@@ -70,7 +73,7 @@ namespace Game
 
 			};
 
-			void ActiveBeeHit(Body* myBody, Body* theBody);
+			void ActiveBeeHit(Bee* myBee,Body* myBody, Body* theBody);
 
 		}
 	}

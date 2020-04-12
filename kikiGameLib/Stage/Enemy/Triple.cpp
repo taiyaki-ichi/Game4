@@ -44,6 +44,7 @@ namespace Game
 				mAnim = new GameLib::AnimComponent(this);
 				mAnim->SetAnimation(anim);
 				mAnim->SetAnimFPS(16);
+				mAnim->SetDrawOrder(20);
 
 				mBody = new Body(this, "EnemyTriple");
 				mBody->SetWidthAndHeight(350.f, 400.f);
@@ -151,11 +152,12 @@ namespace Game
 					mFlatFlag = true;
 					mTriple->BreakBody();
 				}
-				else if (name == "Fork")
+				else if (name == "Fork" || name == "Meteor" || name == "Beam")
 				{
 					mTriple->BreakBody();
 					mTriple->SetStageState(new Fall(mTriple));
 				}
+			
 			}
 
 

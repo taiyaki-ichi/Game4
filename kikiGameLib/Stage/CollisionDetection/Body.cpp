@@ -23,10 +23,10 @@ namespace Game
 			, mAdjust()
 			, mStageOwner(actor)
 			, mColor(GameLib::Color::Black)
-			,mPrevPos(0.f,0.f)
 			,mVelocity(0.f,0.f)
 		{
 			mLinerObject = new LinerObject(this);
+			mPrevPos = mOwner->GetPosition();
 		}
 
 		Body::Body(StageActor* actor, const std::string& bodyName, float width, float height, int updateOrder)

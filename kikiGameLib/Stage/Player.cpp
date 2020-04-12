@@ -7,6 +7,7 @@
 #include"StageScene.hpp"
 #include"PlayerAction/Fork.hpp"
 #include"Stage/PlayerAction/Meteor.hpp"
+#include"PlayerAction/Beam.hpp"
 
 #include<iostream>
 
@@ -62,6 +63,7 @@ namespace Game
 			mAnim = new GameLib::AnimComponent(this, anims);
 			mAnim->SetChannel(0);
 			mAnim->SetAnimFPS(10);
+			mAnim->SetDrawOrder(100);
 			
 			Anim nomal = {
 				Data::GetTexture("Assets/tomei.png"),
@@ -104,6 +106,7 @@ namespace Game
 			mSubAnim = new GameLib::AnimComponent(this, sub);
 			mSubAnim->SetChannel(0);
 			mSubAnim->SetAnimFPS(10);
+			mSubAnim->SetDrawOrder(110);
 			
 			SetStageState(new PlayerState::Active(this));
 
@@ -336,6 +339,7 @@ namespace Game
 				Vec2 pos = myBody->GetOwner()->GetPosition();
 				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);	
 
+
 				if (adjust.x < 0.f && mVelocity.x>0.f)
 				{
 					mVelocity.x = 0.f;
@@ -397,6 +401,10 @@ namespace Game
 
 					myBody->GetOwner()->SetPosition(pos + adjust);
 				}
+			}
+			else if (name == "Meteor" || name == "Beam")
+			{
+				mPlayer->SetStageState(new PlayerState::Death(mPlayer));
 			}
 		}
 
@@ -563,7 +571,20 @@ namespace Game
 
 				void Alien::Action()
 				{
+					if (PlayerAction::Beam::GetNum() < 3)
+					{
+						
+						Vec2 adjust(100.f, 0.f);
+						bool isRight = true;
+						if (mPlayer->GetAnim()->GetTextureFlip() == GameLib::TextureFlip::Horizontal)
+						{
+							adjust.x *= -1.f;
+							isRight = false;
+						}
+						new PlayerAction::Beam(mPlayer->GetStageScene(), mPlayer->GetPosition() + adjust, isRight);
+					
 
+					}
 				}
 			}
 		}

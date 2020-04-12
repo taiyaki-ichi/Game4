@@ -197,13 +197,7 @@ namespace StageEditor
 		using Vec2 = GameLib::Vector2;
 
 		// JSONデータの読み込み。
-		/*
-		std::ifstream ifs("Data/test.json", std::ios::in);
-		if (ifs.fail()) {
-			std::cerr << "failed to read Data/test.json" << std::endl;
-			return false;
-		}
-		*/
+
 		std::ifstream ifs(fileName + ".json", std::ios::in);
 		if (ifs.fail()) {
 			std::cerr << "failed to read " << fileName << ".json" << std::endl;

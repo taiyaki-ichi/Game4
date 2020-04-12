@@ -23,6 +23,7 @@ namespace Game
 				virtual ~Toge();
 
 				void BreakBody();
+				GameLib::AnimComponent* GetAnim() const { return mAnim; }
 
 			private:
 			

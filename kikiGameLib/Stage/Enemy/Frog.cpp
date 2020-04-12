@@ -39,6 +39,7 @@ namespace Game
 					flat
 				};
 				mAnim = new GameLib::AnimComponent(this, anims);
+				mAnim->SetDrawOrder(20);
 
 				mBody = new Body(this, "EnemyFrog");
 				mBody->SetWidthAndHeight(500.f, 350.f);
@@ -157,11 +158,14 @@ namespace Game
 					mFlatFlag = true;
 					mFrog->BreakBody();
 				}
-				else if (name == "Fork")
+				else if (name == "Fork" || name == "Meteor" || name == "Beam")
 				{
 					mFrog->BreakBody();
+					mFrog->GetAnim()->SetChannel(2);
 					mFrog->SetStageState(new Fall(mFrog));
 				}
+		
+
 			}
 
 		}

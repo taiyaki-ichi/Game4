@@ -23,6 +23,7 @@ namespace Game
 				SetStageState(new ForkActive(this,IsRight));
 
 				mTexture = new GameLib::TextureComponent(this,-1);
+				mTexture->SetDrawOrder(19);
 			}
 
 			Fork::~Fork()

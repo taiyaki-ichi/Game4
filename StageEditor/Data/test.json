@@ -6,13 +6,6 @@
       "Name": "Player"
     },
     {
-      "Data1": 124,
-      "Data2": 259,
-      "Data3": 316,
-      "Data4": 433,
-      "Name": "Ground"
-    },
-    {
       "Data1": 123,
       "Data2": 431,
       "Data3": 1625,
@@ -20,9 +13,16 @@
       "Name": "Ground"
     },
     {
-      "Data1": 477,
-      "Data2": 326,
-      "Name": "ItemWizard"
+      "Data1": 518,
+      "Data2": 367,
+      "Name": "ItemAlien"
+    },
+    {
+      "Data1": 198,
+      "Data2": 356,
+      "Data3": 334,
+      "Data4": 431,
+      "Name": "Ground"
     }
   ]
 }

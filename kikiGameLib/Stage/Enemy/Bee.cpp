@@ -29,6 +29,7 @@ namespace Game
 				};
 				std::vector<GameLib::Animation> anims = { active,fall };
 				mAnim = new GameLib::AnimComponent(this, anims);
+				mAnim->SetDrawOrder(20);
 				mAnim->SetAnimFPS(8);
 
 				mBody = new Body(this, "EnemyBee");
@@ -44,6 +45,11 @@ namespace Game
 
 			Bee::~Bee()
 			{
+			}
+
+			void Bee::BreakBody()
+			{
+				mBody->SetWidthAndHeight(0.f, 0.f);
 			}
 
 
@@ -81,7 +87,7 @@ namespace Game
 
 			void StraightBeeActive::Hit(Body* myBody, Body* theBody)
 			{
-				ActiveBeeHit(myBody, theBody);
+				ActiveBeeHit(mBee,myBody, theBody);
 			}
 
 			void StraightBeeActive::AdjustPosSub(const GameLib::Vector2& vec)
@@ -128,7 +134,7 @@ namespace Game
 
 			void CircleBeeActive::Hit(Body* myBody, Body* theBody)
 			{
-				ActiveBeeHit(myBody, theBody);
+				ActiveBeeHit(mBee,myBody, theBody);
 			}
 
 			void CircleBeeActive::AdjustPosSub(const GameLib::Vector2& vec)
@@ -136,8 +142,16 @@ namespace Game
 				mCenter += vec;
 			}
 
-			void ActiveBeeHit(Body* myBody, Body* theBody)
+			void ActiveBeeHit(Bee* myBee, Body* myBody, Body* theBody)
 			{
+				std::string name = theBody->GetName();
+
+				if (name == "Meteor" || name == "Fork" || name == "Beam")
+				{
+					myBee->BreakBody();
+					myBee->GetAnim()->SetChannel(1);
+					myBee->SetStageState(new Fall(myBee));
+				}
 			}
 
 		}

@@ -17,10 +17,15 @@ namespace Game
 			{
 				SetScale(0.1f);
 
-				GameLib::Animation anim = {
+				GameLib::Animation active = {
 					GameLib::Data::GetTexture("../Assets/Enemy/toge.png"),
 				};
+				GameLib::Animation fall = {
+					GameLib::Data::GetTexture("../Assets/Enemy/toge.png"),
+				};
+				std::vector<GameLib::Animation> anim = { active,fall };
 				mAnim = new GameLib::AnimComponent(this, anim);
+				mAnim->SetDrawOrder(20);
 
 				mBody = new Body(this, "EnemyToge");
 				mBody->SetWidthAndHeight(550.f, 550.f);
@@ -78,6 +83,12 @@ namespace Game
 					if (adjust.y < 0.f)
 						adjust += theBody->GetVelocity();
 					mToge->SetPosition(mToge->GetPosition() + adjust);
+				}
+				else if (name == "Meteor" || name == "Beam")
+				{
+					mToge->GetAnim()->SetChannel(1);
+					mToge->BreakBody();
+					mToge->SetStageState(new Fall(mToge));
 				}
 			}
 

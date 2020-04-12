@@ -29,9 +29,9 @@ namespace Game
 				body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
 				body->SetAdjust(GameLib::Vector2(0.f, 200.f));
 
-				new GameLib::TextureComponent(this, "../Assets/Action/meteor.png");
+				new GameLib::TextureComponent(this, "../Assets/Action/meteor.png",5);
 
-				mRect = new RectangleComponent(this, 0.f, 1100.f/scale, GameLib::Color::Black, 0,-1);
+				mRect = new RectangleComponent(this, 0.f, 1100.f/scale, GameLib::Color::Black, 0,4);
 				auto ad = GameLib::Vector2(0.f, 550.f/scale);
 				mRect->SetAdjust(ad);
 			}
