@@ -18,6 +18,7 @@ namespace StageEditor
 	EditingScene::EditingScene()
 		:Game::Stage::StageScene()
 		,mScreemMoveSum(0.f,0.f)
+		,mDrawFlag(true)
 	{
 		
 		mCursor = new Cursor(this);
@@ -25,7 +26,7 @@ namespace StageEditor
 
 		LoadEditingData(this,"Data/test");
 
-		Game::Stage::Body::SetDrawFlag(true);
+		Game::Stage::Body::SetDrawFlag(mDrawFlag);
 	}
 	EditingScene::~EditingScene()
 	{
@@ -63,7 +64,7 @@ namespace StageEditor
 		if (mCommandActor->GetCheckFlag())
 		{
 			CreateJsonData(mEditingActors, "Data/test.json", mScreemMoveSum);
-			return new CheckScene();
+			return new CheckScene(mDrawFlag);
 		}
 		
 		if (mCommandActor->GetSaveFlag())
@@ -101,6 +102,12 @@ namespace StageEditor
 	{
 		ResetEditingActors();
 		ResetScreemMoveSum();
+	}
+
+	void EditingScene::SwitchDrawFlag()
+	{
+		Game::Stage::Body::SetDrawFlag(!mDrawFlag);
+		mDrawFlag = (!mDrawFlag);
 	}
 
 	void EditingScene::LoadStageData(const std::string& fileName)
@@ -165,12 +172,12 @@ namespace StageEditor
 	}
 
 
-	CheckScene::CheckScene()
+	CheckScene::CheckScene(bool drawFlag)
 		:Game::Stage::StageScene()
 		,mBackFlag(false)
 	{
 		Game::Stage::LoadStageData(this, "Data/test.json");
-		Game::Stage::Body::SetDrawFlag(false);
+		Game::Stage::Body::SetDrawFlag(drawFlag);
 	}
 
 	CheckScene::~CheckScene()

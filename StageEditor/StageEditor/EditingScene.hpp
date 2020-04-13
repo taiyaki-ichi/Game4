@@ -30,6 +30,7 @@ namespace StageEditor
 		void RemoveEditingActor(EditingActor* actor);
 
 		void Reset();
+		void SwitchDrawFlag();
 
 		void LoadStageData(const std::string& fileName);
 
@@ -46,6 +47,8 @@ namespace StageEditor
 		CommandActor* mCommandActor;
 
 		GameLib::Vector2 mScreemMoveSum;
+
+		bool mDrawFlag;
 	};
 
 	bool CreateJsonData(std::vector<EditingActor*>& actors,const std::string& fileName,const GameLib::Vector2& adjust);
@@ -53,7 +56,7 @@ namespace StageEditor
 	class CheckScene : public Game::Stage::StageScene
 	{
 	public:
-		CheckScene();
+		CheckScene(bool drawFlag);
 		virtual ~CheckScene();
 
 		virtual void Input(const GameLib::InputState& state) override;

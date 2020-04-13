@@ -107,7 +107,12 @@ namespace StageEditor
 				mLoadFlag = true;
 			}
 		}
-
+		else if (text == "switchdraw")
+		{
+			color = GameLib::Color::Blue;
+			if (enter)
+				mEditingScene->SwitchDrawFlag();
+		}
 
 		else if (text == "player")
 		{
