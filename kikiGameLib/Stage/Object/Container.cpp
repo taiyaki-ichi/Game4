@@ -1,19 +1,19 @@
 #include"Container.hpp"
 #include"Stage/CollisionDetection/Body.hpp"
 #include"lib/include/Draw/TextureComponent.hpp"
+#include"Stage/Enemy/EnemyState.hpp"
+
 
 namespace Game
 {
 	namespace Stage
 	{
-		const float Container::GRAVITY = 5.f;
-		const float Container::SPEED = 2.f;
 
+		const float ContainerActive::GRAVITY = 5.f;
+		const float ContainerActive::SPEED = 2.f;
 
 		Container::Container(StageScene* scene, const GameLib::Vector2& pos, int UupdateOrder)
-			:StageActor(scene,pos,UupdateOrder)
-			,mOnGround(false)
-			,mPlayerPosFlag(0)
+			:StageStateActor(scene,pos,UupdateOrder)
 		{
 			SetScale(0.2f);
 
@@ -22,15 +22,38 @@ namespace Game
 			mBody = new Game::Stage::Body(this, "Container");
 			mBody->SetWidthAndHeight(500.f, 500.f);
 			mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+
+			SetStageState(new ContainerActive(this));
 		}
 
 		Container::~Container()
 		{
 		}
 
-		void Container::UpdateStageActor()
+		
+
+
+		void Container::BreakBody()
 		{
-			auto pos = GetPosition();
+			mBody->SetWidthAndHeight(0.f, 0.f);
+		}
+
+		ContainerActive::ContainerActive(Container* contaner)
+			:StageState()
+			,mContainer(contaner)
+			, mOnGround(false)
+			, mPlayerPosFlag(0)
+		{
+		}
+
+		ContainerActive::~ContainerActive()
+		{
+		}
+
+		StageState* ContainerActive::Update()
+		{
+
+			auto pos = mContainer->GetPosition();
 
 			if (mPlayerPosFlag == 1)
 				pos.x += SPEED;
@@ -41,50 +64,78 @@ namespace Game
 			{
 				pos.y += GRAVITY;
 			}
+			else
+			{
+				//地面との接触をチェックするため
+				pos.y += 0.01f;
+			}
 
-			SetPosition(pos);
+
+			mContainer->SetPosition(pos);
 			mOnGround = false;
 			mPlayerPosFlag = 0;
-			
+
+
+			return this;
 		}
 
-		void Container::Hit(Body* myBody, Body* theBody)
+		void ContainerActive::Hit(Body* myBody, Body* theBody)
 		{
 			std::string name = theBody->GetName();
 
-			if (name == "Ground" || name == "Container")
+			if (name == "Ground")
 			{
 				GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, SPEED);
 				if (adjust.y < 0.f)
-				{
-					/*
-					if (name == "Container")
-						adjust.x += theBody->GetVelocity().x;
-					else
-						adjust += theBody->GetVelocity();
-						*/
 					mOnGround = true;
-
-				}
-				SetPosition(GetPosition() + adjust);
+				mContainer->SetPosition(mContainer->GetPosition() + adjust);
 			}
 			else if (name == "Player")
 			{
-				
+
 				GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, SPEED, GRAVITY);
 				if (adjust.x > 0.f)
 				{
+					//くっつかないようにするため少し押し出す
 					adjust.x += 0.01f;
-					SetPosition(GetPosition() + adjust);
+					mContainer->SetPosition(mContainer->GetPosition() + adjust);
 				}
 				else if (adjust.x < 0.f)
 				{
 					adjust.x -= 0.01f;
-					SetPosition(GetPosition() + adjust);
+					mContainer->SetPosition(mContainer->GetPosition() + adjust);
 				}
-				
+
+			}
+			else if (name == "Container")
+			{
+				auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, SPEED, GRAVITY);
+				float v = myBody->GetVelocity().x;
+				auto myPos = mContainer->GetPosition();
+				if (GameLib::Math::Abs(adjust.x) > 0.f)
+				{
+					//ほかのContainerを押した場合
+					if (v * adjust.x < 0.f)
+					{
+						theBody->GetOwner()->SetPosition(theBody->GetOwner()->GetPosition() - adjust);
+					}
+					//押された場合は、何もしない
+
+				}
+				else if (adjust.y <= 0.f)
+				{
+					if (adjust.y < 0.f)
+						mOnGround = true;
+
+					mContainer->SetPosition(myPos + adjust);
+				}
+			}
+			else if (name == "Beam")
+			{
+				mContainer->BreakBody();
+				mContainer->SetStageState(new Enemy::Fall(mContainer));
 			}
 		}
 
-	}
+}
 }
