@@ -3,6 +3,7 @@
 #include"lib/include/Draw/TextureComponent.hpp"
 #include"Stage/Enemy/EnemyState.hpp"
 
+#include<iostream>
 
 namespace Game
 {
@@ -42,7 +43,7 @@ namespace Game
 			:StageState()
 			,mContainer(contaner)
 			, mOnGround(false)
-			, mPlayerPosFlag(0)
+			,mGroundTimeCnt(-1)
 		{
 		}
 
@@ -54,11 +55,6 @@ namespace Game
 		{
 
 			auto pos = mContainer->GetPosition();
-
-			if (mPlayerPosFlag == 1)
-				pos.x += SPEED;
-			else if (mPlayerPosFlag == -1)
-				pos.x -= SPEED;
 
 			if (!mOnGround)
 			{
@@ -73,8 +69,17 @@ namespace Game
 
 			mContainer->SetPosition(pos);
 			mOnGround = false;
-			mPlayerPosFlag = 0;
 
+		
+			
+			if (mGroundTimeCnt > 0)
+				mGroundTimeCnt--;
+
+			if (mGroundTimeCnt == 0)
+			{
+				mContainer->GetBody()->SetName("Container");
+				mGroundTimeCnt = -1;
+			}
 
 			return this;
 		}
@@ -82,53 +87,52 @@ namespace Game
 		void ContainerActive::Hit(Body* myBody, Body* theBody)
 		{
 			std::string name = theBody->GetName();
+			std::string myName = myBody->GetName();
 
 			if (name == "Ground")
 			{
 				GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, SPEED);
 				if (adjust.y < 0.f)
+				{
 					mOnGround = true;
+					adjust.x += theBody->GetVelocity().x;
+				}
+				else if (GameLib::Math::Abs(adjust.x) > 0.f)
+				{
+					mGroundTimeCnt = 60;
+					if (myName != "Ground")
+					{
+						myBody->SetName("Ground");
+					}
+				}
+				
 				mContainer->SetPosition(mContainer->GetPosition() + adjust);
 			}
-			else if (name == "Player")
+			/*
+			else if (name == "Player" && myName == "Container")
 			{
-
 				GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, SPEED, GRAVITY);
-				if (adjust.x > 0.f)
-				{
-					//‚­‚Á‚Â‚©‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß­‚µ‰Ÿ‚µo‚·
-					adjust.x += 0.01f;
+				if (GameLib::Math::Abs(adjust.x) > 0.f)
 					mContainer->SetPosition(mContainer->GetPosition() + adjust);
-				}
-				else if (adjust.x < 0.f)
-				{
-					adjust.x -= 0.01f;
-					mContainer->SetPosition(mContainer->GetPosition() + adjust);
-				}
 
 			}
-			else if (name == "Container")
+			*/
+			else if (name == "Container" && myName != "Ground")
 			{
 				auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, SPEED, GRAVITY);
-				float v = myBody->GetVelocity().x;
-				auto myPos = mContainer->GetPosition();
-				if (GameLib::Math::Abs(adjust.x) > 0.f)
-				{
-					//‚Ù‚©‚ÌContainer‚ğ‰Ÿ‚µ‚½ê‡
-					if (v * adjust.x < 0.f)
-					{
-						theBody->GetOwner()->SetPosition(theBody->GetOwner()->GetPosition() - adjust);
-					}
-					//‰Ÿ‚³‚ê‚½ê‡‚ÍA‰½‚à‚µ‚È‚¢
 
-				}
-				else if (adjust.y <= 0.f)
+				float theV= theBody->GetVelocity().x;
+				if (adjust.y < 0.f)
 				{
-					if (adjust.y < 0.f)
-						mOnGround = true;
-
-					mContainer->SetPosition(myPos + adjust);
+					mOnGround = true;
+					adjust.x += theV;
+					mContainer->SetPosition(mContainer->GetPosition() + adjust);
 				}
+				else if (theV * adjust.x > 0.f)
+				{
+					mContainer->SetPosition(mContainer->GetPosition() + adjust);
+				}
+				
 			}
 			else if (name == "Beam")
 			{

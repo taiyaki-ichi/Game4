@@ -141,6 +141,12 @@ namespace Game
 			return mAdjust * GetOwner()->GetScale();
 		}
 
+		void Body::ResetVelocity()
+		{
+			mVelocity = Vec2(0.f, 0.f);
+			mPrevPos = mOwner->GetPosition();
+		}
+
 
 		GameLib::Vector2 GetAdjustUnrotatedRectVec(Body* myBody, Body* theBody)
 		{

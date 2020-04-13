@@ -51,6 +51,7 @@ namespace Game
 			void SetName(const std::string& name) { mName = name; }
 
 			const Vec2& GetVelocity() const { return mVelocity; }
+			void ResetVelocity();
 
 			static void SetScreenMoveAdjust(const Vec2& vec) { mScreenMoveAdjust = vec; }
 

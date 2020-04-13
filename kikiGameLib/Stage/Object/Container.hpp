@@ -19,6 +19,7 @@ namespace Game
 			virtual ~Container();
 
 			void BreakBody();
+			Body* GetBody() const { return mBody; }
 
 		private:
 			Body* mBody;
@@ -41,8 +42,9 @@ namespace Game
 		private:
 			Container* mContainer;
 			bool mOnGround;
-			int mPlayerPosFlag;
 
+			int mGroundTimeCnt;
+			
 		};
 
 	}

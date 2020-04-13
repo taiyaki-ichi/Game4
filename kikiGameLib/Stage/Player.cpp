@@ -111,7 +111,6 @@ namespace Game
 			
 			SetStageState(new PlayerState::Active(this));
 
-			std::cout << "Player\nPos :" << pos.x << "," << pos.y << "\n";
 			
 		}
 
@@ -230,7 +229,7 @@ namespace Game
 			}
 
 			//位置の更新
-			pos += mVelocity;// +mGroundVelocity;
+			pos += mVelocity;
 
 			//落下中のアニメーション
 			if (mIsOnGround == false) {
@@ -422,7 +421,8 @@ namespace Game
 				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);
 				if (GameLib::Math::Abs(adjust.x) > 0.f)
 				{
-					mVelocity.x *= 0.8f;
+					mVelocity.x *= 0.7f;
+					theBody->GetOwner()->SetPosition(theBody->GetOwner()->GetPosition() - adjust);
 
 				}
 				else
@@ -432,8 +432,8 @@ namespace Game
 						mJumpFlag = true;
 						mIsOnGround = true;
 						mIsJumping = false;
-
-						adjust.x += theBody->GetVelocity().x;
+		
+						adjust += theBody->GetVelocity();
 					}
 					else if (adjust.y > 0.f && mVelocity.y < 0.f)
 					{
