@@ -170,7 +170,7 @@ namespace StageEditor
 		,mBackFlag(false)
 	{
 		Game::Stage::LoadStageData(this, "Data/test.json");
-		Game::Stage::Body::SetDrawFlag(true);
+		Game::Stage::Body::SetDrawFlag(false);
 	}
 
 	CheckScene::~CheckScene()

@@ -240,15 +240,13 @@ namespace Game
 
 				void Line::UpdateStageActor()
 				{
-
-					if (mCnt < 10)
+	
+					if (mCnt == 10)
 					{
-						float h = mRect->GetHeight();
-						h += 4.f;
+						float h = 40.f;
 						mRect->SetHeight(h);
 						for (int i = 0; i < 4; i++)
 							mBody[i]->SetHeight(h);
-
 					}
 					else if (mCnt > 30)
 					{
