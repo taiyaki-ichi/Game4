@@ -27,29 +27,16 @@
       "Name": "Ground"
     },
     {
-      "Data1": 433,
-      "Data2": 386,
+      "Data1": 456,
+      "Data2": 227,
       "Name": "Container"
     },
     {
-      "Data1": 490,
-      "Data2": 268,
-      "Name": "Container"
-    },
-    {
-      "Data1": 476,
-      "Data2": 159,
-      "Name": "Container"
-    },
-    {
-      "Data1": 476,
-      "Data2": 6,
-      "Name": "Container"
-    },
-    {
-      "Data1": 476,
-      "Data2": -154,
-      "Name": "Container"
+      "Data1": 461,
+      "Data2": 418,
+      "Data3": 462,
+      "Data4": 251,
+      "Name": "Frog"
     }
   ]
 }

@@ -83,6 +83,8 @@ namespace Game
 				:mTriple(triple)
 				, mVelocity(-1.f)
 				, mFlatFlag(false)
+				,mOnGround(false)
+				,mCrashedFlag(true)
 			{
 			}
 
@@ -92,6 +94,13 @@ namespace Game
 
 			StageState* TripleActive::Update()
 			{
+		
+				if (mOnGround && mCrashedFlag)
+				{
+					mTriple->BreakBody();
+					return new Fall(mTriple);
+				}
+
 				Vec2 pos = mTriple->GetPosition();
 				pos.x += mVelocity;
 				pos.y += GRAVITY;
@@ -113,6 +122,9 @@ namespace Game
 
 					return new DeathTimerState(mTriple, 30);
 				}
+
+				mOnGround = false;
+				mCrashedFlag = false;
 
 				return this;
 			}
@@ -146,7 +158,13 @@ namespace Game
 						mVelocity *= -1.f;
 					
 					else if (adjust.y < 0.f)
+					{
 						adjust += theBody->GetVelocity();
+						mOnGround = true;
+					}
+
+					if (adjust.y > 20.f)
+						mCrashedFlag = true;
 					myActor->SetPosition(myActor->GetPosition() + adjust);
 				}
 				else if (name == "Player" && myName == "EnemyTripleWeakness")

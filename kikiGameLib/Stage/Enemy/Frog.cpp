@@ -80,6 +80,7 @@ namespace Game
 				,mCnt(0)
 				,mJumpPower(jumpPower)
 				,mFlatFlag(false)
+				,mCrashedFlag(false)
 			{
 			}
 
@@ -89,6 +90,12 @@ namespace Game
 
 			StageState* FrogActive::Update()
 			{
+				if (mOnGround && mCrashedFlag)
+				{
+					mFrog->BreakBody();
+					mFrog->GetAnim()->SetChannel(2);
+					return new Fall(mFrog);
+				}
 
 				if (mCnt >= 60 && mOnGround == true)
 				{
@@ -128,6 +135,8 @@ namespace Game
 					return new DeathTimerState(mFrog, 30);
 				}
 
+				mCrashedFlag = false;
+
 				return this;
 			}
 
@@ -146,10 +155,13 @@ namespace Game
 						mFrog->GetAnim()->SetChannel(0);
 						adjust += theBody->GetVelocity();
 					}
-					else if(adjust.y)
+					else if(adjust.y>0.f)
 					{
 						mVelocityY = 0.f;
 					}
+
+					if (adjust.y > 20.f)
+						mCrashedFlag = true;
 
 					mFrog->SetPosition(mFrog->GetPosition() + adjust);
 				}

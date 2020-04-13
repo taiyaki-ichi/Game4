@@ -46,6 +46,8 @@ namespace Game
 				int mCnt;
 				float mJumpPower;
 				bool mFlatFlag;
+
+				bool mCrashedFlag;
 			};
 
 		}

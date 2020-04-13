@@ -53,6 +53,9 @@ namespace Game
 				float mVelocity;
 
 				bool mFlatFlag;
+
+				bool mOnGround;
+				bool mCrashedFlag;
 			};
 
 

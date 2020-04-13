@@ -126,15 +126,16 @@ namespace Game
 
 		PlayerState::Active::Active(Player* player)
 			:StageState()
-			,mPlayer(player)
-			,mVelocity()
-			,mMotion(Motion::Stay)
-			,mDir(Dir::Right)
-			,mJumpFlag(false)
-			,mIsJumping(false)
-			,mJumpAcceleFlag(false)
-			,mDeathFlag(false)
-			,mJumpFlag2(0)
+			, mPlayer(player)
+			, mVelocity()
+			, mMotion(Motion::Stay)
+			, mDir(Dir::Right)
+			, mJumpFlag(false)
+			, mIsJumping(false)
+			, mJumpAcceleFlag(false)
+			, mDeathFlag(false)
+			, mJumpFlag2(0)
+			, mCrushedFlag(false)
 		{
 			mMode = new PlayerMode::Nomal(mPlayer);
 		}
@@ -149,6 +150,9 @@ namespace Game
 		{
 
 			if (mDeathFlag)
+				return new Death(mPlayer);
+
+			if (mCrushedFlag && mIsOnGround)
 				return new Death(mPlayer);
 
 			Vec2 pos = mPlayer->GetPosition();
@@ -253,9 +257,11 @@ namespace Game
 
 			mPlayer->SetPosition(pos);
 
-			mJumpAcceleFlag = false;
-			mJumpFlag = false;
-			mIsOnGround = false;
+
+			//ó‘Ô‚ÌXV
+			if (mMode)
+				mMode->Update();
+
 
 			//“G‚ð“¥‚ñ‚Å‚¢‚éÅ’†‚Ìˆ—
 			if (mJumpFlag2 > 0)
@@ -263,8 +269,13 @@ namespace Game
 				mJumpFlag2 -= 1;
 			}
 
-			if (mMode)
-				mMode->Update();
+			
+
+			mJumpAcceleFlag = false;
+			mJumpFlag = false;
+			mIsOnGround = false;
+			mCrushedFlag = false;
+			
 
 			return this;
 		}
@@ -372,6 +383,9 @@ namespace Game
 					mIsJumping = false;
 				}
 
+				if (adjust.y > 20.f)
+					mCrushedFlag = true;
+
 				myBody->GetOwner()->SetPosition(pos + adjust);
 			}
 			else if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee")
@@ -439,7 +453,11 @@ namespace Game
 					{
 						mVelocity.y = 0.f;
 						mIsJumping = false;
+						
 					}
+
+					if (adjust.y > 20.f)
+						mCrushedFlag = true;
 					myBody->GetOwner()->SetPosition(myBody->GetOwner()->GetPosition() + adjust);
 				}
 				

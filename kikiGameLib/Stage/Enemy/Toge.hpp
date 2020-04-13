@@ -44,6 +44,9 @@ namespace Game
 			private:
 				Toge* mToge;
 				float mTimer;
+
+				bool mOnGround;
+				bool mCrashedFlag;
 			};
 			
 		}

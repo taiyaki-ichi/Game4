@@ -48,6 +48,8 @@ namespace Game
 				:StageState()
 				,mToge(toge)
 				,mTimer(0.f)
+				,mOnGround(false)
+				,mCrashedFlag(false)
 			{
 			}
 
@@ -57,6 +59,13 @@ namespace Game
 
 			StageState* TogeActive::Update()
 			{
+				if (mOnGround && mCrashedFlag)
+				{
+					mToge->GetAnim()->SetChannel(1);
+					mToge->BreakBody();
+					return new Fall(mToge);
+				}
+
 				using Vec2 = GameLib::Vector2;
 				Vec2 pos = mToge->GetPosition();
 
@@ -67,6 +76,9 @@ namespace Game
 				mTimer += 0.01f;
 
 				mToge->SetScale(0.15f + 0.05f * GameLib::Math::Sin(GameLib::Math::Pi / 3.f * mTimer));
+
+				mOnGround = false;
+				mCrashedFlag = false;
 
 				return this;
 			}
@@ -81,7 +93,13 @@ namespace Game
 					Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, 0.f);
 
 					if (adjust.y < 0.f)
+					{
 						adjust += theBody->GetVelocity();
+						mOnGround = true;
+					}
+
+					if (adjust.y > 20.f)
+						mCrashedFlag = true;
 					mToge->SetPosition(mToge->GetPosition() + adjust);
 				}
 				else if (name == "Meteor" || name == "Beam")

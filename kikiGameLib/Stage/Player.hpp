@@ -102,6 +102,8 @@ namespace Game
 				//“G‚ð“¥‚ñ‚¾Žž‚ÌƒWƒƒƒ“ƒv
 				unsigned int mJumpFlag2;
 
+				bool mCrushedFlag;
+
 			};
 			
 			class Death : public StageState
