@@ -136,7 +136,7 @@ namespace Game
 
 				std::string name = theBody->GetName();
 				std::string myName = myBody->GetName();
-				if (name == "Ground")
+				if (name == "Ground"||name=="Container")
 				{
 					GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, 5.f, 0.f);
 					if (adjust.y < 0.f)

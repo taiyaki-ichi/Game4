@@ -170,24 +170,38 @@ namespace Game
 			using Vec2 = GameLib::Vector2;
 			Vec2 adjust = GetAdjustUnrotatedRectVec(myBody, theBody);
 
-			//1.f‚ÍŒë·‚Åˆø‚Á‚©‚©‚ç‚È‚¢‚æ‚É
-			if (adjust.y <= 0.f && GameLib::Math::Abs(adjust.y) <= myGravity - 1.f)
+			bool check = true;
+			//ˆø‚Á‚©‚©‚è‚ğ‚È‚­‚·‚½‚ßAAA0.1‚ÍŒë·‚Ì•ª
+
+			if (GameLib::Math::Abs(adjust.y) <= GameLib::Math::Abs(myGravity) + 0.1f &&
+				GameLib::Math::Abs(adjust.x) <= GameLib::Math::Abs(myMaxSpeed) + 0.1f)
 			{
 				adjust.x = 0.f;
-			}
-			else if (adjust.y > 0.f && GameLib::Math::Abs(adjust.x) <= GameLib::Math::Abs(myMaxSpeed) - 1.f)
-			{
 				adjust.y = 0.f;
+				check = false;
 			}
-			else if (GameLib::Math::Abs(adjust.x) < GameLib::Math::Abs(adjust.y))
-			{
-				adjust.y = 0.f;
-			}
-			else
+			else if (GameLib::Math::Abs(adjust.y) <= GameLib::Math::Abs(myGravity)+0.1f)
 			{
 				adjust.x = 0.f;
+				check = false;
+			}
+			else if (GameLib::Math::Abs(adjust.x) <= GameLib::Math::Abs(myMaxSpeed)+0.1f)
+			{
+				adjust.y = 0.f;
+				check = false;
 			}
 
+			if (check)
+			{
+				if (GameLib::Math::Abs(adjust.x) < GameLib::Math::Abs(adjust.y))
+				{
+					adjust.y = 0.f;
+				}
+				else
+				{
+					adjust.x = 0.f;
+				}
+			}
 			return adjust;
 		}
 

@@ -135,14 +135,16 @@ namespace Game
 					adjust.y = 0.f;
 					myActor->SetPosition(myActor->GetPosition() + adjust);
 				}
-				else if (name == "Ground")
+				else if (name == "Ground" || name == "Container")
 				{
 					GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, mVelocity);
 
+					
 					if (adjust.x > 0.f && mVelocity < 0.f)
 						mVelocity *= -1.f;
 					else if (adjust.x < 0.f && mVelocity>0.f)
 						mVelocity *= -1.f;
+					
 					else if (adjust.y < 0.f)
 						adjust += theBody->GetVelocity();
 					myActor->SetPosition(myActor->GetPosition() + adjust);
