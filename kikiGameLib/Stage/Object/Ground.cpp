@@ -163,5 +163,65 @@ namespace Game
 			myGround->BreakNextUpdate();
 		}
 
-	}
+		const float MoveGround::SPEED = 2.f;
+
+		MoveGround::MoveGround(StageScene* scene, const GameLib::Vector2& p1, const GameLib::Vector2& p2, float width, float height, int updateOrder)
+			:Ground(scene,p1,width,height,updateOrder)
+			,mPoint1(p1)
+			,mPoint2(p2)
+		{
+			mVelocity = GameLib::Vector2::Normalize(p2 - p1) * SPEED;
+		}
+
+		MoveGround::~MoveGround()
+		{
+		}
+
+		void MoveGround::UpdateGround()
+		{
+			auto pos = GetPosition();
+			pos += mVelocity;
+
+			float l1 = (pos - mPoint1).LengthSq();
+			float l2 = (pos - mPoint2).LengthSq();
+			if ((mPoint1 - mPoint2).LengthSq() <= (l1 + l2))
+			{
+				if (l1 > l2)
+				{
+					SetPosition(mPoint2);
+				}
+				else
+				{
+					SetPosition(mPoint1);
+				}
+
+				mVelocity *= -1.f;
+			}
+			else
+			{
+				SetPosition(pos);
+			}
+
+		}
+
+		void MoveGround::AdjustPosSub(const GameLib::Vector2& vec)
+		{
+			mPoint1 += vec;
+			mPoint2 += vec;
+		}
+
+		void MoveGround::CreateGround(const GameLib::Vector2& pos, float w, float h)
+		{
+			auto prePos = GetPosition();
+			auto vec = pos - prePos;
+
+			auto p1 = mPoint1 + vec;
+			auto p2 = mPoint2 + vec;
+
+			auto g = new MoveGround(GetStageScene(), p1, p2, w, h);
+			g->SetPosition(pos);
+			g->SetVelocity(mVelocity);
+		}
+
+}
 }

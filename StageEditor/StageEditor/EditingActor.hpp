@@ -198,5 +198,30 @@ namespace StageEditor
 		Game::Stage::Body* mBody;
 	};
 
+	class EditingMoveGround : public EditingActor
+	{
+	public:
+		EditingMoveGround(EditingScene* scene,const Vec2& pos);
+		virtual ~EditingMoveGround();
+
+		virtual void UpdateStageActor() override;
+
+	private:
+		Game::Stage::Body* mBody;
+		GameLib::LineComponent* mLine;
+		Game::Stage::RectangleComponent* mRect;
+	};
+
+	class EditingDiamond : public EditingActor
+	{
+	public:
+		EditingDiamond(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingDiamond();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
+
 
 }

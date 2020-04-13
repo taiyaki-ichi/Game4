@@ -282,6 +282,14 @@ namespace StageEditor
 			{
 				actor = new EditingContainer(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "MoveGround")
+			{
+				actor = new EditingMoveGround(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "Diamond")
+			{
+				actor = new EditingDiamond(scene, Vec2(x, y));
+			}
 			
 
 

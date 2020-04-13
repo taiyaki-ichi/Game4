@@ -182,6 +182,19 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingContainer(mEditingScene, cursorPos);
 		}
+		else if (text == "moveground")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingMoveGround(mEditingScene, cursorPos);
+		}
+		else if (text == "diamond")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingDiamond(mEditingScene, cursorPos);
+
+		}
 
 		mTextComponent->SetColor(color);
 

@@ -417,5 +417,93 @@ namespace StageEditor
 	{
 	}
 
+	EditingMoveGround::EditingMoveGround(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"MoveGround",6)
+	{
+		mRect = new Game::Stage::RectangleComponent(this, 0.f, 0.f, Vec3(50.f, 50.f, 50.f));
+		mBody = new Game::Stage::Body(this, "MoveGround");
+		mBody->SetWidthAndHeight(0.f, 0.f);
+		mBody->SetAdjust(Vec2(0.f, 0.f));
+		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
+		mLine = new GameLib::LineComponent(this);
+		mLine->SetPoints(pos, pos);
+	}
+
+	EditingMoveGround::~EditingMoveGround()
+	{
+	}
+
+	void EditingMoveGround::UpdateStageActor()
+	{
+		int size = GetDatas().size();
+
+		if (size == 2)
+		{
+			Vec2 pos = GetPosition();
+			Vec2 p = Vec2(GetDatas().at(0), GetDatas().at(1));
+
+			float w = GameLib::Math::Abs(pos.x - p.x);
+			float h = GameLib::Math::Abs(pos.y - p.y);
+
+			Vec2 ad = (p - pos) / 2.f;
+
+			mRect->SetAdjust(ad);
+			mRect->SetWidthAndHeight(w, h);
+
+			mBody->SetAdjust(ad);
+			mBody->SetWidthAndHeight(w, h);
+
+			mLine->SetPoints(pos, pos);
+		}
+		else if (size >= 4)
+		{
+
+			Vec2 pos = GetPosition();
+
+			Vec2 p1 = Vec2(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2 = Vec2(GetDatas().at(2), GetDatas().at(3));
+
+			float w = GameLib::Math::Abs(p2.x - p1.x);
+			float h = GameLib::Math::Abs(p2.y - p1.y);
+
+			float minX = (p2.x < p1.x) ? p2.x : p1.x;
+			float minY = (p2.y < p1.y) ? p2.y : p1.y;
+
+			Vec2 topLeft(minX, minY);
+			Vec2 posTopLeft(pos.x - w / 2.f, pos.y - h / 2.f);
+			Vec2 vec = topLeft - posTopLeft;
+
+			mRect->SetWidthAndHeight(w, h);
+			mRect->SetAdjust(vec);
+
+			mBody->SetWidthAndHeight(w, h);
+			mBody->SetAdjust(vec);
+
+			Vec2 point;
+			if (size == 4)
+				point = Vec2(GetEditingScene()->GetCursorPos().x, GetEditingScene()->GetCursorPos().y);
+			else if (size == 6)
+				point = Vec2(GetDatas().at(4), GetDatas().at(5));
+
+			mLine->SetPoints(Vec2(minX + w / 2.f, minY + h / 2.f), point);
+		}
+	}
+
+	EditingDiamond::EditingDiamond(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Diamond",2)
+	{
+		SetScale(0.07);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Item/diamond01.png");
+
+		mBody = new Game::Stage::Body(this, "Diamond", 450.f, 600.f);
+		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
+
+	}
+
+	EditingDiamond::~EditingDiamond()
+	{
+	}
+
 }
 

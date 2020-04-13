@@ -12,6 +12,7 @@
 #include"Stage/Item/TransformItem.hpp"
 #include"Stage/CollisionDetection/Body.hpp"
 #include"Stage/Object/Container.hpp"
+#include"Stage/Item/Diamond.hpp"
 
 #include<iostream>
 
@@ -227,7 +228,28 @@ namespace Game
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Container(scene, pos);
 				}
+				else if (o["Name"].get<std::string>() == "MoveGround")
+				{
+					Vec2 p1 = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					Vec2 p2 = Vec2(o["Data3"].get<double>(), o["Data4"].get<double>());
+					Vec2 p3 = Vec2(o["Data5"].get<double>(), o["Data6"].get<double>());
 
+					float x = p1.x - p2.x;
+					float y = p1.y - p2.y;
+
+					float xMin = (x > 0) ? p2.x : p1.x;
+					float yMin = (y > 0) ? p2.y : p1.y;
+
+					float w = GameLib::Math::Abs(x);
+					float h = GameLib::Math::Abs(y);
+
+					new MoveGround(scene, Vec2(xMin + w / 2.f, yMin + h / 2.f), p3, w, h);
+				}
+				else if (o["Name"].get<std::string>() == "Diamond")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Item::Diamond(scene, pos);
+				}
 
 
 			}
