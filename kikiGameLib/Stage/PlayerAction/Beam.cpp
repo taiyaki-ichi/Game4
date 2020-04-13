@@ -164,7 +164,7 @@ namespace Game
 					:StageActor(scene, pos, updateOrder)
 					, mCnt(0)
 				{
-					new GameLib::TextureComponent(this, "../Assets/Action/guruguru.png");
+					new GameLib::TextureComponent(this, "../Assets/Action/guruguru.png",20);
 					SetScale(0.f);
 				}
 
