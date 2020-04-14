@@ -522,5 +522,21 @@ namespace StageEditor
 	{
 	}
 
+	EditingCarrot::EditingCarrot(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Carrot",2)
+	{
+		SetScale(0.12f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Enemy/Carrot/stay.png");
+
+		mBody = new Game::Stage::Body(this, "Carrot", 400.f, 300.f);
+		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
+
+	}
+
+	EditingCarrot::~EditingCarrot()
+	{
+	}
+
 }
 

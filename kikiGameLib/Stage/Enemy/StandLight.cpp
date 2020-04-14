@@ -98,9 +98,11 @@ namespace Game
 
 				std::string name = theBody->GetName();
 
-				if (name == "Ground")
+				if (name == "Ground"||name=="Container")
 				{
 					auto vec = GetAdjustUnrotatedRectVecEx(myBody, theBody, 0.f, 0.f);
+					if (vec.y < 0.f)
+						vec += theBody->GetVelocity();
 					SetPosition(GetPosition() + vec);
 				}
 			}

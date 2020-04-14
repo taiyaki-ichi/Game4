@@ -10,6 +10,7 @@
 #include"PlayerAction/Beam.hpp"
 
 #include<iostream>
+#include "Enemy\Carrot.hpp"
 
 namespace Game
 {
@@ -139,6 +140,8 @@ namespace Game
 		{
 			mMode = new PlayerMode::Nomal(mPlayer);
 		}
+
+
 
 		PlayerState::Active::~Active()
 		{
@@ -388,11 +391,13 @@ namespace Game
 
 				myBody->GetOwner()->SetPosition(pos + adjust);
 			}
-			else if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee")
+			else if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee"||
+				name=="EnemyCarrot")
 			{
 				mDeathFlag = true;
 			}
-			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness"||name=="EnemyStandLight")
+			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness"||name=="EnemyStandLight"||
+				name=="EnemyCarrotWeakness")
 			{
 				mVelocity.y = -5.f;
 				//‚SƒtƒŒ[ƒ€‚ÌŠÔ‚Í”ò‚×‚é

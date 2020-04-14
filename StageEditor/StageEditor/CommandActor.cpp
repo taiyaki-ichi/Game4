@@ -200,6 +200,13 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingStandLight(mEditingScene, cursorPos);
 		}
+		else if (text == "carrot")
+		{
+		color = GameLib::Color::Red;
+		if (enter)
+			mNowEditingActor = new EditingCarrot(mEditingScene, cursorPos);
+		}
+		
 
 		mTextComponent->SetColor(color);
 

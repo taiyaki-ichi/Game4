@@ -17,6 +17,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\CircleLineComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\LineComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Bee.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Carrot.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\StandLight.hpp" />
@@ -103,6 +104,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Manager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Draw\RectangleComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Bee.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Carrot.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\StandLight.cpp" />

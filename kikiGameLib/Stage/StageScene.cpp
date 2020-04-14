@@ -14,6 +14,7 @@
 #include"Stage/Object/Container.hpp"
 #include"Stage/Item/Diamond.hpp"
 #include"Stage/Enemy/StandLight.hpp"
+#include"Enemy/Carrot.hpp"
 
 #include<iostream>
 
@@ -255,6 +256,11 @@ namespace Game
 				{
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Enemy::StandLight(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "Carrot")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Enemy::Carrot(scene, pos);
 				}
 
 

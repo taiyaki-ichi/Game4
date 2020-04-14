@@ -234,5 +234,15 @@ namespace StageEditor
 		Game::Stage::Body* mBody;
 	};
 
+	class EditingCarrot : public EditingActor
+	{
+	public:
+		EditingCarrot(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingCarrot();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
 
 }
