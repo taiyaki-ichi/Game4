@@ -106,7 +106,8 @@ namespace Game
 					{
 						mFork->SetStageState(new ForkFallTogether(mFork, theBody->GetStageOwner()));
 					}
-					else if (theName == "EnemyToge" || theName == "Container")
+					else if (theName == "EnemyToge" || theName == "Container"||theName=="EnemyCarrot"||theName=="EnemyCarrotWeakness"||
+						theName=="EnemyStandLight")
 					{
 						mFork->SetStageState(new ForkFall(mFork));
 					}

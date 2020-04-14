@@ -76,7 +76,7 @@ namespace Game
 			namespace CarrotState
 			{
 
-				const float Active::MAXSPEED = 7.f;
+				const float Active::MAXSPEED = 6.f;
 				const float Active::RUNPOER = 0.2f;
 
 				Active::Active(Carrot* carrot)
