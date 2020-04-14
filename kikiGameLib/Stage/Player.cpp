@@ -472,6 +472,10 @@ namespace Game
 				auto v = GameLib::Vector2::Normalize(theBody->GetVelocity())*0.5f;
 				mVelocity += v;
 			}
+			else if (name == "EnemyDogu")
+			{
+			mVelocity *= 0.5f;
+			}
 			
 		}
 

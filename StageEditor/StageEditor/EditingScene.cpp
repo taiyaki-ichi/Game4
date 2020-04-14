@@ -298,6 +298,10 @@ namespace StageEditor
 			{
 				actor = new EditingCarrot(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "Dogu")
+			{
+				actor = new EditingDogu(scene, Vec2(x, y));
+			}
 			
 
 

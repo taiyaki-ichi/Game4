@@ -538,5 +538,20 @@ namespace StageEditor
 	{
 	}
 
+	EditingDogu::EditingDogu(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Dogu",2)
+	{
+		SetScale(0.1f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Enemy/Dogu/stay.png");
+
+		mBody = new Game::Stage::Body(this, "Dogu", 400.f, 700.f);
+		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
+	}
+
+	EditingDogu::~EditingDogu()
+	{
+	}
+
 }
 

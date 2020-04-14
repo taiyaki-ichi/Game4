@@ -202,9 +202,15 @@ namespace StageEditor
 		}
 		else if (text == "carrot")
 		{
-		color = GameLib::Color::Red;
-		if (enter)
-			mNowEditingActor = new EditingCarrot(mEditingScene, cursorPos);
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingCarrot(mEditingScene, cursorPos);
+		}
+		else if (text == "dogu")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingDogu(mEditingScene, cursorPos);
 		}
 		
 

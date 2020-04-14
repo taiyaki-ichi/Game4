@@ -245,4 +245,15 @@ namespace StageEditor
 		Game::Stage::Body* mBody;
 	};
 
+	class EditingDogu : public EditingActor
+	{
+	public:
+		EditingDogu(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingDogu();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
+
 }

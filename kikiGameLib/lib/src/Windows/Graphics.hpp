@@ -70,6 +70,18 @@ namespace GameLib
 		DWORD color;
 
 	};
+
+	struct CUSTOM_VERTEX3
+	{
+		float x, y, z, rhw;
+		// テクスチャ座標(横)
+		float tu;
+		// テクスチャ座標(縦)
+		float tv;
+
+		DWORD color;
+
+	};
 	
 	enum class FontSize;
 

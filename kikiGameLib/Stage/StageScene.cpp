@@ -15,6 +15,7 @@
 #include"Stage/Item/Diamond.hpp"
 #include"Stage/Enemy/StandLight.hpp"
 #include"Enemy/Carrot.hpp"
+#include"Enemy/Dogu.hpp"
 
 #include<iostream>
 
@@ -262,7 +263,12 @@ namespace Game
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Enemy::Carrot(scene, pos);
 				}
-
+				else if (o["Name"].get<std::string>() == "Dogu")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Enemy::Dogu(scene, pos);
+				}
+				
 
 			}
 

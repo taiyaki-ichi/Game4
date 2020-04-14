@@ -72,6 +72,7 @@ namespace GameLib
 			std::cout << "CreateDevice is failed\n";
 			return false;
 		}
+
 		g_D3DDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 		g_D3DDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 		g_D3DDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
@@ -187,11 +188,11 @@ namespace GameLib
 				{ point[3].x, point[3].y,0.f, 1.f ,(h ? 1.f : 0.f),(v ? 0.f : 1.f)},
 			};
 
-
 			// ’¸“_\‘¢‚ÌŽw’è
 			g_D3DDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1 );
 			g_D3DDevice->SetTexture(0, texture->GetPtr());
 			g_D3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, TriangleFan, sizeof(CUSTOM_VERTEX));
+			
 
 		}
 	}
