@@ -53,9 +53,10 @@ namespace Game
 
 			Liner4Tree* GetTree() const { return mTree; }
 			void SetPlayer(Player* p) { mPlayer = p; }
+			Player* GetPlayer() const { return mPlayer; }
 
 		private:
-			class Player* mPlayer;
+			Player* mPlayer;
 			std::vector<StageActor*> mStageActors;
 
 			Liner4Tree* mTree;

@@ -19,6 +19,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Bee.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\StandLight.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\Diamond.hpp" />
@@ -104,6 +105,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Bee.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\EnemyState.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Frog.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\StandLight.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Toge.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Item\Diamond.cpp" />

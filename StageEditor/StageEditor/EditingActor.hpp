@@ -223,5 +223,16 @@ namespace StageEditor
 		Game::Stage::Body* mBody;
 	};
 
+	class EditingStandLight : public EditingActor
+	{
+	public:
+		EditingStandLight(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingStandLight();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
+
 
 }

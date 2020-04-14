@@ -392,7 +392,7 @@ namespace Game
 			{
 				mDeathFlag = true;
 			}
-			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness")
+			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness"||name=="EnemyStandLight")
 			{
 				mVelocity.y = -5.f;
 				//‚SƒtƒŒ[ƒ€‚ÌŠÔ‚Í”ò‚×‚é
@@ -461,6 +461,11 @@ namespace Game
 					myBody->GetOwner()->SetPosition(myBody->GetOwner()->GetPosition() + adjust);
 				}
 				
+			}
+			else if (name == "Spore")
+			{
+				auto v = GameLib::Vector2::Normalize(theBody->GetVelocity())*0.5f;
+				mVelocity += v;
 			}
 			
 		}

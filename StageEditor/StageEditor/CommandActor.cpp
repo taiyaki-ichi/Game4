@@ -193,7 +193,12 @@ namespace StageEditor
 			color = GameLib::Color::Red;
 			if (enter)
 				mNowEditingActor = new EditingDiamond(mEditingScene, cursorPos);
-
+		}
+		else if (text == "standlight")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingStandLight(mEditingScene, cursorPos);
 		}
 
 		mTextComponent->SetColor(color);

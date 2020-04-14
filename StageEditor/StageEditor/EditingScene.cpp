@@ -290,6 +290,10 @@ namespace StageEditor
 			{
 				actor = new EditingDiamond(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "StandLight")
+			{
+				actor = new EditingStandLight(scene, Vec2(x, y));
+			}
 			
 
 

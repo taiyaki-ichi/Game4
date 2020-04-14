@@ -505,5 +505,22 @@ namespace StageEditor
 	{
 	}
 
+	EditingStandLight::EditingStandLight(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"StandLight",2)
+	{
+		SetScale(0.12f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Enemy/StandLight/stem_sleep.png");
+
+		mBody = new Game::Stage::Body(this, "StandLight", 600.f, 200.f);
+		mBody->SetAdjust(Vec2(0.f, 290.f));
+		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
+		
+	}
+
+	EditingStandLight::~EditingStandLight()
+	{
+	}
+
 }
 
