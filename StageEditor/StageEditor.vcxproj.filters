@@ -6,11 +6,13 @@
     <ClCompile Include="StageEditor\Cursor.cpp" />
     <ClCompile Include="StageEditor\EditingScene.cpp" />
     <ClCompile Include="StageEditor\CommandActor.cpp" />
+    <ClCompile Include="StageEditor\Scale.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StageEditor\Cursor.hpp" />
     <ClInclude Include="StageEditor\EditingScene.hpp" />
     <ClInclude Include="StageEditor\EditingActor.hpp" />
     <ClInclude Include="StageEditor\CommandActor.hpp" />
+    <ClInclude Include="StageEditor\Scale.hpp" />
   </ItemGroup>
 </Project>

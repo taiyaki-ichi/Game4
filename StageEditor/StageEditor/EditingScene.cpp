@@ -9,6 +9,7 @@
 #include <sstream>
 #include"picojson/picojson.hpp"
 #include"CommandActor.hpp"
+#include"Scale.hpp"
 
 namespace StageEditor
 {
@@ -27,6 +28,13 @@ namespace StageEditor
 		LoadEditingData(this,"Data/test");
 
 		Game::Stage::Body::SetDrawFlag(mDrawFlag);
+
+		for (int i = 0; i < 8; i++)
+			new Scale(this, true, 100.f * (i + 1));
+		for (int i = 0; i < 6; i++)
+			new Scale(this, false, 100.f * (i + 1));
+		
+		
 	}
 	EditingScene::~EditingScene()
 	{
