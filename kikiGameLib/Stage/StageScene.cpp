@@ -17,6 +17,7 @@
 #include"Enemy/Carrot.hpp"
 #include"Enemy/Dogu.hpp"
 #include"Item/Heart.hpp"
+#include"Object/Warp.hpp"
 
 #include<iostream>
 
@@ -273,6 +274,15 @@ namespace Game
 				{
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Item::Heart(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "Warp")
+				{
+					Vec2 p1 = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					Vec2 p2 = Vec2(o["Data3"].get<double>(), o["Data4"].get<double>());
+					auto w1 = new Warp(scene, p1);
+					auto w2 = new Warp(scene, p2);
+					w1->SetTarget(w2);
+					w2->SetTarget(w1);
 				}
 
 			}

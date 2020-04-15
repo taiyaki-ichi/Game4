@@ -1,61 +1,54 @@
 {
   "Actors": [
     {
-      "Data1": 53,
-      "Data2": 415,
-      "Data3": 1110,
-      "Data4": 499,
+      "Data1": 62,
+      "Data2": 401,
+      "Data3": 726,
+      "Data4": 509,
       "Name": "Ground"
     },
     {
-      "Data1": 400,
-      "Data2": 368,
+      "Data1": 730,
+      "Data2": 321,
+      "Data3": 1026,
+      "Data4": 385,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 1032,
+      "Data2": 220,
+      "Data3": 1310,
+      "Data4": 304,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 606,
+      "Data2": -118,
+      "Data3": 924,
+      "Data4": -45,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 315,
+      "Data2": 353,
       "Name": "Player"
     },
     {
-      "Data1": 546,
-      "Data2": 376,
-      "Name": "Triple"
+      "Data1": 1107,
+      "Data2": 174,
+      "Data3": 855,
+      "Data4": -184,
+      "Name": "Warp"
     },
     {
-      "Data1": 714,
-      "Data2": 377,
-      "Name": "Triple"
+      "Data1": 667,
+      "Data2": -186,
+      "Name": "Container"
     },
     {
-      "Data1": 934,
-      "Data2": 375,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 1063,
-      "Data2": 375,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 809,
-      "Data2": 369,
-      "Name": "Heart"
-    },
-    {
-      "Data1": 170,
-      "Data2": 359,
-      "Name": "Heart"
-    },
-    {
-      "Data1": 250,
-      "Data2": 359,
-      "Name": "Heart"
-    },
-    {
-      "Data1": 172,
-      "Data2": 303,
-      "Name": "Heart"
-    },
-    {
-      "Data1": 246,
-      "Data2": 305,
-      "Name": "Heart"
+      "Data1": 1233,
+      "Data2": 164,
+      "Name": "Container"
     }
   ]
 }

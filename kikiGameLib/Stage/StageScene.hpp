@@ -55,6 +55,7 @@ namespace Game
 			void SetPlayer(Player* p) { mPlayer = p; }
 			Player* GetPlayer() const { return mPlayer; }
 
+
 		private:
 			Player* mPlayer;
 			std::vector<StageActor*> mStageActors;
@@ -66,6 +67,7 @@ namespace Game
 
 
 		protected:
+		
 			//Stageの幅やPlayerの位置によってスクリーンを動かす
 			void AdjustScreen();
 			//vだけ動かす

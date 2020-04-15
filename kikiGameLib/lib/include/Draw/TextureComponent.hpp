@@ -4,7 +4,7 @@
 
 namespace GameLib
 {
-
+	class Vector2;
 
 	class TextureComponent : public SpriteComponent
 	{
@@ -20,8 +20,11 @@ namespace GameLib
 
 		const TextureFlip& GetTextureFlip() const{ return mTextureFilp; }
 
+		void SetAdjust(const Vector2& ad);
+
 	private:
 		Texture* mTexture;
 		TextureFlip mTextureFilp;
+		Vector2 mAdjust;
 	};
 }

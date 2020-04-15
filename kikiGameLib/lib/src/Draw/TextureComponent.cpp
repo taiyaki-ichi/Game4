@@ -3,6 +3,7 @@
 #include"lib/include/Actor.hpp"
 
 #include<iostream>
+#include "..\..\include\Draw\TextureComponent.hpp"
 
 
 namespace GameLib
@@ -10,6 +11,7 @@ namespace GameLib
 	TextureComponent::TextureComponent(Actor* actor, int drawOrder, int updateOrder)
 		:SpriteComponent(actor,drawOrder,updateOrder)
 		,mTextureFilp(TextureFlip::None)
+		,mAdjust(0.f,0.f)
 	{
 	}
 	TextureComponent::TextureComponent(Actor* actor, const std::string& fileName, int drawOrder, int updateOrder)
@@ -22,14 +24,18 @@ namespace GameLib
 	}
 	void TextureComponent::Draw()
 	{
-		
-		Actor* owner = GetOwner();
+	
+		Vector2 pos = mOwner->GetPosition() + mAdjust * GetOwner()->GetScale();
 		DrawTexture(mTexture,
-			owner->GetPosition(),
-			owner->GetRotation(),
-			owner->GetScale(),
+			pos,
+			mOwner->GetRotation(),
+			mOwner->GetScale(),
 			mTextureFilp
 		);
 		
+	}
+	void TextureComponent::SetAdjust(const Vector2& ad)
+	{
+		mAdjust = ad;
 	}
 }

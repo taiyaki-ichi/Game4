@@ -225,6 +225,12 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingHeart(mEditingScene, cursorPos);
 		}
+		else if (text == "warp")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingWarp(mEditingScene, cursorPos);
+		}
 		
 
 		mTextComponent->SetColor(color);

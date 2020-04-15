@@ -306,6 +306,10 @@ namespace StageEditor
 			{
 				actor = new EditingHeart(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "Warp")
+			{
+				actor = new EditingWarp(scene, Vec2(x, y));
+			}
 			
 
 

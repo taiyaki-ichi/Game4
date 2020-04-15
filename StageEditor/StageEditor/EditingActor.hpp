@@ -267,5 +267,21 @@ namespace StageEditor
 		Game::Stage::Body* mBody;
 	};
 
+	class EditingWarp : public EditingActor
+	{
+	public:
+		EditingWarp(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingWarp();
+
+		virtual void UpdateStageActor() override;
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		GameLib::TextureComponent* mTexture2;
+		Game::Stage::Body* mBody;
+		Game::Stage::Body* mBody2;
+
+	};
+
 
 }

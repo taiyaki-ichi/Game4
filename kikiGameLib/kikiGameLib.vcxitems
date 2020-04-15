@@ -28,6 +28,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\Heart.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Container.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Warp.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Beam.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Fork.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Meteor.hpp" />
@@ -119,6 +120,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Container.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Warp.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player\Player.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Beam.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Fork.cpp" />

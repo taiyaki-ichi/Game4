@@ -27,7 +27,7 @@ namespace GameLib
 	{
 		if (mFont&&mText.size()>0)
 		{
-			Vector2 pos = mAdjust + mOwner->GetPosition();
+			Vector2 pos = mAdjust * GetOwner()->GetScale() + mOwner->GetPosition();
 
 			Graphics::DrawMyText(mFont, mText,
 				pos,

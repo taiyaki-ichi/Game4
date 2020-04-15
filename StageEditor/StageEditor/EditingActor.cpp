@@ -569,5 +569,46 @@ namespace StageEditor
 	{
 	}
 
+	EditingWarp::EditingWarp(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Warp",4)
+	{
+		SetScale(0.1f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Other/warp.png");
+		mTexture2 = new GameLib::TextureComponent(this, "../Assets/Other/warp.png");
+
+		mBody = new Game::Stage::Body(this, "Warp", 500.f, 500.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+
+		mBody2 = new Game::Stage::Body(this, "Warp", 500.f, 500.f);
+		mBody2->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+	EditingWarp::~EditingWarp()
+	{
+	}
+
+	void EditingWarp::UpdateStageActor()
+	{
+		int size = GetDatas().size();
+
+		if (size >= 2)
+		{
+			Vec2 p1(GetDatas().at(0), GetDatas().at(1));
+			Vec2 p2;
+			if (size == 2)
+				p2 = GetPosition();
+			else
+				p2 = Vec2(GetDatas().at(2), GetDatas().at(3));
+
+			Vec2 vec = (p2 - p1) / GetScale();
+
+			mTexture2->SetAdjust(vec);
+			mBody2->SetAdjust(vec);
+
+			SetPosition(Vec2(GetDatas().at(0), GetDatas().at(1)));
+		}
+	}
+
 }
 
