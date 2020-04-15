@@ -28,6 +28,7 @@ namespace Game
 			StageScene* GetStageScene() const { return mStageScene; }
 
 			void SetRelativeMoveRate(float r) { mRelativeMoveRate = r; };
+			float GetRelativeMoveRate() const { return mRelativeMoveRate; }
 
 		private:
 			StageScene* mStageScene;

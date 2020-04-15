@@ -18,6 +18,7 @@
 #include"Enemy/Dogu.hpp"
 #include"Item/Heart.hpp"
 #include"Object/Warp.hpp"
+#include"BackGround/BackGroundBasis.hpp"
 
 #include<iostream>
 
@@ -40,6 +41,9 @@ namespace Game
 			if (!mTree)
 				std::cout << "nullptr\n";
 
+			new BackGroundBasis(this);
+			new Horaizon180(this);
+			new Horaizon230(this);
 		}
 
 		StageScene::~StageScene()

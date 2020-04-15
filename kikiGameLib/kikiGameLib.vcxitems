@@ -16,6 +16,8 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\CircleLineComponent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\include\Draw\LineComponent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\BackGround\BackGroundActor.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\BackGround\BackGroundBasis.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Bee.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Carrot.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Dogu.hpp" />
@@ -103,6 +105,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Sound.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)lib\src\Windows\Window.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\BackGround\BackGroundActor.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\BackGround\BackGroundBasis.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Body.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\CollisionDetection.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\CollisionDetection\Manager.cpp" />
