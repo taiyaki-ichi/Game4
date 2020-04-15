@@ -15,7 +15,7 @@ namespace Game
 				virtual ~TransformItem();
 
 				virtual void UpdateStageActor() override;
-				virtual void Hit(Body* myBody, Body* theBody) override;
+			
 
 			private:
 				int mCnt;

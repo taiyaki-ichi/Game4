@@ -109,7 +109,6 @@ namespace Game
 		{
 
 			using Vec2 = GameLib::Vector2;
-			float right, left;
 
 			//SDL‚ÌÀ•WŒn‚Í³‚ªŒv‰ñ‚è
 

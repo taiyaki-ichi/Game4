@@ -16,7 +16,7 @@ namespace Game
 				:StageActor(scene,pos,updateOrder)
 			{
 
-				SetScale(0.07);
+				SetScale(0.07f);
 
 				GameLib::Animation anim = {
 					GameLib::Data::GetTexture("../Assets/Item/diamond01.png"),

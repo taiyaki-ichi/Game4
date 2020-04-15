@@ -1,5 +1,5 @@
 #pragma once
-#include"StageStateActor.hpp"
+#include"Stage/StageStateActor.hpp"
 namespace GameLib
 {
 	class AnimComponent;
@@ -16,7 +16,7 @@ namespace Game
 		{
 			class State;
 		}
-
+		class PlayerLife;
 		class Player : public StageStateActor
 		{
 		public:
@@ -27,7 +27,7 @@ namespace Game
 			GameLib::AnimComponent* GetSubAnim() const { return mSubAnim; }
 
 			void BreakBody();
-
+			Body* GetBody() const { return mBody; }
 		private:
 
 			Body* mBody;
@@ -66,7 +66,7 @@ namespace Game
 				const float JUMPING_GRAVITY = 0.4f;
 				const float JUMP_POWER_MAX = 11.5f;
 				const float JUMP_POWER_MIN = 9.5f;
-				const float RUN_POWER = 0.2;
+				const float RUN_POWER = 0.2f;
 
 				Active(Player* player);
 				virtual ~Active();
@@ -75,6 +75,7 @@ namespace Game
 				virtual void Input(const GameLib::InputState& state) override;
 				virtual void Hit(Body* myBody, Body* theBody) override;
 
+			
 			private:
 				Player* mPlayer;
 
@@ -96,16 +97,18 @@ namespace Game
 				//地面についているかどうか
 				bool mIsOnGround;
 
-				//死亡Stateに行くかどうか
-				bool mDeathFlag;
-
 				//敵を踏んだ時のジャンプ
 				unsigned int mJumpFlag2;
 
 				bool mCrushedFlag;
 
+				PlayerLife* mLife;
+
+				void HitEnemy(Body* myBody, Body* theBody);
+
 			};
 			
+
 			class Death : public StageState
 			{
 			public:
@@ -182,6 +185,10 @@ namespace Game
 				};
 
 			}
+
+
+			
+			
 
 
 		}

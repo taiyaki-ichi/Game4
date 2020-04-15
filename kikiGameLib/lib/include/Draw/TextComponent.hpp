@@ -10,11 +10,11 @@ namespace GameLib
 	
 	enum class FontSize
 	{
-		Size_16,
+		Size_16 ,
 		Size_32,
-		Size_64,
-		Size_96,
-		Size_128
+		Size_64 ,
+		Size_96 ,
+		Size_128 
 	};
 
 

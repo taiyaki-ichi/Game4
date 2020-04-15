@@ -3,7 +3,7 @@
 #include"Stage/CollisionDetection/Body.hpp"
 #include"lib/include/Data.hpp"
 #include"Stage/StageScene.hpp"
-#include"Stage/Player.hpp"
+#include"Stage/Player/Player.hpp"
 #include"Stage/Enemy/EnemyState.hpp"
 
 namespace Game
@@ -115,7 +115,7 @@ namespace Game
 					,mStem(stem)
 				{
 
-					SetScale(0.18);
+					SetScale(0.18f);
 
 					GameLib::Animation sleep = {
 						GameLib::Data::GetTexture("../Assets/Enemy/StandLight/head_sleep.png"),

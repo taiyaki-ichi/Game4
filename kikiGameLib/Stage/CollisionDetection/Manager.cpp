@@ -22,10 +22,10 @@ namespace Game
 			, mLevel(level)
 		{
 
-			mCellNum = (static_cast<int>(GameLib::Math::Pow(4.f, level + 1)) - 1) / 3;
+			mCellNum = (static_cast<int>(GameLib::Math::Pow(4.f, static_cast<float>(level + 1))) - 1) / 3;
 
 			mCellArray = new Cell * [mCellNum];
-			for (int i = 0; i < mCellNum; i++) {
+			for (unsigned int i = 0; i < mCellNum; i++) {
 				mCellArray[i] = nullptr;
 			}
 		}
@@ -217,7 +217,7 @@ namespace Game
 				}
 			}
 			unsigned int SpaceNum = RB >> (HiLevel * 2);
-			unsigned int AddNum = (static_cast<int>(GameLib::Math::Pow(4.f, mLevel - HiLevel)) - 1) / 3;
+			unsigned int AddNum = (static_cast<int>(GameLib::Math::Pow(4.f, static_cast<float>(mLevel - HiLevel))) - 1) / 3;
 			SpaceNum += AddNum;
 
 			if (SpaceNum > mCellNum)

@@ -1,6 +1,6 @@
 #pragma once
 #include"lib/include/Data.hpp"
-
+#include"Windows/Graphics.hpp"
 
 namespace GameLib
 {

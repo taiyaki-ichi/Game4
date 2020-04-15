@@ -123,6 +123,21 @@ namespace GameLib
 			y(inY)
 		{}
 
+		explicit Vector2(double inX, double inY) :
+			x(static_cast<float>(inX)),
+			y(static_cast<float>(inY))
+		{}
+
+		explicit Vector2(float inX, double inY) :
+			x(inX),
+			y(static_cast<float>(inY))
+		{}
+
+		explicit Vector2(double inX, float inY) :
+			x(static_cast<float>(inX)),
+			y(inY)
+		{}
+
 		//x,y‚ð‚¢‚Á‚Ø‚ñ‚É•Ï‚¦‚½‚¢
 		void Set(float inX, float inY)
 		{

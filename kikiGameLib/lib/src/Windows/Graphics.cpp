@@ -155,7 +155,7 @@ namespace GameLib
 				return nullptr;
 			}
 
-			return new Texture(tex, desc.Width, desc.Height);
+			return new Texture(tex, static_cast<float>(desc.Width), static_cast<float>(desc.Height));
 		}
 
 	}
@@ -303,9 +303,15 @@ namespace GameLib
 		int i = static_cast<int>(size);
 		if (font->GetPtr(i))
 		{
-			float width = text.size() * i;
+			float width = static_cast<float>(text.size() * i);
 			float wi = width / 2.f;
-			float hei = i / 2.f;
+			int size;
+			if (i == 0)
+				size = 16;
+			else
+				size = 32 * i;
+			
+			float hei = size / 2.f;
 
 			RECT rect = {
 				static_cast<LONG>(center.x - wi),

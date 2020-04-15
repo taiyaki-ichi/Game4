@@ -37,7 +37,7 @@ namespace GameLib
 		,mStartFlag(true)
 	{
 		mStartFlag = Init(windowData, fps);
-		mWaitTime = 1000.f / fps;
+		mWaitTime = static_cast<unsigned long>(1000.f / fps);
 
 		mGraphicsManagerPtr = new GraphicsManager();
 		mInputState = new InputStateImpl();

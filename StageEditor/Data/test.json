@@ -1,11 +1,6 @@
 {
   "Actors": [
     {
-      "Data1": 246,
-      "Data2": 335,
-      "Name": "Player"
-    },
-    {
       "Data1": 53,
       "Data2": 415,
       "Data3": 1110,
@@ -13,9 +8,54 @@
       "Name": "Ground"
     },
     {
-      "Data1": 653,
-      "Data2": 265,
-      "Name": "Dogu"
+      "Data1": 400,
+      "Data2": 368,
+      "Name": "Player"
+    },
+    {
+      "Data1": 546,
+      "Data2": 376,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 714,
+      "Data2": 377,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 934,
+      "Data2": 375,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 1063,
+      "Data2": 375,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 809,
+      "Data2": 369,
+      "Name": "Heart"
+    },
+    {
+      "Data1": 170,
+      "Data2": 359,
+      "Name": "Heart"
+    },
+    {
+      "Data1": 250,
+      "Data2": 359,
+      "Name": "Heart"
+    },
+    {
+      "Data1": 172,
+      "Data2": 303,
+      "Name": "Heart"
+    },
+    {
+      "Data1": 246,
+      "Data2": 305,
+      "Name": "Heart"
     }
   ]
 }

@@ -302,6 +302,10 @@ namespace StageEditor
 			{
 				actor = new EditingDogu(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "Heart")
+			{
+				actor = new EditingHeart(scene, Vec2(x, y));
+			}
 			
 
 

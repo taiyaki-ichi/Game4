@@ -1,16 +1,16 @@
 #include"Player.hpp"
-#include"CollisionDetection/Body.hpp"
+#include"Stage/CollisionDetection/Body.hpp"
 #include"lib/include/Draw/AnimComponent.hpp"
 #include"lib/include/Data.hpp"
 #include"lib/include/InputState.hpp"
 #include"WindowData.hpp"
-#include"StageScene.hpp"
-#include"PlayerAction/Fork.hpp"
-#include"Stage/PlayerAction/Meteor.hpp"
-#include"PlayerAction/Beam.hpp"
+#include"Stage/StageScene.hpp"
+#include"Action/Fork.hpp"
+#include"Action/Meteor.hpp"
+#include"Action/Beam.hpp"
+#include"PlayerLife.hpp"
 
 #include<iostream>
-#include "Enemy\Carrot.hpp"
 
 namespace Game
 {
@@ -49,6 +49,30 @@ namespace Game
 			Anim up = {
 				Data::GetTexture("Assets/tama/up.png"),
 			};
+
+			Anim runSub = {
+				Data::GetTexture("Assets/tama/run001.png"),
+				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("Assets/tama/run002.png"),
+				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("Assets/tama/run003.png"),
+				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("Assets/tama/run002.png"),
+				Data::GetTexture("Assets/tomei.png"),
+			};
+			Anim staySub = {
+				Data::GetTexture("Assets/tama/stay001.png"),
+				Data::GetTexture("Assets/tomei.png"),
+			};
+			Anim downSub = {
+				Data::GetTexture("Assets/tama/down.png"),
+				Data::GetTexture("Assets/tomei.png"),
+			};
+			Anim upSub = {
+				Data::GetTexture("Assets/tama/up.png"),
+				Data::GetTexture("Assets/tomei.png"),
+			};
+
 			Anim death = {
 				Data::GetTexture("Assets/tama/death.png"),
 			};
@@ -60,6 +84,11 @@ namespace Game
 				up,
 				down,
 				death,
+				staySub,
+				runSub,
+				upSub,
+				downSub,
+
 			};
 
 			mAnim = new GameLib::AnimComponent(this, anims);
@@ -134,11 +163,12 @@ namespace Game
 			, mJumpFlag(false)
 			, mIsJumping(false)
 			, mJumpAcceleFlag(false)
-			, mDeathFlag(false)
 			, mJumpFlag2(0)
 			, mCrushedFlag(false)
+			,mIsOnGround(false)
 		{
 			mMode = new PlayerMode::Nomal(mPlayer);
+			mLife = new PlayerLife(mPlayer->GetScene(), mPlayer);
 		}
 
 
@@ -147,13 +177,13 @@ namespace Game
 		{
 			if (mMode)
 				delete mMode;
+			if (mLife)
+				mLife->SetState(GameLib::Actor::State::Dead);
+			
 		}
 
 		StageState* PlayerState::Active::Update()
 		{
-
-			if (mDeathFlag)
-				return new Death(mPlayer);
 
 			if (mCrushedFlag && mIsOnGround)
 				return new Death(mPlayer);
@@ -249,7 +279,10 @@ namespace Game
 			}
 
 
-			mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion));
+			if (mLife->GetInvincibleFlag())
+				mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion) + 5);
+			else
+				mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion));
 			
 
 			//—Ž‰ºŽ€
@@ -391,28 +424,19 @@ namespace Game
 
 				myBody->GetOwner()->SetPosition(pos + adjust);
 			}
-			else if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee"||
-				name=="EnemyCarrot")
-			{
-				mDeathFlag = true;
-			}
-			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness"||name=="EnemyStandLight"||
-				name=="EnemyCarrotWeakness")
-			{
-				mVelocity.y = -5.f;
-				//‚SƒtƒŒ[ƒ€‚ÌŠÔ‚Í”ò‚×‚é
-				mJumpFlag2 = 4;
-			}
 			else if (name == "ItemCock")
 			{
+				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
 				SetMode(new PlayerMode::Cock(mPlayer));
 			}
 			else if (name == "ItemWizard")
 			{
+				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
 				SetMode(new PlayerMode::Wizard(mPlayer));
 			}
 			else if (name == "ItemAlien")
 			{
+				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
 				SetMode(new PlayerMode::Alien(mPlayer));
 			}
 			else if (name == "ForkGround")
@@ -431,7 +455,8 @@ namespace Game
 					myBody->GetOwner()->SetPosition(pos + adjust);
 				}
 			}
-			else if (name == "Meteor" || name == "Beam")
+			else if ((name == "Meteor" && !mLife->GetInvincibleFlag()) ||
+				(name == "Beam" && !mLife->GetInvincibleFlag()))
 			{
 				mPlayer->SetStageState(new PlayerState::Death(mPlayer));
 			}
@@ -451,31 +476,30 @@ namespace Game
 						mJumpFlag = true;
 						mIsOnGround = true;
 						mIsJumping = false;
-		
+
 						adjust += theBody->GetVelocity();
 					}
 					else if (adjust.y > 0.f && mVelocity.y < 0.f)
 					{
 						mVelocity.y = 0.f;
 						mIsJumping = false;
-						
+
 					}
 
 					if (adjust.y > 20.f)
 						mCrushedFlag = true;
 					myBody->GetOwner()->SetPosition(myBody->GetOwner()->GetPosition() + adjust);
 				}
-				
 			}
-			else if (name == "Spore")
+			else if (name == "Heart")
 			{
-				auto v = GameLib::Vector2::Normalize(theBody->GetVelocity())*0.5f;
-				mVelocity += v;
+				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
+				mLife->Heal();
 			}
-			else if (name == "EnemyDogu")
-			{
-			mVelocity *= 0.5f;
-			}
+		
+			
+			if (!mLife->GetInvincibleFlag())
+				HitEnemy(myBody, theBody);
 			
 		}
 
@@ -487,6 +511,34 @@ namespace Game
 					delete mMode;
 				mMode = mode;
 			}
+		}
+
+		void PlayerState::Active::HitEnemy(Body* myBody, Body* theBody)
+		{
+			std::string name = theBody->GetName();
+
+			if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee" ||
+				name == "EnemyCarrot")
+			{
+				mLife->Damage();
+			}
+			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness" || name == "EnemyStandLight" ||
+				name == "EnemyCarrotWeakness")
+			{
+				mVelocity.y = -5.f;
+				//‚SƒtƒŒ[ƒ€‚ÌŠÔ‚Í”ò‚×‚é
+				mJumpFlag2 = 4;
+			}
+			else if (name == "Spore")
+			{
+				auto v = GameLib::Vector2::Normalize(theBody->GetVelocity()) * 0.5f;
+				mVelocity += v;
+			}
+			else if (name == "EnemyDogu")
+			{
+				mVelocity *= 0.5f;
+			}
+
 		}
 
 		PlayerState::Death::Death(Player* player)

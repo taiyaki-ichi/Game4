@@ -77,7 +77,14 @@ namespace StageEditor
 		std::string text = mTextComponent->GetText();
 
 		std::string s = "saveas";
+		bool saveas = false;
+		if (text.size() >= 6)
+			saveas = std::equal(s.begin(), s.end(), text.begin());
+			
 		std::string l = "load";
+		bool load = false;
+		if (text.size() >= 4)
+			load = std::equal(l.begin(), l.end(), text.begin());
 
 		if (text == "check")
 		{
@@ -85,7 +92,7 @@ namespace StageEditor
 			if (enter)
 				mCheckFlag = true;
 		}
-		else if (std::equal(s.begin(), s.end(), text.begin()))
+		else if (saveas)
 		{
 			color = GameLib::Color::Blue;
 			if (enter)
@@ -99,7 +106,7 @@ namespace StageEditor
 			if (enter)
 				mEditingScene->Reset();
 		}
-		else if (std::equal(l.begin(), l.end(), text.begin()))
+		else if (load)
 		{
 			color = GameLib::Color::Blue;
 			if (enter)
@@ -211,6 +218,12 @@ namespace StageEditor
 			color = GameLib::Color::Red;
 			if (enter)
 				mNowEditingActor = new EditingDogu(mEditingScene, cursorPos);
+		}
+		else if (text == "heart")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingHeart(mEditingScene, cursorPos);
 		}
 		
 

@@ -17,7 +17,7 @@ namespace Game
 			{
 				auto pos = GameLib::Vector2(x, -250.f);
 				SetPosition(pos);
-				float scale = 0.7;
+				float scale = 0.7f;
 				SetScale(scale);
 
 				mBody = new Body(this, "Meteor");
@@ -51,7 +51,7 @@ namespace Game
 				mRect->SetWidth(w);
 
 				float a = mRect->GetAlpha();
-				a += 0.4;
+				a += 0.4f;
 				if (a > 200)
 					a = 200;
 				mRect->SetAlpha(a);

@@ -29,15 +29,6 @@ namespace Game
 				mCnt++;
 			}
 
-			void TransformItem::Hit(Body* myBody, Body* theBody)
-			{
-				std::string name = theBody->GetName();
-
-				if (name == "Player")
-				{
-					SetState(Actor::State::Dead);
-				}
-			}
 
 			Cock::Cock(StageScene* scene, const GameLib::Vector2& pos, int updateOrder)
 				:TransformItem(scene,pos,updateOrder)

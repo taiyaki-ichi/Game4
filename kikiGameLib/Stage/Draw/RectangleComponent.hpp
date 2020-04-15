@@ -11,7 +11,7 @@ namespace Game
 		public:
 			RectangleComponent(GameLib::Actor* actor, float w, float h,
 				const GameLib::Vector3& color, float a = 255,
-				float drawOrdeer=0,float updateOrder = 0);
+				float drawOrdeer=0,int updateOrder = 0);
 			virtual ~RectangleComponent();
 
 			void Draw() override;

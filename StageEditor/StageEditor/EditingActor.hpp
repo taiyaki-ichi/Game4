@@ -256,4 +256,16 @@ namespace StageEditor
 		Game::Stage::Body* mBody;
 	};
 
+	class EditingHeart : public EditingActor
+	{
+	public:
+		EditingHeart(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingHeart();
+
+	private:
+		GameLib::TextureComponent* mTexture;
+		Game::Stage::Body* mBody;
+	};
+
+
 }

@@ -553,5 +553,21 @@ namespace StageEditor
 	{
 	}
 
+	EditingHeart::EditingHeart(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Heart",2)
+	{
+		SetScale(0.07f);
+
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Item/heart.png");
+
+		mBody = new Game::Stage::Body(this, "Heart");
+		mBody->SetWidthAndHeight(600.f, 500.f);
+		mBody->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+	EditingHeart::~EditingHeart()
+	{
+	}
+
 }
 

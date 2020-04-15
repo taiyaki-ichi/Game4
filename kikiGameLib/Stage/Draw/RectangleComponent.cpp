@@ -9,7 +9,7 @@ namespace Game
 	namespace Stage
 	{
 
-		RectangleComponent::RectangleComponent(GameLib::Actor* actor, float w, float h, const GameLib::Vector3& color, float a, float drawOrdeer, float updateOrder)
+		RectangleComponent::RectangleComponent(GameLib::Actor* actor, float w, float h, const GameLib::Vector3& color, float a, float drawOrdeer, int updateOrder)
 			:GameLib::SpriteComponent(actor,drawOrdeer,updateOrder)
 			,mWidth(w)
 			,mHeight(h)

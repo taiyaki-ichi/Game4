@@ -3,7 +3,7 @@
 #include"lib/include/Data.hpp"
 #include"Stage/CollisionDetection/Body.hpp"
 #include"Stage/StageScene.hpp"
-#include"Stage/Player.hpp"
+#include"Stage/Player/Player.hpp"
 
 namespace Game
 {
