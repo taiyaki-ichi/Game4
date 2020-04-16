@@ -1,5 +1,7 @@
 #pragma once
 #include"Stage/StageActor.hpp"
+#include<string>
+
 
 namespace Game
 {
@@ -14,5 +16,9 @@ namespace Game
 			virtual void UpdateStageActor() override final;
 		};
 
+		void CreateBackGrounds(StageScene* scene, const std::string& fileName, int num,float posY, float relativeRate,
+			float drawOrder, float scele = 0.5f);
+
+		void CreateForestBackGround(StageScene* scene);
 	}
 }

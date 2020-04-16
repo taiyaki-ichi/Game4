@@ -20,6 +20,7 @@
 #include"Object/Warp.hpp"
 #include"BackGround/BackGroundBasis.hpp"
 #include"Object/Goal.hpp"
+#include"BackGround/BackGroundActor.hpp"
 
 #include<iostream>
 
@@ -39,11 +40,9 @@ namespace Game
 			mTree = new Liner4Tree(TREELEVEL,
 				CollisionDetectionScope::Left, CollisionDetectionScope::Top, CollisionDetectionScope::Right, CollisionDetectionScope::Bottom);
 
-			/*
-			new BackGroundBasis(this);
-			new Horaizon180(this);
-			new Horaizon230(this);
-			*/
+			
+			
+			CreateForestBackGround(this);
 		}
 
 		StageScene::~StageScene()
