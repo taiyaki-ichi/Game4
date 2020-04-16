@@ -8,6 +8,7 @@ namespace StageEditor
 		:StageActor(scene)
 		,mIsX(isX)
 		,mNum(num)
+		,mStartNum(num)
 	{
 		mText = new GameLib::TextComponent(this, "Assets/Font/mplus.ttf");
 		mText->SetSize(GameLib::FontSize::Size_16);
@@ -75,6 +76,23 @@ namespace StageEditor
 		{
 			GameLib::Vector2 adjust(-vec.x, 0.f);
 			SetPosition(GetPosition() + adjust);
+		}
+	}
+	void Scale::Reset()
+	{
+		if (mIsX)
+		{
+			mNum = mStartNum;
+			GameLib::Vector2 pos(mNum, 8.f);
+			mText->SetText(std::to_string(static_cast<int>(mNum)));
+			SetPosition(pos);
+		}
+		else
+		{
+			mNum = mStartNum;
+			GameLib::Vector2 pos(16.f, mNum);
+			mText->SetText(std::to_string(static_cast<int>(mNum)));
+			SetPosition(pos);
 		}
 	}
 }

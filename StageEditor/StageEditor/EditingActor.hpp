@@ -283,5 +283,12 @@ namespace StageEditor
 
 	};
 
+	class EditingGoal : public EditingActor
+	{
+	public:
+		EditingGoal(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingGoal();
+	};
+
 
 }

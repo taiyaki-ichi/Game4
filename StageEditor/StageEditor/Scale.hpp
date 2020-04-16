@@ -20,9 +20,13 @@ namespace StageEditor
 
 		virtual void AdjustPosSub(const GameLib::Vector2& vec) override;
 
+		void Reset();
+
 	private:
 		float mNum;
 		bool mIsX;
 		GameLib::TextComponent* mText;
+
+		float mStartNum;
 	};
 }

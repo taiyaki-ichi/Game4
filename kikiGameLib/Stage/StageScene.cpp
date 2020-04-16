@@ -19,6 +19,7 @@
 #include"Item/Heart.hpp"
 #include"Object/Warp.hpp"
 #include"BackGround/BackGroundBasis.hpp"
+#include"Object/Goal.hpp"
 
 #include<iostream>
 
@@ -37,13 +38,12 @@ namespace Game
 		{
 			mTree = new Liner4Tree(TREELEVEL,
 				CollisionDetectionScope::Left, CollisionDetectionScope::Top, CollisionDetectionScope::Right, CollisionDetectionScope::Bottom);
-	
-			if (!mTree)
-				std::cout << "nullptr\n";
 
+			/*
 			new BackGroundBasis(this);
 			new Horaizon180(this);
 			new Horaizon230(this);
+			*/
 		}
 
 		StageScene::~StageScene()
@@ -288,6 +288,13 @@ namespace Game
 					w1->SetTarget(w2);
 					w2->SetTarget(w1);
 				}
+				else if (o["Name"].get<std::string>() == "Goal")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Goal(scene, pos);
+					scene->SetStageRight(pos.x + 200.f);
+				}
+
 
 			}
 

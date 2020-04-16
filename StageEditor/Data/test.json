@@ -1,125 +1,21 @@
 {
   "Actors": [
     {
-      "Data1": 62,
-      "Data2": 401,
-      "Data3": 726,
-      "Data4": 509,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 730,
-      "Data2": 321,
-      "Data3": 1026,
-      "Data4": 385,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1032,
-      "Data2": 220,
-      "Data3": 1310,
-      "Data4": 304,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 606,
-      "Data2": -118,
-      "Data3": 924,
-      "Data4": -45,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 315,
-      "Data2": 353,
+      "Data1": 349,
+      "Data2": 379,
       "Name": "Player"
     },
     {
-      "Data1": 1107,
-      "Data2": 174,
-      "Data3": 855,
-      "Data4": -184,
-      "Name": "Warp"
-    },
-    {
-      "Data1": 667,
-      "Data2": -186,
-      "Name": "Container"
-    },
-    {
-      "Data1": 1233,
-      "Data2": 164,
-      "Name": "Container"
-    },
-    {
-      "Data1": 1091,
-      "Data2": -305,
-      "Data3": 1434,
-      "Data4": -242,
+      "Data1": 79,
+      "Data2": 428,
+      "Data3": 1376,
+      "Data4": 484,
       "Name": "Ground"
     },
     {
-      "Data1": 1270,
-      "Data2": -356,
-      "Data3": 671,
-      "Data4": -296,
-      "Name": "Warp"
-    },
-    {
-      "Data1": 597,
-      "Data2": -775,
-      "Data3": 893,
-      "Data4": -728,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 693,
-      "Data2": -835,
-      "Data3": 813,
-      "Data4": -774,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1388,
-      "Data2": -432,
-      "Data3": 760,
-      "Data4": -1010,
-      "Name": "Warp"
-    },
-    {
-      "Data1": 1141,
-      "Data2": -442,
-      "Data3": 767,
-      "Data4": 20,
-      "Name": "Warp"
-    },
-    {
-      "Data1": 640,
-      "Data2": -988,
-      "Data3": 1230,
-      "Data4": -1436,
-      "Name": "Warp"
-    },
-    {
-      "Data1": 1063,
-      "Data2": -1290,
-      "Data3": 1424,
-      "Data4": -1247,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 422,
-      "Data2": 346,
-      "Name": "Container"
-    },
-    {
-      "Data1": 529,
-      "Data2": 345,
-      "Name": "Container"
-    },
-    {
-      "Data1": 468,
-      "Data2": 227,
-      "Name": "Container"
+      "Data1": 1213,
+      "Data2": 237,
+      "Name": "Goal"
     }
   ]
 }

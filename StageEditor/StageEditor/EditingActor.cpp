@@ -610,5 +610,25 @@ namespace StageEditor
 		}
 	}
 
+	EditingGoal::EditingGoal(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Goal",2)
+	{
+		SetScale(0.5f);
+
+		auto texture1 = new GameLib::TextureComponent(this, "../Assets/Other/goal.png", -10);
+		texture1->SetAdjust(GameLib::Vector2(-150.f, 0.f));
+
+		auto texture2 = new GameLib::TextureComponent(this, "../Assets/Other/goal.png", 1200);
+		texture2->SetAdjust(GameLib::Vector2(150.f, 0.f));
+
+		auto body = new Game::Stage::Body(this, "Goal", 400.f, 500.f);
+		body->SetAdjust(GameLib::Vector2(0.f, 130.f));
+		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+	EditingGoal::~EditingGoal()
+	{
+	}
+
 }
 

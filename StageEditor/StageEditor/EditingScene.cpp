@@ -29,10 +29,11 @@ namespace StageEditor
 
 		Game::Stage::Body::SetDrawFlag(mDrawFlag);
 
+
 		for (int i = 0; i < 8; i++)
-			new Scale(this, true, 100.f * (i + 1));
+			mScales.emplace_back(new Scale(this, true, 100.f * (i + 1)));
 		for (int i = 0; i < 6; i++)
-			new Scale(this, false, 100.f * (i + 1));
+			mScales.emplace_back(new Scale(this, false, 100.f * (i + 1)));
 		
 		
 	}
@@ -110,6 +111,8 @@ namespace StageEditor
 	{
 		ResetEditingActors();
 		ResetScreemMoveSum();
+		for (auto& s : mScales)
+			s->Reset();
 	}
 
 	void EditingScene::SwitchDrawFlag()
@@ -317,6 +320,10 @@ namespace StageEditor
 			else if (o["Name"].get<std::string>() == "Warp")
 			{
 				actor = new EditingWarp(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "Goal")
+			{
+				actor = new EditingGoal(scene, Vec2(x, y));
 			}
 			
 

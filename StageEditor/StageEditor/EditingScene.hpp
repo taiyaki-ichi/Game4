@@ -16,6 +16,7 @@ namespace StageEditor
 	class Cursor;
 	class EditingActor;
 	class CommandActor;
+	class Scale;
 
 	class EditingScene : public Game::Stage::StageScene
 	{
@@ -40,7 +41,6 @@ namespace StageEditor
 		void ResetEditingActors();
 		void ResetScreemMoveSum();
 
-
 		std::vector<EditingActor*> mEditingActors;
 
 		Cursor* mCursor;
@@ -49,6 +49,8 @@ namespace StageEditor
 		GameLib::Vector2 mScreemMoveSum;
 
 		bool mDrawFlag;
+
+		std::vector<Scale*> mScales;
 	};
 
 	bool CreateJsonData(std::vector<EditingActor*>& actors,const std::string& fileName,const GameLib::Vector2& adjust);

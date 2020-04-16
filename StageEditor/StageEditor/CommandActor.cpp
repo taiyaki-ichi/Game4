@@ -231,6 +231,12 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingWarp(mEditingScene, cursorPos);
 		}
+		else if (text == "goal")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingGoal(mEditingScene, cursorPos);
+		}
 		
 
 		mTextComponent->SetColor(color);

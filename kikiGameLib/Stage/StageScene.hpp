@@ -55,6 +55,7 @@ namespace Game
 			void SetPlayer(Player* p) { mPlayer = p; }
 			Player* GetPlayer() const { return mPlayer; }
 
+			void SetStageRight(float l) { mStageRight = l; }
 
 		private:
 			Player* mPlayer;
