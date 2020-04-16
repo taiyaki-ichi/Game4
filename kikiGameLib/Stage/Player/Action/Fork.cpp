@@ -102,7 +102,8 @@ namespace Game
 					}
 					else if (theName == "EnemyTriple" || theName == "EnemyTripleWeakness" ||
 						theName == "EnemyFrog" || theName == "EnemyFrogWeakness"||
-						theName=="EnemyBee")
+						theName=="EnemyBee"||theName=="EnemyBeeWeakness"||
+						theName=="EnemyMaimai"||theName=="EnemyMaimaiWeakness")
 					{
 						mFork->SetStageState(new ForkFallTogether(mFork, theBody->GetStageOwner()));
 					}

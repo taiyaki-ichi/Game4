@@ -237,6 +237,18 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingGoal(mEditingScene, cursorPos);
 		}
+		else if (text == "maimai")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingMaimai(mEditingScene, cursorPos);
+		}
+		else if (text == "missile")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingMissile(mEditingScene, cursorPos);
+		}
 		
 
 		mTextComponent->SetColor(color);

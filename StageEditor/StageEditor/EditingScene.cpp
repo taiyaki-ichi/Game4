@@ -10,6 +10,7 @@
 #include"picojson/picojson.hpp"
 #include"CommandActor.hpp"
 #include"Scale.hpp"
+#include"Stage/BackGround/BackGroundActor.hpp"
 
 namespace StageEditor
 {
@@ -189,6 +190,8 @@ namespace StageEditor
 	{
 		Game::Stage::LoadStageData(this, "Data/test.json");
 		Game::Stage::Body::SetDrawFlag(drawFlag);
+
+		Game::Stage::CreateForestBackGround(this);
 	}
 
 	CheckScene::~CheckScene()
@@ -325,7 +328,15 @@ namespace StageEditor
 			{
 				actor = new EditingGoal(scene, Vec2(x, y));
 			}
-			
+			else if (o["Name"].get<std::string>() == "Maimai")
+			{
+				actor = new EditingMaimai(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "Missile")
+			{
+				actor = new EditingMissile(scene, Vec2(x, y));
+			}
+
 
 
 			if (actor)

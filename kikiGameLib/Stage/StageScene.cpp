@@ -21,6 +21,8 @@
 #include"BackGround/BackGroundBasis.hpp"
 #include"Object/Goal.hpp"
 #include"BackGround/BackGroundActor.hpp"
+#include"Enemy/Maimai.hpp"
+#include"Enemy/Missile.hpp"
 
 #include<iostream>
 
@@ -41,8 +43,6 @@ namespace Game
 				CollisionDetectionScope::Left, CollisionDetectionScope::Top, CollisionDetectionScope::Right, CollisionDetectionScope::Bottom);
 
 			
-			
-			CreateForestBackGround(this);
 		}
 
 		StageScene::~StageScene()
@@ -292,6 +292,16 @@ namespace Game
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Goal(scene, pos);
 					scene->SetStageRight(pos.x + 400.f);
+				}
+				else if (o["Name"].get<std::string>() == "Maimai")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Enemy::Maimai(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "Missile")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Enemy::Missile(scene, pos);
 				}
 
 

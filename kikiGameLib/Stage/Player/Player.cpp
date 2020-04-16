@@ -522,12 +522,12 @@ namespace Game
 			std::string name = theBody->GetName();
 
 			if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee" ||
-				name == "EnemyCarrot")
+				name == "EnemyCarrot" || name == "EnemyMaimai" || name == "Nail"||name=="EnemyMissile")
 			{
 				mLife->Damage();
 			}
 			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness" || name == "EnemyStandLight" ||
-				name == "EnemyCarrotWeakness")
+				name == "EnemyCarrotWeakness" || name == "EnemyMaimaiWeakness" || name == "NailWeakness"||name=="EnemyMissileWeakness")
 			{
 				mVelocity.y = -5.f;
 				//‚SƒtƒŒ[ƒ€‚ÌŠÔ‚Í”ò‚×‚é

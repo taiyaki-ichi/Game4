@@ -290,5 +290,18 @@ namespace StageEditor
 		virtual ~EditingGoal();
 	};
 
+	class EditingMaimai : public EditingActor
+	{
+	public:
+		EditingMaimai(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingMaimai();
+	};
+
+	class EditingMissile : public EditingActor
+	{
+	public:
+		EditingMissile(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingMissile() {}
+	};
 
 }

@@ -630,5 +630,34 @@ namespace StageEditor
 	{
 	}
 
+	EditingMaimai::EditingMaimai(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Maimai",2)
+	{
+		SetScale(0.1f);
+
+		new GameLib::TextureComponent(this, "../Assets/Enemy/Maimai/stay001.png");
+
+		auto body = new Game::Stage::Body(this, "Maimai", 600.f, 600.f);
+		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+		body->SetAdjust(Vec2(0.f, 50.f));
+		
+
+	}
+
+	EditingMaimai::~EditingMaimai()
+	{
+	}
+
+	EditingMissile::EditingMissile(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Missile",2)
+	{
+		SetScale(0.1f);
+
+		new GameLib::TextureComponent(this, "../Assets/Enemy/Missile/active.png");
+
+		auto body = new Game::Stage::Body(this, "Missile", 600.f, 600.f);
+		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
 }
 
