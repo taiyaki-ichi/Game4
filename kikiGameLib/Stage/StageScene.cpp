@@ -292,7 +292,7 @@ namespace Game
 				{
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Goal(scene, pos);
-					scene->SetStageRight(pos.x + 200.f);
+					scene->SetStageRight(pos.x + 400.f);
 				}
 
 

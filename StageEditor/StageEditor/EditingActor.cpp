@@ -621,7 +621,7 @@ namespace StageEditor
 		auto texture2 = new GameLib::TextureComponent(this, "../Assets/Other/goal.png", 1200);
 		texture2->SetAdjust(GameLib::Vector2(150.f, 0.f));
 
-		auto body = new Game::Stage::Body(this, "Goal", 400.f, 500.f);
+		auto body = new Game::Stage::Body(this, "Goal", 200.f, 500.f);
 		body->SetAdjust(GameLib::Vector2(0.f, 130.f));
 		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
 	}

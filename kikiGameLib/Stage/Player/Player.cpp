@@ -496,6 +496,10 @@ namespace Game
 				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
 				mLife->Heal();
 			}
+			else if (name == "Goal")
+			{
+				mPlayer->SetStageState(new PlayerState::Goal(mPlayer, theBody->GetOwner()->GetPosition(), mVelocity));
+			}
 		
 			
 			if (!mLife->GetInvincibleFlag())
@@ -572,8 +576,72 @@ namespace Game
 			return this;
 		}
 
+		PlayerState::Goal::Goal(Player* player, const GameLib::Vector2& goalPos,const GameLib::Vector2& v)
+			:StageState()
+			, mPlayer(player)
+			, mGoalPos(goalPos)
+			,mVelocity(v)
+			,mCnt(0)
+			,mOnGround(false)
+		{
 
+		}
+		PlayerState::Goal::~Goal()
+		{
 
+		}
+
+		StageState* PlayerState::Goal::Update()
+		{
+			auto pos = mPlayer->GetPosition();
+			if (mCnt < 180)
+			{
+				if (mOnGround == true&&mVelocity.x>1.f)
+					mPlayer->GetAnim()->SetChannel(1);
+				else if(mOnGround == true)
+					mPlayer->GetAnim()->SetChannel(0);
+				else 
+					mPlayer->GetAnim()->SetChannel(3);
+				
+				mVelocity.x *= 0.95f;
+				mVelocity.y += 0.7f;
+				pos += mVelocity;
+			}
+			else
+			{
+				mPlayer->GetAnim()->SetChannel(1);
+				mPlayer->GetAnim()->SetTextureFlip(GameLib::TextureFlip::None);
+				pos.x += 2.f;
+				if (pos.x > mGoalPos.x + 60.f)
+					pos.x = mGoalPos.x + 60.f;
+
+			}
+			mPlayer->SetPosition(pos);
+			mCnt++;
+			mOnGround = false;
+			return this;
+		}
+
+		void PlayerState::Goal::Hit(Body* myBody, Body* theBody)
+		{
+			std::string name = theBody->GetName();
+
+			if (name == "Ground")
+			{
+				auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, 0.f, 0.f);
+				mPlayer->SetPosition(mPlayer->GetPosition() + adjust);
+				if (adjust.y < 0.f)
+				{
+					mVelocity.y = 0.f;
+					mOnGround = true;
+				}
+			}
+		}
+
+		void PlayerState::Goal::AdjustPosSub(const GameLib::Vector2& vec)
+		{
+			mGoalPos += vec;
+		}
 
 
 		namespace PlayerState

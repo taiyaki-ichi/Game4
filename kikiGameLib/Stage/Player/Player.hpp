@@ -122,6 +122,22 @@ namespace Game
 
 			};
 
+			class Goal : public StageState
+			{
+			public:
+				Goal(Player* player, const GameLib::Vector2& goalPos,const GameLib::Vector2& playerVelo);
+				virtual ~Goal();
+
+				virtual StageState* Update() override;
+				virtual void Hit(Body* myBody, Body* theBody) override;
+				virtual void AdjustPosSub(const GameLib::Vector2& vec) override;
+			private:
+				Player* mPlayer;
+				GameLib::Vector2 mGoalPos;
+				int mCnt;
+				GameLib::Vector2 mVelocity;
+				bool mOnGround;
+			};
 
 			namespace PlayerMode
 			{

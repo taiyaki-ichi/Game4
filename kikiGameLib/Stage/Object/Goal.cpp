@@ -22,7 +22,7 @@ namespace Game
 			{
 				SetRotation(GetRotation() + 0.2f);
 
-				auto targetPos = mGoal->GetPosition() + GameLib::Vector2(100.f, 100.f);
+				auto targetPos = mGoal->GetPosition() + GameLib::Vector2(100.f, 150.f);
 				auto pos = GetPosition();
 				auto vec = targetPos - pos;
 				if (vec.Length() < 5.f)
@@ -82,8 +82,8 @@ namespace Game
 			auto texture2 = new GameLib::TextureComponent(this, "../Assets/Other/goal.png", 1200);
 			texture2->SetAdjust(GameLib::Vector2(150.f, 0.f));
 
-			auto body = new Body(this, "Goal", 400.f, 500.f);
-			body->SetAdjust(GameLib::Vector2(0.f, 130.f));
+			auto body = new Body(this, "Goal", 200.f, 500.f);
+			body->SetAdjust(GameLib::Vector2(-100.f, 130.f));
 			body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
 
 		}
