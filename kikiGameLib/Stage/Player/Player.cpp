@@ -594,28 +594,19 @@ namespace Game
 		StageState* PlayerState::Goal::Update()
 		{
 			auto pos = mPlayer->GetPosition();
-			if (mCnt < 180)
-			{
-				if (mOnGround == true&&mVelocity.x>1.f)
-					mPlayer->GetAnim()->SetChannel(1);
-				else if(mOnGround == true)
-					mPlayer->GetAnim()->SetChannel(0);
-				else 
-					mPlayer->GetAnim()->SetChannel(3);
-				
-				mVelocity.x *= 0.95f;
-				mVelocity.y += 0.7f;
-				pos += mVelocity;
-			}
-			else
-			{
-				mPlayer->GetAnim()->SetChannel(1);
-				mPlayer->GetAnim()->SetTextureFlip(GameLib::TextureFlip::None);
-				pos.x += 2.f;
-				if (pos.x > mGoalPos.x + 60.f)
-					pos.x = mGoalPos.x + 60.f;
 
-			}
+
+			if (mOnGround == true && mVelocity.x > 1.f)
+				mPlayer->GetAnim()->SetChannel(1);
+			else if (mOnGround == true)
+				mPlayer->GetAnim()->SetChannel(0);
+			else
+				mPlayer->GetAnim()->SetChannel(3);
+
+			mVelocity.x *= 0.95f;
+			mVelocity.y += 0.7f;
+			pos += mVelocity;
+			
 			mPlayer->SetPosition(pos);
 			mCnt++;
 			mOnGround = false;

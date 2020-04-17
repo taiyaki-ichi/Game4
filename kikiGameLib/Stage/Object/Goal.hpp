@@ -9,17 +9,7 @@ namespace Game
 
 		namespace GoalParts
 		{
-			class Rect : public StageActor
-			{
-			public:
-				Rect(StageScene* scene,Goal* goal, const GameLib::Vector2& pos);
-				virtual ~Rect();
-
-				virtual void UpdateStageActor() override;
-
-			private:
-				Goal* mGoal;
-			};
+			
 
 			class Kira : public StageActor
 			{

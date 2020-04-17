@@ -9,29 +9,7 @@ namespace Game
 	{
 		namespace GoalParts
 		{
-			Rect::Rect(StageScene* scene,Goal* goal, const GameLib::Vector2& pos)
-				:StageActor(scene,pos)
-				,mGoal(goal)
-			{
-				new RectangleComponent(this, 2.f, 2.f, GameLib::Color::Black,200);
-			}
-			Rect::~Rect()
-			{
-			}
-			void Rect::UpdateStageActor()
-			{
-				SetRotation(GetRotation() + 0.2f);
-
-				auto targetPos = mGoal->GetPosition() + GameLib::Vector2(100.f, 150.f);
-				auto pos = GetPosition();
-				auto vec = targetPos - pos;
-				if (vec.Length() < 5.f)
-					SetState(GameLib::Actor::State::Dead);
-
-				float speed = 4.f;
-				SetPosition(pos + GameLib::Vector2::Normalize(vec) * speed);
-
-			}
+			
 
 			const int Kira::DEATHTIME = 60;
 			const float Kira::MAXSCALE = 0.15f;
@@ -72,19 +50,13 @@ namespace Game
 		Goal::Goal(StageScene* scene, const GameLib::Vector2& pos)
 			:StageActor(scene,pos)
 		{
-			SetScale(0.5f);
 
-			auto texture1 = new GameLib::TextureComponent(this, "../Assets/Other/goal.png", -10);
-			texture1->SetAdjust(GameLib::Vector2(-150.f, 0.f));
-
-			
-
-			auto texture2 = new GameLib::TextureComponent(this, "../Assets/Other/goal.png", 1200);
-			texture2->SetAdjust(GameLib::Vector2(150.f, 0.f));
-
-			auto body = new Body(this, "Goal", 200.f, 500.f);
-			body->SetAdjust(GameLib::Vector2(-100.f, 130.f));
+			SetScale(0.8f);
+			auto texture = new GameLib::TextureComponent(this, "../Assets/Other/goal.png", -10);
+			auto body = new Body(this, "Goal", 300.f, 300.f);
+			body->SetAdjust(GameLib::Vector2(0.f, 230.f));
 			body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+
 
 		}
 
@@ -98,16 +70,8 @@ namespace Game
 			pos.y += 1.f;
 			SetPosition(pos);
 
-			int r1 = std::rand() % 100;
-			int r2 = std::rand() % 100;
-
-			float y = pos.y - 300.f + static_cast<float>(600 * r1)/100.f;
-			float x = pos.x - 400.f * r2 / 100.f;
-
-			new GoalParts::Rect(GetStageScene(), this, GameLib::Vector2(x, y));
-
 			int r = std::rand() % 100;
-			if (r % 10 == 0)
+			if (r % 30 == 0)
 			{
 				float range = 600;
 
