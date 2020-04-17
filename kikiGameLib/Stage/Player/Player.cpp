@@ -500,7 +500,12 @@ namespace Game
 			{
 				mPlayer->SetStageState(new PlayerState::Goal(mPlayer, theBody->GetOwner()->GetPosition(), mVelocity));
 			}
-		
+			else if (name == "Tear")
+			{
+				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
+
+			}
+
 			
 			if (!mPlayer->GetLife()->GetInvincibleFlag())
 				HitEnemy(myBody, theBody);

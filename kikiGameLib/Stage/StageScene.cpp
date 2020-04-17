@@ -23,6 +23,7 @@
 #include"BackGround/BackGroundActor.hpp"
 #include"Enemy/Maimai.hpp"
 #include"Enemy/Missile.hpp"
+#include"Item/Tear.hpp"
 
 #include<iostream>
 
@@ -302,6 +303,11 @@ namespace Game
 				{
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Enemy::Missile(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "Tear")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Item::Tear(scene, pos);
 				}
 
 

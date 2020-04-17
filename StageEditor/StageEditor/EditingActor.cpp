@@ -62,6 +62,7 @@ namespace StageEditor
 		}
 	}
 
+	int EditingPlayer::mNum = 0;
 
 	EditingPlayer::EditingPlayer(EditingScene* scene, const Vec2& pos)
 		:EditingActor(scene,pos,"Player",2)
@@ -74,10 +75,12 @@ namespace StageEditor
 		mBody->SetAdjust(Vec2(0.f, 120.f));
 		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
 
+		mNum++;
 	}
 
 	EditingPlayer::~EditingPlayer()
 	{
+		mNum--;
 	}
 
 
@@ -489,6 +492,8 @@ namespace StageEditor
 		}
 	}
 
+	int EditingDiamond::mNum = 0;
+
 	EditingDiamond::EditingDiamond(EditingScene* scene, const Vec2& pos)
 		:EditingActor(scene,pos,"Diamond",2)
 	{
@@ -499,10 +504,13 @@ namespace StageEditor
 		mBody = new Game::Stage::Body(this, "Diamond", 450.f, 600.f);
 		mBody->SetColor(Vec3(0.f, 255.f, 0.f));
 
+		mNum++;
+
 	}
 
 	EditingDiamond::~EditingDiamond()
 	{
+		mNum--;
 	}
 
 	EditingStandLight::EditingStandLight(EditingScene* scene, const Vec2& pos)
@@ -653,6 +661,27 @@ namespace StageEditor
 
 		auto body = new Game::Stage::Body(this, "Missile", 600.f, 600.f);
 		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+	int EditingTear::mNum = 0;
+
+	EditingTear::EditingTear(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Tear",2)
+	{
+		SetScale(0.15f);
+
+		new GameLib::TextureComponent(this, "../Assets/Item/tear.png");
+
+		auto body = new Game::Stage::Body(this, "Missile", 400.f, 500.f);
+		body->SetAdjust(Vec2(0.f, 100.f));
+		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+
+		mNum++;
+	}
+
+	EditingTear::~EditingTear()
+	{
+		mNum--;
 	}
 
 }

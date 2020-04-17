@@ -11,6 +11,7 @@
 #include"CommandActor.hpp"
 #include"Scale.hpp"
 #include"Stage/BackGround/BackGroundActor.hpp"
+#include"Counter.hpp"
 
 namespace StageEditor
 {
@@ -35,6 +36,9 @@ namespace StageEditor
 		for (int i = 0; i < 6; i++)
 			mScales.emplace_back(new Scale(this, false, 100.f * (i + 1)));
 		
+		new PlayerCounter(this);
+		new DiamondCounter(this);
+		new TearCounter(this);
 		
 	}
 	EditingScene::~EditingScene()
@@ -334,6 +338,10 @@ namespace StageEditor
 			else if (o["Name"].get<std::string>() == "Missile")
 			{
 				actor = new EditingMissile(scene, Vec2(x, y));
+			}
+			else if (o["Name"].get<std::string>() == "Tear")
+			{
+				actor = new EditingTear(scene, Vec2(x, y));
 			}
 
 

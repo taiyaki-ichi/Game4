@@ -63,9 +63,13 @@ namespace StageEditor
 		EditingPlayer(EditingScene* scene, const Vec2& pos);
 		virtual ~EditingPlayer();
 
+		static int GetNum() { return mNum; }
+
 	private:
 		GameLib::TextureComponent* mTexture;
 		Game::Stage::Body* mBody;
+
+		static int mNum;
 
 	};
 
@@ -218,9 +222,13 @@ namespace StageEditor
 		EditingDiamond(EditingScene* scene, const Vec2& pos);
 		virtual ~EditingDiamond();
 
+		static int GetNum() { return mNum; }
+
 	private:
 		GameLib::TextureComponent* mTexture;
 		Game::Stage::Body* mBody;
+
+		static int mNum;
 	};
 
 	class EditingStandLight : public EditingActor
@@ -302,6 +310,18 @@ namespace StageEditor
 	public:
 		EditingMissile(EditingScene* scene, const Vec2& pos);
 		virtual ~EditingMissile() {}
+	};
+
+	class EditingTear : public EditingActor
+	{
+	public:
+		EditingTear(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingTear();
+
+		static int GetNum() { return mNum; }
+
+	private:
+		static int mNum;
 	};
 
 }

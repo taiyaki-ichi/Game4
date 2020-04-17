@@ -249,7 +249,13 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingMissile(mEditingScene, cursorPos);
 		}
-		
+		else if (text == "tear")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingTear(mEditingScene, cursorPos);
+		}
+
 
 		mTextComponent->SetColor(color);
 

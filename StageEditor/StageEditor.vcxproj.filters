@@ -7,6 +7,7 @@
     <ClCompile Include="StageEditor\EditingScene.cpp" />
     <ClCompile Include="StageEditor\CommandActor.cpp" />
     <ClCompile Include="StageEditor\Scale.cpp" />
+    <ClCompile Include="StageEditor\Counter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StageEditor\Cursor.hpp" />
@@ -14,5 +15,6 @@
     <ClInclude Include="StageEditor\EditingActor.hpp" />
     <ClInclude Include="StageEditor\CommandActor.hpp" />
     <ClInclude Include="StageEditor\Scale.hpp" />
+    <ClInclude Include="StageEditor\Counter.hpp" />
   </ItemGroup>
 </Project>

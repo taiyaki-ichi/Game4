@@ -31,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\Diamond.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\Heart.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\Tear.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Container.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Goal.hpp" />
@@ -128,6 +129,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Enemy\Triple.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Item\Diamond.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Item\Heart.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Item\Tear.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Item\TransformItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Container.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Goal.cpp" />
