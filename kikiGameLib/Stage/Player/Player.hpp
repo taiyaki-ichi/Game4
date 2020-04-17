@@ -28,13 +28,14 @@ namespace Game
 
 			void BreakBody();
 			Body* GetBody() const { return mBody; }
+			PlayerLife* GetLife() const { return mLife; }
 		private:
 
 			Body* mBody;
 			GameLib::AnimComponent* mAnim;
 			GameLib::AnimComponent* mSubAnim;
 
-
+			PlayerLife* mLife;
 		};
 
 
@@ -102,7 +103,6 @@ namespace Game
 
 				bool mCrushedFlag;
 
-				PlayerLife* mLife;
 
 				void HitEnemy(Body* myBody, Body* theBody);
 

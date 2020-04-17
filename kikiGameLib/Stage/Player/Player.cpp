@@ -141,11 +141,13 @@ namespace Game
 			
 			SetStageState(new PlayerState::Active(this));
 
-			
+			mLife = new PlayerLife(scene, this);
 		}
 
 		Player::~Player()
 		{
+			if (mLife)
+				mLife->SetState(GameLib::Actor::State::Dead);
 		}
 
 		void Player::BreakBody()
@@ -168,7 +170,6 @@ namespace Game
 			,mIsOnGround(false)
 		{
 			mMode = new PlayerMode::Nomal(mPlayer);
-			mLife = new PlayerLife(mPlayer->GetScene(), mPlayer);
 		}
 
 
@@ -177,8 +178,7 @@ namespace Game
 		{
 			if (mMode)
 				delete mMode;
-			if (mLife)
-				mLife->SetState(GameLib::Actor::State::Dead);
+			
 			
 		}
 
@@ -279,7 +279,7 @@ namespace Game
 			}
 
 
-			if (mLife->GetInvincibleFlag())
+			if (mPlayer->GetLife()->GetInvincibleFlag())
 				mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion) + 5);
 			else
 				mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion));
@@ -455,8 +455,8 @@ namespace Game
 					myBody->GetOwner()->SetPosition(pos + adjust);
 				}
 			}
-			else if ((name == "Meteor" && !mLife->GetInvincibleFlag()) ||
-				(name == "Beam" && !mLife->GetInvincibleFlag()))
+			else if ((name == "Meteor" && !mPlayer->GetLife()->GetInvincibleFlag()) ||
+				(name == "Beam" && !mPlayer->GetLife()->GetInvincibleFlag()))
 			{
 				mPlayer->SetStageState(new PlayerState::Death(mPlayer));
 			}
@@ -494,7 +494,7 @@ namespace Game
 			else if (name == "Heart")
 			{
 				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
-				mLife->Heal();
+				mPlayer->GetLife()->Heal();
 			}
 			else if (name == "Goal")
 			{
@@ -502,7 +502,7 @@ namespace Game
 			}
 		
 			
-			if (!mLife->GetInvincibleFlag())
+			if (!mPlayer->GetLife()->GetInvincibleFlag())
 				HitEnemy(myBody, theBody);
 			
 		}
@@ -524,7 +524,7 @@ namespace Game
 			if (name == "EnemyTriple" || name == "EnemyToge" || name == "EnemyFrog" || name == "EnemyBee" ||
 				name == "EnemyCarrot" || name == "EnemyMaimai" || name == "Nail"||name=="EnemyMissile")
 			{
-				mLife->Damage();
+				mPlayer->GetLife()->Damage();
 			}
 			else if (name == "EnemyTripleWeakness" || name == "EnemyFrogWeakness" || name == "EnemyBeeWeakness" || name == "EnemyStandLight" ||
 				name == "EnemyCarrotWeakness" || name == "EnemyMaimaiWeakness" || name == "NailWeakness"||name=="EnemyMissileWeakness")
