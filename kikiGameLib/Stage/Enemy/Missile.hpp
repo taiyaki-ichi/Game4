@@ -70,6 +70,7 @@ namespace Game
 
 				private:
 					Missile* mMissile;
+					int mCnt;
 				};
 
 				class Go : public StageState

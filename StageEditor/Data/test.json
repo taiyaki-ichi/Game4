@@ -1,50 +1,20 @@
 {
   "Actors": [
     {
-      "Data1": 364,
-      "Data2": 375,
+      "Data1": 389,
+      "Data2": 401,
       "Name": "Player"
     },
     {
-      "Data1": 922,
-      "Data2": 115,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 8,
-      "Data2": 447,
-      "Data3": 1166,
-      "Data4": 536,
+      "Data1": 65,
+      "Data2": 460,
+      "Data3": 1107,
+      "Data4": 577,
       "Name": "Ground"
     },
     {
-      "Data1": 990,
-      "Data2": 137,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 1062,
-      "Data2": 165,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 1136,
-      "Data2": 150,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 1204,
-      "Data2": 129,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 1273,
-      "Data2": 148,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 912,
-      "Data2": 567,
+      "Data1": 817,
+      "Data2": 172,
       "Name": "Missile"
     }
   ]

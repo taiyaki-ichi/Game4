@@ -102,6 +102,7 @@ namespace Game
 				Active::Active(Missile* m)
 					:StageState()
 					, mMissile(m)
+					,mCnt(0)
 				{
 
 				}
@@ -119,17 +120,16 @@ namespace Game
 					float speed = 1.f;
 
 					float d = GameLib::Math::Abs(playerPos.x - myPos.x);
-
 					bool isDown = playerPos.y - myPos.y > 0.f;
 
-					float rot = GameLib::Math::Pi / 4.f * GameLib::Math::Sin(d / 100.f);
-					mMissile->SetRotation(rot);
 
-					myPos.x -= speed;
-					if (GameLib::Math::Abs(playerPos.x - myPos.x) < 110.f)
+					if (d < 10.f)
 					{
-
-						float rot = GameLib::Math::Pi / 2.f * (1.f-(GameLib::Math::Abs(playerPos.x - myPos.x)-10.f) / 100.f);
+						return new Go(mMissile, isDown);
+					}
+					else if(d < 110)
+					{
+						float rot = GameLib::Math::Pi / 2.f * (1.f - (d - 10.f) / 100.f);
 						if (rot > GameLib::Math::Pi / 2.f)
 							rot = GameLib::Math::Pi / 2.f;
 
@@ -138,16 +138,22 @@ namespace Game
 						mMissile->SetRotation(rot);
 
 						if (isDown)
-							myPos.y += 0.5f;
+							myPos.y += 1.f;
 						else
-							myPos.y -= 0.5f;
+							myPos.y -= 1.f;
 
-						
-						if (GameLib::Math::Abs(playerPos.x - myPos.x) < 10.f)
-							return new Go(mMissile, isDown);
-						
-							
+						myPos.x -= speed * 4.f;
 					}
+					else
+					{
+						float rot = GameLib::Math::Pi / 9.f * GameLib::Math::Sin(mCnt / 10.f);
+						mMissile->SetRotation(rot);
+
+						myPos.x -= speed;
+
+					}
+					mCnt++;
+					
 
 					mMissile->SetPosition(myPos);
 					return this;
