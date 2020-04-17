@@ -6,16 +6,11 @@
       "Name": "Player"
     },
     {
-      "Data1": 65,
-      "Data2": 460,
-      "Data3": 1107,
-      "Data4": 577,
+      "Data1": 91,
+      "Data2": 467,
+      "Data3": 1742,
+      "Data4": 573,
       "Name": "Ground"
-    },
-    {
-      "Data1": 817,
-      "Data2": 172,
-      "Name": "Missile"
     }
   ]
 }

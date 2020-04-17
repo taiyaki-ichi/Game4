@@ -30,7 +30,6 @@ namespace StageEditor
 
 		Game::Stage::Body::SetDrawFlag(mDrawFlag);
 
-
 		for (int i = 0; i < 8; i++)
 			mScales.emplace_back(new Scale(this, true, 100.f * (i + 1)));
 		for (int i = 0; i < 6; i++)

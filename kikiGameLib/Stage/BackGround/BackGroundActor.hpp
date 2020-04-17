@@ -14,6 +14,7 @@ namespace Game
 			virtual ~BackGroundActor();
 
 			virtual void UpdateStageActor() override final;
+			virtual void UpdateBackGround() {}
 		};
 
 		void CreateBackGrounds(StageScene* scene, const std::string& fileName, int num,float posY, float relativeRate,

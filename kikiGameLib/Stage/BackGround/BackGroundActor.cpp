@@ -2,6 +2,7 @@
 #include"WindowData.hpp"
 #include"lib/include/Draw/TextureComponent.hpp"
 #include"BackGroundBasis.hpp"
+#include"Actor/BackGroundLeaf.hpp"
 
 namespace Game
 {
@@ -21,6 +22,8 @@ namespace Game
 
 		void BackGroundActor::UpdateStageActor()
 		{
+			UpdateBackGround();
+
 			auto pos = GetPosition();
 
 			if (pos.x <= -WINDOW_WIDTH * 0.5f)
@@ -63,6 +66,21 @@ namespace Game
 			a->SetRelativeMoveRate(0.05f);
 			a->SetScale(0.6f);
 			new GameLib::TextureComponent(a, "../Assets/BackGround/moon-230.png", -80);
+
+			for (int i = 0; i < 100; i++)
+			{
+				int r1 = std::rand() % 1000;
+				int r2 = std::rand() % 1000;
+
+				float adX = WINDOW_WIDTH * 2.f * r1 / 1000.f;
+				float adY = (WINDOW_HEIGHT +50.f*2.f) * r2 / 1000.f;
+
+				if (i % 3 == 0)
+					new BackGround::Leaf(scene, GameLib::Vector2(-WINDOW_WIDTH * 0.5f + adX, -50.f + adY),true);
+				else
+					new BackGround::Leaf(scene, GameLib::Vector2(-WINDOW_WIDTH * 0.5f + adX,  -50.f + adY),false);
+
+			}
 		}
 
 	}
