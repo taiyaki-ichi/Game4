@@ -499,7 +499,7 @@ namespace StageEditor
 	{
 		SetScale(0.07);
 
-		mTexture = new GameLib::TextureComponent(this, "../Assets/Item/diamond01.png");
+		mTexture = new GameLib::TextureComponent(this, "../Assets/Item/diamond02.png");
 
 		mBody = new Game::Stage::Body(this, "Diamond", 450.f, 600.f);
 		mBody->SetColor(Vec3(0.f, 255.f, 0.f));

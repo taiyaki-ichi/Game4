@@ -21,8 +21,8 @@ namespace Game
 				GameLib::Animation anim = {
 					GameLib::Data::GetTexture("../Assets/Item/diamond01.png"),
 					GameLib::Data::GetTexture("../Assets/Item/diamond02.png"),
-					GameLib::Data::GetTexture("../Assets/Item/diamond03.png"),
 					GameLib::Data::GetTexture("../Assets/Item/diamond04.png"),
+					GameLib::Data::GetTexture("../Assets/Item/diamond03.png"),
 				};
 				auto a = new GameLib::AnimComponent(this, anim);
 				a->SetAnimFPS(6);
