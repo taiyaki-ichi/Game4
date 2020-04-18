@@ -40,6 +40,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Fork.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Meteor.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\PlayerLife.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Score\ScoreBoard.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WindowData.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)lib\DirectX\d3dx9anim.h" />

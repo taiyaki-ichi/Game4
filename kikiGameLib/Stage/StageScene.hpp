@@ -57,6 +57,12 @@ namespace Game
 
 			void SetStageRight(float l) { mStageRight = l; }
 
+			void GetDiamond() { mDiamondNum++; }
+			void GetTear() { mTearNum++; }
+
+			int GetDiamondNum() const { return mDiamondNum; }
+			int GetTearNum() const { return mTearNum; }
+
 		private:
 			Player* mPlayer;
 			std::vector<StageActor*> mStageActors;
@@ -65,6 +71,9 @@ namespace Game
 
 			float mStageLeft;
 			float mStageRight;
+
+			int mDiamondNum;
+			int mTearNum;
 
 
 		protected:

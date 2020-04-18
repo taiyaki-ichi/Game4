@@ -141,7 +141,7 @@ namespace GameLib
 			&tex)
 		))
 		{
-			std::cout << "CreateTexture is failed\n";
+			std::cout << "CreateTexture is failed : " << fileName << "\n";
 			return nullptr;
 		}
 		else
@@ -151,7 +151,7 @@ namespace GameLib
 
 			if (FAILED(tex->GetLevelDesc(0, &desc)))
 			{
-				std::cout << "GetLevelDesc is failed\n";
+				std::cout << "GetLevelDesc is failed : " << fileName << "\n";
 				return nullptr;
 			}
 

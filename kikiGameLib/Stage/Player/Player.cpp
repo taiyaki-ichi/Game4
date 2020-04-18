@@ -35,46 +35,46 @@ namespace Game
 			using Anim = std::vector<GameLib::Texture*>;
 			using Data = GameLib::Data;
 			Anim run = {
-				Data::GetTexture("Assets/tama/run001.png"),
-				Data::GetTexture("Assets/tama/run002.png"),
-				Data::GetTexture("Assets/tama/run003.png"),
-				Data::GetTexture("Assets/tama/run002.png"),
+				Data::GetTexture("../Assets/tama/run001.png"),
+				Data::GetTexture("../Assets/tama/run002.png"),
+				Data::GetTexture("../Assets/tama/run003.png"),
+				Data::GetTexture("../Assets/tama/run002.png"),
 			};
 			Anim stay = {
-				Data::GetTexture("Assets/tama/stay001.png")
+				Data::GetTexture("../Assets/tama/stay001.png")
 			};
 			Anim down = {
-				Data::GetTexture("Assets/tama/down.png"),
+				Data::GetTexture("../Assets/tama/down.png"),
 			};
 			Anim up = {
-				Data::GetTexture("Assets/tama/up.png"),
+				Data::GetTexture("../Assets/tama/up.png"),
 			};
 
 			Anim runSub = {
-				Data::GetTexture("Assets/tama/run001.png"),
-				Data::GetTexture("Assets/tomei.png"),
-				Data::GetTexture("Assets/tama/run002.png"),
-				Data::GetTexture("Assets/tomei.png"),
-				Data::GetTexture("Assets/tama/run003.png"),
-				Data::GetTexture("Assets/tomei.png"),
-				Data::GetTexture("Assets/tama/run002.png"),
-				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/run001.png"),
+				Data::GetTexture("../Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/run002.png"),
+				Data::GetTexture("../Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/run003.png"),
+				Data::GetTexture("../Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/run002.png"),
+				Data::GetTexture("../Assets/tomei.png"),
 			};
 			Anim staySub = {
-				Data::GetTexture("Assets/tama/stay001.png"),
-				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/stay001.png"),
+				Data::GetTexture("../Assets/tomei.png"),
 			};
 			Anim downSub = {
-				Data::GetTexture("Assets/tama/down.png"),
-				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/down.png"),
+				Data::GetTexture("../Assets/tomei.png"),
 			};
 			Anim upSub = {
-				Data::GetTexture("Assets/tama/up.png"),
-				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/up.png"),
+				Data::GetTexture("../Assets/tomei.png"),
 			};
 
 			Anim death = {
-				Data::GetTexture("Assets/tama/death.png"),
+				Data::GetTexture("../Assets/tama/death.png"),
 			};
 			
 
@@ -97,31 +97,31 @@ namespace Game
 			mAnim->SetDrawOrder(100);
 			
 			Anim nomal = {
-				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("../Assets/tomei.png"),
 			};
 			Anim angel = {
-				Data::GetTexture("Assets/tama/angel.png"),
+				Data::GetTexture("../Assets/tama/angel.png"),
 			};
 			Anim witch1 = {
-				Data::GetTexture("Assets/tama/witch.png"),
+				Data::GetTexture("../Assets/tama/witch.png"),
 			};
 			Anim witch2 = {
-				Data::GetTexture("Assets/tama/witch.png"),
-				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/witch.png"),
+				Data::GetTexture("../Assets/tomei.png"),
 			};
 			Anim cock1 = {
-				Data::GetTexture("Assets/tama/cock.png"),
+				Data::GetTexture("../Assets/tama/cock.png"),
 			};
 			Anim cock2 = {
-				Data::GetTexture("Assets/tama/cock.png"),
-				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/cock.png"),
+				Data::GetTexture("../Assets/tomei.png"),
 			};
 			Anim alien1 = {
-				Data::GetTexture("Assets/tama/alien.png"),
+				Data::GetTexture("../Assets/tama/alien.png"),
 			};
 			Anim alien2 = {
-				Data::GetTexture("Assets/tama/alien.png"),
-				Data::GetTexture("Assets/tomei.png"),
+				Data::GetTexture("../Assets/tama/alien.png"),
+				Data::GetTexture("../Assets/tomei.png"),
 			};
 
 			std::vector<Anim> sub = {
