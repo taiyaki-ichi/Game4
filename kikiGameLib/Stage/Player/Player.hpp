@@ -20,7 +20,7 @@ namespace Game
 		class Player : public StageStateActor
 		{
 		public:
-			Player(StageScene* scene,const GameLib::Vector2& pos);
+			Player(StageScene* scene, const GameLib::Vector2& pos);
 			virtual ~Player();
 
 			GameLib::AnimComponent* GetAnim() const { return mAnim; }

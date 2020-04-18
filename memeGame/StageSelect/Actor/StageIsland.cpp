@@ -4,6 +4,8 @@
 #include"Stage/Object/Ground.hpp"
 #include"lib/include/Draw/TextComponent.hpp"
 #include"SaveData/SaveData.hpp"
+#include"StartIsland.hpp"
+#include"lib/include/Draw/TextureComponent.hpp"
 
 #include<iostream>
 
@@ -17,8 +19,9 @@ namespace Game
 		StageIsland::StageIsland(Scene* scene, int stageNum, const std::string& boxFileName)
 			:Stage::StageActor(scene)
 		{
-			float x = WINDOW_WIDTH - WIDTH / 2.f + WIDTH * stageNum;
-			SetPosition(GameLib::Vector2(x, WINDOW_HEIGHT / 2.f));
+			float x = StartIsland::WIDTH - WIDTH / 2.f + WIDTH * stageNum;
+			GameLib::Vector2 pos(x, WINDOW_HEIGHT / 2.f);
+			SetPosition(pos);
 
 			new SceneMoveBox(scene, boxFileName, stageNum, GameLib::Vector2(x, WINDOW_HEIGHT / 2.f));
 
@@ -56,7 +59,32 @@ namespace Game
 			text3->SetSize(GameLib::FontSize::Size_96);
 			text3->SetText(sc);
 
+			Game::Stage::StageActor* actor;
+			GameLib::TextureComponent* texture;
+
+			float l = 60.f;
+			float scale = 0.03;
+
+			actor = new Game::Stage::StageActor(scene, GameLib::Vector2(pos.x + l, pos.y - l));
+			actor->SetScale(scale);
+			texture = new GameLib::TextureComponent(actor, "../Assets/Box/arrow.png");
+
+			actor = new Game::Stage::StageActor(scene, GameLib::Vector2(pos.x - l, pos.y - l));
+			actor->SetScale(scale);
+			texture = new GameLib::TextureComponent(actor, "../Assets/Box/arrow.png");
+			texture->SetTextureFlip(GameLib::TextureFlip::Horizontal);
+
+			actor = new Game::Stage::StageActor(scene, GameLib::Vector2(pos.x + l, pos.y + l));
+			actor->SetScale(scale);
+			texture = new GameLib::TextureComponent(actor, "../Assets/Box/arrow.png");
+			texture->SetTextureFlip(GameLib::TextureFlip::Vertical);
+
+			actor = new Game::Stage::StageActor(scene, GameLib::Vector2(pos.x - l, pos.y + l));
+			actor->SetScale(scale);
+			actor->SetRotation(GameLib::Math::Pi);
+			texture = new GameLib::TextureComponent(actor, "../Assets/Box/arrow.png");
 			
+
 		}
 
 		StageIsland::~StageIsland()

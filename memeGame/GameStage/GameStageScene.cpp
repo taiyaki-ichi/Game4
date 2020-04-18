@@ -40,8 +40,8 @@ namespace Game
 				else if (sum == 45)
 					score = 4;
 
-				//std::cout << "GameStageScene Score : " << score << "\n";
-				SaveData::SetStageData(mStageNum, score);
+				if (score > SaveData::GetStageData(mStageNum))
+					SaveData::SetStageData(mStageNum, score);
 
 				return new StageSelect::Scene(mStageNum);
 			}

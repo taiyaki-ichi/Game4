@@ -20,7 +20,7 @@ namespace Game
 		using Vec2 = GameLib::Vector2;
 
 
-		Player::Player(StageScene* scene, const GameLib::Vector2& pos)
+		Player::Player(StageScene* scene, const GameLib::Vector2& pos )
 			:StageStateActor(scene,pos)
 		{
 			scene->SetPlayer(this);
@@ -142,6 +142,7 @@ namespace Game
 			
 			SetStageState(new PlayerState::Active(this));
 
+		
 			mLife = new PlayerLife(scene, this);
 		}
 

@@ -27,17 +27,10 @@ namespace Game
 
 		mDatas.pop_back();
 
-		std::cout << "DataNum :" << mDatas.size() << "\n";
-
 		file.close();
 
 		if (mDatas.size() < StageSelect::StageNum + 1)
 			Zero();
-
-		for (int i = 0; i < mDatas.size(); i++)
-			std::cout << i << " : " << mDatas[i] << "\n";
-
-
 
 		return true;
 

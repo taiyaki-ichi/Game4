@@ -12,6 +12,8 @@ namespace Game
 		public:
 			StartIsland(Scene* scene);
 			virtual ~StartIsland();
+
+			static float WIDTH;
 		};
 	}
 }

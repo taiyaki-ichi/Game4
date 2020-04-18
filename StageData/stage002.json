@@ -1,370 +1,111 @@
 {
   "Actors": [
     {
-      "Data1": -88,
-      "Data2": 508,
-      "Data3": 831,
-      "Data4": 851,
+      "Data1": 17,
+      "Data2": 447,
+      "Data3": 997,
+      "Data4": 571,
       "Name": "Ground"
     },
     {
-      "Data1": 830,
-      "Data2": 412,
-      "Data3": 1521,
-      "Data4": 852,
-      "Name": "Ground"
+      "Data1": 797,
+      "Data2": 141,
+      "Name": "Goal"
     },
     {
-      "Data1": 163,
-      "Data2": 450,
+      "Data1": 126,
+      "Data2": 404,
       "Name": "Player"
     },
     {
-      "Data1": 1424,
-      "Data2": 273,
-      "Data3": 1519,
-      "Data4": 412,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1854,
-      "Data2": 431,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 2128,
-      "Data2": 374,
-      "Data3": 2345,
-      "Data4": 858,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2501,
-      "Data2": 303,
-      "Data3": 2687,
-      "Data4": 861,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2206,
-      "Data2": 342,
-      "Data3": 2224,
-      "Data4": 121,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 1672,
-      "Data2": 472,
-      "Data3": 2000,
-      "Data4": 855,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2529,
-      "Data2": 271,
-      "Data3": 2543,
-      "Data4": -83,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 2581,
-      "Data2": 273,
-      "Data3": 2589,
-      "Data4": -77,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 2645,
-      "Data2": 274,
-      "Data3": 2649,
-      "Data4": 100,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 2687,
-      "Data2": 422,
-      "Data3": 2892,
-      "Data4": 861,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2871,
-      "Data2": 391,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 2975,
-      "Data2": 440,
-      "Data3": 3181,
-      "Data4": 464,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 3206,
-      "Data2": 409,
-      "Data3": 3330,
-      "Data4": 433,
-      "Data5": 3267,
-      "Data6": 151,
-      "Name": "MoveGround"
-    },
-    {
-      "Data1": 3390,
-      "Data2": 143,
-      "Data3": 3526,
-      "Data4": 878,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 3439,
-      "Data2": 113,
-      "Data3": 3440,
-      "Data4": -36,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 3590,
-      "Data2": 209,
-      "Data3": 3704,
-      "Data4": 237,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 4044,
-      "Data2": 419,
-      "Data3": 4133,
-      "Data4": 440,
-      "Data5": 4087,
-      "Data6": 139,
-      "Name": "MoveGround"
-    },
-    {
-      "Data1": 4155,
-      "Data2": 98,
-      "Data3": 4239,
-      "Data4": 116,
-      "Data5": 4198,
-      "Data6": 519,
-      "Name": "MoveGround"
-    },
-    {
-      "Data1": 4089,
-      "Data2": 379,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4195,
-      "Data2": 57,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4325,
-      "Data2": 210,
-      "Data3": 4491,
-      "Data4": 916,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 4491,
-      "Data2": 301,
-      "Data3": 4622,
-      "Data4": 917,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 4621,
-      "Data2": 344,
-      "Data3": 4665,
-      "Data4": 914,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 4798,
-      "Data2": 190,
-      "Data3": 5021,
-      "Data4": 917,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 4988,
-      "Data2": 148,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 3650,
-      "Data2": 174,
-      "Data3": 3650,
-      "Data4": -108,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 5194,
-      "Data2": 317,
-      "Data3": 6340,
-      "Data4": 899,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 3994,
-      "Data2": 205,
-      "Data3": 3993,
-      "Data4": 87,
-      "Name": "Frog"
-    },
-    {
-      "Data1": 1302,
-      "Data2": 306,
+      "Data1": 354,
+      "Data2": 372,
       "Name": "Diamond"
     },
     {
-      "Data1": 1346,
-      "Data2": 241,
+      "Data1": 406,
+      "Data2": 363,
       "Name": "Diamond"
     },
     {
-      "Data1": 1405,
-      "Data2": 206,
+      "Data1": 365,
+      "Data2": 322,
       "Name": "Diamond"
     },
     {
-      "Data1": 2202,
-      "Data2": 40,
+      "Data1": 308,
+      "Data2": 293,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 301,
+      "Data2": 345,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 242,
+      "Data2": 312,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 323,
+      "Data2": 413,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 251,
+      "Data2": 402,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 183,
+      "Data2": 347,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 180,
+      "Data2": 194,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 280,
+      "Data2": 156,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 319,
+      "Data2": 165,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 407,
+      "Data2": 213,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 323,
+      "Data2": 230,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 250,
+      "Data2": 228,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 472,
+      "Data2": 389,
       "Name": "Tear"
     },
     {
-      "Data1": 2530,
-      "Data2": 168,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 2582,
-      "Data2": 170,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 2644,
-      "Data2": 170,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 3270,
-      "Data2": 377,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 3270,
-      "Data2": 318,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 3270,
-      "Data2": 259,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 4355,
-      "Data2": 170,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 4398,
-      "Data2": 172,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 4445,
-      "Data2": 171,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 5595,
-      "Data2": 13,
-      "Name": "Goal"
-    },
-    {
-      "Data1": 3796,
-      "Data2": 23,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 3755,
-      "Data2": 55,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 3838,
-      "Data2": 56,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 4107,
-      "Data2": 27,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 4153,
-      "Data2": -8,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 4197,
-      "Data2": 28,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 5016,
-      "Data2": 79,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 5063,
-      "Data2": 42,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 5120,
-      "Data2": 42,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 3743,
-      "Data2": 355,
-      "Data3": 3885,
-      "Data4": 375,
-      "Data5": 3813,
-      "Data6": -271,
-      "Name": "MoveGround"
-    },
-    {
-      "Data1": 3912,
-      "Data2": -294,
-      "Data3": 4045,
-      "Data4": -269,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 3776,
-      "Data2": 318,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 3927,
-      "Data2": 267,
-      "Data3": 4032,
-      "Data4": 286,
-      "Data5": 3979,
-      "Data6": 77,
-      "Name": "MoveGround"
-    },
-    {
-      "Data1": 3982,
-      "Data2": -368,
+      "Data1": 344,
+      "Data2": 277,
       "Name": "Tear"
     },
     {
-      "Data1": 681,
-      "Data2": 196,
-      "Name": "Goal"
+      "Data1": 213,
+      "Data2": 291,
+      "Name": "Tear"
     }
   ]
 }
