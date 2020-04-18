@@ -1,4 +1,5 @@
 #include"SaveData.hpp"
+#include"StageSelect/StageSelectScene.hpp"
 #include<fstream>
 #include<iostream>
 
@@ -30,8 +31,13 @@ namespace Game
 
 		file.close();
 
+		if (mDatas.size() < StageSelect::StageNum + 1)
+			Zero();
+
 		for (int i = 0; i < mDatas.size(); i++)
 			std::cout << i << " : " << mDatas[i] << "\n";
+
+
 
 		return true;
 
@@ -54,25 +60,31 @@ namespace Game
 
 		file.close();
 
+
 		return true;
+	}
+
+	void SaveData::Zero()
+	{
+		mDatas.clear();
+		while (mDatas.size() < StageSelect::StageNum+1)
+			mDatas.push_back(0);
 	}
 
 	int SaveData::GetStageData(int stage)
 	{
-		if (stage == 0 && mDatas.size() == 0)
-			return 0;
-		else if (0 <= stage && stage <= mDatas.size())
+		if (0 <= stage && stage <= mDatas.size())
 			return mDatas[stage];
 		else
 			return 0;
+	
 	}
 
 	void SaveData::SetStageData(int stage, int score)
 	{
+		
 		if (0 <= stage && stage <= mDatas.size())
 			mDatas[stage] = score;
-		else if (mDatas.size() + 1 == stage)
-			mDatas.push_back(score);
 
 	}
 

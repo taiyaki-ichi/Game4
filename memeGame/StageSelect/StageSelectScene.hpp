@@ -5,10 +5,12 @@ namespace Game
 {
 	namespace StageSelect
 	{
+		constexpr int StageNum = 3;
+
 		class Scene : public Stage::StageScene
 		{
 		public:
-			Scene();
+			Scene(int playerPos = 0);
 			virtual ~Scene();
 
 			GameLib::Scene* UpdateStageScene() override;

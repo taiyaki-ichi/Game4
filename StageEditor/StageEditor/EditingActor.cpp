@@ -69,7 +69,7 @@ namespace StageEditor
 		,mTexture(nullptr)
 	{
 		SetScale(0.1f);
-		mTexture = new GameLib::TextureComponent(this, "Assets/tama/stay001.png");
+		mTexture = new GameLib::TextureComponent(this, "../Assets/tama/stay001.png");
 		mBody = new Game::Stage::Body(this, "Player");
 		mBody->SetWidthAndHeight(250.f, 500.f);
 		mBody->SetAdjust(Vec2(0.f, 120.f));

@@ -26,7 +26,12 @@ namespace StageEditor
 	}
 	void PlayerCounter::Update()
 	{
-		mText->SetText("~" + std::to_string(EditingPlayer::GetNum()));
+		int num = EditingPlayer::GetNum();
+		mText->SetText("~" + std::to_string(num));
+		if (num == 1)
+			mText->SetColor(GameLib::Color::Red);
+		else
+			mText->SetColor(GameLib::Color::Black);
 	}
 
 
@@ -51,7 +56,12 @@ namespace StageEditor
 
 	void DiamondCounter::Update()
 	{
-		mText->SetText("~" + std::to_string(EditingDiamond::GetNum()));
+		int num = EditingDiamond::GetNum();
+		mText->SetText("~" + std::to_string(num));
+		if (num == 30)
+			mText->SetColor(GameLib::Color::Red);
+		else
+			mText->SetColor(GameLib::Color::Black);
 	}
 
 	TearCounter::TearCounter(EditingScene* scene)
@@ -75,7 +85,12 @@ namespace StageEditor
 
 	void TearCounter::Update()
 	{
-		mText->SetText("~" + std::to_string(EditingTear::GetNum()));
+		int num = EditingTear::GetNum();
+		mText->SetText("~" + std::to_string(num));
+		if (num == 3)
+			mText->SetColor(GameLib::Color::Red);
+		else
+			mText->SetColor(GameLib::Color::Black);
 	}
 
 }

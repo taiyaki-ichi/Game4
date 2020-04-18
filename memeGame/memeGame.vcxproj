@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameStage\GameStageScene.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SaveData\SaveData.cpp" />
     <ClCompile Include="StageSelect\Actor\SceneMoveBox.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Title\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameStage\GameStageScene.hpp" />
     <ClInclude Include="SaveData\SaveData.hpp" />
     <ClInclude Include="StageSelect\Actor\SceneMoveBox.hpp" />
     <ClInclude Include="StageSelect\Actor\StageIsland.hpp" />

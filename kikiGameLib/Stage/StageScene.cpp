@@ -39,6 +39,8 @@ namespace Game
 			,mStageLeft(0.f)
 			,mStageRight(FLT_MAX)
 			,mPlayer(nullptr)
+			,mPlayerDeathFlag(false)
+			,mStageClaerFlag(false)
 		{
 			mTree = new Liner4Tree(TREELEVEL,
 				CollisionDetectionScope::Left, CollisionDetectionScope::Top, CollisionDetectionScope::Right, CollisionDetectionScope::Bottom);

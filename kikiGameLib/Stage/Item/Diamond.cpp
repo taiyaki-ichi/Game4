@@ -40,11 +40,13 @@ namespace Game
 			{
 				std::string name = theBody->GetName();
 
+				/*
 				if (name == "Player")
 				{
 					mBody->SetWidthAndHeight(0.f, 0.f);
 					SetState(GameLib::Actor::State::Dead);
 				}
+				*/
 			}
 
 		}

@@ -119,6 +119,7 @@ namespace Game
 
 			private:
 				Player* mPlayer;
+				int mCnt;
 
 			};
 

@@ -5,6 +5,8 @@
 #include"lib/include/Draw/TextComponent.hpp"
 #include"SaveData/SaveData.hpp"
 
+#include<iostream>
+
 namespace Game
 {
 	namespace StageSelect
@@ -46,6 +48,8 @@ namespace Game
 				sc == "S";
 			else
 				sc = "-";
+
+			//std::cout << "stageIsland Score :" << score << "\n";
 
 			auto text3 = new GameLib::TextComponent(this, "../Assets/Font/mplus.ttf", 10);
 			text3->SetAdjust(GameLib::Vector2(0.f, -130.f));

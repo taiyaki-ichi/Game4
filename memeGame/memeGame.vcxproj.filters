@@ -10,6 +10,7 @@
     <ClCompile Include="StageSelect\Actor\StartIsland.cpp" />
     <ClCompile Include="StageSelect\Actor\SceneMoveBox.cpp" />
     <ClCompile Include="StageSelect\Actor\StageIsland.cpp" />
+    <ClCompile Include="GameStage\GameStageScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Title">
@@ -28,5 +29,6 @@
     <ClInclude Include="StageSelect\Actor\StartIsland.hpp" />
     <ClInclude Include="StageSelect\Actor\SceneMoveBox.hpp" />
     <ClInclude Include="StageSelect\Actor\StageIsland.hpp" />
+    <ClInclude Include="GameStage\GameStageScene.hpp" />
   </ItemGroup>
 </Project>

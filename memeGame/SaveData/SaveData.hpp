@@ -14,5 +14,7 @@ namespace Game
 
 	private:
 		static std::vector<int> mDatas;
+
+		static void Zero();
 	};
 }

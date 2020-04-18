@@ -63,6 +63,12 @@ namespace Game
 			int GetDiamondNum() const { return mDiamondNum; }
 			int GetTearNum() const { return mTearNum; }
 
+			bool GetPlayerDeathFlag() const { return mPlayerDeathFlag; }
+			void PlayerIsDead() { mPlayerDeathFlag = true; }
+
+			bool GetStageClearFlag() const { return mStageClaerFlag; }
+			void StageClear() { mStageClaerFlag = true; }
+
 		private:
 			Player* mPlayer;
 			std::vector<StageActor*> mStageActors;
@@ -75,6 +81,8 @@ namespace Game
 			int mDiamondNum;
 			int mTearNum;
 
+			bool mPlayerDeathFlag;
+			bool mStageClaerFlag;
 
 		protected:
 		

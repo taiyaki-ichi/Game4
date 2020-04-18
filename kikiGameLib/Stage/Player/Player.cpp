@@ -9,6 +9,7 @@
 #include"Action/Meteor.hpp"
 #include"Action/Beam.hpp"
 #include"PlayerLife.hpp"
+#include"Stage/Score/ScoreBoard.hpp"
 
 #include<iostream>
 
@@ -503,6 +504,15 @@ namespace Game
 			else if (name == "Tear")
 			{
 				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
+				theBody->SetWidthAndHeight(0.f, 0.f);
+				mPlayer->GetStageScene()->GetTear();
+
+			}
+			else if (name == "Diamond")
+			{
+				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
+				theBody->SetWidthAndHeight(0.f, 0.f);
+				mPlayer->GetStageScene()->GetDiamond();
 
 			}
 
@@ -553,6 +563,7 @@ namespace Game
 		PlayerState::Death::Death(Player* player)
 			:StageState()
 			,mPlayer(player)
+			,mCnt(0)
 		{
 			player->GetAnim()->SetChannel(4);
 			player->GetSubAnim()->SetChannel(1);
@@ -577,6 +588,10 @@ namespace Game
 			float scale = mPlayer->GetScale();
 			scale *= 0.99f;
 			mPlayer->SetScale(scale);
+
+			if (mCnt > 180)
+				mPlayer->GetStageScene()->PlayerIsDead();
+			mCnt++;
 
 			return this;
 		}
@@ -611,6 +626,9 @@ namespace Game
 			mVelocity.x *= 0.95f;
 			mVelocity.y += 0.7f;
 			pos += mVelocity;
+
+			if (mCnt == 120)
+				new ScoreBoard(mPlayer->GetStageScene());
 			
 			mPlayer->SetPosition(pos);
 			mCnt++;
