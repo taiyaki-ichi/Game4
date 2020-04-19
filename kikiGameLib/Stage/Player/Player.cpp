@@ -290,7 +290,7 @@ namespace Game
 			//—Ž‰ºŽ€
 			if (pos.y > WINDOW_HEIGHT + 100.f)
 			{
-				//return DathState
+				return new PlayerState::Death(mPlayer);
 			}
 
 			mPlayer->SetPosition(pos);
