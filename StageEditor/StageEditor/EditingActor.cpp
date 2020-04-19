@@ -672,8 +672,8 @@ namespace StageEditor
 
 		new GameLib::TextureComponent(this, "../Assets/Item/tear.png");
 
-		auto body = new Game::Stage::Body(this, "Missile", 400.f, 500.f);
-		body->SetAdjust(Vec2(0.f, 100.f));
+		auto body = new Game::Stage::Body(this, "Missile", 400.f, 400.f);
+		body->SetAdjust(Vec2(0.f, 150.f));
 		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
 
 		mNum++;

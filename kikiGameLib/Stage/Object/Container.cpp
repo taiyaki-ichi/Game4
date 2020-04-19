@@ -97,7 +97,7 @@ namespace Game
 					mOnGround = true;
 					adjust.x += theBody->GetVelocity().x;
 				}
-				else if (GameLib::Math::Abs(adjust.x) > 0.f)
+				else if (GameLib::Math::Abs(adjust.x) > 0.f&&myBody->GetVelocity().y==0.f)
 				{
 					mGroundTimeCnt = 60;
 					if (myName != "Ground")
@@ -119,7 +119,7 @@ namespace Game
 			*/
 			else if (name == "Container" && myName != "Ground")
 			{
-				auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, SPEED, GRAVITY);
+				auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY,SPEED);
 
 				float theV= theBody->GetVelocity().x;
 				if (adjust.y < 0.f)

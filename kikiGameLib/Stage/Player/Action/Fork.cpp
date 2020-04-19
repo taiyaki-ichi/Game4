@@ -215,10 +215,10 @@ namespace Game
 					auto pos = mTogetherActor->GetPosition() + GameLib::Vector2::Rotation(mAdjust, rot);
 					mFork->SetPosition(pos);
 
-					if (pos.y > ActorUpdateScope::Bottom - 100.f ||
-						pos.x > ActorUpdateScope::Right - 100.f ||
-						pos.x < ActorUpdateScope::Left + 100.f)
+					if (ActorUpdateScope::Left + 100.f > pos.x || ActorUpdateScope::Right - 100.f < pos.x ||
+						ActorUpdateScope::Top + 100.f > pos.y || ActorUpdateScope::Bottom - 100.f < pos.y)
 						mFork->SetState(GameLib::Actor::State::Dead);
+
 				}
 				else
 					mFork->SetState(GameLib::Actor::State::Dead);
