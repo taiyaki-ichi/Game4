@@ -10,6 +10,7 @@
 #include"Action/Beam.hpp"
 #include"PlayerLife.hpp"
 #include"Stage/Score/ScoreBoard.hpp"
+#include"Action/Assist.hpp"
 
 #include<iostream>
 
@@ -148,8 +149,6 @@ namespace Game
 
 		Player::~Player()
 		{
-			if (mLife)
-				mLife->SetState(GameLib::Actor::State::Dead);
 		}
 
 		void Player::BreakBody()
@@ -430,16 +429,19 @@ namespace Game
 			{
 				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
 				SetMode(new PlayerMode::Cock(mPlayer));
+				new ActionAssist(mPlayer);
 			}
 			else if (name == "ItemWizard")
 			{
 				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
 				SetMode(new PlayerMode::Wizard(mPlayer));
+				new ActionAssist(mPlayer);
 			}
 			else if (name == "ItemAlien")
 			{
 				theBody->GetOwner()->SetState(GameLib::Actor::State::Dead);
 				SetMode(new PlayerMode::Alien(mPlayer));
+				new ActionAssist(mPlayer);
 			}
 			else if (name == "ForkGround")
 			{

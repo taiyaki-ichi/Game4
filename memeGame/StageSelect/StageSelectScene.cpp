@@ -20,6 +20,7 @@ namespace Game
 			:Stage::StageScene()
 			,mMoveFlag(0)
 		{
+			
 			Game::Stage::Body::SetDrawFlag(false);
 
 			SaveData::SetStageData(0, 1);
@@ -35,16 +36,21 @@ namespace Game
 			if(SaveData::GetStageData(2)>0)
 				new StageIsland(this, 3, "../Assets/Box/003.png");
 
+			
 			int i = 0;
-			float r;
+			float r=0;
+			
 			while (SaveData::GetStageData(i) > 0&&i<StageNum)
 			{
-				std::cout << i << " : " << SaveData::GetStageData(i) << "\n";
 				r = StartIsland::WIDTH + StageIsland::WIDTH * (i + 2);
 				SetStageRight(r);
 				i++;
 			}
+			
+			
 		
+
+
 			new Stage::Ground(this, GameLib::Vector2(r - StageIsland::WIDTH / 2.f, WINDOW_HEIGHT - 75.f), StageIsland::WIDTH, 150.f);
 				
 			new Stage::Ground(this, GameLib::Vector2(r + 50, WINDOW_HEIGHT / 2.f), 100.f, WINDOW_HEIGHT);
@@ -85,7 +91,7 @@ namespace Game
 			else if(mMoveFlag==2)
 				return new Stage::GameStageScene(2, "../StageData/stage002.json");
 			else if (mMoveFlag == 3)
-				return new Stage::GameStageScene(3, "../StageData/stage002.json");
+				return new Stage::GameStageScene(3, "../StageData/stage003.json");
 
 
 			return this;

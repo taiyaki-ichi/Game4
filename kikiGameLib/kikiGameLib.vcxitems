@@ -36,6 +36,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Container.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Goal.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Object\Warp.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Assist.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Beam.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Fork.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Meteor.hpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Goal.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Ground.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Object\Warp.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Assist.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player\Player.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Beam.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Stage\Player\Action\Fork.cpp" />

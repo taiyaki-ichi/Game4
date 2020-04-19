@@ -499,6 +499,11 @@
       "Data1": 229,
       "Data2": 354,
       "Name": "Player"
+    },
+    {
+      "Data1": 297,
+      "Data2": 357,
+      "Name": "ItemCock"
     }
   ]
 }

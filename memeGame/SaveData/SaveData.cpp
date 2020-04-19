@@ -10,6 +10,7 @@ namespace Game
 
 	bool SaveData::Load()
 	{
+		
 		std::ifstream file;
 		file.open("../memeGame/SaveData/SaveData.bin", std::ios::in | std::ios::binary);
 		if (!file)

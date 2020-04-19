@@ -7,6 +7,8 @@ namespace Game
 	namespace StageSelect
 	{
 		class Scene;
+		class BackGroundManager;
+		class BackGround;
 
 		class StageIsland : public Game::Stage::StageActor
 		{
@@ -15,6 +17,15 @@ namespace Game
 			virtual ~StageIsland();
 
 			static float WIDTH;
+
+			virtual void UpdateStageActor() override;
+
+			void AddBackGround(BackGround* b);
+
+		private:
+			BackGroundManager* mBackGroundManager;
+
+			bool mBackGroundActiveFlag;
 		};
 
 

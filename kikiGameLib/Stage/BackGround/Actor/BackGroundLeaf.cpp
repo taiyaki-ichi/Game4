@@ -3,6 +3,7 @@
 #include"WindowData.hpp"
 
 
+
 namespace Game
 {
 	namespace Stage
@@ -31,6 +32,8 @@ namespace Game
 					SetRelativeMoveRate(0.75f);
 				}
 			}
+
+		
 
 			Leaf::~Leaf()
 			{

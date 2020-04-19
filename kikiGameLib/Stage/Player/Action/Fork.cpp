@@ -49,9 +49,18 @@ namespace Game
 				if (mCnt == 2)
 				{
 					mFork->GetTextureComponent()->SetTexture(GameLib::Data::GetTexture("../Assets/Action/fork.png"));
-					if (!mIsRight)
-						mFork->GetTextureComponent()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
 					mFork->GetBody()->SetName("Fork");
+					mFork->GetBody()->SetWidthAndHeight(300.f, 100.f);
+					if (!mIsRight)
+					{
+						mFork->GetTextureComponent()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
+						mFork->GetBody()->SetAdjust(GameLib::Vector2(-250.f, 0.f));
+					}
+					else
+					{
+						mFork->GetBody()->SetAdjust(GameLib::Vector2(250.f, 0.f));
+					}
+					
 				}
 				else if (mCnt > 2)
 				{
@@ -160,6 +169,8 @@ namespace Game
 				,mCnt(0)
 			{
 				mFork->GetBody()->SetName("ForkGround");
+				mFork->GetBody()->SetWidthAndHeight(700.f, 100.f);
+				mFork->GetBody()->SetAdjust(GameLib::Vector2(0.f, 0.f));
 			}
 
 			ForkGround::~ForkGround()

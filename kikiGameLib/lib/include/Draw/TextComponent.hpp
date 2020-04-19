@@ -34,6 +34,8 @@ namespace GameLib
 
 		const std::string& GetText() const { return mText; }
 
+		float GetAlpha() const { return mAlpha; }
+
 	private:
 		Font* mFont;
 		std::string mText;
