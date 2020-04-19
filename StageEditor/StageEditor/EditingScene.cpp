@@ -343,6 +343,10 @@ namespace StageEditor
 			{
 				actor = new EditingTear(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "Bottom")
+			{
+				actor = new EditingBottom(scene, Vec2(x, y));
+			}
 
 
 

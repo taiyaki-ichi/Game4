@@ -41,6 +41,7 @@ namespace Game
 			,mPlayer(nullptr)
 			,mPlayerDeathFlag(false)
 			,mStageClaerFlag(false)
+			,mStageBottom(FLT_MAX)
 		{
 			mTree = new Liner4Tree(TREELEVEL,
 				CollisionDetectionScope::Left, CollisionDetectionScope::Top, CollisionDetectionScope::Right, CollisionDetectionScope::Bottom);
@@ -109,7 +110,7 @@ namespace Game
 					}
 
 					d = playerPos.y - buttom;
-					if (d > 0)
+					if (mStageBottom - playerPos.y > 150.f&& d > 0)
 					{
 						playerPos.y = buttom;
 						adjust.y = d;
@@ -138,6 +139,7 @@ namespace Game
 
 			mStageLeft -= vec.x;
 			mStageRight -= vec.x;
+			mStageBottom -= vec.y;
 
 			Body::SetScreenMoveAdjust(-1.f * vec);
 
@@ -310,6 +312,11 @@ namespace Game
 				{
 					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
 					new Item::Tear(scene, pos);
+				}
+				else if (o["Name"].get<std::string>() == "Bottom")
+				{
+					float bottom = static_cast<float>(o["Data2"].get<double>());
+					scene->SetStageBottom(bottom);
 				}
 
 

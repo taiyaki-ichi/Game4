@@ -32,6 +32,7 @@ namespace Game
 				
 				auto t = new GameLib::TextComponent(actor2, "Assets/Font/mplus.ttf");
 				t->SetText("A");
+				t->SetAdjust(GameLib::Vector2(0.f, 10.f));
 
 			}
 
@@ -61,6 +62,7 @@ namespace Game
 				
 				auto t = new GameLib::TextComponent(actor2, "Assets/Font/mplus.ttf");
 				t->SetText("D");
+				t->SetAdjust(GameLib::Vector2(0.f, 10.f));
 			}
 
 			Right::~Right()

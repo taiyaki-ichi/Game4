@@ -56,6 +56,7 @@ namespace Game
 			Player* GetPlayer() const { return mPlayer; }
 
 			void SetStageRight(float l) { mStageRight = l; }
+			void SetStageBottom(float b) { mStageBottom = b; }
 
 			void GetDiamond() { mDiamondNum++; }
 			void GetTear() { mTearNum++; }
@@ -77,6 +78,7 @@ namespace Game
 
 			float mStageLeft;
 			float mStageRight;
+			float mStageBottom;
 
 			int mDiamondNum;
 			int mTearNum;

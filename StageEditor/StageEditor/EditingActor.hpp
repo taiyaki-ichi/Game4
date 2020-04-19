@@ -324,4 +324,15 @@ namespace StageEditor
 		static int mNum;
 	};
 
+	class EditingBottom : public EditingActor
+	{
+	public:
+		EditingBottom(EditingScene* scene, const Vec2& pos);
+		virtual ~EditingBottom();
+
+		virtual void UpdateStageActor() override;
+
+	private:
+		GameLib::LineComponent* mLine;
+	};
 }

@@ -684,5 +684,30 @@ namespace StageEditor
 		mNum--;
 	}
 
+	EditingBottom::EditingBottom(EditingScene* scene, const Vec2& pos)
+		:EditingActor(scene,pos,"Bottom",2)
+	{
+		mLine = new GameLib::LineComponent(this);
+		mLine->SetColor(Vec3(255.f, 0.f, 0.f));
+		mLine->SetPoints(Vec2(0.f, pos.y), Vec2(WINDOW_WIDTH, pos.y));
+		auto body = new Game::Stage::Body(this, "Bottom", WINDOW_WIDTH, 20.f);
+		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+	}
+
+
+	EditingBottom::~EditingBottom()
+	{
+	}
+
+	void EditingBottom::UpdateStageActor()
+	{
+		Vec2 pos = GetPosition();
+		mLine->SetPoints(Vec2(0.f, pos.y), Vec2(WINDOW_WIDTH, pos.y));
+		pos.x = WINDOW_WIDTH / 2.f;
+		SetPosition(pos);
+	
+	}
+
+
 }
 

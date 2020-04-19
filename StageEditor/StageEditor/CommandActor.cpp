@@ -255,6 +255,12 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingTear(mEditingScene, cursorPos);
 		}
+		else if (text == "bottom")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingBottom(mEditingScene, cursorPos);
+		}
 
 
 		mTextComponent->SetColor(color);

@@ -60,9 +60,9 @@ namespace Game
 				
 			new Stage::Ground(this, GameLib::Vector2(r + 50, WINDOW_HEIGHT / 2.f), 100.f, WINDOW_HEIGHT);
 
-			new HowTo::Left(this, GameLib::Vector2(StartIsland::WIDTH / 2.f - 90.f, WINDOW_HEIGHT / 2.f - 150.f));
-			new HowTo::Right(this, GameLib::Vector2(StartIsland::WIDTH / 2.f + 90.f, WINDOW_HEIGHT / 2.f - 150.f));
-			new HowTo::Jump(this, GameLib::Vector2(StartIsland::WIDTH / 2.f, WINDOW_HEIGHT / 2.f - 100.f));
+			new HowTo::Left(this, GameLib::Vector2(StartIsland::WIDTH / 2.f - 90.f, WINDOW_HEIGHT / 2.f - 170.f));
+			new HowTo::Right(this, GameLib::Vector2(StartIsland::WIDTH / 2.f + 90.f, WINDOW_HEIGHT / 2.f - 170.f));
+			new HowTo::Jump(this, GameLib::Vector2(StartIsland::WIDTH / 2.f, WINDOW_HEIGHT / 2.f - 120.f));
 
 			float w = 300.f;
 			float h = 300.f;
@@ -70,9 +70,6 @@ namespace Game
 			new Stage::RectangleComponent(ac, w + 20.f, h + 20.f, GameLib::Color::Black, 255, -10);
 			new Stage::RectangleComponent(ac, w, h, GameLib::Color::White, 255, -5);
 
-			auto aaa = new Stage::StageActor(this, GameLib::Vector2(StartIsland::WIDTH / 2.f, WINDOW_HEIGHT / 2.f - 220.f));
-			auto j = new GameLib::TextComponent(aaa, "Assets/Font/mplus.ttf");
-			//j->SetText("J:ACTION");
 			
 
 		}
