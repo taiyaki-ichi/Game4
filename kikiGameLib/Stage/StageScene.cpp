@@ -123,6 +123,7 @@ namespace Game
 						playerPos.x = Game::WINDOW_WIDTH / 2.f;
 					}
 
+
 					MoveScreen(adjust);
 					mPlayer->SetPosition(playerPos);
 				}

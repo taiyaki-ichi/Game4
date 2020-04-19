@@ -23,15 +23,7 @@ namespace Game
 			Game::Stage::Body::SetDrawFlag(false);
 
 			SaveData::SetStageData(0, 1);
-			GameLib::Vector2 pPos(GameLib::Vector2(StartIsland::WIDTH / 2.f, WINDOW_HEIGHT - 170.f));
-			for (int i = 0; i < playerPos; i++)
-			{
-				if (i == 0)
-					pPos.x += StartIsland::WIDTH / 2.f + StageIsland::WIDTH / 2.f;
-				else
-					pPos.x += StageIsland::WIDTH;
-			}
-			new Stage::Player(this, pPos);
+			
 
 
 			new StartIsland(this);
@@ -45,18 +37,15 @@ namespace Game
 
 			int i = 0;
 			float r;
-			while (SaveData::GetStageData(i) > 0&&i<=StageNum)
+			while (SaveData::GetStageData(i) > 0&&i<StageNum)
 			{
 				std::cout << i << " : " << SaveData::GetStageData(i) << "\n";
-				r = StartIsland::WIDTH + StageIsland::WIDTH * (i + 1);
+				r = StartIsland::WIDTH + StageIsland::WIDTH * (i + 2);
 				SetStageRight(r);
 				i++;
 			}
-			std::cout << "i :" << i << "\n";
-			std::cout << r <<"\n";
-			
-			if (i == StageNum+1)
-				new Stage::Ground(this, GameLib::Vector2(r - StageIsland::WIDTH / 2.f, WINDOW_HEIGHT - 75.f), StageIsland::WIDTH, 150.f);
+		
+			new Stage::Ground(this, GameLib::Vector2(r - StageIsland::WIDTH / 2.f, WINDOW_HEIGHT - 75.f), StageIsland::WIDTH, 150.f);
 				
 			new Stage::Ground(this, GameLib::Vector2(r + 50, WINDOW_HEIGHT / 2.f), 100.f, WINDOW_HEIGHT);
 
@@ -70,8 +59,18 @@ namespace Game
 			new Stage::RectangleComponent(ac, w + 20.f, h + 20.f, GameLib::Color::Black, 255, -10);
 			new Stage::RectangleComponent(ac, w, h, GameLib::Color::White, 255, -5);
 
-			
 
+			GameLib::Vector2 pPos(GameLib::Vector2(StartIsland::WIDTH / 2.f, WINDOW_HEIGHT - 170.f));
+			for (int i = 0; i < playerPos; i++)
+			{
+				if (i == 0)
+					pPos.x += StartIsland::WIDTH / 2.f + StageIsland::WIDTH / 2.f;
+				else
+					pPos.x += StageIsland::WIDTH;
+			}
+			new Stage::Player(this, pPos);
+
+		
 		}
 
 		Scene::~Scene()
@@ -82,7 +81,7 @@ namespace Game
 		GameLib::Scene* Scene::UpdateStageScene()
 		{
 			if (mMoveFlag == 1)
-				return new Stage::GameStageScene(1, "../StageData/stage002.json");
+				return new Stage::GameStageScene(1, "../StageData/stage001.json");
 			else if(mMoveFlag==2)
 				return new Stage::GameStageScene(2, "../StageData/stage002.json");
 			else if (mMoveFlag == 3)
