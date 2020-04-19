@@ -44,6 +44,8 @@ namespace Game
 				Body* mWeakness;
 
 				Bee* mBee;
+
+				bool mFallFlag;
 			};
 
 			class StraightBeeActive : public StageState

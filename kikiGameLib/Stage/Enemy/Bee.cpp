@@ -3,6 +3,7 @@
 #include"lib/include/Draw/AnimComponent.hpp"
 #include"lib/include/Data.hpp"
 #include"Stage/CollisionDetection/Body.hpp"
+#include"Stage/StageScene.hpp"
 
 namespace Game
 {
@@ -47,6 +48,7 @@ namespace Game
 			BeeBody::BeeBody(StageScene* scene, Bee* bee, int updateOrder)
 				:StageActor(scene, updateOrder)
 				, mBee(bee)
+				,mFallFlag(false)
 			{
 				SetPosition(mBee->GetPosition());
 
@@ -69,6 +71,17 @@ namespace Game
 			void BeeBody::UpdateStageActor()
 			{
 				SetPosition(mBee->GetPosition());
+				if (mFallFlag)
+				{
+					SetRotation(mBee->GetRotation());
+
+					auto pos = GetPosition();
+					if (pos.y > ActorUpdateScope::Bottom - 100.f ||
+						pos.x > ActorUpdateScope::Right - 100.f ||
+						pos.x < ActorUpdateScope::Left + 100.f)
+						SetState(GameLib::Actor::State::Dead);
+				}
+
 			}
 
 			void BeeBody::Hit(Body* myBody, Body* theBody)
@@ -82,7 +95,7 @@ namespace Game
 					mWeakness->SetWidthAndHeight(0.f, 0.f);
 					mBee->GetAnim()->SetChannel(1);
 					mBee->SetStageState(new Fall(mBee));
-					SetState(GameLib::Actor::State::Dead);
+					mFallFlag = true;
 				}
 				else if (name == "Player" && myName == "EnemyBeeWeakness")
 				{
@@ -90,7 +103,7 @@ namespace Game
 					mWeakness->SetWidthAndHeight(0.f, 0.f);
 					mBee->GetAnim()->SetChannel(1);
 					mBee->SetStageState(new Fall(mBee));
-					SetState(GameLib::Actor::State::Dead);
+					mFallFlag = true;
 				}
 			}
 
