@@ -26,6 +26,7 @@ namespace Game
 			BackGroundManager* mBackGroundManager;
 
 			bool mBackGroundActiveFlag;
+			int mCnt;
 		};
 
 		void CreateBackGround(StageIsland* s, int stageNum);

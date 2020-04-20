@@ -1,13 +1,6 @@
 {
   "Actors": [
     {
-      "Data1": -73,
-      "Data2": 403,
-      "Data3": 909,
-      "Data4": 910,
-      "Name": "Ground"
-    },
-    {
       "Data1": 683,
       "Data2": 204,
       "Data3": 509,
@@ -491,14 +484,28 @@
       "Name": "Diamond"
     },
     {
-      "Data1": 4355,
-      "Data2": 863,
+      "Data1": 4041,
+      "Data2": 801,
       "Name": "Bottom"
     },
     {
-      "Data1": 229,
-      "Data2": 354,
+      "Data1": -69,
+      "Data2": 505,
+      "Data3": 908,
+      "Data4": 912,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 224,
+      "Data2": 464,
       "Name": "Player"
+    },
+    {
+      "Data1": 822,
+      "Data2": 433,
+      "Data3": 910,
+      "Data4": 508,
+      "Name": "Ground"
     }
   ]
 }

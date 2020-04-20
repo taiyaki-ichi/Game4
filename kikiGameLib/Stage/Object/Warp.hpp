@@ -13,6 +13,8 @@ namespace Game
 			Warp(StageScene* scene, const GameLib::Vector2& pos, int updateOrder=0);
 			virtual ~Warp();
 
+			static float SPEED;
+
 			virtual void UpdateStageActor();
 			virtual void Hit(Body* myBody, Body* theBody) override;
 
@@ -23,6 +25,8 @@ namespace Game
 			Warp* mTarget;
 			int mCnt;
 
+			StageActor* mPlayer;
+			Body* mPlayerBody;
 		};
 	}
 }

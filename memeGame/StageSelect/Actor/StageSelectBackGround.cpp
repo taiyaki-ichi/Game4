@@ -1,3 +1,4 @@
+#include "..\..\..\kikiGameLib\Stage\BackGround\Actor\BackGroundLeaf.hpp"
 #include"StageSelectBackGround.hpp"
 #include"WindowData.hpp"
 #include"StageSelect/StageSelectScene.hpp"
@@ -44,26 +45,26 @@ namespace Game
 				{
 					pos.x += MOVESPEED;
 					if (pos.x > WINDOW_WIDTH + d)
-						return new Stay(mBackGround);
+						return new FixedStay(mBackGround,pos);
 				}
 				else if (mMoveDir == MoveDir::Left)
 				{
 					pos.x -= MOVESPEED;
 					if (pos.x < -d)
-						return new Stay(mBackGround);
+						return new FixedStay(mBackGround,pos);
 				}
 				else if (mMoveDir == MoveDir::Down)
 				{
 					pos.y += MOVESPEED;
 					if (pos.y > WINDOW_HEIGHT + d)
-						return new Stay(mBackGround);
+						return new FixedStay(mBackGround,pos);
 
 				}
 				else if (mMoveDir == MoveDir::Up)
 				{
 					pos.y -= MOVESPEED;
 					if (pos.y < -d)
-						return new Stay(mBackGround);
+						return new FixedStay(mBackGround, pos);
 				}
 
 				mBackGround->SetPosition(pos);
@@ -157,7 +158,30 @@ namespace Game
 				return this;
 			}
 
-		}
+			FixedStay::FixedStay(BackGround* b, const GameLib::Vector2& pos)
+				:Stage::StageState()
+				,mBackGround(b)
+				,mPos(pos)
+			{
+				b->SetPosition(pos);
+			}
+
+			FixedStay::~FixedStay()
+			{
+			}
+
+			Stage::StageState* FixedStay::Update()
+			{
+				mBackGround->SetPosition(mPos);
+				return this;
+			}
+
+			void FixedStay::AdjustPosSub(const GameLib::Vector2& vec)
+			{
+				mBackGround->SetPosition(mBackGround->GetPosition() - vec * mBackGround->GetRelativeMoveRate());
+			}
+
+}
 
 		Leaf::Leaf(StageIsland* s)
 			:BackGround(s, GameLib::Vector2())
@@ -166,7 +190,6 @@ namespace Game
 			new GameLib::TextureComponent(this, "../Assets/BackGround/leaf-160.png", -55);
 			SetRelativeMoveRate(0.85f);
 
-			SetStageState(new BackGroundState::Stay(this));
 			int rr = std::rand() %100;
 			SetRotation(GameLib::Math::TwoPi * rr / 100.f);
 
@@ -180,13 +203,17 @@ namespace Game
 
 			int r = std::rand() % 4;
 			if (r == 0)
-				SetPosition(GameLib::Vector2(pos.x, -100.f));
+				pos.y = -100.f;
 			else if (r == 1)
-				SetPosition(GameLib::Vector2(pos.x, WINDOW_HEIGHT+ 100.f));
+				pos.y = WINDOW_HEIGHT + 100.f;
 			else if (r == 2)
-				SetPosition(GameLib::Vector2(-100.f, pos.y));
+				pos.x = -100.f;
 			else
-				SetPosition(GameLib::Vector2(WINDOW_WIDTH + 100.f, pos.y));
+				pos.x = WINDOW_WIDTH + 100.f;
+			
+			SetPosition(pos);
+
+			SetStageState(new BackGroundState::FixedStay(this,pos));
 		}
 
 		Leaf::~Leaf()
@@ -215,6 +242,73 @@ namespace Game
 		}
 
 		void Leaf::SetToActive()
+		{
+			int r1 = std::rand() % 1000;
+			int r2 = std::rand() % 1000;
+
+			float adX = (WINDOW_WIDTH + 100.f * 2.f) * r1 / 1000.f;
+			float adY = (WINDOW_HEIGHT + 100.f * 2.f) * r2 / 1000.f;
+
+			SetStageState(new BackGroundState::ToActive(this, GameLib::Vector2(-100.f + adX, -100.f + adY)));
+		}
+
+		Leaf2::Leaf2(StageIsland* s)
+			:BackGround(s, GameLib::Vector2())
+		{
+			SetScale(0.04f);
+			new GameLib::TextureComponent(this, "../Assets/BackGround/leaf2-160.png", -55);
+			SetRelativeMoveRate(0.85f);
+
+			int rr = std::rand() % 100;
+			SetRotation(GameLib::Math::TwoPi * rr / 100.f);
+
+			int r1 = std::rand() % 1000;
+			int r2 = std::rand() % 1000;
+
+			float adX = (WINDOW_WIDTH + 100.f * 2.f) * r1 / 1000.f;
+			float adY = (WINDOW_HEIGHT + 100.f * 2.f) * r2 / 1000.f;
+
+			GameLib::Vector2 pos(-100.f + adX, -100.f + adY);
+
+			int r = std::rand() % 4;
+			if (r == 0)
+				pos.y = -100.f;
+			else if (r == 1)
+				pos.y = WINDOW_HEIGHT + 100.f;
+			else if (r == 2)
+				pos.x = -100.f;
+			else
+				pos.x = WINDOW_WIDTH + 100.f;
+
+			SetPosition(pos);
+
+			SetStageState(new BackGroundState::FixedStay(this, pos));
+		}
+
+		Leaf2::~Leaf2()
+		{
+		}
+
+		Stage::StageState* Leaf2::CreateActiveState()
+		{
+			return new BackGroundState::Fall(this, GameLib::Vector2(-1.f, -1.f), 0.05f);
+		}
+
+		void Leaf2::SetMoveState()
+		{
+			int r = std::rand() % 4;
+			if (r == 0)
+				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Left));
+			else if (r == 1)
+				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Right));
+			else if (r == 2)
+				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Up));
+			else
+				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Down));
+
+		}
+
+		void Leaf2::SetToActive()
 		{
 			int r1 = std::rand() % 1000;
 			int r2 = std::rand() % 1000;
@@ -258,7 +352,7 @@ namespace Game
 			SetPosition(pos);
 
 			new Stage::RectangleComponent(this, WINDOW_WIDTH*1.5f, 50.f, GameLib::Vector3(130.f, 130.f, 130.f), 255, -50);
-			SetStageState(new BackGroundState::Stay(this));
+			SetStageState(new BackGroundState::FixedStay(this,pos));
 
 			SetRelativeMoveRate(0.f);
 		}
@@ -279,7 +373,7 @@ namespace Game
 
 		void Horizon130::SetToActive()
 		{
-			float x = GetStageIsland()->GetPosition().x;
+			float x = WINDOW_WIDTH / 2.f;
 			SetPosition(GameLib::Vector2(x, GetPosition().y));
 			SetStageState(new BackGroundState::ToActive(this, GameLib::Vector2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 170.f)));
 		}
@@ -291,7 +385,7 @@ namespace Game
 			SetPosition(pos);
 
 			new Stage::RectangleComponent(this, WINDOW_WIDTH*1.5f, 50.f, GameLib::Vector3(180.f, 180.f, 180.f), 255, -60);
-			SetStageState(new BackGroundState::Stay(this));
+			SetStageState(new BackGroundState::FixedStay(this,pos));
 
 			SetRelativeMoveRate(0.f);
 		}
@@ -312,7 +406,7 @@ namespace Game
 
 		void Horizon180::SetToActive()
 		{
-			float x = GetStageIsland()->GetPosition().x;
+			float x = WINDOW_WIDTH / 2.f;
 			SetPosition(GameLib::Vector2(x, GetPosition().y));
 			SetStageState(new BackGroundState::ToActive(this, GameLib::Vector2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 220.f)));
 		}
@@ -324,7 +418,7 @@ namespace Game
 			SetPosition(pos);
 
 			new Stage::RectangleComponent(this, WINDOW_WIDTH * 1.5f, 50.f, GameLib::Vector3(230.f, 230.f, 230.f), 255, -70);
-			SetStageState(new BackGroundState::Stay(this));
+			SetStageState(new BackGroundState::FixedStay(this,pos));
 
 			SetRelativeMoveRate(0.f);
 		}
@@ -345,7 +439,7 @@ namespace Game
 
 		void Horizon230::SetToActive()
 		{
-			float x = GetStageIsland()->GetPosition().x;
+			float x = WINDOW_WIDTH / 2.f;
 			SetPosition(GameLib::Vector2(x, GetPosition().y));
 			SetStageState(new BackGroundState::ToActive(this, GameLib::Vector2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 270.f)));
 		}
@@ -358,14 +452,13 @@ namespace Game
 			
 			new GameLib::TextureComponent(this, fileName, drawOrder);
 
-			auto ppos = GameLib::Vector2(s->GetPosition().x, WINDOW_HEIGHT + 100.f);
+			auto ppos = GameLib::Vector2(pos.x, WINDOW_HEIGHT + 100.f);
+
 			SetPosition(ppos);
 
-			SetStageState(new BackGroundState::Stay(this));
+			SetStageState(new BackGroundState::FixedStay(this,ppos));
 
 			SetRelativeMoveRate(relative);
-
-
 
 		}
 
@@ -385,10 +478,11 @@ namespace Game
 
 		void FixedBackGround::SetToActive()
 		{
-			
 			SetPosition(GameLib::Vector2(mPos.x, GetPosition().y));
 			SetStageState(new BackGroundState::ToActive(this, mPos));
 		}
+
+
 
 }
 }

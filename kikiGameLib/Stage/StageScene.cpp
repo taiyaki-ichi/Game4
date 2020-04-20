@@ -133,6 +133,8 @@ namespace Game
 
 		void StageScene::MoveScreen(const GameLib::Vector2& vec)
 		{
+
+
 			for (auto& actor : mStageActors)
 			{
 				actor->AdjustPos(-1.f * vec);

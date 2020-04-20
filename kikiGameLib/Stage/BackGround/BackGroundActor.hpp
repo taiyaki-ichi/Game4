@@ -21,5 +21,6 @@ namespace Game
 			float drawOrder, float scele = 0.5f);
 
 		void CreateForestBackGround(StageScene* scene);
+		void CreateForest2BackGround(StageScene* scene);
 	}
 }

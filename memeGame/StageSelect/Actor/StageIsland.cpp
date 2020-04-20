@@ -21,6 +21,7 @@ namespace Game
 		StageIsland::StageIsland(Scene* scene, int stageNum, const std::string& boxFileName)
 			:Stage::StageActor(scene)
 			, mBackGroundActiveFlag(false)
+			,mCnt(0)
 		{
 			float x = StartIsland::WIDTH - WIDTH / 2.f + WIDTH * stageNum;
 			GameLib::Vector2 pos(x, WINDOW_HEIGHT / 2.f);
@@ -100,26 +101,32 @@ namespace Game
 
 		void StageIsland::UpdateStageActor()
 		{
-			if (!mBackGroundActiveFlag)
+			if (mCnt > 0)
 			{
-				auto pos = GetPosition();
-				auto playerPos = GetStageScene()->GetPlayer()->GetPosition();
-				if (GameLib::Math::Abs(pos.x - playerPos.x) < 100.f)
+				if (!mBackGroundActiveFlag)
 				{
-					mBackGroundManager->Active();
-					mBackGroundActiveFlag = true;
+					auto pos = GetPosition();
+					auto playerPos = GetStageScene()->GetPlayer()->GetPosition();
+					if (GameLib::Math::Abs(pos.x - playerPos.x) < 100.f)
+					{
+						mBackGroundManager->Active();
+						mBackGroundActiveFlag = true;
+					}
+				}
+				else
+				{
+					auto pos = GetPosition();
+					auto playerPos = GetStageScene()->GetPlayer()->GetPosition();
+					if (GameLib::Math::Abs(pos.x - playerPos.x) > 150.f)
+					{
+						mBackGroundManager->Stay();
+						mBackGroundActiveFlag = false;
+					}
 				}
 			}
-			else
-			{
-				auto pos = GetPosition();
-				auto playerPos = GetStageScene()->GetPlayer()->GetPosition();
-				if (GameLib::Math::Abs(pos.x - playerPos.x) > 150.f)
-				{
-					mBackGroundManager->Stay();
-					mBackGroundActiveFlag = false;
-				}
-			}
+			
+			if (mCnt < 1)
+				mCnt++;
 		}
 
 		void StageIsland::AddBackGround(BackGround* b)
@@ -151,6 +158,28 @@ namespace Game
 				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f - 300.f, 100.f), 0.6f, -70.f, 0.5f);
 				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f + 300.f, 100.f), 0.6f, -70.f, 0.5f);
 
+			}
+			else if (stageNum == 2)
+			{
+				for (int i = 0; i < 100; i++)
+					new Leaf2(s);
+
+				new Horizon130(s);
+				new Horizon180(s);
+				new Horizon230(s);
+
+				new FixedBackGround(s, "../Assets/BackGround/tree2-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f, 250.f), 0.5f, -50.f, 0.8f);
+				new FixedBackGround(s, "../Assets/BackGround/tree2-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f + 400.f, 250.f), 0.5f, -50.f, 0.8f);
+				new FixedBackGround(s, "../Assets/BackGround/tree2-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f - 400.f, 250.f), 0.5f, -50.f, 0.8f);
+
+				new FixedBackGround(s, "../Assets/BackGround/tree2-180.png", GameLib::Vector2(120.f, 250.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/tree2-180.png", GameLib::Vector2(320.f, 250.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/tree2-180.png", GameLib::Vector2(500.f, 250.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/tree2-180.png", GameLib::Vector2(680.f, 250.f), 0.3f, -60.f, 0.6f);
+
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f, 100.f), 0.6f, -70.f, 0.5f);
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f - 300.f, 100.f), 0.6f, -70.f, 0.5f);
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f + 300.f, 100.f), 0.6f, -70.f, 0.5f);
 			}
 		}
 

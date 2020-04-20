@@ -70,6 +70,8 @@ namespace Game
 			bool GetStageClearFlag() const { return mStageClaerFlag; }
 			void StageClear() { mStageClaerFlag = true; }
 
+			
+
 		private:
 			Player* mPlayer;
 			std::vector<StageActor*> mStageActors;
@@ -92,6 +94,7 @@ namespace Game
 			void AdjustScreen();
 			//v‚¾‚¯“®‚©‚·
 			void MoveScreen(const GameLib::Vector2& vec);
+			
 		};
 
 		bool LoadStageData(StageScene* scene, const std::string& fileName);

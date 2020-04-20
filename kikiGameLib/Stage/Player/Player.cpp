@@ -185,135 +185,137 @@ namespace Game
 
 		StageState* PlayerState::Active::Update()
 		{
-
-			if (mCrushedFlag && mIsOnGround)
-				return new Death(mPlayer);
-
-			Vec2 pos = mPlayer->GetPosition();
-
-			//重力
-			//ジャンプボタンを押しているかどうかで変化
-			if (mIsJumping == true)
-				mVelocity.y += JUMPING_GRAVITY;
-			else
-				mVelocity.y += GRAVITY;
-	
-			
-			//Playerの向きによって画像の向きを変化さす
-			if (mDir == Dir::Right)
+			//今のところActiveな状態でBodyのタテヨコが0.fになるのはWarpの時のみ
+			if (mPlayer->GetBody()->GetHeight() > 0.f && mPlayer->GetBody()->GetWidth() > 0.f)
 			{
-				mPlayer->GetAnim()->SetTextureFlip(GameLib::TextureFlip::None);
-				mPlayer->GetSubAnim()->SetTextureFlip(GameLib::TextureFlip::None);
-			}
-			else
-			{
-				mPlayer->GetAnim()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
-				mPlayer->GetSubAnim()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
-			}
+				if (mCrushedFlag && mIsOnGround)
+					return new Death(mPlayer);
 
-			//ジャンプの加速度の計算
-			if (mJumpAcceleFlag == true)
-			{
-				mVelocity.y = 0.f;
-				float rate = GameLib::Math::Abs(mVelocity.x) / MAX_SPEED;
-				float jumpadjust = (JUMP_POWER_MAX - JUMP_POWER_MIN) * rate;
-				mVelocity.y -= JUMP_POWER_MIN + jumpadjust;
+				Vec2 pos = mPlayer->GetPosition();
 
-				mJumpAcceleFlag = false;
-			}
+				//重力
+				//ジャンプボタンを押しているかどうかで変化
+				if (mIsJumping == true)
+					mVelocity.y += JUMPING_GRAVITY;
+				else
+					mVelocity.y += GRAVITY;
 
-			//ヨコの加速度
-			if (mMotion == Motion::Run)
-			{
+
+				//Playerの向きによって画像の向きを変化さす
 				if (mDir == Dir::Right)
 				{
-					if (mVelocity.x < 0.f)
-						mVelocity.x += RUN_POWER * 2.f;
-					else
-						mVelocity.x += RUN_POWER;
+					mPlayer->GetAnim()->SetTextureFlip(GameLib::TextureFlip::None);
+					mPlayer->GetSubAnim()->SetTextureFlip(GameLib::TextureFlip::None);
 				}
 				else
 				{
-					if (mVelocity.x > 0.f)
-						mVelocity.x -= RUN_POWER * 2.f;
+					mPlayer->GetAnim()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
+					mPlayer->GetSubAnim()->SetTextureFlip(GameLib::TextureFlip::Horizontal);
+				}
+
+				//ジャンプの加速度の計算
+				if (mJumpAcceleFlag == true)
+				{
+					mVelocity.y = 0.f;
+					float rate = GameLib::Math::Abs(mVelocity.x) / MAX_SPEED;
+					float jumpadjust = (JUMP_POWER_MAX - JUMP_POWER_MIN) * rate;
+					mVelocity.y -= JUMP_POWER_MIN + jumpadjust;
+
+					mJumpAcceleFlag = false;
+				}
+
+				//ヨコの加速度
+				if (mMotion == Motion::Run)
+				{
+					if (mDir == Dir::Right)
+					{
+						if (mVelocity.x < 0.f)
+							mVelocity.x += RUN_POWER * 2.f;
+						else
+							mVelocity.x += RUN_POWER;
+					}
 					else
-						mVelocity.x -= RUN_POWER;
+					{
+						if (mVelocity.x > 0.f)
+							mVelocity.x -= RUN_POWER * 2.f;
+						else
+							mVelocity.x -= RUN_POWER;
+					}
 				}
-			}
 
-			//速度の計算
-			if (mMotion == Motion::Stay) {
-				if (mIsOnGround == true)
-				{
-					mVelocity.x *= 0.8f;
+				//速度の計算
+				if (mMotion == Motion::Stay) {
+					if (mIsOnGround == true)
+					{
+						mVelocity.x *= 0.8f;
+					}
+					else
+					{
+						mVelocity.x *= 0.98f;
+					}
 				}
+				//速度の調整
+				if (mVelocity.x < -MAX_SPEED) {
+					mVelocity.x = -MAX_SPEED;
+				}
+				else if (mVelocity.x > MAX_SPEED) {
+					mVelocity.x = MAX_SPEED;
+				}
+				if (mVelocity.y < -MAX_SPEED * 2.f) {
+					mVelocity.y = -MAX_SPEED * 2.f;
+				}
+				else if (mVelocity.y > MAX_SPEED * 2.f) {
+					mVelocity.y = MAX_SPEED * 2.f;
+				}
+
+				//位置の更新
+				pos += mVelocity;
+
+				//落下中のアニメーション
+				if (mIsOnGround == false) {
+					if (mPlayer->GetPosition().y > pos.y) {
+						mMotion = Motion::Down;
+					}
+					else if (mPlayer->GetPosition().y < pos.y) {
+						mMotion = Motion::Up;
+					}
+				}
+
+
+				if (mPlayer->GetLife()->GetInvincibleFlag())
+					mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion) + 5);
 				else
+					mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion));
+
+
+				//落下死
+				if (pos.y > WINDOW_HEIGHT + 100.f)
 				{
-					mVelocity.x *= 0.98f;
+					return new PlayerState::Death(mPlayer);
 				}
-			}
-			//速度の調整
-			if (mVelocity.x < -MAX_SPEED) {
-				mVelocity.x = -MAX_SPEED;
-			}
-			else if (mVelocity.x > MAX_SPEED) {
-				mVelocity.x = MAX_SPEED;
-			}
-			if (mVelocity.y < -MAX_SPEED * 2.f) {
-				mVelocity.y = -MAX_SPEED * 2.f;
-			}
-			else if (mVelocity.y > MAX_SPEED * 2.f) {
-				mVelocity.y = MAX_SPEED * 2.f;
-			}
 
-			//位置の更新
-			pos += mVelocity;
+				mPlayer->SetPosition(pos);
 
-			//落下中のアニメーション
-			if (mIsOnGround == false) {
-				if (mPlayer->GetPosition().y > pos.y) {
-					mMotion = Motion::Down;
+
+				//状態の更新
+				if (mMode)
+					mMode->Update();
+
+
+				//敵を踏んでいる最中の処理
+				if (mJumpFlag2 > 0)
+				{
+					mJumpFlag2 -= 1;
 				}
-				else if (mPlayer->GetPosition().y < pos.y) {
-					mMotion = Motion::Up;
-				}
+
+
+
+				mJumpAcceleFlag = false;
+				mJumpFlag = false;
+				mIsOnGround = false;
+				mCrushedFlag = false;
+
 			}
-
-
-			if (mPlayer->GetLife()->GetInvincibleFlag())
-				mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion) + 5);
-			else
-				mPlayer->GetAnim()->SetChannel(static_cast<int>(mMotion));
-			
-
-			//落下死
-			if (pos.y > WINDOW_HEIGHT + 100.f)
-			{
-				return new PlayerState::Death(mPlayer);
-			}
-
-			mPlayer->SetPosition(pos);
-
-
-			//状態の更新
-			if (mMode)
-				mMode->Update();
-
-
-			//敵を踏んでいる最中の処理
-			if (mJumpFlag2 > 0)
-			{
-				mJumpFlag2 -= 1;
-			}
-
-			
-
-			mJumpAcceleFlag = false;
-			mJumpFlag = false;
-			mIsOnGround = false;
-			mCrushedFlag = false;
-			
-
 			return this;
 		}
 

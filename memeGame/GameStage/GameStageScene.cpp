@@ -2,6 +2,7 @@
 #include"StageSelect/StageSelectScene.hpp"
 #include"SaveData/SaveData.hpp"
 #include"Stage/CollisionDetection/Body.hpp"
+#include"Stage/BackGround/BackGroundActor.hpp"
 #include<iostream>
 
 namespace Game
@@ -17,6 +18,13 @@ namespace Game
 		{
 			Game::Stage::Body::SetDrawFlag(false);
 			LoadStageData(this, fileName);
+
+			
+			if (stageNum == 1)
+				Stage::CreateForestBackGround(this);
+			else if (stageNum == 2)
+				Stage::CreateForest2BackGround(this);
+				
 		}
 
 		GameStageScene::~GameStageScene()

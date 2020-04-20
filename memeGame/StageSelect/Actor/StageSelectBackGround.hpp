@@ -114,6 +114,19 @@ namespace Game
 				RelativeStay() {};
 				virtual ~RelativeStay() {};
 			};
+
+			class FixedStay : public Stage::StageState
+			{
+			public:
+				FixedStay(BackGround* b, const GameLib::Vector2& pos);
+				virtual ~FixedStay();
+
+				virtual Stage::StageState* Update() override;
+				virtual void AdjustPosSub(const GameLib::Vector2& vec) override;
+			private:
+				BackGround* mBackGround;
+				GameLib::Vector2 mPos;
+			};
 		}
 
 		class Leaf : public BackGround
@@ -126,6 +139,18 @@ namespace Game
 			virtual void SetMoveState() override;
 			virtual void SetToActive() override;
 		};
+
+		class Leaf2 : public BackGround
+		{
+		public:
+			Leaf2(StageIsland* s);
+			virtual ~Leaf2();
+
+			virtual Stage::StageState* CreateActiveState() override;
+			virtual void SetMoveState() override;
+			virtual void SetToActive() override;
+		};
+
 
 		class Horizon130 : public BackGround
 		{
