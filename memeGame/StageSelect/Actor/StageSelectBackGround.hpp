@@ -119,7 +119,7 @@ namespace Game
 		class Leaf : public BackGround
 		{
 		public:
-			Leaf(StageIsland* s, const GameLib::Vector2& pos);
+			Leaf(StageIsland* s);
 			virtual ~Leaf();
 
 			virtual Stage::StageState* CreateActiveState() override;

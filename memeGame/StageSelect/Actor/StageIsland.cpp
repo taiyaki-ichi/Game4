@@ -20,7 +20,7 @@ namespace Game
 
 		StageIsland::StageIsland(Scene* scene, int stageNum, const std::string& boxFileName)
 			:Stage::StageActor(scene)
-			,mBackGroundActiveFlag(false)
+			, mBackGroundActiveFlag(false)
 		{
 			float x = StartIsland::WIDTH - WIDTH / 2.f + WIDTH * stageNum;
 			GameLib::Vector2 pos(x, WINDOW_HEIGHT / 2.f);
@@ -55,8 +55,6 @@ namespace Game
 			else
 				sc = "-";
 
-			//std::cout << "stageIsland Score :" << score << "\n";
-
 			auto text3 = new GameLib::TextComponent(this, "../Assets/Font/mplus.ttf", 10);
 			text3->SetAdjust(GameLib::Vector2(0.f, -130.f));
 			text3->SetSize(GameLib::FontSize::Size_96);
@@ -86,42 +84,12 @@ namespace Game
 			actor->SetScale(scale);
 			actor->SetRotation(GameLib::Math::Pi);
 			texture = new GameLib::TextureComponent(actor, "../Assets/Box/arrow.png");
-			
-			
+
+
 			mBackGroundManager = new BackGroundManager();
 
-			for (int i = 0; i < 100; i++)
-			{
-				int r1 = std::rand() % 1000;
-				int r2 = std::rand() % 1000;
+			CreateBackGround(this, stageNum);
 
-				float adX = (WINDOW_WIDTH +100.f *2.f) * r1 / 1000.f;
-				float adY = (WINDOW_HEIGHT + 100.f * 2.f) * r2 / 1000.f;
-
-				new Leaf(this, GameLib::Vector2(-100.f + adX, -100.f + adY));
-
-			}
-			new Horizon130(this);
-			new Horizon180(this);
-			new Horizon230(this);
-
-			new FixedBackGround(this, "../Assets/BackGround/tree-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f, 250.f), 0.5f, -50.f,0.8f);
-			new FixedBackGround(this, "../Assets/BackGround/tree-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f+400.f, 250.f), 0.5f, -50.f,0.8f);
-			new FixedBackGround(this, "../Assets/BackGround/tree-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f-400.f, 250.f), 0.5f, -50.f,0.8f);
-
-			new FixedBackGround(this, "../Assets/BackGround/tree-180.png", GameLib::Vector2(140.f, 250.f), 0.3f, -60.f, 0.6f);
-			new FixedBackGround(this, "../Assets/BackGround/tree-180.png", GameLib::Vector2(330.f, 250.f), 0.3f, -60.f, 0.6f);
-			new FixedBackGround(this, "../Assets/BackGround/tree-180.png", GameLib::Vector2(490.f, 250.f), 0.3f, -60.f, 0.6f);
-			new FixedBackGround(this, "../Assets/BackGround/tree-180.png", GameLib::Vector2(660.f, 250.f), 0.3f, -60.f, 0.6f);
-
-			new FixedBackGround(this, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH/2.f, 100.f), 0.6f, -70.f, 0.5f);
-			new FixedBackGround(this, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f-300.f, 100.f), 0.6f, -70.f, 0.5f);
-			new FixedBackGround(this, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f+300.f, 100.f), 0.6f, -70.f, 0.5f);
-			
-
-	
-
-			
 		}
 
 		StageIsland::~StageIsland()
@@ -157,6 +125,33 @@ namespace Game
 		void StageIsland::AddBackGround(BackGround* b)
 		{
 			mBackGroundManager->Add(b);
+		}
+
+		void CreateBackGround(StageIsland* s, int stageNum)
+		{
+			if (stageNum == 1)
+			{
+				for (int i = 0; i < 100; i++)
+					new Leaf(s);
+
+				new Horizon130(s);
+				new Horizon180(s);
+				new Horizon230(s);
+
+				new FixedBackGround(s, "../Assets/BackGround/tree-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f, 250.f), 0.5f, -50.f, 0.8f);
+				new FixedBackGround(s, "../Assets/BackGround/tree-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f + 400.f, 250.f), 0.5f, -50.f, 0.8f);
+				new FixedBackGround(s, "../Assets/BackGround/tree-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f - 400.f, 250.f), 0.5f, -50.f, 0.8f);
+
+				new FixedBackGround(s, "../Assets/BackGround/tree-180.png", GameLib::Vector2(140.f, 250.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/tree-180.png", GameLib::Vector2(330.f, 250.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/tree-180.png", GameLib::Vector2(490.f, 250.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/tree-180.png", GameLib::Vector2(660.f, 250.f), 0.3f, -60.f, 0.6f);
+
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f, 100.f), 0.6f, -70.f, 0.5f);
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f - 300.f, 100.f), 0.6f, -70.f, 0.5f);
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f + 300.f, 100.f), 0.6f, -70.f, 0.5f);
+
+			}
 		}
 
 	}

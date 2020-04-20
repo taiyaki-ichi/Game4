@@ -159,8 +159,8 @@ namespace Game
 
 		}
 
-		Leaf::Leaf(StageIsland* s, const GameLib::Vector2& pos)
-			:BackGround(s, pos)
+		Leaf::Leaf(StageIsland* s)
+			:BackGround(s, GameLib::Vector2())
 		{
 			SetScale(0.05f);
 			new GameLib::TextureComponent(this, "../Assets/BackGround/leaf-160.png", -55);
@@ -169,6 +169,14 @@ namespace Game
 			SetStageState(new BackGroundState::Stay(this));
 			int rr = std::rand() %100;
 			SetRotation(GameLib::Math::TwoPi * rr / 100.f);
+
+			int r1 = std::rand() % 1000;
+			int r2 = std::rand() % 1000;
+
+			float adX = (WINDOW_WIDTH + 100.f * 2.f) * r1 / 1000.f;
+			float adY = (WINDOW_HEIGHT + 100.f * 2.f) * r2 / 1000.f;
+
+			GameLib::Vector2 pos(-100.f + adX, -100.f + adY);
 
 			int r = std::rand() % 4;
 			if (r == 0)

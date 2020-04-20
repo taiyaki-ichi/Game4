@@ -28,6 +28,7 @@ namespace Game
 			bool mBackGroundActiveFlag;
 		};
 
+		void CreateBackGround(StageIsland* s, int stageNum);
 
 	}
 
