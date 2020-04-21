@@ -181,6 +181,29 @@ namespace Game
 				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f - 300.f, 100.f), 0.6f, -70.f, 0.5f);
 				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f + 300.f, 100.f), 0.6f, -70.f, 0.5f);
 			}
+			else if (stageNum == 3)
+			{
+				for (int i = 0; i < 100; i++)
+					new Wing(s);
+
+				new Horizon130(s);
+				new Horizon180(s);
+				new Horizon230(s);
+
+				new FixedBackGround(s, "../Assets/BackGround/pole-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f, 220.f), 0.5f, -50.f, 0.8f);
+				new FixedBackGround(s, "../Assets/BackGround/pole-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f + 350.f, 220.f), 0.5f, -50.f, 0.8f);
+				new FixedBackGround(s, "../Assets/BackGround/pole-130.png", GameLib::Vector2(WINDOW_WIDTH / 2.f - 350.f, 220.f), 0.5f, -50.f, 0.8f);
+
+				new FixedBackGround(s, "../Assets/BackGround/pole-180.png", GameLib::Vector2(120.f, 240.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/pole-180.png", GameLib::Vector2(320.f, 240.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/pole-180.png", GameLib::Vector2(500.f, 240.f), 0.3f, -60.f, 0.6f);
+				new FixedBackGround(s, "../Assets/BackGround/pole-180.png", GameLib::Vector2(680.f, 240.f), 0.3f, -60.f, 0.6f);
+
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f, 100.f), 0.6f, -70.f, 0.5f);
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f - 300.f, 100.f), 0.6f, -70.f, 0.5f);
+				new FixedBackGround(s, "../Assets/BackGround/mountain-230.png", GameLib::Vector2(WINDOW_WIDTH / 2.f + 300.f, 100.f), 0.6f, -70.f, 0.5f);
+
+			}
 		}
 
 	}

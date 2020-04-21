@@ -13,6 +13,7 @@
 #include"Stage/BackGround/BackGroundActor.hpp"
 #include"Counter.hpp"
 
+
 namespace StageEditor
 {
 	using Vec2 = GameLib::Vector2;

@@ -13,6 +13,7 @@
     <ClCompile Include="GameStage\GameStageScene.cpp" />
     <ClCompile Include="StageSelect\Actor\HowToActor.cpp" />
     <ClCompile Include="StageSelect\Actor\StageSelectBackGround.cpp" />
+    <ClCompile Include="StageSelect\Actor\SaveBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Title">
@@ -34,5 +35,6 @@
     <ClInclude Include="GameStage\GameStageScene.hpp" />
     <ClInclude Include="StageSelect\Actor\HowToActor.hpp" />
     <ClInclude Include="StageSelect\Actor\StageSelectBackGround.hpp" />
+    <ClInclude Include="StageSelect\Actor\SaveBox.hpp" />
   </ItemGroup>
 </Project>

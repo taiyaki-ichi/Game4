@@ -199,5 +199,16 @@ namespace Game
 			GameLib::Vector2 mPos;
 		};
 
+		class Wing : public BackGround
+		{
+		public:
+			Wing(StageIsland* s);
+			virtual ~Wing();
+
+			virtual Stage::StageState* CreateActiveState() override;
+			virtual void SetMoveState() override;
+			virtual void SetToActive() override;
+		};
+
 	}
 }

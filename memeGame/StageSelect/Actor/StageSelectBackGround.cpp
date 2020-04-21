@@ -13,8 +13,8 @@ namespace Game
 	namespace StageSelect
 	{
 		BackGround::BackGround(StageIsland* s, const GameLib::Vector2& pos)
-			:Stage::StageStateActor(s->GetStageScene(),pos)
-			,mStageIsland(s)
+			:Stage::StageStateActor(s->GetStageScene(), pos)
+			, mStageIsland(s)
 		{
 			s->AddBackGround(this);
 		}
@@ -26,8 +26,8 @@ namespace Game
 		{
 			Move::Move(BackGround* b, const MoveDir& d)
 				:StageState()
-				,mMoveDir(d)
-				,mBackGround(b)
+				, mMoveDir(d)
+				, mBackGround(b)
 			{
 
 			}
@@ -45,19 +45,19 @@ namespace Game
 				{
 					pos.x += MOVESPEED;
 					if (pos.x > WINDOW_WIDTH + d)
-						return new FixedStay(mBackGround,pos);
+						return new FixedStay(mBackGround, pos);
 				}
 				else if (mMoveDir == MoveDir::Left)
 				{
 					pos.x -= MOVESPEED;
 					if (pos.x < -d)
-						return new FixedStay(mBackGround,pos);
+						return new FixedStay(mBackGround, pos);
 				}
 				else if (mMoveDir == MoveDir::Down)
 				{
 					pos.y += MOVESPEED;
 					if (pos.y > WINDOW_HEIGHT + d)
-						return new FixedStay(mBackGround,pos);
+						return new FixedStay(mBackGround, pos);
 
 				}
 				else if (mMoveDir == MoveDir::Up)
@@ -73,7 +73,7 @@ namespace Game
 			}
 			Stay::Stay(BackGround* b)
 				:StageState()
-				,mBackGround(b)
+				, mBackGround(b)
 			{
 			}
 			Stay::~Stay()
@@ -91,8 +91,8 @@ namespace Game
 
 			ToActive::ToActive(BackGround* b, const GameLib::Vector2& pre)
 				:StageState()
-				,mBackGround(b)
-				,mPrevPos(pre)
+				, mBackGround(b)
+				, mPrevPos(pre)
 			{
 			}
 			ToActive::~ToActive()
@@ -103,23 +103,23 @@ namespace Game
 				auto pos = mBackGround->GetPosition();
 				auto vec = mPrevPos - pos;
 				pos += GameLib::Vector2::Normalize(vec) * MOVESPEED;
-				
+
 				if ((mPrevPos - pos).Length() < MOVESPEED)
 				{
 					mBackGround->SetPosition(mPrevPos);
 					return mBackGround->CreateActiveState();
 				}
-			
+
 				mBackGround->SetPosition(pos);
 
 				return this;
 			}
-			
 
 
-			Fall::Fall(BackGround* s,const GameLib::Vector2& v,float rot)
+
+			Fall::Fall(BackGround* s, const GameLib::Vector2& v, float rot)
 				:Stage::StageState()
-				,mBackGround(s)
+				, mBackGround(s)
 				, mVelocity(v)
 				, mRot(rot)
 			{
@@ -160,8 +160,8 @@ namespace Game
 
 			FixedStay::FixedStay(BackGround* b, const GameLib::Vector2& pos)
 				:Stage::StageState()
-				,mBackGround(b)
-				,mPos(pos)
+				, mBackGround(b)
+				, mPos(pos)
 			{
 				b->SetPosition(pos);
 			}
@@ -181,7 +181,7 @@ namespace Game
 				mBackGround->SetPosition(mBackGround->GetPosition() - vec * mBackGround->GetRelativeMoveRate());
 			}
 
-}
+		}
 
 		Leaf::Leaf(StageIsland* s)
 			:BackGround(s, GameLib::Vector2())
@@ -190,7 +190,7 @@ namespace Game
 			new GameLib::TextureComponent(this, "../Assets/BackGround/leaf-160.png", -55);
 			SetRelativeMoveRate(0.85f);
 
-			int rr = std::rand() %100;
+			int rr = std::rand() % 100;
 			SetRotation(GameLib::Math::TwoPi * rr / 100.f);
 
 			int r1 = std::rand() % 1000;
@@ -210,10 +210,10 @@ namespace Game
 				pos.x = -100.f;
 			else
 				pos.x = WINDOW_WIDTH + 100.f;
-			
+
 			SetPosition(pos);
 
-			SetStageState(new BackGroundState::FixedStay(this,pos));
+			SetStageState(new BackGroundState::FixedStay(this, pos));
 		}
 
 		Leaf::~Leaf()
@@ -223,7 +223,7 @@ namespace Game
 
 		Stage::StageState* Leaf::CreateActiveState()
 		{
-			return new BackGroundState::Fall(this,GameLib::Vector2(-2.f, 0.5f),0.05f);
+			return new BackGroundState::Fall(this, GameLib::Vector2(-2.f, 0.5f), 0.05f);
 		}
 
 		void Leaf::SetMoveState()
@@ -231,11 +231,11 @@ namespace Game
 			int r = std::rand() % 4;
 			if (r == 0)
 				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Left));
-			else if(r==1)
+			else if (r == 1)
 				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Right));
 			else if (r == 2)
 				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Up));
-			else 
+			else
 				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Down));
 
 
@@ -255,7 +255,7 @@ namespace Game
 		Leaf2::Leaf2(StageIsland* s)
 			:BackGround(s, GameLib::Vector2())
 		{
-			SetScale(0.04f);
+			SetScale(0.05f);
 			new GameLib::TextureComponent(this, "../Assets/BackGround/leaf2-160.png", -55);
 			SetRelativeMoveRate(0.85f);
 
@@ -351,8 +351,8 @@ namespace Game
 			auto pos = GameLib::Vector2(s->GetPosition().x, WINDOW_HEIGHT + 100.f);
 			SetPosition(pos);
 
-			new Stage::RectangleComponent(this, WINDOW_WIDTH*1.5f, 50.f, GameLib::Vector3(130.f, 130.f, 130.f), 255, -50);
-			SetStageState(new BackGroundState::FixedStay(this,pos));
+			new Stage::RectangleComponent(this, WINDOW_WIDTH * 1.5f, 50.f, GameLib::Vector3(130.f, 130.f, 130.f), 255, -50);
+			SetStageState(new BackGroundState::FixedStay(this, pos));
 
 			SetRelativeMoveRate(0.f);
 		}
@@ -384,8 +384,8 @@ namespace Game
 			auto pos = GameLib::Vector2(s->GetPosition().x, WINDOW_HEIGHT + 100.f);
 			SetPosition(pos);
 
-			new Stage::RectangleComponent(this, WINDOW_WIDTH*1.5f, 50.f, GameLib::Vector3(180.f, 180.f, 180.f), 255, -60);
-			SetStageState(new BackGroundState::FixedStay(this,pos));
+			new Stage::RectangleComponent(this, WINDOW_WIDTH * 1.5f, 50.f, GameLib::Vector3(180.f, 180.f, 180.f), 255, -60);
+			SetStageState(new BackGroundState::FixedStay(this, pos));
 
 			SetRelativeMoveRate(0.f);
 		}
@@ -418,7 +418,7 @@ namespace Game
 			SetPosition(pos);
 
 			new Stage::RectangleComponent(this, WINDOW_WIDTH * 1.5f, 50.f, GameLib::Vector3(230.f, 230.f, 230.f), 255, -70);
-			SetStageState(new BackGroundState::FixedStay(this,pos));
+			SetStageState(new BackGroundState::FixedStay(this, pos));
 
 			SetRelativeMoveRate(0.f);
 		}
@@ -446,17 +446,17 @@ namespace Game
 
 		FixedBackGround::FixedBackGround(StageIsland* s, const std::string& fileName, const GameLib::Vector2& pos, float scale, int drawOrder, float relative)
 			:BackGround(s)
-			,mPos(pos)
+			, mPos(pos)
 		{
 			SetScale(scale);
-			
+
 			new GameLib::TextureComponent(this, fileName, drawOrder);
 
 			auto ppos = GameLib::Vector2(pos.x, WINDOW_HEIGHT + 100.f);
 
 			SetPosition(ppos);
 
-			SetStageState(new BackGroundState::FixedStay(this,ppos));
+			SetStageState(new BackGroundState::FixedStay(this, ppos));
 
 			SetRelativeMoveRate(relative);
 
@@ -483,7 +483,75 @@ namespace Game
 		}
 
 
+		Wing::Wing(StageIsland* s)
+			:BackGround(s)
+		{
+			SetScale(0.05f);
+			new GameLib::TextureComponent(this, "../Assets/BackGround/wing-160.png", -55);
+			SetRelativeMoveRate(0.85f);
 
-}
+			int rr = std::rand() % 100;
+			SetRotation(GameLib::Math::TwoPi * rr / 100.f);
+
+			int r1 = std::rand() % 1000;
+			int r2 = std::rand() % 1000;
+
+			float adX = (WINDOW_WIDTH + 100.f * 2.f) * r1 / 1000.f;
+			float adY = (WINDOW_HEIGHT + 100.f * 2.f) * r2 / 1000.f;
+
+			GameLib::Vector2 pos(-100.f + adX, -100.f + adY);
+
+			int r = std::rand() % 4;
+			if (r == 0)
+				pos.y = -100.f;
+			else if (r == 1)
+				pos.y = WINDOW_HEIGHT + 100.f;
+			else if (r == 2)
+				pos.x = -100.f;
+			else
+				pos.x = WINDOW_WIDTH + 100.f;
+
+			SetPosition(pos);
+
+			SetStageState(new BackGroundState::FixedStay(this, pos));
+		}
+
+		Wing::~Wing()
+		{
+
+		}
+
+		Stage::StageState* Wing::CreateActiveState()
+		{
+			return new BackGroundState::Fall(this, GameLib::Vector2(-1.f, 3.f), 0.03f);
+		}
+
+		void Wing::SetMoveState()
+		{
+			int r = std::rand() % 4;
+			if (r == 0)
+				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Left));
+			else if (r == 1)
+				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Right));
+			else if (r == 2)
+				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Up));
+			else
+				SetStageState(new BackGroundState::Move(this, BackGroundState::MoveDir::Down));
+
+		}
+
+		void Wing::SetToActive()
+		{
+			int r1 = std::rand() % 1000;
+			int r2 = std::rand() % 1000;
+
+			float adX = (WINDOW_WIDTH + 100.f * 2.f) * r1 / 1000.f;
+			float adY = (WINDOW_HEIGHT + 100.f * 2.f) * r2 / 1000.f;
+
+			SetStageState(new BackGroundState::ToActive(this, GameLib::Vector2(-100.f + adX, -100.f + adY)));
+		}
+
+
+	}
 }
 

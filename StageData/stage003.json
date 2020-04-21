@@ -1,186 +1,705 @@
 {
   "Actors": [
     {
-      "Data1": 321,
-      "Data2": 372,
-      "Name": "Player"
-    },
-    {
-      "Data1": 114,
-      "Data2": 453,
-      "Data3": 763,
-      "Data4": 561,
+      "Data1": -151,
+      "Data2": 500,
+      "Data3": 656,
+      "Data4": 944,
       "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 655,
+      "Data2": 422,
+      "Data3": 888,
+      "Data4": 942,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 883,
+      "Data2": 352,
+      "Data3": 1155,
+      "Data4": 942,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 1152,
+      "Data2": 399,
+      "Data3": 1408,
+      "Data4": 941,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 1468,
+      "Data2": 279,
+      "Name": "Carrot"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 1408,
+      "Data2": 319,
+      "Data3": 1555,
+      "Data4": 939,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 1689,
+      "Data2": 280,
+      "Data3": 1803,
+      "Data4": 940,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 1917,
+      "Data2": 183,
+      "Data3": 2040,
+      "Data4": 934,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 1978,
+      "Data2": 149,
+      "Name": "Carrot"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 2157,
+      "Data2": 261,
+      "Data3": 2282,
+      "Data4": 934,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 2222,
+      "Data2": 236,
+      "Name": "Carrot"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 2647,
+      "Data2": 321,
+      "Data3": 2952,
+      "Data4": 918,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 2392,
+      "Data2": 200,
+      "Data3": 2524,
+      "Data4": 926,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 2455,
+      "Data2": 165,
+      "Name": "Carrot"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 1422,
+      "Data2": 152,
+      "Data3": 514,
+      "Data4": -147,
+      "Name": "Warp"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 807,
+      "Data2": -130,
+      "Data3": 914,
+      "Data4": -43,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 998,
+      "Data2": -156,
+      "Data3": 1101,
+      "Data4": -71,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
+      "Data1": 1163,
+      "Data2": -208,
+      "Data3": 1271,
+      "Data4": -112,
+      "Name": "Ground"
     },
     {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 441,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 444,
-      "Data2": 424,
-      "Name": "Diamond"
-    },
-    {
-      "Data1": 442,
-      "Data2": 363,
+      "Data1": 1215,
+      "Data2": -425,
       "Name": "Tear"
     },
     {
-      "Data1": 442,
-      "Data2": 363,
+      "Data1": 1116,
+      "Data2": -229,
+      "Name": "Dogu"
+    },
+    {
+      "Data1": 950,
+      "Data2": -198,
+      "Name": "Dogu"
+    },
+    {
+      "Data1": 341,
+      "Data2": -34,
+      "Data3": 707,
+      "Data4": -11,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 2997,
+      "Data2": 503,
+      "Data3": 2650,
+      "Data4": -293,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 2911,
+      "Data2": 279,
+      "Data3": 3517,
+      "Data4": -232,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 3445,
+      "Data2": -113,
+      "Data3": 3940,
+      "Data4": -88,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 3409,
+      "Data2": 470,
+      "Data3": 3773,
+      "Data4": -153,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 2649,
+      "Data2": -227,
+      "Data3": 2945,
+      "Data4": -852,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 2949,
+      "Data2": -698,
+      "Data3": 3647,
+      "Data4": -963,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 3651,
+      "Data2": -625,
       "Name": "Tear"
     },
     {
-      "Data1": 442,
-      "Data2": 363,
+      "Data1": 3894,
+      "Data2": -139,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 3334,
+      "Data2": 633,
+      "Data3": 3705,
+      "Data4": 1042,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 3704,
+      "Data2": 580,
+      "Data3": 3862,
+      "Data4": 1042,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 3862,
+      "Data2": 514,
+      "Data3": 4033,
+      "Data4": 1042,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 4034,
+      "Data2": 468,
+      "Data3": 4192,
+      "Data4": 1040,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 4159,
+      "Data2": 442,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 4083,
+      "Data2": 443,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 3995,
+      "Data2": 487,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 3916,
+      "Data2": 486,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 4118,
+      "Data2": 281,
+      "Data3": 4445,
+      "Data4": -337,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 4695,
+      "Data2": -316,
+      "Data3": 4874,
+      "Data4": -153,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 4791,
+      "Data2": -344,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 4908,
+      "Data2": -795,
+      "Data3": 5164,
+      "Data4": -674,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5141,
+      "Data2": -1369,
+      "Data3": 5361,
+      "Data4": -1286,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5342,
+      "Data2": -1433,
+      "Data3": 5435,
+      "Data4": -1345,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5268,
+      "Data2": -1426,
+      "Name": "Container"
+    },
+    {
+      "Data1": 5413,
+      "Data2": -1509,
+      "Data3": 5524,
+      "Data4": -1413,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5495,
+      "Data2": -1558,
+      "Data3": 5605,
+      "Data4": -1492,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5570,
+      "Data2": -1582,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 5451,
+      "Data2": -1534,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 5374,
+      "Data2": -1459,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 4873,
+      "Data2": -387,
+      "Data3": 5386,
+      "Data4": -152,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 4375,
+      "Data2": -264,
+      "Data3": 4696,
+      "Data4": -155,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 4558,
+      "Data2": -433,
+      "Data3": 4858,
+      "Data4": -1041,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 4798,
+      "Data2": -828,
+      "Data3": 4908,
+      "Data4": -676,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 4874,
+      "Data2": -416,
+      "Data3": 4917,
+      "Data4": -386,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5892,
+      "Data2": -955,
+      "Data3": 6153,
+      "Data4": -806,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5948,
+      "Data2": -725,
+      "Data3": 6148,
+      "Data4": -693,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 6000,
+      "Data2": -781,
       "Name": "Tear"
     },
     {
-      "Data1": 650,
-      "Data2": 150,
+      "Data1": 5892,
+      "Data2": -805,
+      "Data3": 5955,
+      "Data4": -694,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 6420,
+      "Data2": -1005,
+      "Data3": 6777,
+      "Data4": -872,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 6233,
+      "Data2": -857,
+      "Data3": 6116,
+      "Data4": -762,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 6342,
+      "Data2": -856,
+      "Data3": 6120,
+      "Data4": -1372,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 6287,
+      "Data2": -811,
+      "Data3": 6226,
+      "Data4": -1445,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 6702,
+      "Data2": -1124,
+      "Data3": 6987,
+      "Data4": -972,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 6552,
+      "Data2": -1198,
+      "Data3": 6310,
+      "Data4": -1780,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 6310,
+      "Data2": -1723,
+      "Data3": 5566,
+      "Data4": -1758,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 6149,
+      "Data2": -1032,
+      "Data3": 6424,
+      "Data4": -937,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5605,
+      "Data2": -1539,
+      "Data3": 5826,
+      "Data4": -1437,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5798,
+      "Data2": -1567,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 5279,
+      "Data2": -1196,
+      "Data3": 5279,
+      "Data4": -1967,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 5280,
+      "Data2": -1910,
+      "Data3": 5280,
+      "Data4": -2680,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 5911,
+      "Data2": -2469,
+      "Data3": 6198,
+      "Data4": -2290,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 6196,
+      "Data2": -2551,
+      "Data3": 7018,
+      "Data4": -2291,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 6611,
+      "Data2": -2857,
       "Name": "Goal"
+    },
+    {
+      "Data1": 6120,
+      "Data2": -2822,
+      "Data3": 5281,
+      "Data4": -2620,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 314,
+      "Data2": 462,
+      "Name": "Player"
+    },
+    {
+      "Data1": 5203,
+      "Data2": -665,
+      "Data3": 5277,
+      "Data4": -1253,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 6849,
+      "Data2": -1161,
+      "Data3": 6287,
+      "Data4": -904,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 816,
+      "Data2": 337,
+      "Name": "Dogu"
+    },
+    {
+      "Data1": 2811,
+      "Data2": 254,
+      "Name": "Dogu"
+    },
+    {
+      "Data1": 4894,
+      "Data2": -490,
+      "Name": "Dogu"
+    },
+    {
+      "Data1": 5135,
+      "Data2": -823,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 6392,
+      "Data2": -1064,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 6673,
+      "Data2": -1036,
+      "Name": "Carrot"
+    },
+    {
+      "Data1": 5160,
+      "Data2": -476,
+      "Name": "Dogu"
+    },
+    {
+      "Data1": 852,
+      "Data2": 386,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 794,
+      "Data2": 385,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 738,
+      "Data2": 385,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1384,
+      "Data2": 368,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1337,
+      "Data2": 367,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1290,
+      "Data2": 368,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 862,
+      "Data2": -172,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1042,
+      "Data2": -190,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1215,
+      "Data2": -245,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1746,
+      "Data2": 245,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1988,
+      "Data2": 122,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 2218,
+      "Data2": 215,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 2461,
+      "Data2": 159,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 2858,
+      "Data2": 292,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 2816,
+      "Data2": 292,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 2774,
+      "Data2": 294,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 3675,
+      "Data2": 599,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 3627,
+      "Data2": 600,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 3833,
+      "Data2": 548,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 3789,
+      "Data2": 548,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 4012,
+      "Data2": 490,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 3964,
+      "Data2": 490,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5202,
+      "Data2": -612,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5206,
+      "Data2": -560,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5206,
+      "Data2": -507,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5087,
+      "Data2": -930,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5086,
+      "Data2": -874,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 6189,
+      "Data2": -1069,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 6235,
+      "Data2": -1070,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 6281,
+      "Data2": -1069,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5203,
+      "Data2": -733,
+      "Data3": 5944,
+      "Data4": -1338,
+      "Name": "Warp"
+    },
+    {
+      "Data1": 5820,
+      "Data2": -1602,
+      "Data3": 6113,
+      "Data4": -1481,
+      "Name": "Ground"
     }
   ]
 }

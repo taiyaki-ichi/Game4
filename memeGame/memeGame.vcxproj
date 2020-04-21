@@ -147,6 +147,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SaveData\SaveData.cpp" />
     <ClCompile Include="StageSelect\Actor\HowToActor.cpp" />
+    <ClCompile Include="StageSelect\Actor\SaveBox.cpp" />
     <ClCompile Include="StageSelect\Actor\SceneMoveBox.cpp" />
     <ClCompile Include="StageSelect\Actor\StageIsland.cpp" />
     <ClCompile Include="StageSelect\Actor\StageSelectBackGround.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="GameStage\GameStageScene.hpp" />
     <ClInclude Include="SaveData\SaveData.hpp" />
     <ClInclude Include="StageSelect\Actor\HowToActor.hpp" />
+    <ClInclude Include="StageSelect\Actor\SaveBox.hpp" />
     <ClInclude Include="StageSelect\Actor\SceneMoveBox.hpp" />
     <ClInclude Include="StageSelect\Actor\StageIsland.hpp" />
     <ClInclude Include="StageSelect\Actor\StageSelectBackGround.hpp" />

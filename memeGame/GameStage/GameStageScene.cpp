@@ -20,10 +20,13 @@ namespace Game
 			LoadStageData(this, fileName);
 
 			
+			
 			if (stageNum == 1)
 				Stage::CreateForestBackGround(this);
 			else if (stageNum == 2)
 				Stage::CreateForest2BackGround(this);
+			else if (stageNum == 3)
+				Stage::CreateIndianBackGround(this);
 				
 		}
 

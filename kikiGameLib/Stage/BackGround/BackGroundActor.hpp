@@ -22,5 +22,6 @@ namespace Game
 
 		void CreateForestBackGround(StageScene* scene);
 		void CreateForest2BackGround(StageScene* scene);
+		void CreateIndianBackGround(StageScene* scene);
 	}
 }

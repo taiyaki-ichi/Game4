@@ -46,7 +46,7 @@ namespace Game
 
 			namespace StandLightParts
 			{
-				constexpr float ACTIVERANGE = 400.f;
+				constexpr float ACTIVERANGE = 500.f;
 
 				class Head : public StageStateActor
 				{

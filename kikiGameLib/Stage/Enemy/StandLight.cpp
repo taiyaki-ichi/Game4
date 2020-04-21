@@ -161,8 +161,8 @@ namespace Game
 					mStem->HeadDead();
 				}
 
-				const int HeadActive::BEAMTIME = 120;
-				const int HeadActive::COOLTIME = 180;
+				const int HeadActive::BEAMTIME = 180;
+				const int HeadActive::COOLTIME = 120;
 
 				HeadActive::HeadActive(Head* head)
 					:StageState()
@@ -265,7 +265,7 @@ namespace Game
 
 				StageState* HeadDeath::Update()
 				{
-					if (mCnt > 300)
+					if (mCnt > 260)
 					{
 						return new HeadActive(mHead);
 					}

@@ -9,6 +9,7 @@
 #include"Actor/HowToActor.hpp"
 #include"Stage/Draw/RectangleComponent.hpp"
 #include"lib/include/Draw/TextComponent.hpp"
+#include"Actor/SaveBox.hpp"
 
 #include<iostream>
 
@@ -46,10 +47,6 @@ namespace Game
 				SetStageRight(r);
 				i++;
 			}
-			
-			
-		
-
 
 			new Stage::Ground(this, GameLib::Vector2(r - StageIsland::WIDTH / 2.f, WINDOW_HEIGHT - 75.f), StageIsland::WIDTH, 150.f);
 				
@@ -77,6 +74,7 @@ namespace Game
 			new Stage::Player(this, pPos);
 
 		
+			new SaveBox(this, GameLib::Vector2(120.f, WINDOW_HEIGHT / 2.f));
 		}
 
 		Scene::~Scene()
@@ -86,13 +84,14 @@ namespace Game
 
 		GameLib::Scene* Scene::UpdateStageScene()
 		{
+		
 			if (mMoveFlag == 1)
 				return new Stage::GameStageScene(1, "../StageData/stage001.json");
 			else if(mMoveFlag==2)
 				return new Stage::GameStageScene(2, "../StageData/stage002.json");
 			else if (mMoveFlag == 3)
 				return new Stage::GameStageScene(3, "../StageData/stage003.json");
-
+				
 
 			return this;
 		}

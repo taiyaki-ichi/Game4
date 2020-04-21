@@ -25,7 +25,15 @@ namespace Game
 				virtual void UpdateBackGround() override;
 			};
 
-	
+			class Wing : public BackGroundActor
+			{
+			public:
+				Wing(StageScene* s, const GameLib::Vector2& pos, int updateOrder = 0);
+				virtual ~Wing();
+
+				virtual void UpdateBackGround() override;
+			};
+
 		}
 	}
 }

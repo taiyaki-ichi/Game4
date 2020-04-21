@@ -1,124 +1,125 @@
 {
   "Actors": [
     {
-      "Data1": -151,
-      "Data2": 500,
-      "Data3": 656,
-      "Data4": 944,
+      "Data1": -86,
+      "Data2": 502,
+      "Data3": 827,
+      "Data4": 1003,
       "Name": "Ground"
     },
     {
-      "Data1": 165,
-      "Data2": 457,
+      "Data1": 304,
+      "Data2": 445,
       "Name": "Player"
     },
     {
-      "Data1": 655,
-      "Data2": 422,
-      "Data3": 888,
-      "Data4": 942,
+      "Data1": 627,
+      "Data2": 432,
+      "Data3": 826,
+      "Data4": 501,
       "Name": "Ground"
     },
     {
-      "Data1": 883,
-      "Data2": 352,
-      "Data3": 1155,
-      "Data4": 942,
+      "Data1": 716,
+      "Data2": 377,
+      "Data3": 826,
+      "Data4": 433,
       "Name": "Ground"
     },
     {
-      "Data1": 1152,
-      "Data2": 399,
-      "Data3": 1408,
-      "Data4": 941,
+      "Data1": 792,
+      "Data2": 337,
+      "Name": "Maimai"
+    },
+    {
+      "Data1": 680,
+      "Data2": 388,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 825,
+      "Data2": 378,
+      "Data3": 1085,
+      "Data4": 400,
+      "Data5": 953,
+      "Data6": -14,
+      "Name": "MoveGround"
+    },
+    {
+      "Data1": 1079,
+      "Data2": 174,
+      "Data3": 1258,
+      "Data4": 1005,
       "Name": "Ground"
     },
     {
-      "Data1": 1361,
-      "Data2": 287,
-      "Name": "Dogu"
+      "Data1": 1124,
+      "Data2": 125,
+      "Name": "StandLight"
     },
     {
-      "Data1": 1468,
-      "Data2": 279,
-      "Name": "Carrot"
-    },
-    {
-      "Data1": 1408,
-      "Data2": 319,
-      "Data3": 1555,
-      "Data4": 939,
+      "Data1": 1080,
+      "Data2": 69,
+      "Data3": 1259,
+      "Data4": -37,
       "Name": "Ground"
     },
     {
-      "Data1": 1689,
-      "Data2": 280,
-      "Data3": 1803,
-      "Data4": 940,
+      "Data1": 1180,
+      "Data2": -36,
+      "Data3": 1360,
+      "Data4": 1006,
       "Name": "Ground"
     },
     {
-      "Data1": 1917,
-      "Data2": 183,
-      "Data3": 2040,
-      "Data4": 934,
+      "Data1": 1223,
+      "Data2": -88,
+      "Name": "StandLight"
+    },
+    {
+      "Data1": 1465,
+      "Data2": -74,
+      "Data3": 1631,
+      "Data4": -52,
+      "Data5": 1548,
+      "Data6": -930,
+      "Name": "MoveGround"
+    },
+    {
+      "Data1": 2011,
+      "Data2": -717,
+      "Data3": 2144,
+      "Data4": -696,
       "Name": "Ground"
     },
     {
-      "Data1": 1978,
-      "Data2": 149,
-      "Name": "Carrot"
-    },
-    {
-      "Data1": 2157,
-      "Data2": 261,
-      "Data3": 2282,
-      "Data4": 934,
+      "Data1": 2020,
+      "Data2": -604,
+      "Data3": 2159,
+      "Data4": -581,
       "Name": "Ground"
     },
     {
-      "Data1": 2222,
-      "Data2": 236,
-      "Name": "Carrot"
-    },
-    {
-      "Data1": 2647,
-      "Data2": 321,
-      "Data3": 2952,
-      "Data4": 918,
+      "Data1": 2017,
+      "Data2": -502,
+      "Data3": 2165,
+      "Data4": -479,
       "Name": "Ground"
     },
     {
-      "Data1": 2392,
-      "Data2": 200,
-      "Data3": 2524,
-      "Data4": 926,
-      "Name": "Ground"
+      "Data1": 2074,
+      "Data2": -754,
+      "Name": "Maimai"
     },
     {
-      "Data1": 2455,
-      "Data2": 165,
-      "Name": "Carrot"
+      "Data1": 2077,
+      "Data2": -647,
+      "Name": "Maimai"
     },
     {
-      "Data1": 2698,
-      "Data2": 286,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 2544,
-      "Data2": -70,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 2416,
-      "Data2": -110,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 818,
-      "Data2": 369,
-      "Name": "Dogu"
+      "Data1": 2084,
+      "Data2": -548,
+      "Name": "Maimai"
     }
   ]
 }
