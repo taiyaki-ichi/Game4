@@ -348,6 +348,10 @@ namespace StageEditor
 			{
 				actor = new EditingBottom(scene, Vec2(x, y));
 			}
+			else if (o["Name"].get<std::string>() == "Trampoline")
+			{
+				actor = new EditingTrampoline(scene, Vec2(x, y));
+			}
 
 
 

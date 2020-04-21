@@ -39,7 +39,7 @@ namespace Game
 				class Active :public StageState
 				{
 				public:
-					Active(Carrot* carrot);
+					Active(Carrot* carrot,float vY);
 					virtual ~Active();
 
 					static const float MAXSPEED;
@@ -50,7 +50,7 @@ namespace Game
 
 				private:
 					Carrot* mCarrot;
-					float mVelocityX;
+					GameLib::Vector2 mVelocity;
 				};
 
 				class Stay : public StageState
@@ -64,6 +64,7 @@ namespace Game
 
 				private:
 					Carrot* mCarrot;
+					float mVelocityY;
 				};
 			}
 

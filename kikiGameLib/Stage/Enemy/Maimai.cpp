@@ -5,6 +5,7 @@
 #include"Stage/Enemy/EnemyState.hpp"
 #include"Stage/StageScene.hpp"
 #include"Stage/Player/Player.hpp"
+#include"Stage/Object/Trampoline.hpp"
 
 namespace Game
 {
@@ -70,6 +71,7 @@ namespace Game
 					:StageState()
 					, mMaimai(m)
 					,mCnt(0)
+					,mVelocityY(0.f)
 				{
 
 				}
@@ -82,7 +84,8 @@ namespace Game
 				StageState* Active::Update()
 				{
 					auto pos = mMaimai->GetPosition();
-					pos.y += GRAVITY;
+					mVelocityY += GRAVITYPOWER;
+					pos.y += mVelocityY;
 					mMaimai->SetPosition(pos);
 
 					auto playerPos = mMaimai->GetStageScene()->GetPlayer()->GetPosition();
@@ -113,9 +116,14 @@ namespace Game
 					std::string name = theBody->GetName();
 					std::string myName = myBody->GetName();
 
-					if (name == "Ground")
+					if (name == "Ground"||name=="Container")
 					{
 						auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, 0.f);
+						if (adjust.y < 0.f)
+						{
+							mVelocityY = 0.f;
+							adjust += theBody->GetVelocity();
+						}
 						mMaimai->SetPosition(mMaimai->GetPosition() + adjust);
 					}
 					else if (name == "Player" && myName == "EnemyMaimaiWeakness")
@@ -130,6 +138,16 @@ namespace Game
 						mMaimai->GetAnim()->SetChannel(2);
 						mMaimai->BreakBody();
 						mMaimai->SetStageState(new Fall(mMaimai));
+					}
+					else if (name == "Trampoline" )
+					{
+						auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, 0.f);
+						if (adjust.y < 0.f)
+						{
+							mVelocityY = -Trampoline::ENEMYPOWER;
+							adjust += theBody->GetVelocity();
+						}
+						mMaimai->SetPosition(mMaimai->GetPosition() + adjust);
 					}
 
 				}

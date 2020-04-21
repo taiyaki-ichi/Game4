@@ -4,6 +4,7 @@
 #include"lib/include/Draw/AnimComponent.hpp"
 #include"lib/include/Data.hpp"
 #include"Stage/CollisionDetection/Body.hpp"
+#include"Stage/Object/Trampoline.hpp"
 
 namespace Game
 {
@@ -81,7 +82,7 @@ namespace Game
 
 			TripleActive::TripleActive(Triple* triple)
 				:mTriple(triple)
-				, mVelocity(-1.f)
+				, mVelocity(GameLib::Vector2(-1.f,0.f))
 				, mFlatFlag(false)
 				,mOnGround(false)
 				,mCrashedFlag(true)
@@ -102,11 +103,11 @@ namespace Game
 				}
 
 				Vec2 pos = mTriple->GetPosition();
-				pos.x += mVelocity;
-				pos.y += GRAVITY;
+				mVelocity.y += GRAVITYPOWER;
+				pos += mVelocity;
 				mTriple->SetPosition(pos);
 
-				if (mVelocity > 0.f)
+				if (mVelocity.x > 0.f)
 					mTriple->SetAnimChannel(1);
 				else
 					mTriple->SetAnimChannel(0);
@@ -138,10 +139,10 @@ namespace Game
 				if (name == "EnemyTriple" && myName == "EnemyTriple")
 				{
 					float x = theBody->GetOwner()->GetPosition().x - myActor->GetPosition().x;
-					if (x > 0.f && mVelocity > 0.f)
-						mVelocity *= -1.f;
-					else if (x < 0.f && mVelocity < 0.f)
-						mVelocity *= -1.f;
+					if (x > 0.f && mVelocity.x > 0.f)
+						mVelocity.x *= -1.f;
+					else if (x < 0.f && mVelocity.x < 0.f)
+						mVelocity.x *= -1.f;
 
 					GameLib::Vector2 adjust = GetAdjustUnrotatedRectVec(myBody, theBody);
 					adjust.y = 0.f;
@@ -149,18 +150,19 @@ namespace Game
 				}
 				else if (name == "Ground" || name == "Container")
 				{
-					GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, mVelocity);
+					GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, mVelocity.x);
 
 					
-					if (adjust.x > 0.f && mVelocity < 0.f)
-						mVelocity *= -1.f;
-					else if (adjust.x < 0.f && mVelocity>0.f)
-						mVelocity *= -1.f;
+					if (adjust.x > 0.f && mVelocity.x < 0.f)
+						mVelocity.x *= -1.f;
+					else if (adjust.x < 0.f && mVelocity.x>0.f)
+						mVelocity.x *= -1.f;
 					
 					else if (adjust.y < 0.f)
 					{
 						adjust += theBody->GetVelocity();
 						mOnGround = true;
+						mVelocity.y = 0.f;
 					}
 
 					if (adjust.y > 20.f)
@@ -176,6 +178,27 @@ namespace Game
 				{
 					mTriple->BreakBody();
 					mTriple->SetStageState(new Fall(mTriple));
+				}
+				else if (name == "Trampoline")
+				{
+					GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, mVelocity.x);
+
+
+					if (adjust.x > 0.f && mVelocity.x < 0.f)
+						mVelocity.x *= -1.f;
+					else if (adjust.x < 0.f && mVelocity.x>0.f)
+						mVelocity.x *= -1.f;
+
+					else if (adjust.y < 0.f)
+					{
+						adjust += theBody->GetVelocity();
+						mOnGround = true;
+						mVelocity.y = -Trampoline::ENEMYPOWER;
+					}
+
+					if (adjust.y > 20.f)
+						mCrashedFlag = true;
+					myActor->SetPosition(myActor->GetPosition() + adjust);
 				}
 			
 			}

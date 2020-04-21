@@ -261,6 +261,12 @@ namespace StageEditor
 			if (enter)
 				mNowEditingActor = new EditingBottom(mEditingScene, cursorPos);
 		}
+		else if (text == "trampoline")
+		{
+			color = GameLib::Color::Red;
+			if (enter)
+				mNowEditingActor = new EditingTrampoline(mEditingScene, cursorPos);
+		}
 
 
 		mTextComponent->SetColor(color);

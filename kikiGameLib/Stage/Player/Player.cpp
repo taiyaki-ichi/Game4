@@ -11,6 +11,7 @@
 #include"PlayerLife.hpp"
 #include"Stage/Score/ScoreBoard.hpp"
 #include"Action/Assist.hpp"
+#include"Stage/Object/Trampoline.hpp"
 
 #include<iostream>
 
@@ -216,7 +217,7 @@ namespace Game
 				//ジャンプの加速度の計算
 				if (mJumpAcceleFlag == true)
 				{
-					mVelocity.y = 0.f;
+					//mVelocity.y = 0.f;
 					float rate = GameLib::Math::Abs(mVelocity.x) / MAX_SPEED;
 					float jumpadjust = (JUMP_POWER_MAX - JUMP_POWER_MIN) * rate;
 					mVelocity.y -= JUMP_POWER_MIN + jumpadjust;
@@ -261,12 +262,13 @@ namespace Game
 				else if (mVelocity.x > MAX_SPEED) {
 					mVelocity.x = MAX_SPEED;
 				}
-				if (mVelocity.y < -MAX_SPEED * 2.f) {
-					mVelocity.y = -MAX_SPEED * 2.f;
+				if (mVelocity.y < -MAX_SPEED * 4.f) {
+					mVelocity.y = -MAX_SPEED * 4.f;
 				}
-				else if (mVelocity.y > MAX_SPEED * 2.f) {
-					mVelocity.y = MAX_SPEED * 2.f;
+				else if (mVelocity.y > MAX_SPEED * 4.f) {
+					mVelocity.y = MAX_SPEED * 4.f;
 				}
+				
 
 				//位置の更新
 				pos += mVelocity;
@@ -372,7 +374,7 @@ namespace Game
 					mIsJumping = true;
 					mJumpFlag = false;
 					mJumpAcceleFlag = true;
-					mVelocity.y = 0.f;
+					//mVelocity.y = 0.f;
 					mJumpFlag2 = 0;
 				}
 			}
@@ -519,6 +521,40 @@ namespace Game
 				theBody->SetWidthAndHeight(0.f, 0.f);
 				mPlayer->GetStageScene()->GetDiamond();
 
+			}
+			else if (name == "Trampoline")
+			{
+				using Vec2 = GameLib::Vector2;
+				Vec2 pos = myBody->GetOwner()->GetPosition();
+				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);
+
+
+				if (adjust.x < 0.f && mVelocity.x>0.f)
+				{
+					mVelocity.x = 0.f;
+				}
+				if (adjust.x > 0.f && mVelocity.x < 0.f)
+				{
+					mVelocity.x = 0.f;
+				}
+				if (adjust.y < 0.f && mVelocity.y>0.f) {
+					mVelocity.y = -Trampoline::PLAYERPOWER;
+					mJumpFlag2 = 4;
+					mIsOnGround = true;
+					mIsJumping = false;
+
+					adjust += theBody->GetVelocity();
+				}
+				if (adjust.y > 0.f && mVelocity.y < 0.f)
+				{
+					mVelocity.y = 0.f;
+					mIsJumping = false;
+				}
+
+				if (adjust.y > 20.f)
+					mCrushedFlag = true;
+
+				myBody->GetOwner()->SetPosition(pos + adjust);
 			}
 
 			

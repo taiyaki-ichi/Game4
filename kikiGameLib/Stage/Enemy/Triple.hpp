@@ -46,11 +46,10 @@ namespace Game
 				virtual StageState* Update() override;
 				virtual void Hit(Body* myBody, Body* theBody) override;
 
-				float GetVelocity() const { return mVelocity; };
-
 			private:
 				Triple* mTriple;
-				float mVelocity;
+				
+				GameLib::Vector2 mVelocity;
 
 				bool mFlatFlag;
 

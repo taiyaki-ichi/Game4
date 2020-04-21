@@ -3,7 +3,7 @@
 #include"lib/include/Draw/AnimComponent.hpp"
 #include"lib/include/Data.hpp"
 #include"EnemyState.hpp"
-
+#include"Stage/Object/Trampoline.hpp"
 
 namespace Game
 {
@@ -50,6 +50,7 @@ namespace Game
 				,mTimer(0.f)
 				,mOnGround(false)
 				,mCrashedFlag(false)
+				,mVelocityY(0.f)
 			{
 			}
 
@@ -70,7 +71,8 @@ namespace Game
 				Vec2 pos = mToge->GetPosition();
 
 				//d—Í
-				pos.y += GRAVITY;
+				mVelocityY += GRAVITYPOWER;
+				pos.y += mVelocityY;
 				mToge->SetPosition(pos);
 
 				mTimer += 0.01f;
@@ -96,6 +98,7 @@ namespace Game
 					{
 						adjust += theBody->GetVelocity();
 						mOnGround = true;
+						mVelocityY = 0.f;
 					}
 
 					if (adjust.y > 20.f)
@@ -107,6 +110,22 @@ namespace Game
 					mToge->GetAnim()->SetChannel(1);
 					mToge->BreakBody();
 					mToge->SetStageState(new Fall(mToge));
+				}
+				else if (name == "Trampoline")
+				{
+					using Vec2 = GameLib::Vector2;
+					Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, 0.f);
+
+					if (adjust.y < 0.f)
+					{
+						adjust += theBody->GetVelocity();
+						mOnGround = true;
+						mVelocityY = -Trampoline::ENEMYPOWER;
+					}
+
+					if (adjust.y > 20.f)
+						mCrashedFlag = true;
+					mToge->SetPosition(mToge->GetPosition() + adjust);
 				}
 			}
 

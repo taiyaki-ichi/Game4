@@ -24,6 +24,7 @@
 #include"Enemy/Maimai.hpp"
 #include"Enemy/Missile.hpp"
 #include"Item/Tear.hpp"
+#include"Object/Trampoline.hpp"
 
 #include<iostream>
 
@@ -321,6 +322,12 @@ namespace Game
 					float bottom = static_cast<float>(o["Data2"].get<double>());
 					scene->SetStageBottom(bottom);
 				}
+				else if (o["Name"].get<std::string>() == "Trampoline")
+				{
+					Vec2 pos = Vec2(o["Data1"].get<double>(), o["Data2"].get<double>());
+					new Trampoline(scene, pos);
+				}
+				
 
 
 			}

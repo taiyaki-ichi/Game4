@@ -45,6 +45,7 @@ namespace Game
 				private:
 					int mCnt;
 					Maimai* mMaimai;
+					float mVelocityY;
 				};
 			}
 

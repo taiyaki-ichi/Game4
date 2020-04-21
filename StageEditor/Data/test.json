@@ -1,125 +1,41 @@
 {
   "Actors": [
     {
-      "Data1": -86,
-      "Data2": 502,
-      "Data3": 827,
-      "Data4": 1003,
+      "Data1": -92,
+      "Data2": 499,
+      "Data3": 743,
+      "Data4": 893,
       "Name": "Ground"
     },
     {
-      "Data1": 304,
-      "Data2": 445,
+      "Data1": 259,
+      "Data2": 456,
       "Name": "Player"
     },
     {
-      "Data1": 627,
-      "Data2": 432,
-      "Data3": 826,
-      "Data4": 501,
-      "Name": "Ground"
+      "Data1": 1076,
+      "Data2": 531,
+      "Name": "Trampoline"
     },
     {
-      "Data1": 716,
-      "Data2": 377,
-      "Data3": 826,
-      "Data4": 433,
-      "Name": "Ground"
+      "Data1": 573,
+      "Data2": 475,
+      "Name": "Trampoline"
     },
     {
-      "Data1": 792,
-      "Data2": 337,
-      "Name": "Maimai"
+      "Data1": 1426,
+      "Data2": 379,
+      "Name": "Trampoline"
     },
     {
-      "Data1": 680,
-      "Data2": 388,
+      "Data1": 1487,
+      "Data2": 278,
       "Name": "Triple"
     },
     {
-      "Data1": 825,
-      "Data2": 378,
-      "Data3": 1085,
-      "Data4": 400,
-      "Data5": 953,
-      "Data6": -14,
-      "Name": "MoveGround"
-    },
-    {
-      "Data1": 1079,
-      "Data2": 174,
-      "Data3": 1258,
-      "Data4": 1005,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1124,
-      "Data2": 125,
-      "Name": "StandLight"
-    },
-    {
-      "Data1": 1080,
-      "Data2": 69,
-      "Data3": 1259,
-      "Data4": -37,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1180,
-      "Data2": -36,
-      "Data3": 1360,
-      "Data4": 1006,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 1223,
-      "Data2": -88,
-      "Name": "StandLight"
-    },
-    {
-      "Data1": 1465,
-      "Data2": -74,
-      "Data3": 1631,
-      "Data4": -52,
-      "Data5": 1548,
-      "Data6": -930,
-      "Name": "MoveGround"
-    },
-    {
-      "Data1": 2011,
-      "Data2": -717,
-      "Data3": 2144,
-      "Data4": -696,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2020,
-      "Data2": -604,
-      "Data3": 2159,
-      "Data4": -581,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2017,
-      "Data2": -502,
-      "Data3": 2165,
-      "Data4": -479,
-      "Name": "Ground"
-    },
-    {
-      "Data1": 2074,
-      "Data2": -754,
-      "Name": "Maimai"
-    },
-    {
-      "Data1": 2077,
-      "Data2": -647,
-      "Name": "Maimai"
-    },
-    {
-      "Data1": 2084,
-      "Data2": -548,
-      "Name": "Maimai"
+      "Data1": 673,
+      "Data2": 384,
+      "Name": "Carrot"
     }
   ]
 }

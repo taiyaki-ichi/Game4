@@ -47,6 +47,8 @@ namespace Game
 
 				bool mOnGround;
 				bool mCrashedFlag;
+
+				float mVelocityY;
 			};
 			
 		}

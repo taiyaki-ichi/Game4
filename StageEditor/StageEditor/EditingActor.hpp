@@ -335,4 +335,12 @@ namespace StageEditor
 	private:
 		GameLib::LineComponent* mLine;
 	};
+
+	class EditingTrampoline : public EditingActor
+	{
+	public:
+		EditingTrampoline(EditingScene* e, const Vec2& pos);
+		virtual ~EditingTrampoline();
+
+	};
 }

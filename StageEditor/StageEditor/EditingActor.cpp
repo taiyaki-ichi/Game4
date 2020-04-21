@@ -672,7 +672,7 @@ namespace StageEditor
 
 		new GameLib::TextureComponent(this, "../Assets/Item/tear.png");
 
-		auto body = new Game::Stage::Body(this, "Missile", 400.f, 400.f);
+		auto body = new Game::Stage::Body(this, "Tear", 400.f, 400.f);
 		body->SetAdjust(Vec2(0.f, 150.f));
 		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
 
@@ -708,6 +708,22 @@ namespace StageEditor
 	
 	}
 
+
+	EditingTrampoline::EditingTrampoline(EditingScene* e, const Vec2& pos)
+		:EditingActor(e,pos,"Trampoline",2)
+	{
+		SetScale(0.5f);
+
+		new GameLib::TextureComponent(this, "../Assets/Other/trampoline.png");
+
+		auto body = new Game::Stage::Body(this, "Trampoline", 700.f, 100.f);
+		body->SetColor(GameLib::Vector3(0.f, 255.f, 0.f));
+
+	}
+
+	EditingTrampoline::~EditingTrampoline()
+	{
+	}
 
 }
 

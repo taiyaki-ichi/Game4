@@ -5,6 +5,7 @@
 #include"Stage/StageScene.hpp"
 #include"Stage/Player/Player.hpp"
 #include"EnemyState.hpp"
+#include"Stage/Object/Trampoline.hpp"
 
 namespace Game
 {
@@ -79,10 +80,10 @@ namespace Game
 				const float Active::MAXSPEED = 6.f;
 				const float Active::RUNPOER = 0.2f;
 
-				Active::Active(Carrot* carrot)
+				Active::Active(Carrot* carrot,float vY)
 					:StageState()
 					,mCarrot(carrot)
-					,mVelocityX(0)
+					,mVelocity(0.f,vY)
 				{
 					mCarrot->GetAnim()->SetChannel(1);
 				}
@@ -100,22 +101,22 @@ namespace Game
 						return new Stay(mCarrot);
 
 					if (playerPos.x - myPos.x > 0.f)
-						mVelocityX += RUNPOER;
-					else 
-						mVelocityX -= RUNPOER;
+						mVelocity.x += RUNPOER;
+					else
+						mVelocity.x -= RUNPOER;
 
-					if (mVelocityX > MAXSPEED)
-						mVelocityX = MAXSPEED;
-					else if (mVelocityX < -MAXSPEED)
-						mVelocityX = -MAXSPEED;
+					if (mVelocity.x > MAXSPEED)
+						mVelocity.x = MAXSPEED;
+					else if (mVelocity.x < -MAXSPEED)
+						mVelocity.x = -MAXSPEED;
 
-					if (mVelocityX > 0.f)
+					if (mVelocity.x > 0.f)
 						mCarrot->GoRight();
 					else
 						mCarrot->GoLeft();
 
-					myPos.x += mVelocityX;
-					myPos.y += GRAVITY;
+					mVelocity.y += GRAVITYPOWER;
+					myPos += mVelocity;
 					mCarrot->SetPosition(myPos);
 
 					return this;
@@ -130,7 +131,10 @@ namespace Game
 					{
 						auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAXSPEED);
 						if (adjust.y < 0.f)
+						{
 							adjust += theBody->GetVelocity();
+							mVelocity.y = 0.f;
+						}
 						mCarrot->SetPosition(mCarrot->GetPosition() + adjust);
 					}
 					else if (theName == "Player" && myName == "EnemyCarrotWeakness")
@@ -146,11 +150,22 @@ namespace Game
 						mCarrot->GetAnim()->SetChannel(0);
 						mCarrot->SetStageState(new Fall(mCarrot));
 					}
+					else if (theName == "Trampoline")
+					{
+						auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAXSPEED);
+						if (adjust.y < 0.f)
+						{
+							adjust += theBody->GetVelocity();
+							mVelocity.y = -Trampoline::ENEMYPOWER;
+						}
+						mCarrot->SetPosition(mCarrot->GetPosition() + adjust);
+					}
 				}
 
 				Stay::Stay(Carrot* carrot)
 					:StageState()
 					,mCarrot(carrot)
+					,mVelocityY(0.f)
 				{
 					mCarrot->GetAnim()->SetChannel(0);
 				}
@@ -165,9 +180,10 @@ namespace Game
 					auto myPos = mCarrot->GetPosition();
 
 					if ((playerPos - myPos).Length() < Carrot::ACTIVERNGE - 20.f)
-						return new Active(mCarrot);
+						return new Active(mCarrot, mVelocityY);
 
-					myPos.y += GRAVITY;
+					mVelocityY += GRAVITYPOWER;
+					myPos.y += mVelocityY;
 					mCarrot->SetPosition(myPos);
 
 					return this;
@@ -182,7 +198,10 @@ namespace Game
 					{
 						auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, 0.f);
 						if (adjust.y < 0.f)
+						{
 							adjust += theBody->GetVelocity();
+							mVelocityY = 0.f;
+						}
 						mCarrot->SetPosition(mCarrot->GetPosition() + adjust);
 					}
 					else if (name == "Beam" || name == "Meteor")
@@ -190,6 +209,16 @@ namespace Game
 						mCarrot->BreakBody();
 						mCarrot->GetAnim()->SetChannel(0);
 						mCarrot->SetStageState(new Fall(mCarrot));
+					}
+					else if (name == "Trampoline" )
+					{
+						auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, 0.f);
+						if (adjust.y < 0.f)
+						{
+							adjust += theBody->GetVelocity();
+							mVelocityY = -Trampoline::ENEMYPOWER;
+						}
+						mCarrot->SetPosition(mCarrot->GetPosition() + adjust);
 					}
 				}
 
