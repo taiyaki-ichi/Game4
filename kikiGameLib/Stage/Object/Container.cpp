@@ -2,6 +2,7 @@
 #include"Stage/CollisionDetection/Body.hpp"
 #include"lib/include/Draw/TextureComponent.hpp"
 #include"Stage/Enemy/EnemyState.hpp"
+#include"Trampoline.hpp"
 
 #include<iostream>
 
@@ -10,7 +11,7 @@ namespace Game
 	namespace Stage
 	{
 
-		const float ContainerActive::GRAVITY = 5.f;
+		const float ContainerActive::GRAVITYPOWER = 0.3f;
 		const float ContainerActive::SPEED = 2.f;
 
 		Container::Container(StageScene* scene, const GameLib::Vector2& pos, int UupdateOrder)
@@ -44,6 +45,7 @@ namespace Game
 			,mContainer(contaner)
 			, mOnGround(false)
 			,mGroundTimeCnt(-1)
+			,mVelocityY(0.f)
 		{
 		}
 
@@ -58,15 +60,17 @@ namespace Game
 
 			if (!mOnGround)
 			{
-				pos.y += GRAVITY;
+				//pos.y += GRAVITY;
+				mVelocityY += GRAVITYPOWER;
 			}
 			else
 			{
 				//地面との接触をチェックするため
-				pos.y += 0.01f;
+				mVelocityY += 0.01;
+				//pos.y += 0.01f;
 			}
 
-
+			pos.y += mVelocityY;
 			mContainer->SetPosition(pos);
 			mOnGround = false;
 
@@ -91,10 +95,11 @@ namespace Game
 
 			if (name == "Ground")
 			{
-				GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, SPEED);
+				GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, 0.f, SPEED);
 				if (adjust.y < 0.f)
 				{
 					mOnGround = true;
+					mVelocityY = 0.f;
 					adjust.x += theBody->GetVelocity().x;
 				}
 				else if (GameLib::Math::Abs(adjust.x) > 0.f&&myBody->GetVelocity().y==0.f)
@@ -108,24 +113,16 @@ namespace Game
 				
 				mContainer->SetPosition(mContainer->GetPosition() + adjust);
 			}
-			/*
-			else if (name == "Player" && myName == "Container")
-			{
-				GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, SPEED, GRAVITY);
-				if (GameLib::Math::Abs(adjust.x) > 0.f)
-					mContainer->SetPosition(mContainer->GetPosition() + adjust);
-
-			}
-			*/
 			else if (name == "Container" && myName != "Ground")
 			{
-				auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY,SPEED);
+				auto adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, 0.f,SPEED);
 
 				float theV= theBody->GetVelocity().x;
 				if (adjust.y < 0.f)
 				{
 					mOnGround = true;
 					adjust.x += theV;
+					mVelocityY = 0.f;
 					mContainer->SetPosition(mContainer->GetPosition() + adjust);
 				}
 				else if (theV * adjust.x > 0.f)
@@ -138,6 +135,25 @@ namespace Game
 			{
 				mContainer->BreakBody();
 				mContainer->SetStageState(new Enemy::Fall(mContainer));
+			}
+			else if(name == "Trampoline")
+			{
+				GameLib::Vector2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, 0.f, SPEED);
+				if (adjust.y < 0.f)
+				{
+					mOnGround = true;
+					mVelocityY = -15.f;
+				}
+				else if (GameLib::Math::Abs(adjust.x) > 0.f && myBody->GetVelocity().y == 0.f)
+				{
+					mGroundTimeCnt = 60;
+					if (myName != "Ground")
+					{
+						myBody->SetName("Ground");
+					}
+				}
+
+				mContainer->SetPosition(mContainer->GetPosition() + adjust);
 			}
 		}
 

@@ -33,7 +33,7 @@ namespace Game
 			ContainerActive(Container* contaner);
 			virtual ~ContainerActive();
 
-			static const float GRAVITY;
+			static const float GRAVITYPOWER;
 			static const float SPEED;
 
 			virtual StageState* Update() override;
@@ -44,6 +44,8 @@ namespace Game
 			bool mOnGround;
 
 			int mGroundTimeCnt;
+
+			float mVelocityY;
 			
 		};
 

@@ -170,6 +170,7 @@ namespace Game
 			, mJumpFlag2(0)
 			, mCrushedFlag(false)
 			,mIsOnGround(false)
+			,mFallingJumpFlag(false)
 		{
 			mMode = new PlayerMode::Nomal(mPlayer);
 		}
@@ -316,6 +317,7 @@ namespace Game
 				mJumpFlag = false;
 				mIsOnGround = false;
 				mCrushedFlag = false;
+				mFallingJumpFlag = false;
 
 			}
 			return this;
@@ -368,14 +370,16 @@ namespace Game
 				mMotion = Motion::Stay;
 			}
 
-			if (mJumpFlag == true ||mJumpFlag2 > 0)
+			if (mJumpFlag == true ||mJumpFlag2 > 0||mFallingJumpFlag)
 			{
 				if (state.GetState(Key::Space) == ButtonState::Pressed) {
+					if (mFallingJumpFlag)
+						mVelocity.y = 0.f;
 					mIsJumping = true;
 					mJumpFlag = false;
 					mJumpAcceleFlag = true;
-					//mVelocity.y = 0.f;
 					mJumpFlag2 = 0;
+					mFallingJumpFlag = false;
 				}
 			}
 			if (state.GetState(Key::Space) == ButtonState::Released && mVelocity.y < 0.f)
@@ -479,13 +483,22 @@ namespace Game
 				}
 				else
 				{
-					if (adjust.y < 0.f && mVelocity.y>0.f) {
-						mVelocity.y = 0.f;
+					if (adjust.y > 10.f)
+						mCrushedFlag = true;
+
+					if (adjust.y < 0.f && mVelocity.y>0.f) 
+					{
+						
 						mJumpFlag = true;
 						mIsOnGround = true;
 						mIsJumping = false;
 
-						adjust += theBody->GetVelocity();
+						if (myBody->GetVelocity().y < 0.f || theBody->GetVelocity().y < 0.f)
+							mVelocity.y = 0.f;
+						else
+							mFallingJumpFlag = true;
+
+						adjust.x += theBody->GetVelocity().x;
 					}
 					else if (adjust.y > 0.f && mVelocity.y < 0.f)
 					{
@@ -494,8 +507,6 @@ namespace Game
 
 					}
 
-					if (adjust.y > 20.f)
-						mCrushedFlag = true;
 					myBody->GetOwner()->SetPosition(myBody->GetOwner()->GetPosition() + adjust);
 				}
 			}

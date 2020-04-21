@@ -106,6 +106,9 @@ namespace Game
 
 				void HitEnemy(Body* myBody, Body* theBody);
 
+				//—Ž‚¿‚È‚ª‚ç‚Å‚àƒWƒƒƒ“ƒv‚Å‚«‚é
+				bool mFallingJumpFlag;
+
 			};
 			
 

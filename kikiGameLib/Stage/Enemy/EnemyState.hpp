@@ -10,7 +10,7 @@ namespace Game
 		namespace Enemy
 		{
 			constexpr float GRAVITY = 5.f;
-			constexpr float GRAVITYPOWER = 0.7f;
+			constexpr float GRAVITYPOWER = 0.6f;
 
 			class Fall : public StageState
 			{
