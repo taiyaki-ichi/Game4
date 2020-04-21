@@ -474,11 +474,15 @@ namespace Game
 			}
 			else if (name == "Container")
 			{
-				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, GRAVITY, MAX_SPEED);
+				//自身が大きく動いているときは上に乗り安く、トランポリンの時とか
+				float y = GameLib::Math::Abs(myBody->GetVelocity().y*3.f - theBody->GetVelocity().y);
+				Vec2 adjust = GetAdjustUnrotatedRectVecEx(myBody, theBody, y, 0.f);
 				if (GameLib::Math::Abs(adjust.x) > 0.f)
 				{
+					Vec2 a = GetAdjustUnrotatedRectVec(myBody, theBody);
 					mVelocity.x *= 0.7f;
 					theBody->GetOwner()->SetPosition(theBody->GetOwner()->GetPosition() - adjust);
+					
 
 				}
 				else
@@ -493,7 +497,7 @@ namespace Game
 						mIsOnGround = true;
 						mIsJumping = false;
 
-						if (myBody->GetVelocity().y < 0.f || theBody->GetVelocity().y < 0.f)
+						if (myBody->GetVelocity().y <= 0.f || theBody->GetVelocity().y <= 0.f)
 							mVelocity.y = 0.f;
 						else
 							mFallingJumpFlag = true;
