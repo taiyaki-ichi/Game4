@@ -21,10 +21,10 @@ directX9とか
 
 # できたもの
 
-ゲーム本体
+ゲーム本体  
 <img src="Resource/game.gif" width="500">
 
-ゲームのためのエディタ
+ゲームのためのエディタ  
 <img src="Resource/editor.gif" width="500">
 
 勉強していく過程ですべて作りなおしたくなったので未完成
