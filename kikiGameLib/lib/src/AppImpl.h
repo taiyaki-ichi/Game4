@@ -29,7 +29,7 @@ namespace GameLib
 		void Input();
 		void Update();
 		void Draw();
-
+	
 		bool mIsRunning;
 
 		Scene* mCurrScene;

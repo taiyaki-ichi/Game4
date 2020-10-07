@@ -700,6 +700,11 @@
       "Data3": 6113,
       "Data4": -1481,
       "Name": "Ground"
+    },
+    {
+      "Data1": 1658,
+      "Data2": 862,
+      "Name": "Bottom"
     }
   ]
 }

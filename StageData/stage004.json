@@ -1,0 +1,450 @@
+{
+  "Actors": [
+    {
+      "Data1": -92,
+      "Data2": 499,
+      "Data3": 743,
+      "Data4": 893,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 732,
+      "Data2": 417,
+      "Data3": 1141,
+      "Data4": 892,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 557,
+      "Data2": 473,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 782,
+      "Data2": 379,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 1148,
+      "Data2": 75,
+      "Name": "Missile"
+    },
+    {
+      "Data1": 1404,
+      "Data2": 460,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 1753,
+      "Data2": 319,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 2061,
+      "Data2": 260,
+      "Data3": 2296,
+      "Data4": 867,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 1514,
+      "Data2": 364,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 1113,
+      "Data2": 365,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 1900,
+      "Data2": 230,
+      "Name": "Triple"
+    },
+    {
+      "Data1": 2480,
+      "Data2": -57,
+      "Name": "Missile"
+    },
+    {
+      "Data1": 2291,
+      "Data2": 178,
+      "Data3": 2497,
+      "Data4": 866,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 3047,
+      "Data2": 347,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 3332,
+      "Data2": 177,
+      "Data3": 3603,
+      "Data4": 856,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 3277,
+      "Data2": 474,
+      "Name": "Tear"
+    },
+    {
+      "Data1": 3157,
+      "Data2": 737,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 2514,
+      "Data2": 136,
+      "Data3": 2263,
+      "Data4": 139,
+      "Name": "StraightBee"
+    },
+    {
+      "Data1": 2860,
+      "Data2": 150,
+      "Data3": 2701,
+      "Data4": 130,
+      "Data5": 2685,
+      "Data6": 153,
+      "Name": "CircleBee"
+    },
+    {
+      "Data1": 3111,
+      "Data2": 162,
+      "Data3": 2926,
+      "Data4": 156,
+      "Data5": 2931,
+      "Data6": 198,
+      "Name": "CircleBee"
+    },
+    {
+      "Data1": 3728,
+      "Data2": 395,
+      "Name": "Container"
+    },
+    {
+      "Data1": 3861,
+      "Data2": 405,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 4039,
+      "Data2": 325,
+      "Name": "Container"
+    },
+    {
+      "Data1": 4148,
+      "Data2": 351,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 4243,
+      "Data2": 349,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 2697,
+      "Data2": 348,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 5068,
+      "Data2": 182,
+      "Data3": 5275,
+      "Data4": 213,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5175,
+      "Data2": 196,
+      "Data3": 5011,
+      "Data4": 195,
+      "Data5": 5014,
+      "Data6": 241,
+      "Name": "CircleBee"
+    },
+    {
+      "Data1": 5362,
+      "Data2": 131,
+      "Data3": 5584,
+      "Data4": 162,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 5474,
+      "Data2": 147,
+      "Data3": 5314,
+      "Data4": 144,
+      "Data5": 5317,
+      "Data6": 187,
+      "Name": "CircleBee"
+    },
+    {
+      "Data1": 5612,
+      "Data2": -200,
+      "Name": "Missile"
+    },
+    {
+      "Data1": 5872,
+      "Data2": 159,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 6288,
+      "Data2": -385,
+      "Data3": 6432,
+      "Data4": 859,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 6912,
+      "Data2": -688,
+      "Name": "Goal"
+    },
+    {
+      "Data1": 3778,
+      "Data2": 477,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 424,
+      "Data2": -2,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 476,
+      "Data2": 0,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 532,
+      "Data2": 2,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 603,
+      "Data2": -165,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 654,
+      "Data2": -164,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1460,
+      "Data2": 400,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1419,
+      "Data2": 402,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1379,
+      "Data2": 403,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1977,
+      "Data2": -423,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 1935,
+      "Data2": -391,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 2021,
+      "Data2": -389,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 3744,
+      "Data2": -175,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 4043,
+      "Data2": -252,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 158,
+      "Data2": 443,
+      "Name": "Player"
+    },
+    {
+      "Data1": 6384,
+      "Data2": -421,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 6323,
+      "Data2": -419,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5120,
+      "Data2": 146,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5167,
+      "Data2": 148,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5219,
+      "Data2": 148,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 4127,
+      "Data2": 435,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 4474,
+      "Data2": 387,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 4825,
+      "Data2": 387,
+      "Name": "Trampoline"
+    },
+    {
+      "Data1": 4360,
+      "Data2": 301,
+      "Name": "Container"
+    },
+    {
+      "Data1": 3636,
+      "Data2": 420,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 4663,
+      "Data2": 106,
+      "Data3": 4951,
+      "Data4": 135,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 4346,
+      "Data2": -293,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 6431,
+      "Data2": -385,
+      "Data3": 7551,
+      "Data4": 794,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 4745,
+      "Data2": -68,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 4787,
+      "Data2": -68,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 4834,
+      "Data2": -67,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5292,
+      "Data2": -222,
+      "Name": "Missile"
+    },
+    {
+      "Data1": 3080,
+      "Data2": -308,
+      "Data3": 3043,
+      "Data4": -308,
+      "Name": "StraightBee"
+    },
+    {
+      "Data1": 3220,
+      "Data2": -523,
+      "Name": "Tear"
+    },
+    {
+      "Data1": 4957,
+      "Data2": 305,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 4870,
+      "Data2": 306,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 4778,
+      "Data2": 308,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 4530,
+      "Data2": 304,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 4453,
+      "Data2": 300,
+      "Name": "Toge"
+    },
+    {
+      "Data1": 4687,
+      "Data2": 280,
+      "Name": "Tear"
+    },
+    {
+      "Data1": 2281,
+      "Data2": 67,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 2232,
+      "Data2": 68,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 2200,
+      "Data2": 125,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5799,
+      "Data2": -415,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5866,
+      "Data2": -460,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 5933,
+      "Data2": -412,
+      "Name": "Diamond"
+    },
+    {
+      "Data1": 6444,
+      "Data2": -420,
+      "Name": "Diamond"
+    }
+  ]
+}
+

@@ -1,226 +1,80 @@
 {
   "Actors": [
     {
-      "Data1": -92,
+      "Data1": -106,
       "Data2": 499,
-      "Data3": 743,
-      "Data4": 893,
+      "Data3": 597,
+      "Data4": 827,
       "Name": "Ground"
     },
     {
-      "Data1": 259,
-      "Data2": 456,
+      "Data1": -1,
+      "Data2": -155,
+      "Data3": -140,
+      "Data4": 537,
+      "Name": "Ground"
+    },
+    {
+      "Data1": 224,
+      "Data2": 454,
       "Name": "Player"
     },
     {
-      "Data1": 732,
-      "Data2": 417,
-      "Data3": 1141,
-      "Data4": 892,
+      "Data1": 595,
+      "Data2": 432,
+      "Data3": 1084,
+      "Data4": 828,
       "Name": "Ground"
     },
     {
-      "Data1": 557,
-      "Data2": 473,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 782,
-      "Data2": 379,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 1148,
-      "Data2": 75,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 1404,
+      "Data1": 1296,
       "Data2": 460,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 1753,
-      "Data2": 319,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 2061,
-      "Data2": 260,
-      "Data3": 2296,
-      "Data4": 867,
+      "Data3": 2135,
+      "Data4": 828,
       "Name": "Ground"
     },
     {
-      "Data1": 1514,
-      "Data2": 364,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 1113,
-      "Data2": 365,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 1900,
-      "Data2": 230,
-      "Name": "Triple"
-    },
-    {
-      "Data1": 2480,
-      "Data2": -57,
-      "Name": "Missile"
-    },
-    {
-      "Data1": 2291,
-      "Data2": 178,
-      "Data3": 2497,
-      "Data4": 866,
+      "Data1": 1582,
+      "Data2": 376,
+      "Data3": 1706,
+      "Data4": 484,
       "Name": "Ground"
     },
     {
-      "Data1": 2688,
-      "Data2": 348,
-      "Name": "Trampoline"
+      "Data1": 1640,
+      "Data2": 263,
+      "Name": "Diamond"
     },
     {
-      "Data1": 3047,
-      "Data2": 347,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 3332,
-      "Data2": 177,
-      "Data3": 3603,
-      "Data4": 856,
+      "Data1": 1940,
+      "Data2": 375,
+      "Data3": 2055,
+      "Data4": 476,
       "Name": "Ground"
     },
     {
-      "Data1": 3277,
-      "Data2": 474,
+      "Data1": 1991,
+      "Data2": 267,
       "Name": "Tear"
     },
     {
-      "Data1": 3157,
-      "Data2": 737,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 2514,
-      "Data2": 136,
-      "Data3": 2263,
-      "Data4": 139,
-      "Name": "StraightBee"
-    },
-    {
-      "Data1": 2860,
-      "Data2": 150,
-      "Data3": 2701,
-      "Data4": 130,
-      "Data5": 2685,
-      "Data6": 153,
-      "Name": "CircleBee"
-    },
-    {
-      "Data1": 3111,
-      "Data2": 162,
-      "Data3": 2926,
-      "Data4": 156,
-      "Data5": 2931,
-      "Data6": 198,
-      "Name": "CircleBee"
-    },
-    {
-      "Data1": 3794,
-      "Data2": 477,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 3728,
-      "Data2": 395,
-      "Name": "Container"
-    },
-    {
-      "Data1": 3861,
-      "Data2": 405,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4151,
-      "Data2": 423,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 4039,
-      "Data2": 325,
-      "Name": "Container"
-    },
-    {
-      "Data1": 4148,
-      "Data2": 351,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4243,
-      "Data2": 349,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4516,
-      "Data2": 361,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 4403,
-      "Data2": 270,
-      "Name": "Container"
-    },
-    {
-      "Data1": 4507,
-      "Data2": 291,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4595,
-      "Data2": 293,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4865,
-      "Data2": 485,
-      "Name": "Trampoline"
-    },
-    {
-      "Data1": 4751,
-      "Data2": 406,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4852,
-      "Data2": 413,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4957,
-      "Data2": 415,
-      "Name": "Toge"
-    },
-    {
-      "Data1": 4748,
-      "Data2": 114,
-      "Data3": 4961,
-      "Data4": 154,
+      "Data1": 2134,
+      "Data2": 461,
+      "Data3": 3125,
+      "Data4": 825,
       "Name": "Ground"
     },
     {
-      "Data1": 533,
-      "Data2": 287,
-      "Name": "Container"
+      "Data1": 2754,
+      "Data2": 155,
+      "Name": "Goal"
     },
     {
-      "Data1": 168,
-      "Data2": 441,
-      "Name": "Container"
+      "Data1": 1083,
+      "Data2": 303,
+      "Data3": 1297,
+      "Data4": 825,
+      "Name": "Ground"
     }
   ]
 }

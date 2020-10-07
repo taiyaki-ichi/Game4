@@ -2,6 +2,8 @@
 #include"lib/src/DataImpl.hpp"
 #include<Windows.h>
 
+#include<iostream>
+
 namespace GameLib
 {
     LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
