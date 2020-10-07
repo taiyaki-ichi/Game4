@@ -21,7 +21,7 @@ directX9とか
 
 # できたもの
 
-ゲーム本体  
+２Dのアクションゲーム  
 <img src="Resource/game.gif" width="500">
 
 ゲームのためのエディタ  
