@@ -22,9 +22,9 @@ directX9とか
 # できたもの
 
 ゲーム本体
-<img src="Resorce/game.gif" width="500">
+<img src="Resource/game.gif" width="500">
 
 ゲームのためのエディタ
-<img src="Resorce/editor.gif" width="500">
+<img src="Resource/editor.gif" width="500">
 
 勉強していく過程ですべて作りなおしたくなったので未完成
